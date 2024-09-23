@@ -1,0 +1,1 @@
+# plugins-registrations-for-the-events-calendar
