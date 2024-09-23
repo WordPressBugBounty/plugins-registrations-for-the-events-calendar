@@ -1,0 +1,203 @@
+.rtec-modal-backdrop {
+    display: none;
+}
+.rtec-modal {
+    position: relative;
+    max-width: 1180px;
+    width: calc(100% - 40px);
+    height: 90vh;
+    top: 5%;
+    margin: auto;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.7);
+    box-shadow: 0 5px 15px rgba(0,0,0,.7);
+    background: #fcfcfc;
+}
+.rtec-modal-inner-pad {
+    height: 100%;
+}
+.rtec-modal-close {
+    appearance: none;
+    border: none;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    opacity: .8;
+
+}
+.rtec-modal-close:hover {
+    opacity: 1;
+}
+.rtec-modal button:hover {
+    cursor: pointer;
+}
+.rtec-admin-wrap .rtec-modal-content .rtec-modal-alert {
+    max-width: 660px;
+    margin: 5px auto 15px !important;
+}
+.rtec-modal-close svg {
+    width: 24px;
+    fill:  #003544;
+}
+.rtec-modal .rtec-modal-content {
+    height: 100%;
+    overflow: auto;
+}
+.rtec-modal-is-open .rtec-modal{
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 160000;
+}
+.rtec-modal-is-open .rtec-modal-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 360px;
+    background: rgba(0,0,0,.6);
+    z-index: 159900;
+}
+.rtec-modal .media-frame-title {
+    left: 0;
+}
+.rtec-modal-is-open .mce-container.mce-panel,
+.rtec-modal-is-open .mce-tooltip,
+.rtec-modal-is-open #wp-link-wrap{
+    z-index: 180000 !important;
+}
+.rtec-modal-item {
+    display: none;
+    height: 100%;
+}
+.rtec-modal-columns-wrap {
+    display: flex;
+    height: 100%;
+}
+.rtec-modal-column {
+    display: flex;
+    width: 50%;
+}
+.rtec-modal-column-inner {
+    margin: auto;
+    padding: 32px 0;
+}
+.rtec-modal-opener {
+    position: relative;
+}
+/* Pro Features */
+
+.rtec-pro-feature-image-wrap {
+    max-width: 90%;
+    margin: auto;
+}
+.rtec-pro-feature-image-wrap img {
+    width: 100%;
+}
+
+
+.rtec-modal-header,
+.rtec-modal-copy,
+.rtec-other-pro{
+    font-size: 14px;
+    padding: 0 32px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.rtec-modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    color:     #003544;
+}
+.rtec-modal-copy {
+    font-size: 14px;
+    color: #004B60;
+}
+.rtec-other-pro {
+    padding: 0 32px;
+    color: #444;
+}
+.rtec-other-pro svg {
+    fill: #444;
+}
+.rtec-other-pro-inner {
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #efefef;
+}
+.rtec-modal .rtec-offer-cta {
+    margin: 0 32px 20px;
+
+}
+.rtec-offer-cta:hover,
+.rtec-offer-cta:active{
+    color: #10752F;
+    background: #C2EFD0;
+}
+.rtec-offer-cta svg {
+    height: 18px;
+}
+.rtec-offer-cta-bold {
+    display: block;
+    font-weight: bold;
+}
+.rtec-offer-cta-subtext {
+    font-size: 12px;
+}
+.rtec-other-pro-heading {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.rtec-pro-features-list {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 6px;
+}
+
+.rtec-pro-features-list-tem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+.rtec-buynow-wrap {
+    display: flex;
+    padding: 32px 32px 0;
+
+}
+.rtec-buynow-wrap a {
+    position: relative;
+    color: #fff;
+    background-color: #3bac5d;
+    border-radius: 30px;
+    padding: 14px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    margin: auto;
+    display: inline-block;
+}
+
+.rtec-buynow-wrap a:hover,
+.rtec-buynow-wrap a:active {
+    background: #444;
+}
+
+
+@media all and (max-width: 850px) {
+    .rtec-modal-columns-wrap {
+        flex-direction: column;
+    }
+    .rtec-modal-column {
+        width: 100%;
+    }
+    .rtec-modal-column:first-child {
+        max-height: 40vh;
+        overflow: hidden;
+    }
+}
