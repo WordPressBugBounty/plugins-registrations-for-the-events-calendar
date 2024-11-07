@@ -163,7 +163,7 @@ div.rtec-a-button {
 	margin-left: 2%;
 }
 #rtec-back-overview {
-	margin-bottom: 20px;
+	margin: 20px 0;
 	display: inline-block;
 	font-weight: bold;
 }
@@ -1546,4 +1546,71 @@ button .rtec-spinner-circle {
 	justify-content: start;
 	align-items: center;
 	gap: 20px;
+}
+
+/** Header **/
+.rtec-admin-wrap {
+	padding-top: 50px;
+}
+
+.rtec-settings-header {
+	position: absolute;
+
+	box-sizing: border-box;
+	padding: 6px 24px;
+	background: #fff;
+	border-bottom: 1px solid #c3c4c7;
+	top: 0;
+	left: -20px;
+	width: calc(100% + 20px);
+}
+.rtec-settings-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.rtec-settings-header-identity {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.rtec-settings-header-identity h1 {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+.rtec-settings-header-identity h1 .rtec-brand {
+	color: #1D6E85;
+	font-size: 16px;
+}
+.rtec-settings-header-identity h1 .rtec-current-page {
+	font-size: 14px;
+	font-weight: normal;
+}
+.rtec-settings-header-identity img {
+	height: 34px;
+}
+.rtec-settings-header .rtec-help-button {
+	background: #eee;
+	border: 1px solid #ddd;
+	color: #333;
+	display: flex;
+	align-items: center
+}
+.rtec-settings-header .rtec-help-button:hover,
+.rtec-settings-header .rtec-help-button:active{
+	background: #ddd;
+	border: 1px solid #ddd;
+	color: #333;
+}
+
+.rtec-admin-inner {
+	margin-top: 30px;
+}
+
+/* Footer Rating */
+.rtec-rating {
+	color: #50575e;
+	text-decoration: none;
 }

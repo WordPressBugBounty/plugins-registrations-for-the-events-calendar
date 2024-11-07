@@ -32,7 +32,6 @@ $admin_registrations->build_admin_registrations( $tab, $settings );
 $admin_registrations->the_registrations_overview();
 
 ?>
-	<h1><?php esc_html_e( 'Overview', 'registrations-for-the-events-calendar' ); ?></h1>
 
 <?php do_action( 'rtec_registrations_tab_after_the_title' ); ?>
 

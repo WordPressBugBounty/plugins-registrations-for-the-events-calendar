@@ -170,7 +170,7 @@ jQuery(document).ready(function($){
     if (jQuery('#rtec-notice-bar').length) {
         jQuery('#wpadminbar').after(jQuery('#rtec-notice-bar'));
         jQuery('#wpcontent').css('padding-left', 0);
-        jQuery('#wpbody').css('padding-left', '20px');
+        jQuery('#wpbody, .rtec-settings-header-inner').css('padding-left', '20px');
         jQuery('#rtec-notice-bar').show();
     }
 

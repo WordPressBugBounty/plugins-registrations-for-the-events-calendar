@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( -1 );
 }
 ?>
-<h1><?php esc_html_e( 'Need Help?', 'registrations-for-the-events-calendar' ); ?></h1>
+<h2><?php esc_html_e( 'Need Help?', 'registrations-for-the-events-calendar' ); ?></h2>
 <?php
 global $wpdb;
 $table_name = esc_sql( $wpdb->prefix . RTEC_TABLENAME );

@@ -25,7 +25,6 @@ if ( ! empty( $_POST['rtec_migrate_start'] ) ) {
 $migration_status = get_option( 'rtec_migration_status', array( 'attempts' => 0, 'complete' => false, 'one_migration_done' => false ) );
 settings_errors();
 ?>
-<h1><?php esc_html_e( 'Manage Migration', 'registrations-for-the-events-calendar' ); ?></h1>
 <p>
 	<?php esc_html_e( 'To work properly with events that were migrated with The Events Calendar 6.0, registrations that were made prior to the migration also need to be updated.', 'registrations-for-the-events-calendar' ); ?>
 </p>

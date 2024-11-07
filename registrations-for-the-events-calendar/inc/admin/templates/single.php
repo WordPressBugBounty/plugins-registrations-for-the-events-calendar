@@ -42,8 +42,7 @@ $custom_fields_label_name_pairs = $event_obj->form_obj->get_custom_fields_label_
 $custom_fields_name_label_pairs = array_flip( $custom_fields_label_name_pairs );
 
 ?>
-<h1><?php esc_html_e( 'Single Event Details', 'registrations-for-the-events-calendar' ); ?></h1>
-<a id="rtec-back-overview" href="<?php $admin_registrations->the_toolbar_href( 'tab', 'registrations' ); ?>"><?php esc_html_e( 'Back to Overview', 'registrations-for-the-events-calendar' ); ?></a>
+<a id="rtec-back-overview" href="<?php $admin_registrations->the_toolbar_href( 'tab', 'registrations' ); ?>"><?php esc_html_e( 'Back to Overview', 'registrations-for-the-events-calendar' ); ?> ⤴︎</a>
 
 <input type="hidden" value="<?php echo esc_attr( $event_id ); ?>" name="event_id">
 <div class="rtec-wrapper rtec-single<?php echo $event_obj->get_single_event_wrapper_classes(); ?>">

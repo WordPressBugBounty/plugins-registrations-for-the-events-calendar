@@ -6,7 +6,7 @@ Tags: registration, The Events Calendar, RSVP, events, event registration
 Requires at least: 5.6
 Tested up to: 6.6
 Requires PHP: 7.1
-Stable tag: 2.13
+Stable tag: 2.13.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -201,6 +201,9 @@ Yes. There is a custom database table added to each sub-site's database to separ
 Go to the "Support" tab on the plugin's settings page and follow the link to our support page, setup instructions page, or feature request page.
 
 == Changelog ==
+= 2.13.1 =
+* Fix: When allowing logged-in users to register more than once, the ability to cancel the registration was disabled.
+
 = 2.13 =
 * New: The plugin will detect if a logged-in user has registered for an event and will show a message to the user if they try to register again.
 * New: Logged-in users can cancel a registration with a click of a button.

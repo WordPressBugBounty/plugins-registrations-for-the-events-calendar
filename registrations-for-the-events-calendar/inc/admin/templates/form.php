@@ -3,7 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( -1 );
 }
 settings_errors(); ?>
-<h1><?php esc_html_e( 'Form Settings', 'registrations-for-the-events-calendar' ); ?></h1>
 <div class="rtec-individual-available-notice">
 	<p><strong><span class="rtec-individual-available">&#42;</span><?php esc_html_e( 'Can also be set for each event separately on the Events->Edit page', 'registrations-for-the-events-calendar' ); ?></strong></p>
 </div>

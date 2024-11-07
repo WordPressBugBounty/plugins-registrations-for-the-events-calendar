@@ -1441,12 +1441,13 @@ class RTEC_Form {
 		$show_unregister_link          = isset( $rtec_options['visitors_can_edit_what_status'] ) ? $rtec_options['visitors_can_edit_what_status'] : true;
 
 		$show_unregister_link = apply_filters( 'rtec_show_visitor_tools', $show_unregister_link, $event_meta );
+		$can_register_more_than_once = isset( $rtec_options['allow_users_reregister'] ) ? $rtec_options['allow_users_reregister'] : false;
 
 		if ( $show_unregister_link ) {
 			ob_start();
             if ( $event_goer->get_event_status() && $event_goer->get_entry_id() ) {
 	            $this->already_registered_logged_in_html( $event_goer );
-            } elseif ( ! is_user_logged_in() ) {
+            } elseif ( ! is_user_logged_in() || $can_register_more_than_once ) {
 	            $this->already_registered_visitor_html();
             }
 			$already_registered_tools_html = ob_get_contents();

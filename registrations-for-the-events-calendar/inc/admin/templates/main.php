@@ -3,8 +3,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( -1 );
 }
 
-do_action( 'rtec_admin_before_template_main' );
 $tec_data = RTEC_Admin::get_plugin_data( 'tribe-tec' );
+
+if ( $tec_data['is_active'] ) {
+	include_once RTEC_PLUGIN_DIR . 'inc/admin/templates/partials/settings-header.php';
+}
+
+do_action( 'rtec_admin_before_template_main' );
 
 $welcome_screen_active_class = $tec_data['is_active'] ? '' : ' rtec-welcome-screen';
 if ( $tec_data['is_active'] ) {
@@ -69,7 +74,6 @@ if ( $tec_data['is_active'] ) {
 				</button>
 			</div>
 		<?php endif; ?>
-		<h1><?php esc_html_e( 'Registrations for the Events Calendar', 'registrations-for-the-events-calendar' ); ?></h1>
 		<?php
 	}
 	// this controls which view is included based on the selected tab

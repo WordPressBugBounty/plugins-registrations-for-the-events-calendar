@@ -175,9 +175,10 @@ function rtec_the_registration_form( $atts = array() ) {
 				$event_goer = is_user_logged_in() ? new RTEC_Logged_In_Event_Goer( get_current_user_id() ) : new RTEC_Visitor_Event_Goer( 0 );
 				$event_goer->init( new RTEC_Event( $event_meta['post_id'] ) );
 				ob_start();
+				$can_register_more_than_once = isset( $rtec_options['allow_users_reregister'] ) ? $rtec_options['allow_users_reregister'] : false;
 				if ( $event_goer->get_event_status() && $event_goer->get_entry_id() ) {
 					$form->already_registered_logged_in_html( $event_goer );
-				} elseif ( ! is_user_logged_in() ) {
+				} elseif ( ! is_user_logged_in() || $can_register_more_than_once ) {
 					$form->already_registered_visitor_html();
 				}
 
