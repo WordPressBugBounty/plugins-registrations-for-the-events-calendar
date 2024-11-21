@@ -97,8 +97,8 @@ function rtec_get_event_deadline_utc( $event_meta ) {
 	$deadline_time = 'none';
 
 	if ( class_exists( 'Tribe__Events__Timezones' ) ) {
-		$start_date_utc = Tribe__Events__Timezones::to_utc( tribe_get_start_date( $event_meta['post_id'], true, Tribe__Date_Utils::DBDATETIMEFORMAT ), '', 'c' );
-		$end_date_utc   = Tribe__Events__Timezones::to_utc( tribe_get_end_date( $event_meta['post_id'], true, Tribe__Date_Utils::DBDATETIMEFORMAT ), '', 'c' );
+		$start_date_utc = Tribe__Events__Timezones::to_utc( tribe_get_start_date( $event_meta['post_id'], true, Tribe__Date_Utils::DBDATETIMEFORMAT ), 'UTC', 'c' );
+		$end_date_utc   = Tribe__Events__Timezones::to_utc( tribe_get_end_date( $event_meta['post_id'], true, Tribe__Date_Utils::DBDATETIMEFORMAT ), 'UTC', 'c' );
 
 		if ( $event_meta['deadline_type'] === 'start' ) {
 
