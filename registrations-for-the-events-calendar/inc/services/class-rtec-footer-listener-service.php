@@ -254,6 +254,18 @@ class RTEC_Footer_Listener_Service {
 
         $event_data = $logged_in_event_goer->get_event_data();
 
+		global $rtec_options;
+
+		$disable_notification = isset( $rtec_options['disable_notification'] ) ? $rtec_options['disable_notification'] : false;
+
+		if ( ! $disable_notification ) {
+			rtec_send_unregistration_notification( array( $event_data['id'] ) );
+		}
+
+		if ( empty( $rtec_options['disable_unregister_confirmation'] ) ) {
+			rtec_send_unregistration_confirmation( array( $event_data['id'] ) );
+		}
+
 		$record_was_deleted = RTEC()->db_frontend->remove_record_by_action_key( $event_data['action_key'] );
 
 		if ( $record_was_deleted ) {

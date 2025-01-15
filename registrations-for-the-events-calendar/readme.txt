@@ -6,7 +6,7 @@ Tags: registration, The Events Calendar, RSVP, events, event registration
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 2.13.2
+Stable tag: 2.13.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -201,6 +201,9 @@ Yes. There is a custom database table added to each sub-site's database to separ
 Go to the "Support" tab on the plugin's settings page and follow the link to our support page, setup instructions page, or feature request page.
 
 == Changelog ==
+= 2.13.3 =
+* Fix: When a logged-in user canceled a registration, there would be no email confirmation or email notification.
+
 = 2.13.2 =
 * Fix: Fixed WordPress notice related to translations being loaded too early.
 
