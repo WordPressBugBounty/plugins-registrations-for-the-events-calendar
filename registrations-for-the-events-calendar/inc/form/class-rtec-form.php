@@ -1546,7 +1546,7 @@ class RTEC_Form {
 		if ( $show_log_in_form ) {
 			$args  = array(
 				'echo'     => false,
-				'redirect' => get_the_permalink( $this->event_id ),
+				'redirect' => get_the_permalink( $this->event_meta['event_id'] ),
 			);
 			$html .= '<div class="rtec-event-meta"><div class="rtec-login-wrap">' . wp_login_form( $args ) . '</div></div>';
 		}

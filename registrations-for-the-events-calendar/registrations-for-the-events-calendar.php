@@ -2,7 +2,7 @@
 /*
 Plugin Name: Registrations for The Events Calendar
 Description: Collect and manage event registrations with a customizable form and email template. This plugin requires The Events Calendar by Modern Tribe to work.
-Version: 2.13.3
+Version: 2.13.4
 Author: Roundup WP
 Author URI: roundupwp.com
 License: GPLv2 or later
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 // Plugin version.
 if ( ! defined( 'RTEC_VERSION' ) ) {
-	define( 'RTEC_VERSION', '2.13.3' );
+	define( 'RTEC_VERSION', '2.13.4' );
 }
 // Plugin Folder Path.
 if ( ! defined( 'RTEC_PLUGIN_DIR' ) ) {
@@ -49,7 +49,7 @@ if ( ! defined( 'RTEC_PLUGIN_URL' ) ) {
 }
 
 if ( ! defined( 'RTEC_TEC_VER_STRING' ) ) {
-	define( 'RTEC_TEC_VER_STRING', '.6.8.3' );
+	define( 'RTEC_TEC_VER_STRING', '.6.10.1' );
 }
 
 // Check for The Events Calendar to be active
@@ -256,19 +256,19 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 
 		public static function activation_scripts( $network_wide ) {
 			if ( is_multisite() && $network_wide && function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
-
 				// Get all blogs in the network and activate plugin on each one
 				$sites = get_sites();
 				foreach ( $sites as $site ) {
 					switch_to_blog( $site->blog_id );
-
 					self::install();
-
 					restore_current_blog();
 				}
 			} else {
 				self::install();
 			}
+			
+			// Set transient for redirect
+			set_transient( 'rtec_activation_redirect', true, 30 );
 		}
 
 		/**
@@ -312,6 +312,7 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 
 			update_user_meta( get_current_user_id(), 'tribe-dismiss-notice-time-event-tickets-install', '1823773858' );
 			update_user_meta( get_current_user_id(), 'tribe-dismiss-notice', 'event-tickets-install' );
+			update_option( 'tec_events_onboarding_page_dismissed', true );
 		}
 	}
 endif; // End if class_exists check.
@@ -349,6 +350,22 @@ function rtec_on_delete_blog( $tables ) {
 	return $tables;
 }
 add_filter( 'wpmu_drop_tables', 'rtec_on_delete_blog' );
+
+function rtec_activation_redirect() {
+	// Check if we should redirect
+	if ( get_transient( 'rtec_activation_redirect' ) ) {
+		// Delete the transient
+		delete_transient( 'rtec_activation_redirect' );
+		
+		// Only redirect if we're on the main plugin page
+		if ( ! isset( $_GET['activate-multi'] ) && ! is_network_admin() ) {
+			// Safe redirect to the main plugin page
+			wp_safe_redirect( admin_url( 'admin.php?page=registrations-for-the-events-calendar' ) );
+			exit;
+		}
+	}
+}
+add_action( 'admin_init', 'rtec_activation_redirect' );
 
 /**
  * The main function for Registrations_For_The_Events_Calendar
