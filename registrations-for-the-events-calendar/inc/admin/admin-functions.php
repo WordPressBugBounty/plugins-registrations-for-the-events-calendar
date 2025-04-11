@@ -1191,7 +1191,8 @@ function rtec_admin_scripts_and_styles() {
 			wp_enqueue_script( 'tribe-jquery-timepicker' );
 			wp_enqueue_style( 'tribe-jquery-timepicker-css' );
 
-	} else {
+	} elseif ( ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'tribe_events' ) || 
+	           ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) === 'tribe_events' ) ) {
 		wp_enqueue_script( 'rtec_admin_edit_event_scripts', trailingslashit( RTEC_PLUGIN_URL ) . 'js/rtec-admin-edit-event-scripts.js', array( 'jquery' ), RTEC_VERSION, false );
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_style( 'jquery-ui-smoothness', 'https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css', array(), '1.12.1' );

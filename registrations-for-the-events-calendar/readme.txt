@@ -6,7 +6,7 @@ Tags: registration, The Events Calendar, RSVP, events, event registration
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 2.13.4
+Stable tag: 2.13.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -201,6 +201,9 @@ Yes. There is a custom database table added to each sub-site's database to separ
 Go to the "Support" tab on the plugin's settings page and follow the link to our support page, setup instructions page, or feature request page.
 
 == Changelog ==
+= 2.13.5 =
+* Fix: Prevented some of the admin CSS and JS files for the plugin being loaded on pages that were not related to the Events Calendar or Registrations for the Events Calendar.
+
 = 2.13.4 =
 * Fix: Fixed PHP warning "Undefined property: RTEC_Form::$event_id" when using the log-in form for logged-out visitors when the event is for logged-in users only.
 
