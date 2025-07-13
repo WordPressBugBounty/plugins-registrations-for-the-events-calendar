@@ -235,21 +235,15 @@ class RTEC_Footer_Listener_Service {
 	public function unregister_by_event_id_for_logged_in_user() {
 		$event_id = isset( $_POST['event_id'] ) ? (int) $_POST['event_id'] : 0;
 
-        $return = array(
-                'success' => false,
-                'html' => ''
-        );
         if ( empty( $event_id ) ) {
-	        $return['html'] = 'No Event ID';
-            wp_send_json_error( $return );
+            wp_send_json_error( array( 'message' => 'No Event ID' ) );
         }
 
         $logged_in_event_goer = new RTEC_Logged_In_Event_Goer( get_current_user_id() );
         $logged_in_event_goer->init( new RTEC_Event( $event_id ) );
 
         if ( empty( $logged_in_event_goer->get_entry_id() ) ) {
-	        $return['html'] = 'No Record Found';
-	        wp_send_json_error( $return );
+            wp_send_json_error( array( 'message' => 'No Record Found' ) );
         }
 
         $event_data = $logged_in_event_goer->get_event_data();
@@ -271,16 +265,45 @@ class RTEC_Footer_Listener_Service {
 		if ( $record_was_deleted ) {
 			$templater = new RTEC_Templater();
 
-			$return['success'] = true;
-			$return['html'] = '<p class="rtec-attendance tribe-events-notices rtec-scrollto">' . wp_kses_post( $templater->event_details_search_and_replace( RTEC_Settings::get( 'success_unregistration' ), $event_id ) ) . '</p>';
+			// Get updated event info after unregistration
+			$rtec = RTEC();
+			$event_meta = rtec_get_event_meta( $event_id );
+
+			// Get the attendance count template from options
+			$template = isset( $rtec_options['attendance_count_message_template'] ) ? $rtec_options['attendance_count_message_template'] : __( 'Attendance: {num} / {max}', 'registrations-for-the-events-calendar' );
+			$template = rtec_get_text( $template, __( 'Attendance: {num} / {max}', 'registrations-for-the-events-calendar' ) );
+			
+			$attendance_count_html = rtec_attendance_count_display( $event_id, $template );
+
+			// Only include attendee list if it's enabled for this event
+			$attendee_list_html = '';
+			if ( $event_meta['show_registrants_data'] ) {
+				$to_include = array(
+					'first',
+					'last',
+					'user_id',
+				);
+				$attendee_list_fields = apply_filters( 'rtec_attendee_list_fields', $to_include );
+				$registrants_data = $rtec->db_frontend->get_registrants_data( $event_meta, $attendee_list_fields );
+
+				ob_start();
+				do_action( 'rtec_the_attendee_list', $registrants_data );
+				$attendee_list_html = ob_get_contents();
+				ob_get_clean();
+			}
+
+			$return = array(
+				'attendee_list' => $attendee_list_html,
+				'attendance_count' => $attendance_count_html,
+				'success_message' => '<p class="rtec-attendance tribe-events-notices rtec-scrollto">' . wp_kses_post( $templater->event_details_search_and_replace( RTEC_Settings::get( 'success_unregistration' ), $event_id ) ) . '</p>'
+			);
+
 			wp_send_json_success( $return );
 
 			do_action( 'rtec_after_unregistration', array( $event_data['id'] ), $event_id, 'footer_listener_unregister_by_event_id_for_logged_in_user' );
 		} else {
-			$return['html'] = '<p class="rtec-attendance tribe-events-notices rtec-scrollto">' . esc_html__( 'No record found.', 'registrations-for-the-events-calendar' ) . '</p>';
+			wp_send_json_error( array( 'message' => __( 'No record found.', 'registrations-for-the-events-calendar' ) ) );
 		}
-
-		wp_send_json_error( $return );
     }
 
 }

@@ -349,22 +349,36 @@ function rtec_refresh_event_info() {
 
 	$event_meta = rtec_get_event_meta( $event_id );
 
-	$to_include           = array(
-		'first',
-		'last',
-		'user_id',
+	// Get the attendance count template from options
+	global $rtec_options;
+	$template = isset( $rtec_options['attendance_count_message_template'] ) ? $rtec_options['attendance_count_message_template'] : __( 'Attendance: {num} / {max}', 'registrations-for-the-events-calendar' );
+	$template = rtec_get_text( $template, __( 'Attendance: {num} / {max}', 'registrations-for-the-events-calendar' ) );
+	
+	$attendance_count_html = rtec_attendance_count_display( $event_id, $template );
+
+	// Only include attendee list if it's enabled for this event
+	$attendee_list_html = '';
+	if ( $event_meta['show_registrants_data'] ) {
+		$to_include           = array(
+			'first',
+			'last',
+			'user_id',
+		);
+		$attendee_list_fields = apply_filters( 'rtec_attendee_list_fields', $to_include );
+		$registrants_data     = $rtec->db_frontend->get_registrants_data( $event_meta, $attendee_list_fields );
+
+		ob_start();
+		do_action( 'rtec_the_attendee_list', $registrants_data );
+		$attendee_list_html = ob_get_contents();
+		ob_get_clean();
+	}
+
+	$return = array(
+		'attendee_list' => $attendee_list_html,
+		'attendance_count' => $attendance_count_html,
 	);
-	$attendee_list_fields = apply_filters( 'rtec_attendee_list_fields', $to_include );
-	$registrants_data     = $rtec->db_frontend->get_registrants_data( $event_meta, $attendee_list_fields );
 
-	ob_start();
-	do_action( 'rtec_the_attendee_list', $registrants_data );
-	$html = ob_get_contents();
-	ob_get_clean();
-
-	echo $html;
-
-	die();
+	wp_send_json_success( $return );
 }
 add_action( 'wp_ajax_nopriv_rtec_refresh_event_info', 'rtec_refresh_event_info' );
 add_action( 'wp_ajax_rtec_refresh_event_info', 'rtec_refresh_event_info' );

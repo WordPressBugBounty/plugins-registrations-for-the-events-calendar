@@ -2,7 +2,7 @@
 /*
 Plugin Name: Registrations for The Events Calendar
 Description: Collect and manage event registrations with a customizable form and email template. This plugin requires The Events Calendar by Modern Tribe to work.
-Version: 2.13.5
+Version: 2.13.6
 Author: Roundup WP
 Author URI: roundupwp.com
 License: GPLv2 or later
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 // Plugin version.
 if ( ! defined( 'RTEC_VERSION' ) ) {
-	define( 'RTEC_VERSION', '2.13.5' );
+	define( 'RTEC_VERSION', '2.13.6' );
 }
 // Plugin Folder Path.
 if ( ! defined( 'RTEC_PLUGIN_DIR' ) ) {
@@ -49,7 +49,7 @@ if ( ! defined( 'RTEC_PLUGIN_URL' ) ) {
 }
 
 if ( ! defined( 'RTEC_TEC_VER_STRING' ) ) {
-	define( 'RTEC_TEC_VER_STRING', '.6.10.1' );
+	define( 'RTEC_TEC_VER_STRING', '.6.13.2.1' );
 }
 
 // Check for The Events Calendar to be active

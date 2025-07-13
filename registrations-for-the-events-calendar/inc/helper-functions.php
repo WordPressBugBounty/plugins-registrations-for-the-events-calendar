@@ -429,7 +429,7 @@ function rtec_maybe_series_html( $event_id, $before, $after ) {
 
 		$context = array(
 			'series_relationship_label' => _x( 'Event Series:', 'Series relationship marker prefix, with colon.', 'icaltec' ),
-			'series_title'              => apply_filters( 'the_title', $series_post->post_title ),
+			'series_title'              => apply_filters( 'the_title', $series_post->post_title, $series_post->ID ),
 			'series_link'               => get_edit_post_link( $series_post->ID ),
 		);
 

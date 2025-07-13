@@ -146,35 +146,85 @@ jQuery(document).ready(function($) {
                     let $spinnerImg = $('.rtec-spinner').length ? $('.rtec-spinner').html() : '',
                     $spinner = '<div class="rtec-spinner-wrap">' + $spinnerImg + '</div>';
 
-
                     var $wrapEl = $(this).closest('.rtec-already-registered-options'),
+                        $rtecWrap = $wrapEl.closest('.rtec-outer-wrap'),
                         submittedData = {
                             'event_id': $(this).attr('data-event-id'),
                             'action': 'rtec_unregister_by_event_id_for_logged_in_user'
                         };
 
-                    $wrapEl.append($spinner);
+                    if ( !$wrapEl.closest('.rtec-outer-wrap').length) {
+                        $rtecWrap = $('.rtec').closest('div');
+                    }
 
+                    $wrapEl.append($spinner);
 
                     $.ajax({
                         url : rtec.ajaxUrl,
                         type : 'post',
                         data : submittedData,
                         success : function(data) {
-                            var $rtecWrap = $wrapEl.closest('.rtec-outer-wrap'),
-                                $rtecAttendanceNearest = $rtecWrap.find('.rtec-attendance');
-
-                            if ( !$wrapEl.closest('.rtec-outer-wrap').length) {
-                                $rtecWrap = $('.rtec').closest('div');
+                            // Parse the JSON response from wp_send_json_success
+                            var response = data;
+                            if (typeof data === 'string') {
+                                try {
+                                    response = JSON.parse(data);
+                                } catch (e) {
+                                    console.error('Failed to parse JSON response:', e);
+                                    return;
+                                }
                             }
-
-                            $rtecWrap.find('.rtec').fadeOut(400,'linear', function() {
-                                $(this).remove();
-                                $rtecWrap.html(data.data.html)
-                            });
-                            $rtecAttendanceNearest.fadeOut(400,'linear', function() {
-                                $(this).remove();
-                            });
+                            
+                            // Check if the response has the expected structure
+                            if (response && response.success && response.data) {
+                                var attendeeList = response.data.attendee_list;
+                                var attendanceCount = response.data.attendance_count;
+                                var successMessage = response.data.success_message;
+                                
+                                // Remove the registration form and show success message
+                                $rtecWrap.find('.rtec').fadeOut(400,'linear', function() {
+                                    $(this).remove();
+                                    if (successMessage) {
+                                        if ($rtecWrap.find('.rtec-attendance.tribe-events-notices').length) {
+                                            $rtecWrap.find('.rtec-attendance.tribe-events-notices').replaceWith(successMessage  );
+                                        } else {
+                                            $rtecWrap.append(successMessage);
+                                        }
+                                        $rtecWrap.find('.rtec-attendance').fadeIn();
+                                    }
+                                });
+                                
+                                // Update dynamic elements if they exist
+                                if (rtecDynamicElementsExist($rtecWrap)) {
+                                    var dynamicElements = rtecGetDynamicElements($rtecWrap);
+                                    
+                                    if (Array.isArray(dynamicElements)) {
+                                        dynamicElements.forEach(function($element) {
+                                            var elementType = $element.hasClass('rtec-attendee-list-meta') ? 'attendee-list' : 'attendance';
+                                            
+                                            if (elementType === 'attendee-list' && attendeeList) {
+                                                $element.replaceWith($(attendeeList));
+                                            } else if (elementType === 'attendance' && attendanceCount) {
+                                                $element.replaceWith($(attendanceCount));
+                                            }
+                                        });
+                                    }
+                                }
+                            } else if (response && !response.success) {
+                                // Handle error response
+                                var errorMessage = response.data && response.data.message ? response.data.message : 'An error occurred';
+                                $wrapEl.append('<p class="rtec-error">' + errorMessage + '</p>');
+                            }
+                            
+                            // Remove processing state
+                            $(this).removeClass('rtec-processing');
+                            $wrapEl.find('.rtec-spinner-wrap').remove();
+                        },
+                        error: function() {
+                            // Handle AJAX error
+                            $wrapEl.append('<p class="rtec-error">An error occurred while processing your request.</p>');
+                            $(this).removeClass('rtec-processing');
+                            $wrapEl.find('.rtec-spinner-wrap').remove();
                         }
                     }); // ajax
                 });
@@ -635,6 +685,48 @@ jQuery(document).ready(function($) {
                 }
             }rtecMaybeModalInit();
 
+            function rtecDynamicElementsExist($context) {
+                if ($context.find('.rtec-attendee-list-meta').length) {
+                    return true;
+                }
+                if ($context.find('.rtec-attendance-display').length) {
+                    return true;
+                }
+                return false;
+            }
+
+            function rtecGetDynamicElements($context) {
+                var dynamicElements = [];
+                if ($context.find('.rtec-attendee-list-meta').length) {
+                    dynamicElements.push($context.find('.rtec-attendee-list-meta'));
+                }
+                if ($context.find('.rtec-attendance-display').length) {
+                    dynamicElements.push($context.find('.rtec-attendance-display'));
+                }
+                return dynamicElements;
+            }
+
+            function rtecSetToPending($elements) {
+                // if array, loop through and prepend the spinner
+                if (Array.isArray($elements)) {
+                    $elements.forEach(function($element) {
+                        $element.prepend($('.rtec-spinner').clone()).find('.rtec-spinner').show();
+                    });
+                } else {
+                    $elements.prepend($('.rtec-spinner').clone()).find('.rtec-spinner').show();
+                }
+            }
+
+            function rtecSetToReady($elements) {
+                if (Array.isArray($elements)) {
+                    $elements.forEach(function($element) {
+                        $element.find('.rtec-spinner').remove();
+                    });
+                } else {
+                    $elements.find('.rtec-spinner').remove();
+                }
+            }
+
             $('#rtec-confirm-unregister-form').on('submit',function(event) {
                 event.preventDefault();
                 var $form = $(this);
@@ -670,12 +762,11 @@ jQuery(document).ready(function($) {
             $(window).on('rtecsubmissionajax', function (event) {
                 var $rtecEl = event.el.closest('.rtec-outer-wrap').length ? event.el.closest('.rtec-outer-wrap') : event.el;
 
-                if ($rtecEl.find('.rtec-attendee-list-meta').length || $('.rtec-attendee-list-meta').length === 1) {
-                    var $attendeeList = $rtecEl.find('.rtec-attendee-list-meta').length ? $rtecEl.find('.rtec-attendee-list-meta') : $('.rtec-attendee-list-meta');
-                    $attendeeList.prepend($rtecEl.find('.rtec-spinner')).find('.rtec-spinner').show();
-                    $attendeeList.fadeTo(500,.1);
+                if (rtecDynamicElementsExist($rtecEl)) {
+                    dynamicElements = rtecGetDynamicElements($rtecEl);
+                    rtecSetToPending(dynamicElements);
 
-                    var eventId = typeof $attendeeList.closest('.rtec-outer-wrap').find('.rtec').attr('data-event') !== 'undefined' ? $attendeeList.closest('.rtec-outer-wrap').find('.rtec').attr('data-event') : event.el.attr('data-event');
+                    var eventId = typeof $rtecEl.attr('data-event') !== 'undefined' ? $rtecEl.attr('data-event') : event.el.attr('data-event');
 
                     $.ajax({
                         url : rtec.ajaxUrl,
@@ -685,12 +776,37 @@ jQuery(document).ready(function($) {
                             'event_id' : eventId
                         },
                         success : function(data) {
-                            $attendeeList.find('.rtec-spinner').hide();
-                            $attendeeList.fadeTo(500,1);
-                            if (data.trim().indexOf('<div') === 0) {
-                                $attendeeList.replaceWith(data);
+                            rtecSetToReady(dynamicElements);
+                            
+                            // Parse the JSON response from wp_send_json_success
+                            var response = data;
+                            if (typeof data === 'string') {
+                                try {
+                                    response = JSON.parse(data);
+                                } catch (e) {
+                                    console.error('Failed to parse JSON response:', e);
+                                    return;
+                                }
                             }
-
+                            
+                            // Check if the response has the expected structure
+                            if (response && response.success && response.data) {
+                                var attendeeList = response.data.attendee_list;
+                                var attendanceCount = response.data.attendance_count;
+                                
+                                // Update the dynamic elements with new data
+                                if (Array.isArray(dynamicElements)) {
+                                    dynamicElements.forEach(function($element) {
+                                        var elementType = $element.hasClass('rtec-attendee-list-meta') ? 'attendee-list' : 'attendance';
+                                        
+                                        if (elementType === 'attendee-list' && attendeeList) {
+                                            $element.replaceWith($(attendeeList));
+                                        } else if (elementType === 'attendance' && attendanceCount) {
+                                            $element.replaceWith($(attendanceCount));
+                                        }
+                                    });
+                                }
+                            }
                         }
                     }); // ajax
                 }
