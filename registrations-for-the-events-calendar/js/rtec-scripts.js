@@ -1,3 +1,47 @@
+// Define reCAPTCHA callback globally before document ready to ensure it's available when the script loads
+window.rtecRecaptchaCallback = function() {
+    // Wait for jQuery to be available
+    if (typeof jQuery !== 'undefined') {
+        var $ = jQuery;
+        rtecInitializeRecaptcha();
+    } else {
+        // jQuery not ready yet, wait for it
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof jQuery !== 'undefined') {
+                    rtecInitializeRecaptcha();
+                }
+            });
+        } else {
+            setTimeout(function() {
+                if (typeof jQuery !== 'undefined') {
+                    rtecInitializeRecaptcha();
+                }
+            }, 100);
+        }
+    }
+};
+
+function rtecInitializeRecaptcha() {
+    // Check if grecaptcha is available
+    if (typeof grecaptcha === 'undefined' || typeof grecaptcha.render !== 'function') {
+        return;
+    }
+    
+    var $ = jQuery;
+    if (typeof window.rtec === 'undefined') {
+        window.rtec = {};
+    }
+    window.rtec.recaptchas = {};
+    $('.rtec-form-field.rtec-recaptcha').each(function(index) {
+        $(this).find('.rtec-g-recaptcha').attr('id', 'rtec-recaptcha-' + index);
+        window.rtec.recaptchas['rtec-recaptcha-' + index] = grecaptcha.render('rtec-recaptcha-' + index, {
+            sitekey : $('.rtec-form-field.rtec-recaptcha').first().find('.rtec-g-recaptcha').attr('data-sitekey'),
+            'theme' : 'light'
+        } );
+    });
+}
+
 jQuery(document).ready(function($) {
     if (typeof window.rtecInit === 'undefined') {
         window.rtecInit = function () {
@@ -817,17 +861,6 @@ jQuery(document).ready(function($) {
 
     if($('.rtec').length && !$('.rtec').hasClass('rtec-initialized')) {
         rtecInit();
-    }
-
-    window.rtecRecaptchaCallback = function() {
-        window.rtec.recaptchas = {};
-        $('.rtec-form-field.rtec-recaptcha').each(function(index) {
-            $(this).find('.rtec-g-recaptcha').attr('id', 'rtec-recaptcha-' + index);
-            window.rtec.recaptchas['rtec-recaptcha-' + index] = grecaptcha.render('rtec-recaptcha-' + index, {
-                sitekey : $('.rtec-form-field.rtec-recaptcha').first().find('.rtec-g-recaptcha').attr('data-sitekey'),
-                'theme' : 'light'
-            } );
-        });
     }
 
 });

@@ -167,7 +167,9 @@ class RTEC_Migration {
 		}
 		?>
 		<div class="rtec-notice rtec-top-notice rtec-box-shadow">
-			<?php printf( __( 'Migration needed for some registrations! No action needed as this is being done automatically. Visit %1$sthis page%2$s if you would like to review progress.', 'registrations-for-the-events-calendar' ), '<a href="?page=rtec-support&tab=migration">', '</a>' ); ?>
+			<?php 
+			// Translators: %1$s is the opening link tag, %2$s is the closing link tag
+			printf( __( 'Migration needed for some registrations! No action needed as this is being done automatically. Visit %1$sthis page%2$s if you would like to review progress.', 'registrations-for-the-events-calendar' ), '<a href="?page=rtec-support&tab=migration">', '</a>' ); ?>
 		</div>
 		<?php
 	}

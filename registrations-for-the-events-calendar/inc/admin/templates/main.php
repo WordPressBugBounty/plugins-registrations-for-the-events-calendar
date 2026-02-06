@@ -69,7 +69,9 @@ if ( $tec_data['is_active'] ) {
 		if ( ! $lite_notice_dismissed ) :
 			?>
 			<div id="rtec-notice-bar" style="display:none">
-				<span class="rtec-notice-bar-message"><?php echo sprintf( __( "You're using Registrations for the Events Calendar Lite. To unlock more features consider %1supgrading to Pro.%2s", 'registrations-for-the-events-calendar' ), '<a href="https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=settings-page&utm_medium=floating-bar&utm_content=upgrading-to-pro" target="_blank" rel="noopener noreferrer">', '</a>' ); ?></span>
+				<span class="rtec-notice-bar-message"><?php 
+				// Translators: %1$s is the opening link tag, %2$s is the closing link tag
+				echo sprintf( __( "You're using Registrations for the Events Calendar Lite. To unlock more features consider %1supgrading to Pro.%2s", 'registrations-for-the-events-calendar' ), '<a href="https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=settings-page&utm_medium=floating-bar&utm_content=upgrading-to-pro" target="_blank" rel="noopener noreferrer">', '</a>' ); ?></span>
 				<button type="button" class="dismiss" title="<?php esc_html_e( 'Dismiss this message.', 'registrations-for-the-events-calendar' ); ?>" data-page="overview">
 				</button>
 			</div>

@@ -129,6 +129,7 @@ class RTEC_Email {
 		$date_str      = date_i18n( rtec_get_date_time_format(), strtotime( $sanitized_data['date'] ) );
 		$body          = '<p>';
 		$body         .= __( 'You are registered!', 'registrations-for-the-events-calendar' ) . '<br><br>';
+		// Translators: %1$s is the event title, %2$s is the venue title, %3$s is the date
 		$first_message = sprintf( __( 'Event: %1$s at %2$s on %3$s', 'registrations-for-the-events-calendar' ), $sanitized_data['title'], $sanitized_data['venue_title'], $date_str );
 		$body         .= esc_html( $first_message ) . '<br>';
 		$first         = ! empty( $sanitized_data['first'] ) ? esc_html( $sanitized_data['first'] ) : '';
@@ -191,6 +192,7 @@ class RTEC_Email {
 		if ( $use_custom_notification && $rtec_options['message_source'] !== 'translate' ) {
 			$body = $this->find_and_replace( $rtec_options['notification_message'], $sanitized_data );
 		} else {
+			// Translators: %1$s is the event title, %2$s is the venue title, %3$s is the date
 			$first_message = sprintf( __( 'The following submission was made for: %1$s at %2$s on %3$s', 'registrations-for-the-events-calendar' ), $sanitized_data['title'], $sanitized_data['venue_title'], $date_str );
 			$body         .= '<p>' . esc_html( $first_message ) . '</p>';
 			$body         .= self::all_fields_placeholder( $sanitized_data );

@@ -127,7 +127,9 @@ class RTEC_Admin {
 
 	public function form_fields_description() {
 		?>
-			<p><?php printf( __( 'Create unlimited forms and form fields by %1$supgrading to pro%2$s.', 'registrations-for-the-events-calendar' ), '<a href="https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=form-settings&utm_medium=unlimited-forms&utm_content=UpgradingToPro" target="_blank">', '</a>' ); ?></p>
+			<p><?php 
+			// Translators: %1$s is the opening link tag, %2$s is the closing link tag
+			printf( __( 'Create unlimited forms and form fields by %1$supgrading to pro%2$s.', 'registrations-for-the-events-calendar' ), '<a href="https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=form-settings&utm_medium=unlimited-forms&utm_content=UpgradingToPro" target="_blank">', '</a>' ); ?></p>
 		<?php
 	}
 
@@ -1534,6 +1536,7 @@ class RTEC_Admin {
 			array(
 				'value'        => 'tribe_events_single_event_before_the_content',
 				'instructions' => __( 'Registration form is automatically placed before the event description when an event is created.', 'registrations-for-the-events-calendar' ),
+				// Translators: %1$s is the opening link tag, %2$s is the closing link tag
 				'trouble'      => sprintf( __( 'Form not showing or at the bottom of the page? See %1$sthis page%2$s to resolve this issue.', 'registrations-for-the-events-calendar' ), '<a href="https://roundupwp.com/faq/registration-form-missing-footer/" target="blank" rel="noopener">', '</a>' ),
 				'img'          => RTEC_PLUGIN_URL . 'img/form-above.png',
 			),
@@ -2038,6 +2041,7 @@ endforeach;
 		$one_down         = ( isset( $options['attendance_text_one_down'] ) ) ? $options['attendance_text_one_down'] : __( 'Only one spot left!', 'registrations-for-the-events-calendar' );
 		$none_yet         = ( isset( $options['attendance_text_none_yet'] ) ) ? $options['attendance_text_none_yet'] : __( 'Be the first!', 'registrations-for-the-events-calendar' );
 		$closed           = ( isset( $options['registrations_closed_message'] ) ) ? $options['registrations_closed_message'] : __( 'Registrations are closed for this event', 'registrations-for-the-events-calendar' );
+		// Translators: %s is the date when registration opens
 		$not_open           = ( isset( $options['registrations_open_on_message'] ) ) ? $options['registrations_open_on_message'] : __( 'Registration will open on %s', 'registrations-for-the-events-calendar' );
 		$option_checked   = ( isset( $options['include_attendance_message'] ) ) ? $options['include_attendance_message'] : true;
 		$option_selected  = ( isset( $options['attendance_message_type'] ) ) ? $options['attendance_message_type'] : 'up';
@@ -2128,6 +2132,7 @@ endforeach;
 				'title'       => '<label>' . __( 'Registration Not Open Message', 'registrations-for-the-events-calendar' ) . '</label>',
 				'example'     => '',
 				'default'     => __( 'Registration will open on %s', 'registrations-for-the-events-calendar' ),
+				// Translators: %s is a placeholder for the date
 				'description' => __( 'Message displayed if registration has not yet opened for the event. "%s" is a placeholder for the date', 'registrations-for-the-events-calendar' ),
 				'callback'    => 'message_text_area',
 				'rows'        => '3',
@@ -2772,8 +2777,9 @@ endforeach;
 			return $footer_text;
 		}
 		$review_url = 'https://wordpress.org/support/plugin/registrations-for-the-events-calendar/reviews/?filter=5';
+		// Translators: %1$s is the plugin name link, %2$s is the star rating link
 		$footer_text = sprintf(
-			__( 'Please rate %1s %2s to support our plugin', 'registrations-for-the-events-calendar' ),
+			__( 'Please rate %1$s %2$s to support our plugin', 'registrations-for-the-events-calendar' ),
 			'<a href="' . $review_url . '" target="_blank" rel="noopener noreferrer" class="rtec-rating"><strong>Registrations for the Events Calendar</strong></a>',
 			'<a href="' . $review_url . '" target="_blank" rel="noopener noreferrer" class="rtec-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 		);

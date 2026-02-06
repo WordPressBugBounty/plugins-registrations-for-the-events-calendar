@@ -786,7 +786,7 @@ function rtec_new_user_notice() {
 			</p>
 			<p>
 				<?php
-				// Translators: %s is the link to the article where more details about critical are listed.
+				// Translators: %1$s is the opening link tag, %2$s is the closing link tag
 				$doc_url = admin_url() . 'admin.php?page=rtec-support';
 				printf( esc_html__( 'Visit the %1$ssupport page%2$s in your WordPress dashboard if you have questions.', 'registrations-for-the-events-calendar' ), '<a href="' . esc_url( $doc_url ) . '" target="_blank">', '</a>' );
 				?>

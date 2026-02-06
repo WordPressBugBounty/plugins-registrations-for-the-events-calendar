@@ -2,11 +2,11 @@
 
 Contributors: roundupwp
 Support Website: https://roundupwp.com/support
-Tags: registration, The Events Calendar, RSVP, events, event registration
+Tags: events calendar, bookings, RSVP, events, event registration
 Requires at least: 5.6
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.13.6
+Stable tag: 2.13.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -201,6 +201,16 @@ Yes. There is a custom database table added to each sub-site's database to separ
 Go to the "Support" tab on the plugin's settings page and follow the link to our support page, setup instructions page, or feature request page.
 
 == Changelog ==
+= 2.13.9 =
+* Fix: Made several improvements to the Google recaptcha code to make it more reliable.
+
+= 2.13.8 =
+* Fix: Fixed comma in registration date causing csv export to work incorrectly in MS Excel.
+
+= 2.13.7 =
+* Fix: Fixed missing translation files for several languages.
+* Fix: Added notes for translators for several strings with placeholders.
+
 = 2.13.6 =
 * Fix: Improved how the attedance count display and event attendee list are updated after a registration or cancellation.
 

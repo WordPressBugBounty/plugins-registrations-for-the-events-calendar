@@ -13,7 +13,9 @@ $date_format = 'F jS, ' . rtec_get_time_format();
 	<?php else : ?>
 	<h3><?php echo esc_html( $event_obj->event_meta['title'] ); ?></h3>
 	<?php endif; ?>
-	<p class="rtec-event-date"><?php printf( __( '%1$s to %2$s', 'registrations-for-the-events-calendar' ), date_i18n( $date_format, strtotime( $event_obj->event_meta['start_date'] ) ), '<span class="rtec-end-time">' . date_i18n( $date_format, strtotime( $event_obj->event_meta['end_date'] ) ) . '</span>' ); ?></p>
+	<p class="rtec-event-date"><?php 
+	// Translators: %1$s is the start date, %2$s is the end date
+	printf( __( '%1$s to %2$s', 'registrations-for-the-events-calendar' ), date_i18n( $date_format, strtotime( $event_obj->event_meta['start_date'] ) ), '<span class="rtec-end-time">' . date_i18n( $date_format, strtotime( $event_obj->event_meta['end_date'] ) ) . '</span>' ); ?></p>
 </div>
 <p class="rtec-venue-highlight"><?php echo esc_html( $event_obj->event_meta['venue_title'] ); ?></p>
 <?php if ( $event_obj->view_type !== 'single' ) : ?>

@@ -394,7 +394,9 @@ class RTEC_Admin_Registrations {
 		if ( $should_show_create_event_prompt ) {
 			?>
 			<div class="rtec-notice rtec-box-shadow">
-				<p><?php printf( __( "Looks like you there weren't any upcoming events allowing registration found. %1\$sCreate an event%2\$s to get started!", 'registrations-for-the-events-calendar' ), '<a href="' . admin_url( 'post-new.php?post_type=tribe_events' ) . '" class="button button-primary rtec-cta">', '</a>' ); ?></p>
+				<p><?php 
+				// Translators: %1$s is the opening link tag, %2$s is the closing link tag
+				printf( __( "Looks like you there weren't any upcoming events allowing registration found. %1\$sCreate an event%2\$s to get started!", 'registrations-for-the-events-calendar' ), '<a href="' . admin_url( 'post-new.php?post_type=tribe_events' ) . '" class="button button-primary rtec-cta">', '</a>' ); ?></p>
 			</div>
 			<?php
 			$args = array(

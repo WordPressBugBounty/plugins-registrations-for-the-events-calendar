@@ -812,7 +812,7 @@ function rtec_event_csv() {
 		foreach ( $event_obj->registrants_data as $registration ) {
 
 			$time_format            = rtec_get_time_format();
-			$formatted_registration = array( 'registration_date' => date_i18n( 'F jS, ' . $time_format, strtotime( $registration['registration_date'] ) + rtec_get_time_zone_offset() ) );
+			$formatted_registration = array( 'registration_date' => date_i18n( 'F jS ' . $time_format, strtotime( $registration['registration_date'] ) + rtec_get_time_zone_offset() ) );
 
 			foreach ( $event_obj->column_label as $column => $label ) {
 
@@ -891,6 +891,7 @@ function rtec_my_events_csv() {
 	foreach ( $events as $event ) {
 		$event_meta = rtec_get_event_meta( $event->ID );
 		fputcsv( $output, array( get_the_title( $event->ID ) ) );
+		// Translators: %1$s is the start date, %2$s is the end date, %3$s is the venue title
 		$event_string = sprintf( __( '%1$s to %2$s at %3$s', 'registrations-for-the-events-calendar' ), date_i18n( 'F jS, ' . rtec_get_time_format(), strtotime( $event_meta['start_date'] ) ), date_i18n( 'F jS, ' . rtec_get_time_format(), strtotime( $event_meta['end_date'] ) ), $event_meta['venue_title'] );
 		fputcsv( $output, array( $event_string ) );
 

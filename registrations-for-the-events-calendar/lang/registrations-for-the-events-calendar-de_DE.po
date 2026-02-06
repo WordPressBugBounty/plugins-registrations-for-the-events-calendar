@@ -1,2335 +1,2080 @@
-# Copyright (C) 2024 Roundup WP
-# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Registrations for The Events Calendar 2.13\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/registrations-for-the-events-calendar\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-04-27 08:46-0500\n"
+"PO-Revision-Date: 2022-04-27 08:46-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-11T02:30:24+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.0\n"
-"X-Domain: registrations-for-the-events-calendar\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e;esc_html_e;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#. Plugin Name of the plugin
-#: inc/admin/admin-functions.php:163
-#: inc/admin/admin-functions.php:489
-msgid "Registrations for The Events Calendar"
+#: inc/admin/admin-functions.php:107
+msgid "Happy Holidays!"
 msgstr ""
 
-#. Description of the plugin
-msgid "Collect and manage event registrations with a customizable form and email template. This plugin requires The Events Calendar by Modern Tribe to work."
+#: inc/admin/admin-functions.php:108
+msgid ""
+"For Black Friday and Cyber Monday, our users can purchase our Pro plugin and "
+"save 30%."
 msgstr ""
 
-#. Author of the plugin
-msgid "Roundup WP"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "roundupwp.com"
-msgstr ""
-
-#: inc/admin/admin-functions.php:249
-msgid "A registration form will be automatically added to the event content."
-msgstr ""
-
-#: inc/admin/admin-functions.php:259
-msgid "General"
-msgstr ""
-
-#: inc/admin/admin-functions.php:268
-msgid "Disable Registrations:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:279
-msgid "Logged-in Users Only:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:290
-msgid "Limit Registrations:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:301
-msgid "Maximum Registrations:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:309
-msgid "Open Date:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:311
-msgid "When does registration open?"
-msgstr ""
-
-#: inc/admin/admin-functions.php:322
-#: inc/admin/admin-functions.php:370
-msgid "Minutes"
-msgstr ""
-
-#: inc/admin/admin-functions.php:324
-#: inc/admin/admin-functions.php:372
-msgid "Hours"
-msgstr ""
-
-#: inc/admin/admin-functions.php:326
-#: inc/admin/admin-functions.php:374
-msgid "Days"
-msgstr ""
-
-#: inc/admin/admin-functions.php:334
-msgid "Immediately"
-msgstr ""
-
-#: inc/admin/admin-functions.php:338
-msgid "Relative to event start"
-msgstr ""
-
-#: inc/admin/admin-functions.php:341
-msgid "Open registration"
-msgstr ""
-
-#: inc/admin/admin-functions.php:343
-msgid "days before event start time"
-msgstr ""
-
-#: inc/admin/admin-functions.php:348
-#: inc/admin/admin-functions.php:398
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:137
-msgid "Other:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:357
-msgid "Deadline Date:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:359
-msgid "When does registration close?"
-msgstr ""
-
-#: inc/admin/admin-functions.php:383
-msgid "Start time"
-msgstr ""
-
-#: inc/admin/admin-functions.php:388
-msgid "End time"
-msgstr ""
-
-#: inc/admin/admin-functions.php:392
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:128
-msgid "No deadline"
-msgstr ""
-
-#: inc/admin/admin-functions.php:414
-#: inc/admin/admin-functions.php:930
-#: inc/admin/admin-functions.php:1249
-#: inc/admin/class-rtec-admin.php:178
-#: inc/admin/templates/main.php:113
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:143
-#: inc/class-rtec-email.php:545
-#: inc/class-rtec-email.php:549
-#: inc/form/class-rtec-form.php:258
-#: inc/form/class-rtec-form.php:455
-#: inc/form/class-rtec-form.php:456
-#: inc/form/class-rtec-form.php:673
-msgid "Email"
-msgstr ""
-
-#: inc/admin/admin-functions.php:423
-msgid "Notification Email Recipients:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:425
-#: inc/admin/admin-functions.php:439
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:146
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:150
-msgid "leave blank for default"
-msgstr ""
-
-#: inc/admin/admin-functions.php:437
-msgid "Confirmation From Address:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:449
-msgid "Shortcodes"
-msgstr ""
-
-#: inc/admin/admin-functions.php:455
-msgid "Copy and paste these shortcodes to display the registration form and the attendee list on a page outside of the single event view."
-msgstr ""
-
-#: inc/admin/admin-functions.php:460
-msgid "Registration Form: "
-msgstr ""
-
-#: inc/admin/admin-functions.php:460
-msgid "Note that the registration form appears on the single event view automatically."
-msgstr ""
-
-#: inc/admin/admin-functions.php:462
-#: inc/admin/admin-functions.php:474
-msgid "Shortcode Settings:"
-msgstr ""
-
-#: inc/admin/admin-functions.php:463
-msgid "Show registration form by event ID"
-msgstr ""
-
-#: inc/admin/admin-functions.php:464
-msgid "Use \"false\" to show the form initially"
-msgstr ""
-
-#: inc/admin/admin-functions.php:465
-msgid "Use \"true\" to add the event title and start/end time information above the form"
-msgstr ""
-
-#: inc/admin/admin-functions.php:466
-msgid "Use \"true\" to add the attendee list above the form if enabled for this event"
-msgstr ""
-
-#: inc/admin/admin-functions.php:472
-msgid "Attendee List: "
-msgstr ""
-
-#: inc/admin/admin-functions.php:475
-msgid "Show attendee list by event ID"
-msgstr ""
-
-#: inc/admin/admin-functions.php:476
-msgid "Use \"true\" to add the event title and start/end time information above the list"
-msgstr ""
-
-#: inc/admin/admin-functions.php:483
-msgid "More Single Event Options"
-msgstr ""
-
-#: inc/admin/admin-functions.php:489
-msgid "More single event options like custom confirmation email templates, multiple venues/tier registration, settings for logged-in users and others in"
-msgstr ""
-
-#: inc/admin/admin-functions.php:502
-msgid "Heads up! Making changes to a recurring event may cause your registrations to go missing. Export registrations before making changes."
-msgstr ""
-
-#: inc/admin/admin-functions.php:868
-#: inc/admin/admin-functions.php:871
-msgid "My Events"
-msgstr ""
-
-#: inc/admin/admin-functions.php:894
-msgid "%1$s to %2$s at %3$s"
-msgstr ""
-
-#: inc/admin/admin-functions.php:918
-#: inc/admin/admin-functions.php:1019
-#: inc/admin/class-rtec-admin-event.php:149
-msgid "Registration Date"
-msgstr ""
-
-#: inc/admin/admin-functions.php:922
-#: inc/admin/admin-functions.php:1247
-#: inc/admin/class-rtec-admin.php:176
-#: inc/class-rtec-email.php:543
-#: inc/class-rtec-email.php:547
-#: inc/form/class-rtec-form.php:248
-#: inc/form/class-rtec-form.php:443
-#: inc/form/class-rtec-form.php:444
-#: inc/form/class-rtec-form.php:667
-msgid "First"
-msgstr ""
-
-#: inc/admin/admin-functions.php:924
-#: inc/admin/admin-functions.php:1248
-#: inc/admin/class-rtec-admin.php:177
-#: inc/class-rtec-email.php:544
-#: inc/class-rtec-email.php:548
-#: inc/form/class-rtec-form.php:253
-#: inc/form/class-rtec-form.php:449
-#: inc/form/class-rtec-form.php:450
-#: inc/form/class-rtec-form.php:670
-msgid "Last"
-msgstr ""
-
-#: inc/admin/admin-functions.php:926
-#: inc/admin/templates/migration.php:53
-msgid "Status"
-msgstr ""
-
-#: inc/admin/admin-functions.php:935
-#: inc/admin/admin-functions.php:1250
-#: inc/admin/class-rtec-admin.php:179
-#: inc/class-rtec-email.php:140
-#: inc/class-rtec-email.php:572
-#: inc/form/class-rtec-form.php:268
-#: inc/form/class-rtec-form.php:461
-#: inc/form/class-rtec-form.php:462
-#: inc/form/class-rtec-form.php:676
-msgid "Phone"
-msgstr ""
-
-#: inc/admin/admin-functions.php:940
-#: inc/admin/admin-functions.php:1251
-#: inc/admin/class-rtec-admin.php:1714
-#: inc/admin/class-rtec-admin.php:1720
-#: inc/class-rtec-email.php:150
-#: inc/class-rtec-email.php:580
-#: inc/form/class-rtec-form.php:263
-#: inc/form/class-rtec-form.php:687
-msgid "Other"
-msgstr ""
-
-#: inc/admin/admin-functions.php:997
-msgid "click to manage"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1023
-msgid "Event"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1024
-#: inc/admin/templates/partials/registrations-list-view.php:11
-#: inc/admin/templates/partials/registrations-list-view.php:12
-msgid "Start Date"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1060
-msgid "Delete Single"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1061
-msgid "Delete All"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1065
-#: inc/admin/templates/single.php:235
-msgid "Export (.csv)"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1084
-msgid "No Registrations Found"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1144
-#: inc/admin/admin-functions.php:1162
-#: inc/admin/templates/main.php:47
-msgid "Activate"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1145
-msgid "Activated"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1146
-msgid "Active"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1147
-msgid "Deactivate"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1148
-msgid "Inactive"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1149
-msgid "Install Addon"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1150
-msgid "Could not install addon. Please download from roundupwp.com and install manually."
-msgstr ""
-
-#: inc/admin/admin-functions.php:1151
-msgid "Could not install a plugin. Please visit the Plugins page and search for The Events Calendar to install."
-msgstr ""
-
-#: inc/admin/admin-functions.php:1152
-msgid "Searching Addons"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1154
-msgid "Cancel"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1155
-msgid "Close"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1157
-msgid "Almost Done"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1158
-msgid "Oops!"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1159
-msgid "OK"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1160
-msgid "Install and Activate"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1161
-msgid "needs to be installed and activated to import its forms. Would you like us to install and activate it for you?"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1163
-msgid "Success! Reloading page."
-msgstr ""
-
-#: inc/admin/admin-functions.php:1164
-msgid "This may take a minute or two. Thanks for your patience."
-msgstr ""
-
-#: inc/admin/admin-functions.php:1210
-msgid "Buy Pro"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1211
-msgid "Settings"
-msgstr ""
-
-#: inc/admin/admin-functions.php:1229
-msgid "Setup Instructions"
-msgstr ""
-
-#: inc/admin/class-rtec-admin-registrations.php:397
-msgid "Looks like you there weren't any upcoming events allowing registration found. %1$sCreate an event%2$s to get started!"
-msgstr ""
-
-#: inc/admin/class-rtec-admin-registrations.php:410
-msgid "Here are some events that didn't fit your filters:"
-msgstr ""
-
-#: inc/admin/class-rtec-admin-registrations.php:610
-msgid "Logged-in user"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:37
-#: inc/admin/class-rtec-admin.php:38
-#: inc/admin/class-rtec-admin.php:46
-#: inc/admin/class-rtec-admin.php:57
-#: inc/admin/templates/main.php:101
-msgid "Registrations"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:68
-#: inc/admin/class-rtec-admin.php:69
-#: inc/admin/templates/form.php:6
-msgid "Form Settings"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:77
-#: inc/admin/class-rtec-admin.php:78
-#: inc/admin/templates/email.php:6
-msgid "Email Settings"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:86
-#: inc/admin/class-rtec-admin.php:87
-#: inc/admin/templates/main.php:138
-msgid "Support"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:127
-msgid "Create unlimited forms and form fields by %1$supgrading to pro%2$s."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:171
-#: inc/form/class-rtec-form.php:250
-#: inc/form/class-rtec-form.php:445
-#: inc/form/class-rtec-form.php:446
-msgid "Please enter your first name"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:172
-#: inc/form/class-rtec-form.php:255
-#: inc/form/class-rtec-form.php:451
-#: inc/form/class-rtec-form.php:452
-msgid "Please enter your last name"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:173
-#: inc/form/class-rtec-form.php:260
-#: inc/form/class-rtec-form.php:457
-#: inc/form/class-rtec-form.php:458
-msgid "Please enter a valid email address"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:174
-#: inc/form/class-rtec-form.php:270
-#: inc/form/class-rtec-form.php:463
-#: inc/form/class-rtec-form.php:464
-msgid "Please enter a valid phone number"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:198
-msgid "Attendee Display"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:207
-msgid "Show Attendee List Above Form"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:220
-msgid "Any registration"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:221
-msgid "Reviewed"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:227
-msgid "What Registrations Will Display"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:229
-msgid "Choosing \"Reviewed\" will only display registrations after they have been reviewed in the admin dashboard of your site (do not have a \"new tag\" next to them)."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:245
-msgid "Attendee List Title"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:254
-#: inc/form/class-rtec-form.php:1473
-#: inc/form/class-rtec-form.php:1474
-#: inc/helper-functions.php:1411
-#: inc/helper-functions.php:1412
-msgid "Currently Registered"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:261
-msgid "General Registration Options"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:271
-#: inc/admin/class-rtec-admin.php:286
-msgid "Before the event description"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:272
-#: inc/admin/class-rtec-admin.php:287
-msgid "After the event description"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:273
-#: inc/admin/class-rtec-admin.php:281
-#: inc/admin/class-rtec-admin.php:290
-msgid "Shortcode or Gutenberg Block"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:277
-msgid "Before the content (near top)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:278
-msgid "After the content (middle top)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:279
-#: inc/admin/class-rtec-admin.php:288
-msgid "Before the meta (middle bottom)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:280
-#: inc/admin/class-rtec-admin.php:289
-msgid "After the meta (near bottom)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:298
-msgid "Form Location"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:305
-msgid "Where on the event page should the registration form display?"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:310
-msgid "Reveal on button click"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:311
-msgid "Always visible"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:312
-msgid "Pop-up modal window"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:319
-msgid "Display Type"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:326
-msgid "How the form will be displayed on the page."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:334
-msgid "Disable Registrations by Default"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:336
-msgid "Events in which registration settings have never been saved will have registration disabled by default."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:349
-msgid "Limit Registrations by Default"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:351
-msgid "Only allow a certain amount of registrations for each event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:364
-msgid "Default Max Registrations"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:366
-msgid "Maximum allowed registrants for every event (if any limit)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:380
-msgid "Check for Duplicate Emails"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:382
-msgid "Only allow one registration per event per submitted email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:396
-msgid "Duplicate Email Error Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:398
-#: inc/form/class-rtec-form.php:944
-#: inc/form/class-rtec-form.php:945
-#: inc/form/form-functions.php:325
-msgid "You have already registered for this event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:399
-msgid "Enter an error message if the visitor has already registered"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:411
-msgid "Default Deadline for Registration"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:424
-msgid "Custom Text/Labels"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:434
-msgid "\"Register\" Button Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:436
-msgid "The text displayed on the button that reveals the form"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:442
-#: inc/form/class-rtec-form.php:759
-#: inc/form/class-rtec-form.php:760
-#: inc/form/class-rtec-form.php:1392
-#: inc/form/class-rtec-form.php:1393
-msgid "Register"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:450
-msgid "Attendance Count"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:465
-msgid "Event Attendance Messages"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:481
-msgid "\"Submit\" Button Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:483
-msgid "The text displayed on the button that submits the form"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:489
-#: inc/form/class-rtec-form.php:1242
-#: inc/form/class-rtec-form.php:1243
-#: inc/form/class-rtec-form.php:1406
-#: inc/form/class-rtec-form.php:1407
-msgid "Submit"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:498
-msgid "Website Success Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:500
-#: inc/form/class-rtec-form.php:781
-#: inc/form/class-rtec-form.php:782
-#: inc/form/class-rtec-form.php:1222
-#: inc/form/class-rtec-form.php:1225
-#: inc/form/class-rtec-form.php:1352
-#: inc/form/class-rtec-form.php:1353
-#: inc/form/form-functions.php:282
-#: inc/form/form-functions.php:283
-msgid "Success! Please check your email inbox for a confirmation message."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:501
-msgid "Enter the message you would like to display on your site after a successful form completion"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:523
-msgid "Add Unregister Tool"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:525
-msgid "This will add a button to the event page that will allow attendees to send an \"unregister\" link by entering the email address they registered with."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:538
-msgid "Already Registered Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:540
-#: inc/form/class-rtec-form.php:1008
-#: inc/form/class-rtec-form.php:1009
-msgid "Already registered?"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:554
-msgid "Tool Directions"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:556
-#: inc/form/class-rtec-form.php:1010
-#: inc/form/class-rtec-form.php:1011
-msgid "Use this tool to manage your registration."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:572
-msgid "Registered Email Label"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:580
-#: inc/form/class-rtec-form.php:1012
-#: inc/form/class-rtec-form.php:1013
-msgid "Enter your registered email address"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:589
-msgid "\"Send unregister link\" Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:597
-#: inc/form/class-rtec-form.php:1014
-#: inc/form/class-rtec-form.php:1015
-msgid "Send unregister link"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:605
-msgid "Successful Unregister Send Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:614
-#: inc/form/form-functions.php:522
-#: inc/form/form-functions.php:523
-#: inc/form/form-functions.php:623
-#: inc/form/form-functions.php:624
-msgid "Check your email inbox for an unregister link."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:622
-msgid "Email Error Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:631
-#: inc/form/form-functions.php:472
-#: inc/form/form-functions.php:473
-#: inc/form/form-functions.php:542
-#: inc/form/form-functions.php:543
-msgid "Please enter the email you registered with."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:640
-msgid "\"Unregister\" Link Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:642
-msgid "used for link in emails added using the template {unregister-link}"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:649
-#: inc/class-rtec-email.php:522
-#: inc/class-rtec-email.php:523
-#: inc/form/class-rtec-form.php:1047
-#: inc/form/class-rtec-form.php:1048
-#: inc/form/form-functions.php:495
-#: inc/form/form-functions.php:496
-#: inc/form/form-functions.php:596
-#: inc/form/form-functions.php:597
-#: inc/utils/class-rtec-templater.php:135
-#: inc/utils/class-rtec-templater.php:136
-msgid "Unregister from this event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:657
-msgid "Cancellation Confirmation Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:687
-msgid "Website Unregister Success Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:690
-msgid "Enter the message you would like to display on your site after an unregistration"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:713
-msgid "Registrations Available Only to Logged-in Users by Default"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:729
-msgid "Website \"Users Only\" Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:731
-msgid "Log in to register"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:732
-msgid "This message will appear if the user is not logged-in and the event is only available to logged-in users"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:747
-msgid "Show Log-in Form"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:762
-msgid "Users Can Register More Than Once"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:764
-msgid "Logged-in users can register for the same event more than once."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:777
-msgid "Already Registered Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:779
-#: inc/form/class-rtec-form.php:1567
-#: inc/form/class-rtec-form.php:1568
-msgid "You are already registered for this event."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:780
-msgid "Enter the message you would like to display if the visitor has already registered for the event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:804
-msgid "Width of Form"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:822
-msgid "Form Background Color"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:836
-msgid "Button Background Color"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:850
-msgid "Button Text Color"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:863
-msgid "Custom CSS"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:869
-msgid "Enter your own custom CSS in the box below"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:877
-msgid "Custom JavaScript"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:883
-msgid "Enter your own custom Javascript/JQuery in the box below"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:891
-msgid "Advanced"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:898
-msgid "Settings (recommended)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:899
-msgid "Translation Files"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:905
-msgid "Translation Source"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:908
-msgid "If your site is multilingual or you wish to use translation files or a translation plugin for text, change this setting to \"Translation Files\"."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:919
-msgid "Enabled"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:920
-msgid "Disabled"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:927
-msgid "Share Registrations Among Translations of an Event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:946
-msgid "No Format"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:952
-msgid "Phone Number Format"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:959
-msgid "Formatting for 10 digit phone numbers"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:969
-msgid "Preserve registrations on uninstall"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:971
-msgid "Keep your registration records preserved in the database when you uninstall the plugin"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:985
-msgid "Preserve settings on uninstall"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:987
-msgid "Keep your form and email settings preserved when you uninstall the plugin"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1004
-msgid "General Email Options"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1014
-msgid "Confirmation/Notification From Address"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1015
-#: inc/admin/class-rtec-admin.php:1070
-#: inc/admin/class-rtec-admin.php:1102
-#: inc/admin/class-rtec-admin.php:1118
-msgid "example"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1016
-msgid "Enter an email address that you would like emails to be sent from"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1029
-msgid "Custom Date Format"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1035
-msgid "If you would like a custom date format in your messages, enter it here using the examples as a guide"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1053
-msgid "Disable Notification Email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1069
-msgid "Notification Recipient(s) Email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1085
-msgid "Always Notify Organizer"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1101
-msgid "Notification From"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1102
-msgid "New Registration"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1103
-msgid "Enter the name you would like the notification email to come from"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1117
-msgid "Notification Subject"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1118
-#: inc/admin/class-rtec-admin.php:1124
-#: inc/class-rtec-email.php:326
-msgid "Registration Notification"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1119
-msgid "Enter a subject for the notification email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1132
-msgid "Use Custom Notification Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1134
-msgid "Click to reveal and use a custom message that you can configure"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1148
-msgid "Notification Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1176
-msgid "Confirmation Email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1185
-msgid "Disable Confirmation Email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1201
-msgid "Confirmation From"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1202
-msgid "example: Your Site"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1203
-msgid "Enter the name you would like visitors to get the email from"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1217
-msgid "Confirmation Subject"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1218
-msgid "example: Registration Confirmation"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1219
-msgid "Enter a subject for the confirmation email"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1233
-msgid "Confirmation Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1235
-msgid "Hey {first},<br /><br />You are registered for {event-title} at {venue} on {event-date}. We are looking forward to having you there. The event will be held at this location:<br /><br />{venue-address}<br />{venue-city}, {venue-state} {venue-zip}<br /><br />See you there!"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1259
-msgid "Unregister (Cancel Registration)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1268
-msgid "Unregister Email Subject"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1276
-msgid "{event-title}"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1285
-msgid "Unregister Email Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1287
-msgid "To cancel your registration for {event-title} on {start-date}, click the button below."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1313
-msgid "Unregister Button Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1321
-#: inc/helper-functions.php:746
-#: inc/helper-functions.php:747
-msgid "Cancel My Registration"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1329
-msgid "Unregister Notification Subject"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1337
-#: inc/helper-functions.php:815
-#: inc/helper-functions.php:816
-msgid "Notification of Unregistration"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1345
-msgid "Unregister Notification"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1373
-msgid "Disable Unregister Confirmation"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1388
-msgid "Unregister Confirmation Subject"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1396
-#: inc/helper-functions.php:908
-#: inc/helper-functions.php:909
-msgid "Cancellation Confirmed"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1404
-msgid "Unregister Confirmation"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1406
-#: inc/helper-functions.php:911
-#: inc/helper-functions.php:912
-msgid "You are no longer registered for the event {event-title} on {start-date}."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1432
-msgid "No Record Found Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1434
-msgid "Appears as a notice if no record is found when unregistering"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1521
-msgid "I'm using a custom single-event.php file in my theme."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1523
-msgid "This will force the plugin to use the \"tribe_events_single_event_before_the_content\" or the \"tribe_events_single_event_after_the_content\" hooks. Try this setting if the registration form isn't showing up on the single event page. Read <a href=\"https://roundupwp.com/faq/registration-form-wont-show-event-page/\" target=\"blank\">this FAQ</a> for more information."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1533
-msgid "Registration form is automatically placed before the event description when an event is created."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1534
-#: inc/admin/class-rtec-admin.php:1540
-msgid "Form not showing or at the bottom of the page? See %1$sthis page%2$s to resolve this issue."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1539
-msgid "Registration form is automatically placed after the event description when an event is created."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1545
-msgid "Place the registration form using the shortcode [rtec-registration-form] in the event description or use the \"Registration\" Gutenberg Block if using the block editor."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1664
-#: inc/admin/class-rtec-admin.php:1734
-#: inc/admin/class-rtec-admin.php:1795
-#: inc/admin/class-rtec-admin.php:1843
-#: inc/admin/class-rtec-admin.php:1914
-msgid "Label"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1673
-#: inc/admin/class-rtec-admin.php:1744
-#: inc/admin/class-rtec-admin.php:1804
-msgid "include"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1681
-#: inc/admin/class-rtec-admin.php:1752
-#: inc/admin/class-rtec-admin.php:1812
-msgid "require"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1684
-#: inc/admin/class-rtec-admin.php:1755
-#: inc/admin/class-rtec-admin.php:1863
-#: inc/admin/class-rtec-admin.php:1918
-msgid "Error Message:"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1689
-msgid "Required length for validation:"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1695
-#: inc/admin/class-rtec-admin.php:1758
-#: inc/admin/class-rtec-admin.php:1819
-msgid "Show Notes"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1699
-msgid "prefilled with user data for logged-in users"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1702
-msgid "used in attendee list"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1706
-#: inc/admin/class-rtec-admin.php:1761
-#: inc/admin/class-rtec-admin.php:1822
-msgid "Email template text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1717
-#: inc/admin/class-rtec-admin.php:1775
-#: inc/admin/class-rtec-admin.php:1835
-#: inc/form/class-rtec-form.php:147
-#: inc/form/class-rtec-form.php:265
-#: inc/form/class-rtec-form.php:275
-#: inc/form/class-rtec-form.php:468
-#: inc/form/class-rtec-form.php:469
-#: inc/form/class-rtec-form.php:497
-msgid "This is required"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1722
-#: inc/admin/class-rtec-admin.php:1783
-msgid "Type"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1724
-#: inc/admin/class-rtec-admin.php:1785
-msgid "Text Field"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1728
-#: inc/admin/class-rtec-admin.php:1789
-msgid "Change"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1781
-msgid "Custom Field"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1815
-msgid "Error Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1829
-msgid "Add Field"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1833
-#: inc/form/class-rtec-form.php:479
-msgid "I accept the terms and conditions"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1837
-#: inc/form/class-rtec-form.php:481
-#: inc/form/class-rtec-form.php:482
-msgid "Terms and Conditions Page"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1841
-#: inc/form/class-rtec-form.php:484
-msgid "Terms and Conditions"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1841
-msgid "Checkbox field useful for GDPR compliance"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1852
-#: inc/admin/class-rtec-admin.php:1886
-msgid "require and include"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1855
-msgid "Terms and Conditions Page URL:"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1859
-msgid "Link Text:"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1873
-#: inc/form/class-rtec-form.php:214
-#: inc/form/class-rtec-form.php:215
-msgid "What is"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1875
-#: inc/form/class-rtec-form.php:216
-#: inc/form/class-rtec-form.php:217
-msgid "Please try again"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1878
-msgid "Recaptcha"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1897
-msgid "Math Question"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1906
-msgid "Google reCAPTCHA"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1906
-msgid "What's this?"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1912
-msgid "Simple math question to avoid spam entries. Spam \"honey pot\" field is in the form by default"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1923
-msgid "\"I'm not a robot\" checkbox connected to Google's Recaptcha."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1923
-msgid "Instructions"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1925
-msgid "Google Recaptcha Site Key"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1929
-msgid "Google Recaptcha Secret Key"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1952
-msgid "Accept registrations up until"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1974
-msgid "before event start time"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1982
-#: inc/form/class-rtec-form.php:1333
-#: inc/form/class-rtec-form.php:1334
-#: inc/form/form-functions.php:94
-#: inc/form/form-functions.php:95
-#: inc/form/form-functions.php:145
-#: inc/form/form-functions.php:146
-#: inc/form/form-functions.php:713
-#: inc/form/form-functions.php:714
-msgid "Attendance: {num} / {max}"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1990
-msgid "include attendance count message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1993
-msgid "Display"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:1995
-msgid "Locations"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2002
-msgid "Above Register Button"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2008
-msgid "Above Description in \"List\" View"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2012
-msgid "Template"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2017
-msgid "Number of attendees"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2018
-msgid "Maximum number of attendees"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2019
-msgid "Remaining registrations"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2030
-#: inc/form/class-rtec-form.php:833
-#: inc/form/class-rtec-form.php:834
-msgid "Join"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2031
-#: inc/form/class-rtec-form.php:835
-#: inc/form/class-rtec-form.php:836
-msgid "others!"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2032
-#: inc/form/class-rtec-form.php:845
-#: inc/form/class-rtec-form.php:846
-msgid "Join one other person"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2033
-#: inc/form/class-rtec-form.php:839
-msgid "Only"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2034
-#: inc/form/class-rtec-form.php:840
-msgid "spots left"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2035
-#: inc/form/class-rtec-form.php:848
-#: inc/form/class-rtec-form.php:849
-msgid "Only one spot left!"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2036
-#: inc/form/class-rtec-form.php:853
-#: inc/form/class-rtec-form.php:854
-#: inc/helper-functions.php:1407
-#: inc/helper-functions.php:1408
-msgid "Be the first!"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2037
-#: inc/form/class-rtec-form.php:722
-#: inc/form/class-rtec-form.php:723
-msgid "Registrations are closed for this event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2038
-#: inc/admin/class-rtec-admin.php:2127
-#: inc/form/class-rtec-form.php:744
-#: inc/form/class-rtec-form.php:745
-msgid "Registration will open on %s"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2048
-msgid "include registrations availability message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2052
-msgid "Message Type"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2062
-msgid "guests attending (count up)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2070
-msgid "spots remaining (count down, <strong>only for events with limits</strong>)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2081
-msgid "Guests Attending Message Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2083
-#: inc/admin/class-rtec-admin.php:2095
-msgid "Text Before: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2084
-#: inc/admin/class-rtec-admin.php:2096
-msgid "Text After: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2087
-msgid "Message if exactly 1 registration: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2093
-msgid "Spots Remaining Message Text"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2099
-msgid "Message if exactly 1 spot left: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2106
-msgid "Other Messages"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2108
-msgid "Message if no registrations yet: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2111
-msgid "Message if registrations are not yet open: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2114
-msgid "Message if registrations are closed or filled: "
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2125
-msgid "Registration Not Open Message"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2128
-msgid "Message displayed if registration has not yet opened for the event. \"%s\" is a placeholder for the date"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2156
-msgid "Event venue/location"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2157
-msgid "Venue street address"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2158
-msgid "Venue city"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2159
-msgid "Venue state/province"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2160
-msgid "Venue zip code"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2161
-#: inc/admin/class-rtec-admin.php:2219
-msgid "Additional event venue/location"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2162
-msgid "Title of event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2163
-#: inc/admin/class-rtec-admin.php:2221
-msgid "Plain text web address of event page"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2164
-#: inc/admin/class-rtec-admin.php:2222
-msgid "Cost of the event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2165
-#: inc/admin/class-rtec-admin.php:2223
-msgid "Event start date"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2166
-#: inc/admin/class-rtec-admin.php:2224
-msgid "Event start time"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2167
-#: inc/admin/class-rtec-admin.php:2225
-msgid "Event end date"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2168
-#: inc/admin/class-rtec-admin.php:2226
-msgid "Event end time"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2169
-msgid "First name of registrant"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2170
-msgid "Last name of registrant"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2171
-msgid "Email of registrant"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2172
-msgid "Phone number of registrant"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2173
-msgid "Value entered in the \"other\" field"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2174
-msgid "Link for user to remove their registration from an event"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2212
-msgid "Template Text (find and replace)"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2277
-msgid "Examples"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2531
-msgid "The Events Calendar"
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2532
-msgid "A fully featured, immensely popular calendar solution from Modern Tribe."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2553
-msgid "Could not install The Events Calendar. Please search for it on the Plugins page."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2567
-#: inc/admin/class-rtec-admin.php:2607
-#: inc/admin/class-rtec-admin.php:2688
-msgid "Plugin installed & activated. Refreshing page."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2570
-msgid "Add-on installed & activated."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2590
-msgid "Could not activate add-on. Please activate from the Plugins page."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2628
-msgid "Could not install The Events Calendar. Please search for it on the plugins page."
-msgstr ""
-
-#: inc/admin/class-rtec-admin.php:2693
-msgid "The Events Calendar was installed but needs to be activated from the Plugins page inside your WordPress admin."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:31
-msgid "Upgrade to Pro for Manual Confirmation"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:32
-msgid "Create a system for reviewing registrations before confirming them. Easily update the status of the registration and send the confirmation email from the WordPress dashboard."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:37
-msgid "Upgrade to Pro for Waiting Lists"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:38
-msgid "Once capacity is reached, collect registrants for a waiting list. Automatically promote when someone cancels or transfer them to a new event."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:43
-msgid "Upgrade to Pro for Manual Emailing"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:44
-msgid "Keep attendees informed of changes using emails sent using tools in your WordPress dashboard."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:49
-msgid "Upgrade to Pro for Event Transfers and Copying"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:50
-msgid "Transfer or copy registrations from one event to a different event right from the WordPress dashboard."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:55
-msgid "Upgrade to Pro for Event Payment Management"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:56
-msgid "Collect online PayPal payments for your events. Create variable costs for different registration types. Optional off-line payment management as well as Stripe and WooCommerce integrations."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:61
-msgid "Upgrade to Pro for More Field Types"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:62
-msgid "Choose from number, dropdown select fields, multi-selection checkboxes, radio fields, date selections, file upload, paragraph text and more."
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:67
-msgid "Upgrade to Pro for Message History"
-msgstr ""
-
-#: inc/admin/services/class-rtec-modal-service.php:68
-msgid "Track what email messages each registrant has received. Manually email updates or missing messages right from the WordPress dashboard."
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:82
-msgid "Need Support?"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:83
-msgid "Our team is happy to offer support to help you get the most out of the plugin! Please post in the WordPress.org forum if you have questions about anything."
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:85
-msgid "Go to the WordPress.org forum"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:86
-msgid "Ask me later"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:105
-msgid "Welcome! Let's Get Started"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:106
-msgid "Registrations are automatically collected for all of your existing events. Make changes to how registrations are collected on the form settings page."
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:108
-msgid "Go to form settings page"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:109
-msgid "Setup directions"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:128
-msgid "Happy Holidays! Save Up to 60% off Pro"
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:129
-msgid "For Black Friday and Cyber Monday, our users can purchase our Pro plugin and save up to 60%."
-msgstr ""
-
-#: inc/admin/services/class-rtec-notice-service.php:131
+#: inc/admin/admin-functions.php:110
 msgid "Claim Discount"
 msgstr ""
 
-#: inc/admin/services/class-rtec-notice-service.php:132
+#: inc/admin/admin-functions.php:111
 msgid "No thanks"
 msgstr ""
 
-#: inc/admin/templates/email.php:8
-#: inc/admin/templates/form.php:8
-msgid "Can also be set for each event separately on the Events->Edit page"
+#: inc/admin/admin-functions.php:215 inc/admin/admin-functions.php:434
+msgid "Registrations for The Events Calendar"
 msgstr ""
 
-#: inc/admin/templates/email.php:17
-msgid "Are You Using an SMTP Service?"
+#: inc/admin/admin-functions.php:287
+msgid "A registration form will be automatically added to the event content."
 msgstr ""
 
-#: inc/admin/templates/email.php:18
-msgid "Emails sent from the same server your website is hosted on are often rejected by email providers. We recommend using an SMTP service for best results with emails."
+#: inc/admin/admin-functions.php:297
+msgid "General"
+msgstr "Grundsätzliches"
+
+#: inc/admin/admin-functions.php:306
+msgid "Disable Registrations:"
+msgstr "Registrierungen deaktivieren:"
+
+#: inc/admin/admin-functions.php:312
+msgid "Logged-in Users Only:"
+msgstr "Nur angemeldete Benutzer:"
+
+#: inc/admin/admin-functions.php:318
+msgid "Limit Registrations:"
+msgstr "Limit für Registrierungen:"
+
+#: inc/admin/admin-functions.php:324
+msgid "Maximum Registrations:"
+msgstr "Maximale Anmeldungen:"
+
+#: inc/admin/admin-functions.php:330
+msgid "Deadline Type:"
 msgstr ""
 
-#: inc/admin/templates/email.php:20
-msgid "Learn More"
-msgstr ""
-
-#: inc/admin/templates/main.php:18
-msgid "Thank You for Installing Our Plugin!"
-msgstr ""
-
-#: inc/admin/templates/main.php:19
-msgid "Registrations for the Events Calendar requires The Events Calendar to be installed and active."
-msgstr ""
-
-#: inc/admin/templates/main.php:44
-msgid "Install"
-msgstr ""
-
-#: inc/admin/templates/main.php:67
-msgid "You're using Registrations for the Events Calendar Lite. To unlock more features consider %1supgrading to Pro.%2s"
-msgstr ""
-
-#: inc/admin/templates/main.php:68
-msgid "Dismiss this message."
-msgstr ""
-
-#: inc/admin/templates/main.php:72
-msgid "Registrations for the Events Calendar"
-msgstr ""
-
-#: inc/admin/templates/main.php:107
-msgid "Form"
-msgstr ""
-
-#: inc/admin/templates/main.php:132
-#: inc/admin/templates/single.php:56
-msgid "Payments"
-msgstr ""
-
-#: inc/admin/templates/main.php:188
-#: inc/admin/templates/partials/modals/pro-features.php:26
-msgid "Get 50% Off Pro"
-msgstr ""
-
-#: inc/admin/templates/main.php:189
-#: inc/admin/templates/partials/modals/pro-features.php:27
-msgid "automatically applied at checkout"
-msgstr ""
-
-#: inc/admin/templates/main.php:196
-#: inc/admin/templates/main.php:221
-#: inc/admin/templates/partials/modals/pro-features.php:51
-msgid "Get Started"
-msgstr ""
-
-#: inc/admin/templates/main.php:206
-msgid "More Features With Registrations for the Events Calendar Pro"
-msgstr ""
-
-#: inc/admin/templates/main.php:208
-#: inc/admin/templates/partials/modals/pro-features.php:37
-msgid "Unlimited Forms"
-msgstr ""
-
-#: inc/admin/templates/main.php:209
-#: inc/admin/templates/partials/modals/pro-features.php:38
-msgid "Unlimited Email Templates"
-msgstr ""
-
-#: inc/admin/templates/main.php:210
-#: inc/admin/templates/partials/modals/pro-features.php:39
-msgid "Collect PayPal Payments"
-msgstr ""
-
-#: inc/admin/templates/main.php:211
-#: inc/admin/templates/partials/modals/pro-features.php:40
-msgid "Variable Prices"
-msgstr ""
-
-#: inc/admin/templates/main.php:212
-#: inc/admin/templates/partials/modals/pro-features.php:41
-msgid "Waiting Lists"
-msgstr ""
-
-#: inc/admin/templates/main.php:213
-#: inc/admin/templates/partials/modals/pro-features.php:42
-msgid "Membership Features"
-msgstr ""
-
-#: inc/admin/templates/main.php:214
-#: inc/admin/templates/partials/modals/pro-features.php:43
-msgid "All Form Field Types"
-msgstr ""
-
-#: inc/admin/templates/main.php:215
-#: inc/admin/templates/partials/modals/pro-features.php:44
-msgid "Downloadable Reports"
-msgstr ""
-
-#: inc/admin/templates/migration.php:12
-msgid "Migration of registrations has been reversed. Use the button below to restart migration."
-msgstr ""
-
-#: inc/admin/templates/migration.php:20
-msgid "Registrations now being migrated in the background."
-msgstr ""
-
-#: inc/admin/templates/migration.php:28
-#: inc/admin/templates/support.php:87
-msgid "Manage Migration"
-msgstr ""
-
-#: inc/admin/templates/migration.php:30
-msgid "To work properly with events that were migrated with The Events Calendar 6.0, registrations that were made prior to the migration also need to be updated."
-msgstr ""
-
-#: inc/admin/templates/migration.php:33
-msgid "Use this page to manage the migration process."
-msgstr ""
-
-#: inc/admin/templates/migration.php:37
-msgid "complete"
-msgstr ""
-
-#: inc/admin/templates/migration.php:37
-msgid "processing"
-msgstr ""
-
-#: inc/admin/templates/migration.php:39
-msgid "paused"
-msgstr ""
-
-#: inc/admin/templates/migration.php:51
-msgid "Report"
-msgstr ""
-
-#: inc/admin/templates/migration.php:55
-msgid "Attempts"
-msgstr ""
-
-#: inc/admin/templates/migration.php:58
-msgid "Events Migrated"
-msgstr ""
-
-#: inc/admin/templates/migration.php:66
-msgid "Reverse Migration"
-msgstr ""
-
-#: inc/admin/templates/migration.php:73
-msgid "Start Migration"
-msgstr ""
-
-#: inc/admin/templates/partials/modals/pro-features.php:34
-msgid "Plus additional features that include:"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-event-meta.php:16
-msgid "%1$s to %2$s"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-event-meta.php:21
-msgid "View Event"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-event-meta.php:23
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:64
-msgid "Event Options"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-event-meta.php:25
-msgid "Detailed View"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:63
-msgid "Toggle panel: Information"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:77
-msgid "Disable registrations for this event"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:86
-msgid "Logged in users only"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:95
-msgid "Limit the number registrations allowed"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:99
-msgid "Maximum registrations"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:110
+#: inc/admin/admin-functions.php:334
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:85
 msgid "Start Time"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:119
+#: inc/admin/admin-functions.php:338
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:89
 msgid "End Time"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:145
+#: inc/admin/admin-functions.php:342
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:93
+msgid "No deadline"
+msgstr "Keine Deadline"
+
+#: inc/admin/admin-functions.php:346
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:97
+msgid "Other:"
+msgstr "Sonstige:"
+
+#: inc/admin/admin-functions.php:359 inc/admin/admin-functions.php:853
+#: inc/admin/admin-functions.php:1140 inc/admin/class-rtec-admin.php:174
+#: inc/admin/templates/main.php:89
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:103
+#: inc/class-rtec-email.php:571 inc/class-rtec-email.php:575
+#: inc/form/class-rtec-form.php:252 inc/form/class-rtec-form.php:456
+#: inc/form/class-rtec-form.php:457 inc/form/class-rtec-form.php:666
+msgid "Email"
+msgstr "Email"
+
+#: inc/admin/admin-functions.php:368
+msgid "Notification Email Recipients:"
+msgstr "Benachrichtigungs-E-Mail-Empfänger:"
+
+#: inc/admin/admin-functions.php:370 inc/admin/admin-functions.php:384
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:106
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:110
+msgid "leave blank for default"
+msgstr "leer lassen für Standard-Einstellung"
+
+#: inc/admin/admin-functions.php:382
+msgid "Confirmation From Address:"
+msgstr "Bestätigung von Adresse:"
+
+#: inc/admin/admin-functions.php:394
+msgid "Shortcodes"
+msgstr "Shortcodes"
+
+#: inc/admin/admin-functions.php:400
+msgid ""
+"Copy and paste these shortcodes to display the registration form and the "
+"attendee list on a page outside of the single event view."
+msgstr ""
+"Verwende diese Shortcodes (Kopieren und Einfügen) um das "
+"Registrierungsformular und die Teilnehmerliste auf einer Seite außerhalb der "
+"\"Einzelveranstaltungs-Ansicht\" anzuzeigen."
+
+#: inc/admin/admin-functions.php:405
+msgid "Registration Form: "
+msgstr "Anmeldeformular: "
+
+#: inc/admin/admin-functions.php:405
+msgid ""
+"Note that the registration form appears on the single event view "
+"automatically."
+msgstr ""
+"Beachten Sie, dass das Registrierungsformular automatisch in der "
+"Einzelereignisansicht angezeigt wird."
+
+#: inc/admin/admin-functions.php:407 inc/admin/admin-functions.php:419
+msgid "Shortcode Settings:"
+msgstr "Shortcode-Einstellungen:"
+
+#: inc/admin/admin-functions.php:408
+msgid "Show registration form by event ID"
+msgstr "Registrierungsformular nach Ereignis-ID anzeigen"
+
+#: inc/admin/admin-functions.php:409
+msgid "Use \"false\" to show the form initially"
+msgstr "Verwenden Sie \"false\", um das Formular zunächst anzuzeigen"
+
+#: inc/admin/admin-functions.php:410
+msgid ""
+"Use \"true\" to add the event title and start/end time information above the "
+"form"
+msgstr ""
+"Verwenden Sie \"true\", um den Ereignistitel und die Start- / "
+"Endzeitinformationen über dem Formular hinzuzufügen"
+
+#: inc/admin/admin-functions.php:411
+msgid ""
+"Use \"true\" to add the attendee list above the form if enabled for this "
+"event"
+msgstr ""
+"Nutze \"wahr/true\" um die Teilnehmerliste über dem Formular hinzuzufügen, "
+"falls es für diese Veranstaltung aktiviert ist"
+
+#: inc/admin/admin-functions.php:417
+msgid "Attendee List: "
+msgstr "Teilnehmerliste: "
+
+#: inc/admin/admin-functions.php:420
+msgid "Show attendee list by event ID"
+msgstr "Zeige die Teilnehmerliste sortiert nach Veranstaltungs-ID"
+
+#: inc/admin/admin-functions.php:421
+msgid ""
+"Use \"true\" to add the event title and start/end time information above the "
+"list"
+msgstr ""
+"Verwenden Sie \"true\", um den Ereignistitel und die Start- / "
+"Endzeitinformationen über der Liste hinzuzufügen"
+
+#: inc/admin/admin-functions.php:428
+msgid "More Single Event Options"
+msgstr ""
+
+#: inc/admin/admin-functions.php:434
+msgid ""
+"More single event options like custom confirmation email templates, multiple "
+"venues/tier registration, settings for logged-in users and others in"
+msgstr ""
+
+#: inc/admin/admin-functions.php:791 inc/admin/admin-functions.php:794
+msgid "My Events"
+msgstr "Meine Veranstaltungen"
+
+#: inc/admin/admin-functions.php:817
+#, php-format
+msgid "%1$s to %2$s at %3$s"
+msgstr "%1$s beim %2$s auf %3$s"
+
+#: inc/admin/admin-functions.php:841 inc/admin/admin-functions.php:945
+#: inc/admin/class-rtec-admin-event.php:148
+msgid "Registration Date"
+msgstr "Datum d. Registrierung"
+
+#: inc/admin/admin-functions.php:845 inc/admin/admin-functions.php:1138
+#: inc/admin/class-rtec-admin.php:172 inc/class-rtec-email.php:569
+#: inc/class-rtec-email.php:573 inc/form/class-rtec-form.php:242
+#: inc/form/class-rtec-form.php:444 inc/form/class-rtec-form.php:445
+#: inc/form/class-rtec-form.php:660
+msgid "First"
+msgstr "Vorname"
+
+#: inc/admin/admin-functions.php:847 inc/admin/admin-functions.php:1139
+#: inc/admin/class-rtec-admin.php:173 inc/class-rtec-email.php:570
+#: inc/class-rtec-email.php:574 inc/form/class-rtec-form.php:247
+#: inc/form/class-rtec-form.php:450 inc/form/class-rtec-form.php:451
+#: inc/form/class-rtec-form.php:663
+msgid "Last"
+msgstr "Nachname"
+
+#: inc/admin/admin-functions.php:849
+msgid "Status"
+msgstr "Status"
+
+#: inc/admin/admin-functions.php:858 inc/admin/admin-functions.php:1141
+#: inc/admin/class-rtec-admin.php:175 inc/class-rtec-email.php:145
+#: inc/class-rtec-email.php:598 inc/form/class-rtec-form.php:262
+#: inc/form/class-rtec-form.php:462 inc/form/class-rtec-form.php:463
+#: inc/form/class-rtec-form.php:669
+msgid "Phone"
+msgstr "Telefon"
+
+#: inc/admin/admin-functions.php:863 inc/admin/admin-functions.php:1142
+#: inc/admin/class-rtec-admin.php:1460 inc/admin/class-rtec-admin.php:1466
+#: inc/class-rtec-email.php:155 inc/class-rtec-email.php:606
+#: inc/form/class-rtec-form.php:257 inc/form/class-rtec-form.php:682
+msgid "Other"
+msgstr "Andere"
+
+#: inc/admin/admin-functions.php:923
+msgid "click to manage"
+msgstr ""
+
+#: inc/admin/admin-functions.php:949
+msgid "Event"
+msgstr "Veranstaltung"
+
+#: inc/admin/admin-functions.php:950
+#: inc/admin/templates/partials/registrations-list-view.php:9
+#: inc/admin/templates/partials/registrations-list-view.php:10
+msgid "Start Date"
+msgstr "Startdatum"
+
+#: inc/admin/admin-functions.php:963
+msgid "new"
+msgstr "neu"
+
+#: inc/admin/admin-functions.php:977
+msgid "Delete Single"
+msgstr ""
+
+#: inc/admin/admin-functions.php:978
+msgid "Delete All"
+msgstr ""
+
+#: inc/admin/admin-functions.php:982 inc/admin/templates/single.php:187
+msgid "Export (.csv)"
+msgstr "Export (.csv)"
+
+#: inc/admin/admin-functions.php:1001
+msgid "No Registrations Found"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1037 inc/admin/admin-functions.php:1055
+#: inc/admin/templates/main.php:42
+msgid "Activate"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1038
+msgid "Activated"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1039
+msgid "Active"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1040
+msgid "Deactivate"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1041
+msgid "Inactive"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1042
+msgid "Install Addon"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1043
+msgid ""
+"Could not install addon. Please download from roundupwp.com and install "
+"manually."
+msgstr ""
+
+#: inc/admin/admin-functions.php:1044
+msgid ""
+"Could not install a plugin. Please visit the Plugins page and search for The "
+"Events Calendar to install."
+msgstr ""
+
+#: inc/admin/admin-functions.php:1045
+msgid "Searching Addons"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1047
+msgid "Cancel"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1048
+msgid "Close"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1050
+msgid "Almost Done"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1051
+msgid "Oops!"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1052
+msgid "OK"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1053
+msgid "Install and Activate"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1054
+msgid ""
+"needs to be installed and activated to import its forms. Would you like us "
+"to install and activate it for you?"
+msgstr ""
+
+#: inc/admin/admin-functions.php:1056
+msgid "Success! Reloading page."
+msgstr ""
+
+#: inc/admin/admin-functions.php:1057
+msgid "This may take a minute or two. Thanks for your patience."
+msgstr ""
+
+#: inc/admin/class-rtec-admin-registrations.php:388
+#, php-format
+msgid ""
+"Looks like you there weren't any upcoming events allowing registration "
+"found. %sCreate an event%s to get started!"
+msgstr ""
+
+#: inc/admin/class-rtec-admin-registrations.php:401
+msgid "Here are some events that didn't fit your filters:"
+msgstr ""
+
+#: inc/admin/class-rtec-admin-registrations.php:605
+msgid "Logged-in user"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:39 inc/admin/class-rtec-admin.php:40
+#: inc/admin/class-rtec-admin.php:48 inc/admin/class-rtec-admin.php:59
+#: inc/admin/templates/main.php:87
+msgid "Registrations"
+msgstr "Registrierungen"
+
+#: inc/admin/class-rtec-admin.php:70 inc/admin/class-rtec-admin.php:71
+#: inc/admin/templates/form.php:3
+msgid "Form Settings"
+msgstr "Formular-Einstellungen"
+
+#: inc/admin/class-rtec-admin.php:79 inc/admin/class-rtec-admin.php:80
+#: inc/admin/templates/email.php:3
+msgid "Email Settings"
+msgstr "Email-Einstellungen"
+
+#: inc/admin/class-rtec-admin.php:88 inc/admin/class-rtec-admin.php:89
+#: inc/admin/templates/main.php:101
+msgid "Support"
+msgstr "Support"
+
+#: inc/admin/class-rtec-admin.php:167 inc/form/class-rtec-form.php:244
+#: inc/form/class-rtec-form.php:446 inc/form/class-rtec-form.php:447
+msgid "Please enter your first name"
+msgstr "Bitte tragen Sie Ihren Vornamen ein"
+
+#: inc/admin/class-rtec-admin.php:168 inc/form/class-rtec-form.php:249
+#: inc/form/class-rtec-form.php:452 inc/form/class-rtec-form.php:453
+msgid "Please enter your last name"
+msgstr "Bitte tragen Sie Ihren Nachnamen ein"
+
+#: inc/admin/class-rtec-admin.php:169 inc/form/class-rtec-form.php:254
+#: inc/form/class-rtec-form.php:458 inc/form/class-rtec-form.php:459
+msgid "Please enter a valid email address"
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse an."
+
+#: inc/admin/class-rtec-admin.php:170 inc/form/class-rtec-form.php:264
+#: inc/form/class-rtec-form.php:464 inc/form/class-rtec-form.php:465
+msgid "Please enter a valid phone number"
+msgstr "Gebe bitte eine gültige Telefonnummer ein"
+
+#: inc/admin/class-rtec-admin.php:192
+msgid "Attendee Display"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:200
+msgid "Show Attendee List Above Form"
+msgstr "Zeige Teilnehmerliste über dem Formular"
+
+#: inc/admin/class-rtec-admin.php:212
+msgid "Any registration"
+msgstr "Jede Anmeldung"
+
+#: inc/admin/class-rtec-admin.php:213
+msgid "Reviewed"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:218
+msgid "What Registrations Will Display"
+msgstr "Was Anmeldungen zeigen"
+
+#: inc/admin/class-rtec-admin.php:220
+msgid ""
+"Choosing \"Reviewed\" will only display registrations after they have been "
+"reviewed in the admin dashboard of your site (do not have a \"new tag\" next "
+"to them)."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:234
+msgid "Attendee List Title"
+msgstr "Titel Teilnehmerliste"
+
+#: inc/admin/class-rtec-admin.php:243 inc/form/class-rtec-form.php:1414
+#: inc/form/class-rtec-form.php:1415 inc/helper-functions.php:1078
+#: inc/helper-functions.php:1079
+msgid "Currently Registered"
+msgstr "Zurzeit Teilnehmen"
+
+#: inc/admin/class-rtec-admin.php:249
+msgid "General Registration Options"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:260 inc/admin/class-rtec-admin.php:276
+msgid "Before the event description"
+msgstr "vor der Veranstaltungs-Beschreibung"
+
+#: inc/admin/class-rtec-admin.php:261 inc/admin/class-rtec-admin.php:277
+msgid "After the event description"
+msgstr "Nach der Veranstaltungs-Beschreibung"
+
+#: inc/admin/class-rtec-admin.php:262 inc/admin/class-rtec-admin.php:270
+#: inc/admin/class-rtec-admin.php:280
+msgid "Shortcode or Gutenberg Block"
+msgstr "Shortcode oder Gutenberg Block"
+
+#: inc/admin/class-rtec-admin.php:266
+msgid "Before the content (near top)"
+msgstr "Vor dem Inhalt"
+
+#: inc/admin/class-rtec-admin.php:267
+msgid "After the content (middle top)"
+msgstr "Nach dem Inhalt (Top-Mitte)"
+
+#: inc/admin/class-rtec-admin.php:268 inc/admin/class-rtec-admin.php:278
+msgid "Before the meta (middle bottom)"
+msgstr "Vor dem Meta (Mitte unten)"
+
+#: inc/admin/class-rtec-admin.php:269 inc/admin/class-rtec-admin.php:279
+msgid "After the meta (near bottom)"
+msgstr "Nach Meta (Nähe Fussbereich)"
+
+#: inc/admin/class-rtec-admin.php:287
+msgid "Form Location"
+msgstr "Formularspeicherort"
+
+#: inc/admin/class-rtec-admin.php:294
+msgid "Where on the event page should the registration form display?"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:298
+msgid "Reveal on button click"
+msgstr "Beim Klicken auf die Schaltfläche anzeigen"
+
+#: inc/admin/class-rtec-admin.php:299
+msgid "Always visible"
+msgstr "Immer sichtbar"
+
+#: inc/admin/class-rtec-admin.php:300
+msgid "Pop-up modal window"
+msgstr "Modales Popup-Fenster"
+
+#: inc/admin/class-rtec-admin.php:306
+msgid "Display Type"
+msgstr "Anzeigetyp"
+
+#: inc/admin/class-rtec-admin.php:313
+msgid "How the form will be displayed on the page."
+msgstr "Wie das Formular auf der Seite angezeigt wird."
+
+#: inc/admin/class-rtec-admin.php:319
+msgid "Disable Registrations by Default"
+msgstr "Anmeldung als Standardeinstellung \"deaktivieren\""
+
+#: inc/admin/class-rtec-admin.php:321
+msgid ""
+"New events and existing events will not allow registrations until enabled "
+"manually"
+msgstr ""
+"Neue Veranstaltungen und bereits bestehende Veranstaltungen erlauben keine "
+"Registrierung/Anmeldung bis dieses Häckchen wieder aktiviert wird"
+
+#: inc/admin/class-rtec-admin.php:332
+msgid "Limit Registrations by Default"
+msgstr "Limitierte Anzahl Anmeldungen als Standard"
+
+#: inc/admin/class-rtec-admin.php:334
+msgid "Only allow a certain amount of registrations for each event"
+msgstr ""
+"Erlaubt nur eine limitierte Anzahl von Anmeldungen für jede Veranstaltung"
+
+#: inc/admin/class-rtec-admin.php:345
+msgid "Default Max Registrations"
+msgstr "Standard \"Max. Registrierungen\""
+
+#: inc/admin/class-rtec-admin.php:347
+msgid "Maximum allowed registrants for every event (if any limit)"
+msgstr ""
+"Max. erlaubte Teilnehmerzahl für jede Veranstaltung (wenn ein Limit gesetzt "
+"wurde)"
+
+#: inc/admin/class-rtec-admin.php:359
+msgid "Check for Duplicate Emails"
+msgstr "Doppelte Emails überprüfen (bei Anmeldung)"
+
+#: inc/admin/class-rtec-admin.php:361
+msgid "Only allow one registration per event per submitted email"
+msgstr "Erlaubt nur eine Anmeldung pro gleicher Email-Adresse"
+
+#: inc/admin/class-rtec-admin.php:373
+msgid "Duplicate Email Error Message"
+msgstr "Fehlernachricht bei gleicher Email"
+
+#: inc/admin/class-rtec-admin.php:375 inc/form/class-rtec-form.php:924
+#: inc/form/class-rtec-form.php:925 inc/form/form-functions.php:328
+msgid "You have already registered for this event"
+msgstr "Sie haben sich bereits für diese Veranstaltung registriert"
+
+#: inc/admin/class-rtec-admin.php:376
+msgid "Enter an error message if the visitor has already registered"
+msgstr ""
+"Füge eine Fehlermeldung hinzu, für den Fall, dass der Besucher bereits "
+"registriert ist"
+
+#: inc/admin/class-rtec-admin.php:386
+msgid "Default Deadline for Registration"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:398
+msgid "Custom Text/Labels"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:407
+msgid "\"Register\" Button Text"
+msgstr "\"Anmelde\" Button Text"
+
+#: inc/admin/class-rtec-admin.php:409
+msgid "The text displayed on the button that reveals the form"
+msgstr ""
+"Dieser Text erscheint auf dem Button welcher auf dem Formular aufscheint"
+
+#: inc/admin/class-rtec-admin.php:415 inc/form/class-rtec-form.php:735
+#: inc/form/class-rtec-form.php:736 inc/form/class-rtec-form.php:1337
+#: inc/form/class-rtec-form.php:1338
+msgid "Register"
+msgstr "Registrieren"
+
+#: inc/admin/class-rtec-admin.php:421
+msgid "Attendance Count"
+msgstr "Teilnehmer-Anzahl"
+
+#: inc/admin/class-rtec-admin.php:434
+msgid "Event Attendance Messages"
+msgstr "Nachrichten an Veranstaltungs-Teilnehmer"
+
+#: inc/admin/class-rtec-admin.php:448
+msgid "\"Submit\" Button Text"
+msgstr "\"Bestätigen\" Button Text"
+
+#: inc/admin/class-rtec-admin.php:450
+msgid "The text displayed on the button that submits the form"
+msgstr ""
+"Der Text, welcher auf dem Button angezeigt wird, der die Anmeldung bestätigt"
+
+#: inc/admin/class-rtec-admin.php:456 inc/form/class-rtec-form.php:1189
+#: inc/form/class-rtec-form.php:1190 inc/form/class-rtec-form.php:1351
+#: inc/form/class-rtec-form.php:1352
+msgid "Submit"
+msgstr "Einreichen"
+
+#: inc/admin/class-rtec-admin.php:463
+msgid "Website Success Message"
+msgstr "Meldung auf der Webseite bei erfolgreicher Anmeldung "
+
+#: inc/admin/class-rtec-admin.php:465 inc/form/class-rtec-form.php:757
+#: inc/form/class-rtec-form.php:758 inc/form/class-rtec-form.php:1168
+#: inc/form/class-rtec-form.php:1171 inc/form/class-rtec-form.php:1297
+#: inc/form/class-rtec-form.php:1298 inc/form/form-functions.php:285
+#: inc/form/form-functions.php:286
+msgid "Success! Please check your email inbox for a confirmation message."
+msgstr ""
+"Erfolg! Bitte überprüfen Sie Ihre E-Mail-Posteingang für eine "
+"Bestätigungsnachricht."
+
+#: inc/admin/class-rtec-admin.php:466
+msgid ""
+"Enter the message you would like to display on your site after a successful "
+"form completion"
+msgstr ""
+"Geben Sie die Nachricht ein, die nach erfolgreichem Ausfüllen des Formulars "
+"auf Ihrer Website angezeigt werden soll"
+
+#: inc/admin/class-rtec-admin.php:479
+msgid "\"Unregister\" Link Text"
+msgstr "\"Abmelden\"-Link Text"
+
+#: inc/admin/class-rtec-admin.php:481
+msgid "used for link in emails added using the template {unregister-link}"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:488 inc/class-rtec-email.php:547
+#: inc/class-rtec-email.php:548 inc/form/form-functions.php:588
+#: inc/form/form-functions.php:589 inc/form/form-functions.php:693
+#: inc/form/form-functions.php:694
+msgid "Unregister from this event"
+msgstr "Melden Sie sich von diesem Ereignis ab"
+
+#: inc/admin/class-rtec-admin.php:495
+msgid "Website Unregister Success Message"
+msgstr "Meldung auf Webseite bei erfolgreicher Abmeldung"
+
+#: inc/admin/class-rtec-admin.php:497 inc/form/form-functions.php:449
+#: inc/form/form-functions.php:450
+msgid "You have been unregistered."
+msgstr "Sie wurden nicht registriert."
+
+#: inc/admin/class-rtec-admin.php:498
+msgid ""
+"Enter the message you would like to display on your site after an "
+"unregistration"
+msgstr ""
+"Geben Sie die Nachricht ein, die nach einer Abmeldung auf Ihrer Website "
+"angezeigt werden soll"
+
+#: inc/admin/class-rtec-admin.php:510
+msgid "Successful Unregister Send Text"
+msgstr "Erfolgreicher \"Abmeldung gesendet\"-Text"
+
+#: inc/admin/class-rtec-admin.php:519 inc/form/form-functions.php:615
+#: inc/form/form-functions.php:616 inc/form/form-functions.php:720
+#: inc/form/form-functions.php:721
+msgid "Check your email inbox for an unregister link."
+msgstr ""
+"Überprüfen Sie Ihren E-Mail-Posteingang auf einen Link zum Aufheben der "
+"Registrierung."
+
+#: inc/admin/class-rtec-admin.php:525
+msgid "Email Error Text"
+msgstr "E-Mail-Fehlertext"
+
+#: inc/admin/class-rtec-admin.php:534 inc/form/form-functions.php:564
+#: inc/form/form-functions.php:565 inc/form/form-functions.php:639
+#: inc/form/form-functions.php:640
+msgid "Please enter the email you registered with."
+msgstr "Bitte geben Sie die E-Mail ein, mit der Sie sich registriert haben."
+
+#: inc/admin/class-rtec-admin.php:547
+msgid "Add Unregister Tool"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:549
+msgid ""
+"This will add a button to the event page that will allow attendees to send "
+"an \"unregister\" link by entering the email address they registered with."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:560
+msgid "Already Registered Text"
+msgstr "\"Bereits Registriert\" Text"
+
+#: inc/admin/class-rtec-admin.php:562 inc/form/class-rtec-form.php:987
+#: inc/form/class-rtec-form.php:988
+msgid "Already registered?"
+msgstr "Bereits registriert?"
+
+#: inc/admin/class-rtec-admin.php:574
+msgid "Tool Directions"
+msgstr "Werkzeuge (Pfad)"
+
+#: inc/admin/class-rtec-admin.php:576 inc/form/class-rtec-form.php:989
+#: inc/form/class-rtec-form.php:990
+msgid "Use this tool to manage your registration."
+msgstr "Verwenden Sie dieses Tool, um Ihre Registrierung zu verwalten."
+
+#: inc/admin/class-rtec-admin.php:590
+msgid "Registered Email Label"
+msgstr "Registriertes E-Mail-Label"
+
+#: inc/admin/class-rtec-admin.php:598 inc/form/class-rtec-form.php:991
+#: inc/form/class-rtec-form.php:992
+msgid "Enter your registered email address"
+msgstr "Geben Sie Ihre registrierte E-Mail-Adresse ein"
+
+#: inc/admin/class-rtec-admin.php:605
+msgid "\"Send unregister link\" Text"
+msgstr "\"Abmeldung senden\"-Link Text"
+
+#: inc/admin/class-rtec-admin.php:613 inc/form/class-rtec-form.php:993
+#: inc/form/class-rtec-form.php:994
+msgid "Send unregister link"
+msgstr "Senden Sie den Link zum Aufheben der Registrierung"
+
+#: inc/admin/class-rtec-admin.php:628
+msgid "Registrations Available Only to Logged-in Users by Default"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:642
+msgid "Website \"Users Only\" Message"
+msgstr "Website Nachricht: \"Nur Benutzer\""
+
+#: inc/admin/class-rtec-admin.php:644
+msgid "Log in to register"
+msgstr "Melde dich an, um dich zu registrieren"
+
+#: inc/admin/class-rtec-admin.php:645
+msgid ""
+"This message will appear if the user is not logged-in and the event is only "
+"available to logged-in users"
+msgstr ""
+"Diese Meldung wird angezeigt, wenn der Benutzer nicht angemeldet ist und das "
+"Ereignis nur angemeldeten Benutzern zur Verfügung steht"
+
+#: inc/admin/class-rtec-admin.php:658
+msgid "Show Log-in Form"
+msgstr "Anmeldeformular anzeigen"
+
+#: inc/admin/class-rtec-admin.php:681
+msgid "Width of Form"
+msgstr "Breite des Formulars"
+
+#: inc/admin/class-rtec-admin.php:697
+msgid "Form Background Color"
+msgstr "Hintergrundfarbe des Formulars"
+
+#: inc/admin/class-rtec-admin.php:709
+msgid "Button Background Color"
+msgstr "Hintergrundfarbe Schaltfläche"
+
+#: inc/admin/class-rtec-admin.php:721
+msgid "Button Text Color"
+msgstr "Textfarbe Schaltfläche"
+
+#: inc/admin/class-rtec-admin.php:732
+msgid "Custom CSS"
+msgstr "Benutzerdefinierte CSS"
+
+#: inc/admin/class-rtec-admin.php:738
+msgid "Enter your own custom CSS in the box below"
+msgstr "Geben Sie Ihr eigenes benutzerdefiniertes CSS in das Feld unten ein"
+
+#: inc/admin/class-rtec-admin.php:744
+msgid "Custom JavaScript"
+msgstr "Benutzerdefinierter Java-Script"
+
+#: inc/admin/class-rtec-admin.php:750
+msgid "Enter your own custom Javascript/JQuery in the box below"
+msgstr ""
+"Geben Sie Ihr eigenes benutzerdefiniertes Javascript / JQuery in das Feld "
+"unten ein"
+
+#: inc/admin/class-rtec-admin.php:757
+msgid "Advanced"
+msgstr "Fortgeschritten"
+
+#: inc/admin/class-rtec-admin.php:770
+msgid "Messaging Source"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:773
+msgid ""
+"Select \"Custom\" for text saved in the Settings pages, \"Translate\" to use "
+"strictly language files (French, German, Spanish, Dutch, Italian and Russian "
+"are available. Contact support to offer your translations)"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:785
+msgid "No Format"
+msgstr "Kein Format"
+
+#: inc/admin/class-rtec-admin.php:790
+msgid "Phone Number Format"
+msgstr "Format Telefonnummer"
+
+#: inc/admin/class-rtec-admin.php:797
+msgid "Formatting for 10 digit phone numbers"
+msgstr "Formatierung für 10-stellige Telefonnummern"
+
+#: inc/admin/class-rtec-admin.php:805
+msgid "Preserve registrations on uninstall"
+msgstr "Bewahren Sie Registrierungen bei der Deinstallation auf"
+
+#: inc/admin/class-rtec-admin.php:807
+msgid ""
+"Keep your registration records preserved in the database when you uninstall "
+"the plugin"
+msgstr ""
+"Bewahren Sie Ihre Registrierungsdatensätze in der Datenbank auf, wenn Sie "
+"das Plugin deinstallieren"
+
+#: inc/admin/class-rtec-admin.php:819
+msgid "Preserve settings on uninstall"
+msgstr "Behalten Sie die Einstellungen bei der Deinstallation bei"
+
+#: inc/admin/class-rtec-admin.php:821
+msgid ""
+"Keep your form and email settings preserved when you uninstall the plugin"
+msgstr ""
+"Behalten Sie Ihre Formular- und E-Mail-Einstellungen bei, wenn Sie das "
+"Plugin deinstallieren"
+
+#: inc/admin/class-rtec-admin.php:837
+msgid "General Email Options"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:846
+msgid "Confirmation/Notification From Address"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:847 inc/admin/class-rtec-admin.php:896
+#: inc/admin/class-rtec-admin.php:924 inc/admin/class-rtec-admin.php:938
+msgid "example"
+msgstr "Beispiel"
+
+#: inc/admin/class-rtec-admin.php:848
+msgid "Enter an email address that you would like emails to be sent from"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:859
+msgid "Custom Date Format"
+msgstr "Benutzerdefiniertes Datumsformat"
+
+#: inc/admin/class-rtec-admin.php:865
+msgid ""
+"If you would like a custom date format in your messages, enter it here using "
+"the examples as a guide"
+msgstr ""
+"Wenn Sie ein benutzerdefiniertes Datumsformat in Ihren Nachrichten wünschen, "
+"geben Sie es hier anhand der Beispiele als Leitfaden ein"
+
+#: inc/admin/class-rtec-admin.php:881
+msgid "Disable Notification Email"
+msgstr "Benachrichtigungs-E-Mail deaktivieren"
+
+#: inc/admin/class-rtec-admin.php:895
+msgid "Notification Recipient(s) Email"
+msgstr "Benachrichtigung Empfänger E-Mail"
+
+#: inc/admin/class-rtec-admin.php:909
+msgid "Always Notify Organizer"
+msgstr "Veranstalter immer informieren"
+
+#: inc/admin/class-rtec-admin.php:923
+msgid "Notification From"
+msgstr "Benachrichtigung von"
+
+#: inc/admin/class-rtec-admin.php:924
+msgid "New Registration"
+msgstr "Neue Registrierung"
+
+#: inc/admin/class-rtec-admin.php:925
+msgid "Enter the name you would like the notification email to come from"
+msgstr ""
+"Geben Sie den Namen ein, von dem die Benachrichtigungs-E-Mail stammen soll"
+
+#: inc/admin/class-rtec-admin.php:937
+msgid "Notification Subject"
+msgstr "Thema der Benachrichtigung"
+
+#: inc/admin/class-rtec-admin.php:938 inc/admin/class-rtec-admin.php:944
+#: inc/class-rtec-email.php:343
+msgid "Registration Notification"
+msgstr "Registrierungsbenachrichtigung"
+
+#: inc/admin/class-rtec-admin.php:939
+msgid "Enter a subject for the notification email"
+msgstr "Geben Sie einen Betreff für die Benachrichtigungs-E-Mail ein"
+
+#: inc/admin/class-rtec-admin.php:950
+msgid "Use Custom Notification Message"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:952
+msgid "Click to reveal and use a custom message that you can configure"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:964
+msgid "Notification Message"
+msgstr "Benachrichtigungsnachricht"
+
+#: inc/admin/class-rtec-admin.php:990
+msgid "Confirmation Email"
+msgstr "Bestätigungs-Email"
+
+#: inc/admin/class-rtec-admin.php:998
+msgid "Disable Confirmation Email"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1012
+msgid "Confirmation From"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1013
+msgid "example: Your Site"
+msgstr "Beispiel: Deine Seite"
+
+#: inc/admin/class-rtec-admin.php:1014
+msgid "Enter the name you would like visitors to get the email from"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1026
+msgid "Confirmation Subject"
+msgstr "Subjekt"
+
+#: inc/admin/class-rtec-admin.php:1027
+msgid "example: Registration Confirmation"
+msgstr "Beispiel: Anmeldebestätigung"
+
+#: inc/admin/class-rtec-admin.php:1028
+msgid "Enter a subject for the confirmation email"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1040
+msgid "Confirmation Message"
+msgstr "Nachricht Anmeldebestätigung"
+
+#: inc/admin/class-rtec-admin.php:1042
+msgid ""
+"Hey {first},<br /><br />You are registered for {event-title} at {venue} on "
+"{event-date}. We are looking forward to having you there. The event will be "
+"held at this location:<br /><br />{venue-address}<br />{venue-city}, {venue-"
+"state} {venue-zip}<br /><br />See you there!"
+msgstr ""
+"Hallo {first},<br /><br />Sie sind für {event-title} am {venue} auf {event-"
+"date} registriert. Wir freuen uns darauf, Sie dort zu haben. Die "
+"Veranstaltung wird an diesem Ort stattfinden:<br /><br />{venue-address}<br /"
+">{venue-city}, {venue-state} {venue-zip}<br /><br />Wir sehen uns dort!"
+
+#: inc/admin/class-rtec-admin.php:1064
+#, fuzzy
+#| msgid "Disable Registrations:"
+msgid "Unregister (Cancel Registration)"
+msgstr "Registrierungen deaktivieren:"
+
+#: inc/admin/class-rtec-admin.php:1073
+#, fuzzy
+#| msgid "Registered Email Label"
+msgid "Unregister Email Subject"
+msgstr "Registriertes E-Mail-Label"
+
+#: inc/admin/class-rtec-admin.php:1081
+msgid "{event-title}"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1090
+#, fuzzy
+#| msgid "Registered Email Label"
+msgid "Unregister Email Message"
+msgstr "Registriertes E-Mail-Label"
+
+#: inc/admin/class-rtec-admin.php:1092
+msgid ""
+"To cancel your registration for {event-title} on {start-date}, click the "
+"button below."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1118
+#, fuzzy
+#| msgid "\"Register\" Button Text"
+msgid "Unregister Button Text"
+msgstr "\"Anmelde\" Button Text"
+
+#: inc/admin/class-rtec-admin.php:1126 inc/helper-functions.php:406
+#: inc/helper-functions.php:407
+#, fuzzy
+#| msgid "New Registration"
+msgid "Cancel My Registration"
+msgstr "Neue Registrierung"
+
+#: inc/admin/class-rtec-admin.php:1134
+#, fuzzy
+#| msgid "Notification Subject"
+msgid "Unregister Notification Subject"
+msgstr "Thema der Benachrichtigung"
+
+#: inc/admin/class-rtec-admin.php:1142 inc/helper-functions.php:477
+#: inc/helper-functions.php:478
+msgid "Notification of Unregistration"
+msgstr "Benachrichtigung über die Aufhebung der Registrierung"
+
+#: inc/admin/class-rtec-admin.php:1150
+#, fuzzy
+#| msgid "Registration Notification"
+msgid "Unregister Notification"
+msgstr "Registrierungsbenachrichtigung"
+
+#: inc/admin/class-rtec-admin.php:1178
+#, fuzzy
+#| msgid "Disable Registrations:"
+msgid "Disable Unregister Confirmation"
+msgstr "Registrierungen deaktivieren:"
+
+#: inc/admin/class-rtec-admin.php:1193
+#, fuzzy
+#| msgid "Confirmation Subject"
+msgid "Unregister Confirmation Subject"
+msgstr "Subjekt"
+
+#: inc/admin/class-rtec-admin.php:1201 inc/helper-functions.php:572
+#: inc/helper-functions.php:573
+msgid "Cancellation Confirmed"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1209
+#, fuzzy
+#| msgid "Unregister from this event"
+msgid "Unregister Confirmation"
+msgstr "Melden Sie sich von diesem Ereignis ab"
+
+#: inc/admin/class-rtec-admin.php:1211 inc/helper-functions.php:575
+#: inc/helper-functions.php:576
+msgid ""
+"You are no longer registered for the event {event-title} on {start-date}."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1298
+msgid "I'm using a custom single-event.php file in my theme."
+msgstr ""
+"Ich verwende eine benutzerdefinierte single-event.php-Datei in meinem Design."
+
+#: inc/admin/class-rtec-admin.php:1299
+msgid "What is this?"
+msgstr "Was ist das?"
+
+#: inc/admin/class-rtec-admin.php:1300
+msgid ""
+"This will force the plugin to use the "
+"\"tribe_events_single_event_before_the_content\" or the "
+"\"tribe_events_single_event_after_the_content\" hooks. Try this setting if "
+"the registration form isn't showing up on the single event page. Read <a "
+"href=\"https://roundupwp.com/faq/registration-form-wont-show-event-page/\" "
+"target=\"blank\">this FAQ</a> for more information."
+msgstr ""
+"Dadurch wird das Plugin gezwungen, die Hooks "
+"“tribe_events_single_event_before_the_content\" oder "
+"“tribe_events_single_event_after_the_content\" zu verwenden. Versuchen Sie "
+"diese Einstellung, wenn das Registrierungsformular nicht auf der einzelnen "
+"Ereignisseite angezeigt wird. Weitere Informationen finden Sie in <a href="
+"\"https://roundupwp.com/faq/registration-form-wont-show-event-page/\" target="
+"\"blank\">dieser FAQ</a>."
+
+#: inc/admin/class-rtec-admin.php:1310
+msgid ""
+"Registration form is automatically placed before the event description when "
+"an event is created."
+msgstr ""
+"Das Registrierungsformular wird beim Erstellen eines Ereignisses automatisch "
+"vor die Ereignisbeschreibung gestellt."
+
+#: inc/admin/class-rtec-admin.php:1311 inc/admin/class-rtec-admin.php:1317
+#, php-format
+msgid ""
+"Form not showing or at the bottom of the page? See %sthis page%s to resolve "
+"this issue."
+msgstr ""
+"Formular wird nicht angezeigt oder steht am Ende der Seite? Siehe %sthis "
+"Seite%s, um dieses Problem zu beheben."
+
+#: inc/admin/class-rtec-admin.php:1316
+msgid ""
+"Registration form is automatically placed after the event description when "
+"an event is created."
+msgstr ""
+"Das Registrierungsformular wird beim Erstellen eines Ereignisses automatisch "
+"nach der Ereignisbeschreibung platziert."
+
+#: inc/admin/class-rtec-admin.php:1322
+msgid ""
+"Place the registration form using the shortcode [rtec-registration-form] in "
+"the event description or use the \"Registration\" Gutenberg Block if using "
+"the block editor."
+msgstr ""
+"Platzieren Sie das Registrierungsformular mit dem Shortcode [rtec-"
+"Registrierungsformular] in der Ereignisbeschreibung oder verwenden Sie den "
+"Gutenberg-Block \"Registrierung\", wenn Sie den Blockeditor verwenden."
+
+#: inc/admin/class-rtec-admin.php:1420 inc/admin/class-rtec-admin.php:1468
+#: inc/admin/class-rtec-admin.php:1507 inc/admin/class-rtec-admin.php:1545
+#: inc/admin/class-rtec-admin.php:1596
+msgid "Label"
+msgstr "Label"
+
+#: inc/admin/class-rtec-admin.php:1424 inc/admin/class-rtec-admin.php:1473
+#: inc/admin/class-rtec-admin.php:1511
+msgid "include"
+msgstr "inkludieren"
+
+#: inc/admin/class-rtec-admin.php:1427 inc/admin/class-rtec-admin.php:1476
+#: inc/admin/class-rtec-admin.php:1514
+msgid "require"
+msgstr "benötigt"
+
+#: inc/admin/class-rtec-admin.php:1430 inc/admin/class-rtec-admin.php:1479
+#: inc/admin/class-rtec-admin.php:1560 inc/admin/class-rtec-admin.php:1600
+msgid "Error Message:"
+msgstr "Fehlernachricht:"
+
+#: inc/admin/class-rtec-admin.php:1435
+msgid "Required length for validation:"
+msgstr "Erforderliche Länge für die Validierung:"
+
+#: inc/admin/class-rtec-admin.php:1438
+msgid ""
+"Enter the length or lengths of the responses that are valid for this field "
+"separated by commas. For example, to accept North American phone numbers "
+"with and without area codes you would enter \"7, 10\". If area code is "
+"required, enter \"10\""
+msgstr ""
+"Geben Sie die Länge oder die Länge der Antworten ein, die für dieses durch "
+"Kommas getrennte Feld gültig sind. Um beispielsweise nordamerikanische "
+"Telefonnummern mit und ohne Vorwahl zu akzeptieren, geben Sie \"7, 10\" ein. "
+"Wenn eine Vorwahl erforderlich ist, geben Sie \"10\" ein."
+
+#: inc/admin/class-rtec-admin.php:1441 inc/admin/class-rtec-admin.php:1482
+#: inc/admin/class-rtec-admin.php:1521
+msgid "Show Notes"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1445
+msgid "prefilled with user data for logged-in users"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1448
+msgid "used in attendee list"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1452 inc/admin/class-rtec-admin.php:1485
+#: inc/admin/class-rtec-admin.php:1524
+msgid "Email template text"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1463 inc/admin/class-rtec-admin.php:1499
+#: inc/admin/class-rtec-admin.php:1537 inc/form/class-rtec-form.php:145
+#: inc/form/class-rtec-form.php:259 inc/form/class-rtec-form.php:269
+#: inc/form/class-rtec-form.php:469 inc/form/class-rtec-form.php:470
+#: inc/form/class-rtec-form.php:499
+msgid "This is required"
+msgstr "Dies ist erforderlich"
+
+#: inc/admin/class-rtec-admin.php:1466
+msgid "will create a plain text field with your label"
+msgstr "erstellt ein einfaches Textfeld mit Ihrer Beschriftung"
+
+#: inc/admin/class-rtec-admin.php:1505
+msgid "Custom Field"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1517
+msgid "Error Message"
+msgstr "Fehlernachricht"
+
+#: inc/admin/class-rtec-admin.php:1531
+msgid "Add Field"
+msgstr "Feld hinzufügen"
+
+#: inc/admin/class-rtec-admin.php:1535 inc/form/class-rtec-form.php:481
+msgid "I accept the terms and conditions"
+msgstr "Ich akzeptiere die allgemeinen Geschäftsbedingungen"
+
+#: inc/admin/class-rtec-admin.php:1539 inc/form/class-rtec-form.php:483
+#: inc/form/class-rtec-form.php:484
+msgid "Terms and Conditions Page"
+msgstr "Geschäftsbedingungen"
+
+#: inc/admin/class-rtec-admin.php:1543 inc/form/class-rtec-form.php:486
+msgid "Terms and Conditions"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1543
+msgid "Checkbox field useful for GDPR compliance"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1549 inc/admin/class-rtec-admin.php:1578
+msgid "require and include"
+msgstr "erfordern und einschließen"
+
+#: inc/admin/class-rtec-admin.php:1552
+msgid "Terms and Conditions Page URL:"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1556
+msgid "Link Text:"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1570 inc/form/class-rtec-form.php:206
+#: inc/form/class-rtec-form.php:207
+msgid "What is"
+msgstr "Was ist"
+
+#: inc/admin/class-rtec-admin.php:1572 inc/form/class-rtec-form.php:208
+#: inc/form/class-rtec-form.php:209
+msgid "Please try again"
+msgstr "Bitte versuche es erneut"
+
+#: inc/admin/class-rtec-admin.php:1575
+msgid "Recaptcha"
+msgstr "Recaptcha"
+
+#: inc/admin/class-rtec-admin.php:1584
+msgid "Math Question"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1588
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1588
+msgid "What's this?"
+msgstr "Was ist das?"
+
+#: inc/admin/class-rtec-admin.php:1594
+msgid ""
+"Simple math question to avoid spam entries. Spam \"honey pot\" field is in "
+"the form by default"
+msgstr ""
+"Einfache mathematische Frage, um Spam-Einträge zu vermeiden. Das Spam-Feld "
+"\"Honigtopf\" hat standardmäßig die Form"
+
+#: inc/admin/class-rtec-admin.php:1605
+msgid "\"I'm not a robot\" checkbox connected to Google's Recaptcha."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1605
+msgid "Instructions"
+msgstr "Anleitung"
+
+#: inc/admin/class-rtec-admin.php:1607
+msgid "Google Recaptcha Site Key"
+msgstr "Google Recaptcha Seitenschlüssel"
+
+#: inc/admin/class-rtec-admin.php:1611
+msgid "Google Recaptcha Secret Key"
+msgstr "Google Recaptcha Sicherheitsschlüssel"
+
+#: inc/admin/class-rtec-admin.php:1636
+msgid "Accept registrations up until"
+msgstr "Akzeptiere Registrierungen bis"
+
+#: inc/admin/class-rtec-admin.php:1639
+msgid "Minutes"
+msgstr "Minuten"
+
+#: inc/admin/class-rtec-admin.php:1640
+msgid "Hours"
+msgstr "Stunden"
+
+#: inc/admin/class-rtec-admin.php:1641
+msgid "Days"
+msgstr "Tage"
+
+#: inc/admin/class-rtec-admin.php:1643
+msgid "before event start time"
+msgstr "vor Startzeit Veranstaltung"
+
+#: inc/admin/class-rtec-admin.php:1651 inc/form/class-rtec-form.php:1278
+#: inc/form/class-rtec-form.php:1279 inc/form/form-functions.php:98
+#: inc/form/form-functions.php:99 inc/form/form-functions.php:151
+#: inc/form/form-functions.php:152 inc/form/form-functions.php:811
+#: inc/form/form-functions.php:812
+msgid "Attendance: {num} / {max}"
+msgstr "Teilnehmer: {num} / {max}"
+
+#: inc/admin/class-rtec-admin.php:1654
+msgid "include attendance count message"
+msgstr "zeige Teilnehmer Countdown"
+
+#: inc/admin/class-rtec-admin.php:1657
+msgid "Display"
+msgstr "Zeige"
+
+#: inc/admin/class-rtec-admin.php:1659
+msgid "Locations"
+msgstr "Veranstaltungsorte"
+
+#: inc/admin/class-rtec-admin.php:1661
+msgid "Above Register Button"
+msgstr "Über dem \"Anmelde\"-Button"
+
+#: inc/admin/class-rtec-admin.php:1662
+msgid "Above Description in \"List\" View"
+msgstr "Über der Beschreibung in der \"Listen\"-Ansicht"
+
+#: inc/admin/class-rtec-admin.php:1666
+msgid "Template"
+msgstr "Vorlage"
+
+#: inc/admin/class-rtec-admin.php:1669
+msgid "Templates"
+msgstr "Vorlagen"
+
+#: inc/admin/class-rtec-admin.php:1671
+msgid "Number of attendees"
+msgstr "Anzahl Teilnehmer"
+
+#: inc/admin/class-rtec-admin.php:1672
+msgid "Maximum number of attendees"
+msgstr "Maximale Anzahl Teilnehmer"
+
+#: inc/admin/class-rtec-admin.php:1673
+msgid "Remaining registrations"
+msgstr "Verbleibende Anmeldungen"
+
+#: inc/admin/class-rtec-admin.php:1684 inc/form/class-rtec-form.php:810
+#: inc/form/class-rtec-form.php:811
+msgid "Join"
+msgstr "Beitreten"
+
+#: inc/admin/class-rtec-admin.php:1685 inc/form/class-rtec-form.php:812
+#: inc/form/class-rtec-form.php:813
+msgid "others!"
+msgstr "Andere!"
+
+#: inc/admin/class-rtec-admin.php:1686 inc/form/class-rtec-form.php:822
+#: inc/form/class-rtec-form.php:823
+msgid "Join one other person"
+msgstr "Tritt einer anderen Person bei"
+
+#: inc/admin/class-rtec-admin.php:1687 inc/form/class-rtec-form.php:816
+msgid "Only"
+msgstr "Nur"
+
+#: inc/admin/class-rtec-admin.php:1688 inc/form/class-rtec-form.php:817
+msgid "spots left"
+msgstr "Anmeldungen übrig"
+
+#: inc/admin/class-rtec-admin.php:1689 inc/form/class-rtec-form.php:825
+#: inc/form/class-rtec-form.php:826
+msgid "Only one spot left!"
+msgstr "Nur noch ein Platz!"
+
+#: inc/admin/class-rtec-admin.php:1690 inc/form/class-rtec-form.php:830
+#: inc/form/class-rtec-form.php:831 inc/helper-functions.php:1074
+#: inc/helper-functions.php:1075
+msgid "Be the first!"
+msgstr "Be the first!"
+
+#: inc/admin/class-rtec-admin.php:1691 inc/form/class-rtec-form.php:719
+#: inc/form/class-rtec-form.php:720
+msgid "Registrations are closed for this event"
+msgstr "Anmeldungen sind für diese Veranstaltung geschlossen"
+
+#: inc/admin/class-rtec-admin.php:1696
+msgid "include registrations availability message"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1700
+msgid "Message Type"
+msgstr "Nachrichtentyp"
+
+#: inc/admin/class-rtec-admin.php:1705
+msgid "guests attending (count up)"
+msgstr "Gäste anwesend (hochzählen)"
+
+#: inc/admin/class-rtec-admin.php:1708
+msgid ""
+"spots remaining (count down, <strong>only for events with limits</strong>)"
+msgstr ""
+"verbleibende Plätze (Countdown, <strong> nur für Ereignisse mit Limits </ "
+"strong>)"
+
+#: inc/admin/class-rtec-admin.php:1719
+msgid "Guests Attending Message Text"
+msgstr "Gäste, die am Nachrichtentext teilnehmen"
+
+#: inc/admin/class-rtec-admin.php:1721 inc/admin/class-rtec-admin.php:1733
+msgid "Text Before: "
+msgstr "Text bevor:"
+
+#: inc/admin/class-rtec-admin.php:1722 inc/admin/class-rtec-admin.php:1734
+msgid "Text After: "
+msgstr "Text nach:"
+
+#: inc/admin/class-rtec-admin.php:1725
+msgid "Message if exactly 1 registration: "
+msgstr "Nachricht wenn genau 1 Registrierung:"
+
+#: inc/admin/class-rtec-admin.php:1731
+msgid "Spots Remaining Message Text"
+msgstr "Spots verbleibender Nachrichtentext"
+
+#: inc/admin/class-rtec-admin.php:1737
+msgid "Message if exactly 1 spot left: "
+msgstr "Nachricht, wenn genau 1 Stelle übrig ist:"
+
+#: inc/admin/class-rtec-admin.php:1744
+msgid "Other Messages"
+msgstr "Sonstige Nachrichten"
+
+#: inc/admin/class-rtec-admin.php:1746
+msgid "Message if no registrations yet: "
+msgstr "Nachricht, wenn noch keine Anmeldungen vorliegen:"
+
+#: inc/admin/class-rtec-admin.php:1749
+msgid "Message if registrations are closed or filled: "
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1770 inc/admin/class-rtec-admin.php:1829
+msgid "Template Text (find and replace)"
+msgstr "Vorlagentext (suchen und ersetzen)"
+
+#: inc/admin/class-rtec-admin.php:1772
+msgid "Event venue/location"
+msgstr "Veranstaltungsort / Ort"
+
+#: inc/admin/class-rtec-admin.php:1773
+msgid "Venue street address"
+msgstr "Veranstaltung: Straße"
+
+#: inc/admin/class-rtec-admin.php:1774
+msgid "Venue city"
+msgstr "Veranstaltung: Stadt"
+
+#: inc/admin/class-rtec-admin.php:1775
+msgid "Venue state/province"
+msgstr "Veranstaltung: Land/Region"
+
+#: inc/admin/class-rtec-admin.php:1776
+msgid "Venue zip code"
+msgstr "Veranstaltung: PLZ"
+
+#: inc/admin/class-rtec-admin.php:1777
+msgid "Title of event"
+msgstr "Titel der Veranstaltung"
+
+#: inc/admin/class-rtec-admin.php:1778 inc/admin/class-rtec-admin.php:1837
+msgid "Plain text web address of event page"
+msgstr "Nur-Text-Webadresse der Ereignisseite"
+
+#: inc/admin/class-rtec-admin.php:1779 inc/admin/class-rtec-admin.php:1838
+msgid "Cost of the event"
+msgstr "Kosten der Veranstaltung"
+
+#: inc/admin/class-rtec-admin.php:1780 inc/admin/class-rtec-admin.php:1839
+msgid "Event start date"
+msgstr "Veranstaltungs-Startdatum"
+
+#: inc/admin/class-rtec-admin.php:1781 inc/admin/class-rtec-admin.php:1840
+msgid "Event start time"
+msgstr "Veranstaltungs-Startzeit"
+
+#: inc/admin/class-rtec-admin.php:1782 inc/admin/class-rtec-admin.php:1841
+msgid "Event end date"
+msgstr "Veranstaltungs-Enddatum"
+
+#: inc/admin/class-rtec-admin.php:1783 inc/admin/class-rtec-admin.php:1842
+msgid "Event end time"
+msgstr "Veranstaltungs-Endzeit"
+
+#: inc/admin/class-rtec-admin.php:1784
+msgid "First name of registrant"
+msgstr "Vorname des Registranten"
+
+#: inc/admin/class-rtec-admin.php:1785
+msgid "Last name of registrant"
+msgstr "Nachname des Registranten"
+
+#: inc/admin/class-rtec-admin.php:1786
+msgid "Email of registrant"
+msgstr "E-Mail des Registranten"
+
+#: inc/admin/class-rtec-admin.php:1787
+msgid "Phone number of registrant"
+msgstr "Telefonnummer des Registranten"
+
+#: inc/admin/class-rtec-admin.php:1788
+msgid "Value entered in the \"other\" field"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:1789
+msgid "Link for user to remove their registration from an event"
+msgstr ""
+"Link für Benutzer, um ihre Registrierung von einer Veranstaltung zu entfernen"
+
+#: inc/admin/class-rtec-admin.php:1896
+msgid "Examples"
+msgstr "Beispiele"
+
+#: inc/admin/class-rtec-admin.php:2156
+msgid "The Events Calendar"
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2157
+msgid ""
+"A fully featured, immensely popular calendar solution from Modern Tribe."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2178
+msgid ""
+"Could not install The Events Calendar. Please search for it on the Plugins "
+"page."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2191 inc/admin/class-rtec-admin.php:2230
+#: inc/admin/class-rtec-admin.php:2310
+msgid "Plugin installed & activated. Refreshing page."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2194
+msgid "Add-on installed & activated."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2214
+msgid "Could not activate add-on. Please activate from the Plugins page."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2251
+msgid ""
+"Could not install The Events Calendar. Please search for it on the plugins "
+"page."
+msgstr ""
+
+#: inc/admin/class-rtec-admin.php:2315
+msgid ""
+"The Events Calendar was installed but needs to be activated from the Plugins "
+"page inside your WordPress admin."
+msgstr ""
+
+#: inc/admin/templates/email.php:5 inc/admin/templates/form.php:5
+msgid "Can also be set for each event separately on the Events->Edit page"
+msgstr ""
+"Kann auch für jede Veranstaltung separat auf der Seite Veranstaltungen-> "
+"Bearbeiten festgelegt werden"
+
+#: inc/admin/templates/email.php:11
+msgid ""
+"For best results with email delivery, check out the related <a href="
+"\"https://roundupwp.com/faq/my-confirmationnotification-emails-are-missing/"
+"\" target=\"_blank\">article</a> on our website"
+msgstr ""
+"Die besten Ergebnisse bei der E-Mail-Zustellung finden Sie im <a href="
+"\"https://roundupwp.com/faq/my-confirmationnotification-emails-are-missing/"
+"\" target=\"_blank\">Artikel</a> in unserem Artikel Webseite"
+
+#: inc/admin/templates/email.php:18 inc/admin/templates/email.php:21
+#: inc/admin/templates/email.php:24 inc/admin/templates/email.php:27
+#: inc/admin/templates/form.php:12 inc/admin/templates/form.php:15
+#: inc/admin/templates/form.php:18 inc/admin/templates/form.php:21
+#: inc/admin/templates/form.php:24 inc/admin/templates/form.php:27
+#: inc/admin/templates/form.php:31 inc/admin/templates/form.php:34
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: inc/admin/templates/main.php:13
+msgid "Thank You for Installing Our Plugin!"
+msgstr ""
+
+#: inc/admin/templates/main.php:14
+msgid ""
+"Registrations for the Events Calendar requires The Events Calendar to be "
+"installed and active."
+msgstr ""
+
+#: inc/admin/templates/main.php:39
+msgid "Install"
+msgstr ""
+
+#: inc/admin/templates/main.php:62
+msgid ""
+"You're using Registrations for the Events Calendar Lite. To unlock more "
+"features consider <a href=\"https://roundupwp.com/products/registrations-for-"
+"the-events-calendar-pro/\" target=\"_blank\" rel=\"noopener noreferrer"
+"\">upgrading to Pro</a>."
+msgstr ""
+
+#: inc/admin/templates/main.php:63
+msgid "Dismiss this message."
+msgstr ""
+
+#: inc/admin/templates/main.php:67
+msgid "Registrations for the Events Calendar"
+msgstr ""
+
+#: inc/admin/templates/main.php:88
+msgid "Form"
+msgstr "Formulare"
+
+#: inc/admin/templates/main.php:162
+msgid "Create Multiple Forms"
+msgstr ""
+
+#: inc/admin/templates/main.php:163
+msgid "Collect Online Payments"
+msgstr ""
+
+#: inc/admin/templates/main.php:164
+msgid "Custom Email Templates"
+msgstr ""
+
+#: inc/admin/templates/main.php:165
+msgid "Flexible Event Costs"
+msgstr ""
+
+#: inc/admin/templates/main.php:166
+msgid "Send Automatic Messages"
+msgstr ""
+
+#: inc/admin/templates/main.php:167
+msgid "Check Attendees In"
+msgstr ""
+
+#: inc/admin/templates/main.php:168
+msgid "List Member's Events"
+msgstr ""
+
+#: inc/admin/templates/main.php:169
+msgid "Customizable Attendee Lists"
+msgstr ""
+
+#: inc/admin/templates/main.php:170
+msgid "Edit Registration Entries"
+msgstr ""
+
+#: inc/admin/templates/main.php:171
+msgid "Waiting Lists"
+msgstr "Warteliste"
+
+#: inc/admin/templates/main.php:179
+msgid "Upgrade to Pro to Unlock These Features"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-event-meta.php:13
+#, php-format
+msgid "%s to %s"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-event-meta.php:18
+msgid "View Event"
+msgstr "Veranstaltung anzeigen"
+
+#: inc/admin/templates/partials/registrations-event-meta.php:20
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:59
+msgid "Event Options"
+msgstr "Veranstaltungsoptionen"
+
+#: inc/admin/templates/partials/registrations-event-meta.php:22
+msgid "Detailed View"
+msgstr "Detaillierte Ansicht"
+
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:58
+msgid "Toggle panel: Information"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:67
+msgid "Disable registrations for this event"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:71
+msgid "Logged in users only"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:75
+msgid "Limit the number registrations allowed"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:79
+msgid "Maximum registrations"
+msgstr ""
+
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:105
 msgid "Notification email recipients"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:149
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:109
 msgid "Confirmation email from address"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-hidden-event-options.php:153
+#: inc/admin/templates/partials/registrations-hidden-event-options.php:113
 msgid "Update"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-list-table-body.php:15
+#: inc/admin/templates/partials/registrations-list-table-body.php:12
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
-#: inc/admin/templates/partials/registrations-list-view.php:10
-#: inc/class-rtec-email.php:390
+#: inc/admin/templates/partials/registrations-list-view.php:8
+#: inc/class-rtec-email.php:412
 msgid "Title"
-msgstr ""
+msgstr "Titel"
+
+#: inc/admin/templates/partials/registrations-list-view.php:11
+msgid "Venue"
+msgstr "Ort"
+
+#: inc/admin/templates/partials/registrations-list-view.php:12
+msgid "Attendance"
+msgstr "Anz. Buchungen"
 
 #: inc/admin/templates/partials/registrations-list-view.php:13
-msgid "Venue"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-list-view.php:14
-msgid "Attendance"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-list-view.php:15
-#: inc/class-rtec-email.php:398
+#: inc/class-rtec-email.php:420
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
-#: inc/admin/templates/partials/registrations-pagination.php:11
+#: inc/admin/templates/partials/registrations-pagination.php:8
 msgid "No More Events"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-pagination.php:15
+#: inc/admin/templates/partials/registrations-pagination.php:12
 msgid "Back"
 msgstr ""
 
-#: inc/admin/templates/partials/registrations-pagination.php:19
+#: inc/admin/templates/partials/registrations-pagination.php:16
 msgid "Next"
-msgstr ""
+msgstr "nächste Seite"
 
-#: inc/admin/templates/partials/registrations-reg-table.php:46
-#: inc/admin/templates/single.php:217
+#: inc/admin/templates/partials/registrations-reg-table.php:37
+#: inc/admin/templates/single.php:169
 msgid "No Registrations Yet"
-msgstr ""
+msgstr "Noch keine Reservierungen"
 
-#: inc/admin/templates/partials/registrations-reg-table.php:52
+#: inc/admin/templates/partials/registrations-reg-table.php:43
 msgid "View all"
-msgstr ""
+msgstr "zeige alle VA"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:13
+msgid "List View"
+msgstr "Listenansicht"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:16
+msgid "Grid View"
+msgstr "Rasteransicht"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:19
+msgid "Filter by start date"
+msgstr "Filtern nach Startdatum"
 
 #: inc/admin/templates/partials/registrations-toolbar.php:21
-msgid "List View"
-msgstr ""
+msgid "View Upcoming"
+msgstr "zeige bevorstehende VA"
 
-#: inc/admin/templates/partials/registrations-toolbar.php:29
-msgid "Grid View"
-msgstr ""
+#: inc/admin/templates/partials/registrations-toolbar.php:22
+msgid "View Current"
+msgstr "zeige gegenwärtige VA"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:23
+msgid "View Past"
+msgstr "zeige zurückliegende VA"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:24
+msgid "View Hidden from Listing"
+msgstr "zeige nicht gelistete/versteckte VA"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:25
+msgid "Select Start Date"
+msgstr "wähle nach Startdatum"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:26
+msgid "View All"
+msgstr "zeige alle VA"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:28
+msgid "Filter by event start date"
+msgstr "Filtern nach Veranstaltungs-Startdatum"
+
+#: inc/admin/templates/partials/registrations-toolbar.php:30
+msgid "Filter by registrations"
+msgstr "Filtern nach Anmeldung"
 
 #: inc/admin/templates/partials/registrations-toolbar.php:32
-msgid "Filter by start date"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:39
-msgid "View Upcoming"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:45
-msgid "View Current"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:51
-msgid "View Past"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:57
-msgid "View Hidden from Listing"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:63
-msgid "Select Start Date"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:69
-msgid "View All"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:71
-msgid "Filter by event start date"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:78
-msgid "Filter by registrations"
-msgstr ""
-
-#: inc/admin/templates/partials/registrations-toolbar.php:85
 msgid "With registrations enabled"
-msgstr ""
+msgstr "mit bestätigter Anmeldung"
 
-#: inc/admin/templates/partials/registrations-toolbar.php:91
+#: inc/admin/templates/partials/registrations-toolbar.php:33
 msgid "With/without registrations"
-msgstr ""
+msgstr "mit/ohne Registrierung"
 
-#: inc/admin/templates/partials/registrations-toolbar.php:93
+#: inc/admin/templates/partials/registrations-toolbar.php:35
 msgid "Go"
-msgstr ""
+msgstr "Los"
 
-#: inc/admin/templates/partials/registrations-toolbar.php:96
-#: inc/admin/templates/partials/registrations-toolbar.php:97
+#: inc/admin/templates/partials/registrations-toolbar.php:38
+#: inc/admin/templates/partials/registrations-toolbar.php:39
 msgid "Search Registrants"
-msgstr ""
+msgstr "Suche Teilnehmer"
 
-#: inc/admin/templates/partials/registrations-toolbar.php:101
+#: inc/admin/templates/partials/registrations-toolbar.php:43
 msgid "dismiss notices"
-msgstr ""
+msgstr "Notizen verwerfen"
 
-#: inc/admin/templates/registrations.php:35
+#: inc/admin/templates/registrations.php:38
 msgid "Overview"
-msgstr ""
+msgstr "Übersicht"
 
 #: inc/admin/templates/single.php:45
 msgid "Single Event Details"
-msgstr ""
+msgstr "Detailübersicht Kurs - Training"
 
 #: inc/admin/templates/single.php:46
 msgid "Back to Overview"
-msgstr ""
+msgstr "Zurück zur Übersicht"
 
-#: inc/admin/templates/single.php:55
-msgid "Form Submissions"
-msgstr ""
-
-#: inc/admin/templates/single.php:60
-msgid "Message History"
-msgstr ""
-
-#: inc/admin/templates/single.php:73
-#: inc/admin/templates/single.php:168
+#: inc/admin/templates/single.php:59 inc/admin/templates/single.php:122
 msgid "Select All"
-msgstr ""
+msgstr "Alles auswählen"
 
-#: inc/admin/templates/single.php:228
+#: inc/admin/templates/single.php:180
 msgid "Delete Selected"
-msgstr ""
+msgstr "lösche Auswahl"
 
-#: inc/admin/templates/single.php:229
+#: inc/admin/templates/single.php:181
 msgid "Edit Selected"
 msgstr ""
 
-#: inc/admin/templates/single.php:230
+#: inc/admin/templates/single.php:182
 msgid "Add New"
-msgstr ""
+msgstr "Neu erstellen"
 
-#: inc/admin/templates/single.php:240
-msgid "Confirm Selected"
-msgstr ""
-
-#: inc/admin/templates/single.php:244
-msgid "Process Waiting List"
-msgstr ""
-
-#: inc/admin/templates/single.php:248
-msgid "Email Selected"
-msgstr ""
-
-#: inc/admin/templates/single.php:252
-msgid "Transfer"
-msgstr ""
-
-#: inc/admin/templates/support.php:6
+#: inc/admin/templates/support.php:1
 msgid "Need Help?"
-msgstr ""
+msgstr "Brauchen Sie Hilfe?"
 
-#: inc/admin/templates/support.php:86
-msgid "Some of your registrations have been migrated to work with The Events Calendar 6.0+."
-msgstr ""
-
-#: inc/admin/templates/support.php:91
+#: inc/admin/templates/support.php:73
 msgid "Setup Directions"
-msgstr ""
+msgstr "Setup-Richtungen"
 
-#: inc/admin/templates/support.php:92
+#: inc/admin/templates/support.php:74
 msgid "A step-by-step guide on how to setup and use the plugin."
 msgstr ""
 
-#: inc/admin/templates/support.php:95
+#: inc/admin/templates/support.php:77
 msgid "FAQs and Documentation"
-msgstr ""
+msgstr "FAQs und Dokumentation"
 
-#: inc/admin/templates/support.php:96
+#: inc/admin/templates/support.php:78
 msgid "You might find some help with our FAQs and troubleshooting guides."
 msgstr ""
+"Möglicherweise finden Sie Hilfe in unseren FAQs und Anleitungen zur "
+"Fehlerbehebung."
 
-#: inc/admin/templates/support.php:99
+#: inc/admin/templates/support.php:81
 msgid "Request Support"
-msgstr ""
+msgstr "Hilfe anfordern"
 
-#: inc/admin/templates/support.php:100
-msgid "Have a problem? Post in the WordPress.org support forum and someone from our team will reply you as soon as they are able."
+#: inc/admin/templates/support.php:82
+msgid ""
+"Have a problem? Submit a support ticket on our website. Please include your "
+"<strong>System Info</strong> below with support requests."
 msgstr ""
+"Habe ein Problem? Senden Sie ein Support-Ticket auf unserer Website. Bitte "
+"geben Sie Ihre <strong> Systeminformationen </ strong> unten bei "
+"Supportanfragen an."
 
-#: inc/admin/templates/support.php:104
+#: inc/admin/templates/support.php:86
 msgid "System Info"
-msgstr ""
+msgstr "System Info"
 
-#: inc/admin/templates/support.php:105
-msgid "You may be asked to follow up with a support request in the forum by submitting a ticket on our website. Include your system info only with the privacy of our ticketing system."
-msgstr ""
-
-#: inc/admin/templates/support.php:107
+#: inc/admin/templates/support.php:87
 msgid "Click the text below to select all"
-msgstr ""
+msgstr "Klicken Sie auf den Text unten, um alle auszuwählen"
 
-#: inc/blocks/class-rtec-blocks.php:155
+#: inc/blocks/class-rtec-blocks.php:150
 msgid "Click here"
 msgstr ""
 
-#: inc/blocks/class-rtec-blocks.php:170
+#: inc/blocks/class-rtec-blocks.php:164
 msgid "Registration"
-msgstr ""
+msgstr "Registrierung"
 
-#: inc/blocks/class-rtec-blocks.php:171
+#: inc/blocks/class-rtec-blocks.php:165
 msgid "Add Settings"
-msgstr ""
+msgstr "Einstellungen bearbeiten"
 
-#: inc/blocks/class-rtec-blocks.php:172
+#: inc/blocks/class-rtec-blocks.php:166
 msgid "Shortcode Settings"
-msgstr ""
+msgstr "Shortcode-Einstellungen"
 
-#: inc/blocks/class-rtec-blocks.php:173
+#: inc/blocks/class-rtec-blocks.php:167
 msgid "Example"
-msgstr ""
+msgstr "Beispiel"
 
-#: inc/blocks/class-rtec-blocks.php:174
+#: inc/blocks/class-rtec-blocks.php:168
 msgid "Apply Changes"
-msgstr ""
+msgstr "Änderungen bestätigen"
 
-#: inc/blocks/class-rtec-blocks.php:175
+#: inc/blocks/class-rtec-blocks.php:169
 msgid "Choose an event"
-msgstr ""
+msgstr "Eine Veranstaltung wählen"
 
-#: inc/class-rtec-email.php:111
+#: inc/class-rtec-email.php:114
 msgid "There was a problem sending the email"
-msgstr ""
-
-#: inc/class-rtec-email.php:131
-msgid "You are registered!"
-msgstr ""
-
-#: inc/class-rtec-email.php:132
-msgid "Event: %1$s at %2$s on %3$s"
-msgstr ""
+msgstr "Beim Senden der E-Mail ist ein Problem aufgetreten"
 
 #: inc/class-rtec-email.php:136
+msgid "You are registered!"
+msgstr "Sie sind registriert!"
+
+#: inc/class-rtec-email.php:137
+#, php-format
+msgid "Event: %1$s at %2$s on %3$s"
+msgstr "Veranstaltung:  %1$s beim %2$s auf %3$s"
+
+#: inc/class-rtec-email.php:141
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
-#: inc/class-rtec-email.php:145
-#: inc/form/class-rtec-form.php:273
+#: inc/class-rtec-email.php:150 inc/form/class-rtec-form.php:267
 msgid "Guests"
-msgstr ""
+msgstr "Gäste"
 
-#: inc/class-rtec-email.php:169
+#: inc/class-rtec-email.php:175
 msgid "The event will be held at this location"
-msgstr ""
+msgstr "Die Veranstaltung wird an diesem Ort stattfinden"
 
-#: inc/class-rtec-email.php:174
+#: inc/class-rtec-email.php:180
 msgid "Thank You!"
-msgstr ""
+msgstr "Danke!"
 
-#: inc/class-rtec-email.php:194
+#: inc/class-rtec-email.php:201
+#, php-format
 msgid "The following submission was made for: %1$s at %2$s on %3$s"
-msgstr ""
+msgstr "Folgende Eingabe wurde eingereicht für: %1$s beim %2$s auf %3$s"
 
-#: inc/class-rtec-email.php:322
+#: inc/class-rtec-email.php:339
 msgid "Your Registration"
 msgstr ""
 
-#: inc/class-rtec-email.php:327
+#: inc/class-rtec-email.php:344
 msgid "Registration email"
-msgstr ""
+msgstr "Registrierungs-Email"
 
-#: inc/class-rtec-email.php:394
+#: inc/class-rtec-email.php:416
 msgid "Date"
 msgstr ""
 
-#: inc/class-rtec-migration.php:170
-msgid "Migration needed for some registrations! No action needed as this is being done automatically. Visit %1$sthis page%2$s if you would like to review progress."
-msgstr ""
-
-#: inc/form/class-rtec-form.php:203
+#: inc/form/class-rtec-form.php:195
 msgid "Please verify that you are not a robot"
-msgstr ""
+msgstr "Bitte weise nach, dass Du keine Maschine bist"
 
-#: inc/form/class-rtec-form.php:511
-#: inc/form/class-rtec-form.php:663
-#: inc/form/class-rtec-form.php:686
+#: inc/form/class-rtec-form.php:513 inc/form/class-rtec-form.php:656
+#: inc/form/class-rtec-form.php:681
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
-#: inc/form/class-rtec-form.php:801
+#: inc/form/class-rtec-form.php:777
 msgid "There were errors with your submission. Please try again."
-msgstr ""
+msgstr "Es gab Fehler bei Ihrer Einreichung. Bitte versuche es erneut."
 
-#: inc/form/class-rtec-form.php:1026
+#: inc/form/class-rtec-form.php:1005
 msgid "required"
-msgstr ""
+msgstr "erforderlich"
 
-#: inc/form/class-rtec-form.php:1259
-#: templates/form/form.php:36
+#: inc/form/class-rtec-form.php:1206 templates/form/form.php:36
 msgid "If you are a human, do not fill in this field"
-msgstr ""
+msgstr "Wenn Sie ein Mensch sind, füllen Sie dieses Feld nicht aus"
 
-#: inc/form/class-rtec-form.php:1438
+#: inc/form/class-rtec-form.php:1383
 msgid "Loading gif"
 msgstr ""
 
-#: inc/form/class-rtec-form.php:1540
-#: inc/form/class-rtec-form.php:1541
+#: inc/form/class-rtec-form.php:1483 inc/form/class-rtec-form.php:1484
 msgid "Log in to register."
-msgstr ""
+msgstr "Melde dich an, um dich zu registrieren."
 
-#: inc/form/form-functions.php:265
-msgid "There was a problem with one or more of the entries you submitted. Please try again."
+#: inc/form/form-functions.php:268
+msgid ""
+"There was a problem with one or more of the entries you submitted. Please "
+"try again."
 msgstr ""
+"Bei einem oder mehreren der von Ihnen eingereichten Einträge ist ein Problem "
+"aufgetreten. Bitte versuche es erneut."
 
-#: inc/form/form-functions.php:277
-#: inc/form/form-functions.php:278
-msgid "Sorry! Registrations just filled up for this event. You are not registered."
+#: inc/form/form-functions.php:280 inc/form/form-functions.php:281
+msgid ""
+"Sorry! Registrations just filled up for this event. You are not registered."
 msgstr ""
+"Es tut uns leid! Die Anmeldungen wurden gerade für diese Veranstaltung "
+"ausgefüllt. Sie sind nicht registriert."
 
-#: inc/form/form-functions.php:440
+#: inc/form/form-functions.php:445
 msgid "Deadline to unregister has passed."
 msgstr ""
 
-#: inc/form/form-functions.php:758
+#: inc/form/form-functions.php:459
+msgid "No record found."
+msgstr "Kein Eintrag gefunden."
+
+#: inc/form/form-functions.php:857
 msgid "Questions About Registration?"
 msgstr ""
 
-#. Translators: %s is the link to the article where more details about critical are listed.
-#: inc/form/form-functions.php:762
-msgid "Since you are logged-in, the first, last, and email fields are filled in with your user information. Also, the recaptcha field is only required for logged-out visitors."
+#: inc/form/form-functions.php:861
+msgid ""
+"Since you are logged-in, the first, last, and email fields are filled in "
+"with your user information. Also, the recaptcha field is only required for "
+"logged-out visitors."
 msgstr ""
 
-#: inc/form/form-functions.php:769
-msgid "Visit the %1$ssupport page%2$s in your WordPress dashboard if you have questions."
+#: inc/form/form-functions.php:868
+#, php-format
+msgid ""
+"Visit the %ssupport page%s in your WordPress dashboard if you have questions."
 msgstr ""
 
-#: inc/form/form-functions.php:976
+#: inc/form/form-functions.php:1073
 msgid "I am not a robot"
 msgstr ""
 
-#: inc/helper-functions.php:849
+#: inc/helper-functions.php:511
 msgid "There has been a cancellation. Here are the details."
 msgstr ""
 
-#: inc/helper-functions.php:849
+#: inc/helper-functions.php:511
+#, fuzzy
+#| msgid "Single Event Details"
 msgid "Event Details"
-msgstr ""
+msgstr "Detailübersicht Kurs - Training"
 
-#: inc/helper-functions.php:849
+#: inc/helper-functions.php:511
+#, fuzzy
+#| msgid "Registration"
 msgid "Registrant"
-msgstr ""
+msgstr "Registrierung"
 
-#: inc/helper-functions.php:1424
+#: inc/helper-functions.php:1091
 msgid "Please enter an Event ID to view the attendee list"
-msgstr ""
+msgstr "Bitte trage eine Veranstaltungs-ID ein um die Teilnehmerliste zu sehen"
 
-#: inc/services/class-rtec-footer-listener-service.php:114
-#: inc/services/class-rtec-footer-listener-service.php:115
-msgid "Confirm Cancellation"
-msgstr ""
-
-#: inc/services/class-rtec-footer-listener-service.php:230
-msgid "Something went wrong."
-msgstr ""
-
-#: inc/services/class-rtec-footer-listener-service.php:268
-#: inc/utils/class-rtec-defaults.php:21
-msgid "No record found."
-msgstr ""
-
-#: inc/utils/class-rtec-defaults.php:19
-msgid "Your registration was already canceled for the event {event-title} on {start-date}"
-msgstr ""
-
-#: inc/utils/class-rtec-defaults.php:20
-msgid "You are cancelling your registration for the event {event-title} on {start-date}"
-msgstr ""
-
-#: inc/utils/class-rtec-defaults.php:23
-msgid "Your registration has been canceled for {event-title} on {start-date}"
-msgstr ""
-
-#: registrations-for-the-events-calendar.php:130
-#: registrations-for-the-events-calendar.php:142
+#: registrations-for-the-events-calendar.php:128
+#: registrations-for-the-events-calendar.php:140
 msgid "Cheatin&#8217; huh?"
-msgstr ""
+msgstr "Schwindeln&#8217; huh?"
+
+#, php-format
+#~ msgid "A registrant %s has unregistered from the event %s."
+#~ msgstr ""
+#~ "Ein Registrant %s hat die Registrierung für dieses Ereignis %s aufgehoben."
+
+#~ msgid "New!"
+#~ msgstr "Neu!"
+
+#~ msgid "Success! Please check your email inbox for a confirmation message"
+#~ msgstr ""
+#~ "Erfolg! Bitte überprüfen Sie Ihre E-Mail-Posteingang für eine "
+#~ "Bestätigungsnachricht"
+
+#~ msgid "It looks like The Events Calendar plugin is not currently active."
+#~ msgstr ""
+#~ "Es sieht so aus, als ob das Plug-in \"The Events Calendar\" derzeit nicht "
+#~ "aktiv ist."
+
+#~ msgid ""
+#~ "Please install The Events Calendar by Modern Tribe to get started with "
+#~ "your registrations."
+#~ msgstr ""
+#~ "Bitte installieren Sie den \"The Events Calendar\" von Modern Tribe, um "
+#~ "mit Ihren Anmeldungen zu beginnen."
