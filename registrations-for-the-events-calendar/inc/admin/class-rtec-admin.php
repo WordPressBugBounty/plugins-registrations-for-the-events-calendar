@@ -50,7 +50,29 @@ class RTEC_Admin {
 
 		$new_registrations_count = rtec_get_existing_new_reg_count();
 
-		if ( $new_registrations_count > 0 ) {
+		// While the RTEC 3.0 pre-release notice is active and not dismissed
+		// for the current user, show an exclamation mark bubble instead of
+		// the "new registrations" count bubble.
+		$show_prerelease_alert = false;
+
+		if ( is_admin() && current_user_can( 'manage_options' ) ) {
+			if ( defined( 'RTEC_VERSION' ) && version_compare( RTEC_VERSION, '3.0.0', '<' ) ) {
+				$dismissed   = get_user_meta( get_current_user_id(), 'rtec_dismiss_rtec_3_prerelease_notice', true );
+				$delay_until = (int) get_transient( 'rtec_3_prerelease_delay_until' );
+
+				// Mirror the same conditions used by maybe_add_rtec_3_prerelease_notice():
+				// - Pre-3.0.0
+				// - Not dismissed by this user
+				// - Any first-install delay has expired.
+				if ( empty( $dismissed ) && ( ! $delay_until || time() >= $delay_until ) ) {
+					$show_prerelease_alert = true;
+				}
+			}
+		}
+
+		if ( $show_prerelease_alert ) {
+			$menu_title .= ' <span class="update-plugins rtec-notice-admin-reg-count"><span>!</span></span>';
+		} elseif ( $new_registrations_count > 0 ) {
 			$menu_title .= ' <span class="update-plugins rtec-notice-admin-reg-count"><span>' . esc_html( $new_registrations_count ) . '</span></span>';
 		}
 

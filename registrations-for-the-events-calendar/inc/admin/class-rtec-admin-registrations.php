@@ -259,9 +259,10 @@ class RTEC_Admin_Registrations {
 				}
 			}
 		} else {
+			// Upcoming: events that have not yet ended (end date is in the future), per TEC logic.
 			$args = array(
 				'posts_per_page' => $this->posts_per_page,
-				'start_date'     => date( 'Y-m-d H:i', time() + rtec_get_utc_offset() ),
+				'ends_after'     => date( 'Y-m-d H:i', time() + rtec_get_utc_offset() ),
 				'offset'         => $settings['off'],
 			);
 

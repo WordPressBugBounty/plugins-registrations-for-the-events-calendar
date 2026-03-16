@@ -6,7 +6,7 @@ Tags: events calendar, bookings, RSVP, events, event registration
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.13.9
+Stable tag: 2.13.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -201,6 +201,9 @@ Yes. There is a custom database table added to each sub-site's database to separ
 Go to the "Support" tab on the plugin's settings page and follow the link to our support page, setup instructions page, or feature request page.
 
 == Changelog ==
+= 2.13.10 =
+* Important: RTEC 3.0 is coming in April. Learn what's changing in the [RTEC 3.0 release guide](https://roundupwp.com/rtec-3-0-release/?utm_campaign=rtec-3-prelaunch&utm_source=rtec-plugin&utm_medium=readme&utm_content=RTEC3Overview).
+
 = 2.13.9 =
 * Fix: Made several improvements to the Google recaptcha code to make it more reliable.
 

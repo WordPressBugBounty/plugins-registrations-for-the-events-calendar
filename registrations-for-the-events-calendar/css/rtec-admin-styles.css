@@ -1514,12 +1514,18 @@ button .rtec-spinner-circle {
 	color: #003544;
 }
 .rtec-admin-notice-banner {
+	box-sizing: border-box;
 	display: flex;
-	align-items: center;
 	justify-content: start;
-	margin-top:30px;
+	margin: 60px 20px 0 0;
+	padding: 10px;
 	border: none;
 }
+.rtec-admin-notice-banner ul {
+	list-style: inside;
+}
+
+/* type + position */
 .rtec-admin-notice-banner .rtec-img-wrap,
 .rtec-admin-notice-banner .rtec-msg-wrap{
 	float: none;

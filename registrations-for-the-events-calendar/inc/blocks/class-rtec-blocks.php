@@ -114,12 +114,13 @@ class RTEC_Blocks {
 			'orderby'        => 'meta_value',
 			'order'          => 'ASC',
 		);
+		// Upcoming: events that have not yet ended (end date in the future), per TEC logic.
 		$args['meta_query'] = array(
 			'relation' => 'AND',
 			array(
 				'relation' => 'AND',
 				array(
-					'key'     => '_EventStartDate',
+					'key'     => '_EventEndDate',
 					'value'   => date( 'Y-m-d H:i', time() + rtec_get_utc_offset() ),
 					'compare' => '>=',
 					'type'    => 'DATE',

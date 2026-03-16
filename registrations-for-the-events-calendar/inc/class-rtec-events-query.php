@@ -45,6 +45,9 @@ class RTEC_Events_Query {
 			$end_date = ! empty( $this->args['end_date'] ) ? $this->args['end_date'] : date( 'Y-m-d H:i:s' );
 
 			$this->repository = $this->repository->where( 'end_date', $end_date );
+		} elseif ( ! empty( $this->args['ends_after'] ) ) {
+			// Upcoming: events that have not yet ended (end date in the future), per TEC logic.
+			$this->repository = $this->repository->where( 'ends_after', $this->args['ends_after'] );
 		} elseif ( empty( $this->args['end_date'] ) ) {
 			$this->repository = $this->repository->where( 'start_date', $start_date );
 		}

@@ -33,19 +33,29 @@ function rtec_registrations_bubble() {
 	$new_registrations_count = rtec_get_existing_new_reg_count();
 
 	if ( $new_registrations_count > 0 ) {
-		global $menu;
-
-		foreach ( $menu as $key => $value ) {
-			if ( $menu[ $key ][2] === RTEC_TRIBE_MENU_PAGE ) {
-				$menu[ $key ][0] .= ' <span class="update-plugins rtec-notice-admin-reg-count"><span>' . $new_registrations_count . '</span></span>';
-				return;
-			}
-		}
+		rtec_add_menu_bubble_for_registrations( (string) $new_registrations_count );
 	}
 }
 
+/**
+ * Adds a bubble next to the Registrations menu item label.
+ *
+ * @param string $text Text to display inside the bubble (e.g. count or "!").
+ */
+function rtec_add_menu_bubble_for_registrations( $text ) {
+	global $menu;
 
+	if ( empty( $menu ) ) {
+		return;
+	}
 
+	foreach ( $menu as $key => $value ) {
+		if ( isset( $menu[ $key ][2] ) && $menu[ $key ][2] === RTEC_MENU_SLUG ) {
+			$menu[ $key ][0] .= ' <span class="update-plugins rtec-notice-admin-reg-count"><span>' . esc_html( $text ) . '</span></span>';
+			return;
+		}
+	}
+}
 /**
  * Dismiss banner notice listener
  *
@@ -65,6 +75,8 @@ function rtec_check_notice_dismiss() {
 
 	if ( 'bfcm' === $dismiss_type ) {
 		rtec_dismiss_bfcm_notice();
+	} elseif ( 'rtec_3_prerelease' === $dismiss_type ) {
+		rtec_dismiss_rtec_3_prerelease_notice();
 	}
 }
 add_action( 'admin_init', 'rtec_check_notice_dismiss' );
@@ -118,6 +130,15 @@ function rtec_dismiss_bfcm_notice( $time = 'always' ) {
 	} elseif ( gmdate( 'Y', rtec_time() ) === $time ) {
 		update_user_meta( get_current_user_id(), 'rtec_dismiss_bfcm', gmdate( 'Y', rtec_time() ) );
 	}
+}
+
+/**
+ * Dismiss the RTEC 3.0 pre-release admin notice for the current user.
+ *
+ * TODO Remove this helper after the RTEC 3.0 launch window.
+ */
+function rtec_dismiss_rtec_3_prerelease_notice() {
+	update_user_meta( get_current_user_id(), 'rtec_dismiss_rtec_3_prerelease_notice', 1 );
 }
 
 /**

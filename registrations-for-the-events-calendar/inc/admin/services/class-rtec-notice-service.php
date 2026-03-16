@@ -7,6 +7,10 @@ class RTEC_Notice_Service {
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
 		add_action( 'rtec_admin_notices', array( $this, 'maybe_dashboard_notices' ) );
 
+		// RTEC 3.0 pre-release admin notice (dashboard + RTEC admin screens).
+		// TODO Remove this hook and the maybe_add_rtec_3_prerelease_notice() method after the RTEC 3.0 launch window.
+		add_action( 'admin_notices', array( $this, 'maybe_add_rtec_3_prerelease_notice' ) );
+
 		add_action( 'admin_init', array( $this, 'prevent_redirect_to_guided_setup' ), 1 );
 	}
 
@@ -63,6 +67,82 @@ class RTEC_Notice_Service {
 		} elseif ( $this->should_show_notice( 'bfcm' ) ) {
 			$this->bfcm_dashboard_notice();
 		}
+	}
+
+	/**
+	 * Conditionally outputs the RTEC 3.0 pre-release admin notice.
+	 *
+	 * - Displays on the main WP Dashboard and RTEC admin pages only.
+	 * - Visible only to users with the manage_options capability.
+	 * - Dismissal is stored per-user.
+	 * - Automatically stops displaying on RTEC 3.0+ via version_compare().
+	 *
+	 * TODO Remove this method after the RTEC 3.0 launch window.
+	 */
+	public function maybe_add_rtec_3_prerelease_notice() {
+		// Only in the admin area.
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		// Respect capability requirement.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		// Automatically stop showing in RTEC 3.0 and later.
+		if ( defined( 'RTEC_VERSION' ) && version_compare( RTEC_VERSION, '3.0.0', '>=' ) ) {
+			return;
+		}
+
+		// Per-user dismissal.
+		$dismissed = get_user_meta( get_current_user_id(), 'rtec_dismiss_rtec_3_prerelease_notice', true );
+		if ( ! empty( $dismissed ) ) {
+			return;
+		}
+
+		// Restrict to RTEC admin pages only.
+		if ( ! function_exists( 'rtec_is_admin_page' ) || ! rtec_is_admin_page() ) {
+			return;
+		}
+
+		// For first-time installs, activation sets a transient to delay
+		// showing this notice for one week so new users can focus on setup.
+		$delay_until = (int) get_transient( 'rtec_3_prerelease_delay_until' );
+		if ( $delay_until && time() < $delay_until ) {
+			return;
+		}
+
+		?>
+		<div class="is-dismissible">
+			<div class="rtec-admin-notice-banner rtec-box-shadow rtec-standard-notice">
+				<div class="rtec-img-wrap">
+					<img src="<?php echo esc_url( RTEC_PLUGIN_URL . 'img/RTEC-Logo-300.png' ); ?>" alt="<?php esc_attr_e( 'Registrations for The Events Calendar', 'registrations-for-the-events-calendar' ); ?>">
+				</div>
+				<div class="rtec-msg-wrap">
+					<h3><?php esc_html_e( 'RTEC 3.0 is coming soon', 'registrations-for-the-events-calendar' ); ?></h3>
+					<p><?php esc_html_e( 'A major update to Registrations for The Events Calendar is on the way:', 'registrations-for-the-events-calendar' ); ?></p>
+					<ul>
+						<li><?php esc_html_e( 'A cleaner interface', 'registrations-for-the-events-calendar' ); ?></li>
+						<li><?php esc_html_e( 'Improved registration forms', 'registrations-for-the-events-calendar' ); ?></li>
+						<li><?php esc_html_e( 'Easier registration management', 'registrations-for-the-events-calendar' ); ?></li>
+						<?php if ( class_exists( 'Registrations_For_The_Events_Calendar_Pro' ) ) : ?>
+							<li><?php esc_html_e( 'Improved payments and checkout', 'registrations-for-the-events-calendar' ); ?></li>
+						<?php endif; ?>
+					</ul>
+					<p><?php esc_html_e( 'Some visual customizations may break with this update. We recommend testing major updates on a staging site first.', 'registrations-for-the-events-calendar' ); ?></p>
+					<div class="rtec-button-wrap">
+						<a href="<?php echo esc_url( 'https://roundupwp.com/rtec-3-0-release/?utm_campaign=rtec-3-prelaunch&utm_source=rtec-plugin&utm_medium=admin-notice&utm_content=LearnWhatsChanging' ); ?>" class="button button-primary rtec-cta" target="_blank" rel="noopener noreferrer">
+							<?php esc_html_e( "Learn what's changing", 'registrations-for-the-events-calendar' ); ?>
+						</a>
+						<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'rtec_dismiss' => 'rtec_3_prerelease' ) ), 'rtec-dismiss', 'rtec_nonce' ) ); ?>" class="button rtec-secondary" style="margin-left: 8px;">
+							<?php esc_html_e( 'Dismiss this notice', 'registrations-for-the-events-calendar' ); ?>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 	public function should_show_notice( $notice_slug ) {
