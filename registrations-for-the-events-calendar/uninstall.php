@@ -14,6 +14,11 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar_Pro' ) ) {
 		delete_option( 'rtec_db_version' );
 		delete_transient( 'rtec_new_registrations' );
 
+		// Onboarding wizard and settings checklist (single option + transients)
+		delete_option( 'rtec_onboarding_state' );
+		delete_transient( 'rtec_onboarding_success_event_id' );
+		delete_transient( 'rtec_onboarding_success_event_url' );
+
 		$table_name = esc_sql( $wpdb->prefix . 'postmeta' );
 		$result     = $wpdb->query(
 			"

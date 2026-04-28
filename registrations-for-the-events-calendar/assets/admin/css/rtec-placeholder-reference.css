@@ -1,0 +1,130 @@
+/**
+ * Placeholder reference table (tabs, search, insert).
+ */
+.rtec-placeholderable-field .rtec-placeholder-reference {
+	margin-top: 6px;
+}
+
+.rtec-placeholder-reference {
+	background: #fff;
+	max-width: 700px;
+	border: 1px solid #dcdcdc;
+	border-radius: 4px;
+}
+
+.rtec-placeholder-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 12px;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.rtec-placeholder-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	padding: 0 0 0 12px;
+}
+
+.rtec-placeholder-tab {
+	padding: 8px 12px 6px;
+	border: none;
+	border-bottom: 2px solid transparent;
+	background: none;
+	cursor: pointer;
+	font-size: 14px;
+	color: #333;
+}
+
+.rtec-placeholder-tab.rtec-active,
+.rtec-placeholder-tab:hover {
+	border-bottom-color: #1A79C1;
+}
+
+.rtec-placeholder-search {
+	flex: 0 0 150px;
+	margin: 5px 0 5px 10px;
+}
+
+.rtec-placeholder-search-input {
+	width: 100%;
+	padding: 6px 8px 6px 32px;
+	line-height: 1.4;
+}
+
+.rtec-placeholder-category {
+	display: none;
+}
+
+.rtec-placeholder-category.rtec-active {
+	display: block;
+}
+
+.rtec-placeholder-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 4px 12px;
+	border-bottom: 1px solid #f0f0f0;
+	background: #F8F9FA;
+	gap: 8px;
+}
+
+.rtec-placeholder-info {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.rtec-placeholder-description {
+	color: #666;
+	font-size: 0.9em;
+}
+
+code.rtec-placeholder-code {
+	background: #fff;
+	border: 1px solid #DCDCDC;
+}
+
+.rtec-placeholder-insert {
+	padding: 4px 8px;
+	border: 1px solid #dcdcdc;
+	background: #F0F0F1;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #666;
+}
+
+.rtec-placeholder-insert:hover {
+	background: #ddd;
+}
+
+.rtec-placeholder-hidden,
+.rtec-placeholder-search-hidden,
+.rtec-placeholder-content .rtec-category-expanded .rtec-placeholder-search-hidden {
+	display: none;
+}
+
+.rtec-category-expanded .rtec-placeholder-hidden {
+	display: flex;
+}
+
+.rtec-category-expanded .rtec-show-more-placeholders {
+	display: none;
+}
+
+.rtec-show-more-placeholders {
+	width: 100%;
+	padding: 8px;
+	background: none;
+	border: none;
+	color: #1A79C1;
+	cursor: pointer;
+}
+
+.rtec-show-more-placeholders:hover {
+	text-decoration: underline;
+}

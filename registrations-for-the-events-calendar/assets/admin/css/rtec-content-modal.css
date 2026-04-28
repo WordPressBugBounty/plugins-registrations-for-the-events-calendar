@@ -1,0 +1,554 @@
+/**
+ * Content modal (AJAX-loaded; trigger via data-rtec-modal-content).
+ * Matches Pro: backdrop/dialog, width classes, manage registration UI,
+ * single registration header/event meta, two-column submissions layout.
+ */
+
+.rtec-content-modal-backdrop,
+.rtec-content-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease;
+}
+.rtec-content-modal-backdrop.rtec-content-modal-visible,
+.rtec-content-modal.rtec-content-modal-visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+body.rtec-content-modal-is-open {
+	overflow: hidden;
+}
+.rtec-content-modal-backdrop {
+	z-index: 100000;
+	background: rgba(0, 0, 0, 0.6);
+}
+.rtec-content-modal {
+	z-index: 100001;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	background: transparent;
+	padding: 25px 0;
+	overflow-y: auto;
+	max-height: 100vh;
+}
+.rtec-content-modal-dialog {
+	position: relative;
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	min-width: 280px;
+	width: calc(100vw - 50px);
+	max-height: calc(100vh - 50px);
+	overflow-y: auto;
+	flex-shrink: 0;
+}
+.rtec-content-modal-dialog.rtec-narrow-max-width-modal {
+	max-width: 600px;
+}
+.rtec-content-modal-dialog.rtec-small-max-width-modal {
+	max-width: 800px;
+}
+.rtec-content-modal-dialog.rtec-medium-max-width-modal {
+	max-width: 1200px;
+}
+.rtec-content-modal-dialog.rtec-maximum-max-width-modal {
+	max-width: 1400px;
+}
+@media (min-width: 651px) {
+	.rtec-content-modal-dialog.rtec-narrow-max-width-modal {
+		width: 600px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+@media (min-width: 801px) {
+	.rtec-content-modal-dialog.rtec-small-max-width-modal {
+		width: 800px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+@media (min-width: 1201px) {
+	.rtec-content-modal-dialog.rtec-medium-max-width-modal {
+		width: 1200px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+@media (min-width: 1051px) {
+	.rtec-content-modal-dialog.rtec-maximum-max-width-modal {
+		width: calc(100vw - 50px);
+		max-width: 1400px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+@media (max-width: 725px) {
+	.rtec-content-modal {
+		padding: 15px 0;
+	}
+	.rtec-content-modal-dialog {
+		width: calc(100vw - 30px);
+		max-height: calc(100vh - 30px);
+	}
+}
+@media (max-width: 480px) {
+	.rtec-content-modal {
+		padding: 10px 0;
+	}
+	.rtec-content-modal-dialog {
+		width: calc(100vw - 20px);
+		max-height: calc(100vh - 20px);
+		min-width: 0;
+	}
+}
+
+.rtec-content-modal .rtec-content-modal-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 2;
+	padding: 4px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: #666;
+}
+.rtec-content-modal .rtec-content-modal-close:hover {
+	color: #000;
+}
+.rtec-content-modal .rtec-content-modal-close .rtec-content-modal-close-icon {
+	display: block;
+	width: 24px;
+	height: 24px;
+}
+.rtec-content-modal-body {
+	margin: 0;
+}
+.rtec-event-actions-modal .rtec-single-header {
+	display: flex;
+	align-items: center;
+	padding: 20px 30px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.rtec-event-actions-modal .rtec-single-header .rtec-manage-registration-heading,
+.rtec-event-actions-modal .rtec-single-header .rtec-event-actions-heading-title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 600;
+}
+.rtec-event-actions-modal .rtec-single-event-meta {
+	padding: 15px 30px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.rtec-event-actions-modal .rtec-single-event-meta > div {
+	display: inline-block;
+	margin-right: 12px;
+}
+.rtec-event-actions-modal .rtec-single-event-meta-misc .rtec-event-detail-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+.rtec-event-actions-modal .rtec-single-event-meta-misc .rtec-event-detail-item .rtec-icon,
+.rtec-event-actions-modal .rtec-single-event-meta-misc .rtec-event-detail-item svg {
+	width: 14px;
+	height: 14px;
+	flex-shrink: 0;
+}
+.rtec-event-actions-content {
+	background: #f9f9f9;
+	border-top: 1px solid #dcdcdc;
+}
+.rtec-event-actions-body {
+	padding: 20px 30px 30px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+.rtec-event-actions-body .rtec-add-edit-wrap,
+.rtec-event-actions-body .rtec-transfer-wrap,
+.rtec-event-actions-body .rtec-import-wrap {
+	background: #fff;
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+	padding: 25px;
+	box-sizing: border-box;
+}
+.rtec-event-actions-body .rtec-email-creator {
+	max-width: 100%;
+	background: #fff;
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+	padding: 25px;
+	box-sizing: border-box;
+}
+.rtec-content-modal-error {
+	color: #b32d2e;
+	margin: 0;
+}
+.rtec-content-modal-loading .rtec-content-modal-spinner {
+	display: block;
+	width: 32px;
+	height: 32px;
+	margin: 20px auto;
+	border: 3px solid #ddd;
+	border-top-color: #0073aa;
+	border-radius: 50%;
+	animation: rtec-content-modal-spin 0.8s linear infinite;
+}
+@keyframes rtec-content-modal-spin {
+	to { transform: rotate(360deg); }
+}
+@media (max-width: 725px) {
+	.rtec-manage-registration .rtec-cols,
+	.rtec-manage-registration [class*="rtec-modal-col"] {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* Manage registration modal */
+.rtec-manage-registration {
+	margin: 0;
+}
+.rtec-manage-registration-heading {
+	margin: 0 0 1em;
+	font-size: 1.25em;
+}
+/* When no registration (add new), heading is first child and needs padding */
+.rtec-manage-registration > .rtec-manage-registration-heading:first-child {
+	padding: 20px 30px 0;
+	margin-bottom: 0;
+}
+.rtec-manage-registration-tabs .rtec-subnav-tab-list {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 10px 20px;
+	gap: 10px;
+	background: #f9f9f9;
+}
+.rtec-manage-registration-tabs .rtec-subnav-tab-list li {
+	margin: 0;
+}
+.rtec-manage-registration-tabs .rtec-subnav-tab {
+	display: block;
+	padding: 0.5em 0.75em;
+	text-decoration: none;
+	color: #555;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+}
+.rtec-manage-registration-tabs .rtec-subnav-tab:hover {
+	color: #0073aa;
+}
+.rtec-manage-registration-tabs .rtec-subnav-tab.rtec-subnav-tab-active {
+	color: #0073aa;
+	border-bottom-color: #0073aa;
+	font-weight: 600;
+}
+.rtec-manage-registration-panels .rtec-manage-tab-panel {
+	margin: 0;
+}
+
+/* Single registration manager: header, event meta, two-column submissions tab */
+.rtec-single-registration-manager .rtec-single-header {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px 20px;
+	padding: 20px 30px;
+	border-bottom: 1px solid #dcdcdc;
+	background: #fff;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-manage-registration-heading {
+	margin: 0;
+	font-size: 24px;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-registration-column-status {
+	width: auto;
+	padding: 6px 15px;
+	border-radius: 4px;
+	font-size: 13px;
+	font-weight: 500;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-registration-column-status.rtec-status-c {
+	background: #D0EEDA;
+	color: #155724;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-registration-column-status.rtec-status-p {
+	background: #FFE198;
+	color: #856404;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-registration-column-status.rtec-status-n {
+	background: #D5E9F8;
+	color: #004085;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-quantity-cost {
+	display: flex;
+	align-items: center;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-icon-text {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.rtec-single-registration-manager .rtec-single-header .rtec-icon-text .rtec-icon,
+.rtec-single-registration-manager .rtec-single-header .rtec-icon-text svg {
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+}
+
+.rtec-single-registration-manager .rtec-single-event-meta {
+	padding: 15px 30px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.rtec-single-registration-manager .rtec-single-event-meta > div {
+	display: inline-block;
+	margin-right: 12px;
+	margin-bottom: 4px;
+}
+.rtec-single-registration-manager .rtec-single-event-meta-misc .rtec-event-detail-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-right: 16px;
+}
+.rtec-single-registration-manager .rtec-single-event-meta-misc .rtec-event-detail-item .rtec-icon,
+.rtec-single-registration-manager .rtec-single-event-meta-misc .rtec-event-detail-item svg {
+	width: 14px;
+	height: 14px;
+	flex-shrink: 0;
+}
+.rtec-single-registration-content {
+	padding: 20px 30px 30px;
+	background: #f9f9f9;
+}
+.rtec-single-registration-content.rtec-1-column-wrapper {
+	display: block;
+}
+.rtec-single-registration-content.rtec-2-column-wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+.rtec-single-registration-content .rtec-dashboard-item {
+	background: #fff;
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+	padding: 25px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+.rtec-contact-email-form-wrap {
+	max-width: 670px;
+	margin: auto;
+}
+.rtec-single-registration-content .rtec-dashboard-item:last-child {
+	margin-bottom: 0;
+}
+.rtec-single-registration-content .rtec-dashboard-item-header {
+	padding-bottom: 16px;
+	border-bottom: 1px solid #dcdcdc;
+	margin-bottom: 18px;
+	font-size: 15px;
+}
+.rtec-single-registration-content .rtec-dashboard-item-header h3 {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* User info block (column 2) */
+.rtec-user-info .rtec-user-header {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 20px;
+}
+.rtec-user-info .rtec-user-avatar {
+	margin-right: 20px;
+	flex-shrink: 0;
+}
+.rtec-user-info .rtec-user-meta h4 {
+	margin: 0 0 5px 0;
+}
+.rtec-user-info .rtec-username {
+	color: #666;
+	margin: 0 0 10px 0;
+}
+.rtec-user-info .rtec-user-details {
+	border-top: 1px solid #eee;
+	padding-top: 20px;
+}
+.rtec-user-info .rtec-user-details p {
+	margin: 0 0 10px 0;
+}
+.rtec-user-info .rtec-user-actions {
+	margin-top: 20px;
+}
+.rtec-user-info .rtec-no-user {
+	color: #666;
+	font-style: italic;
+}
+
+/* Form fields inside Registration Details */
+.rtec-single-registration-content .rtec-edit-form-field {
+	margin-bottom: 16px;
+}
+.rtec-single-registration-content .rtec-edit-form-field label {
+	display: block;
+	margin-bottom: 4px;
+}
+.rtec-single-registration-content .rtec-edit-form-field input[type="text"],
+.rtec-single-registration-content .rtec-edit-form-field select,
+.rtec-single-registration-content .rtec-edit-form-field textarea {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+.rtec-single-registration-content .rtec-form-button-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 20px 0 0;
+}
+.rtec-single-registration-content .rtec-form-button-wrapper .rtec-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-size: 14px;
+	cursor: pointer;
+	border: 1px solid #0073aa;
+	background: #0073aa;
+	color: #fff;
+}
+.rtec-single-registration-content .rtec-form-button-wrapper .rtec-button:hover {
+	background: #005a87;
+	border-color: #005a87;
+	color: #fff;
+}
+.rtec-single-registration-content .rtec-form-button-wrapper .rtec-delete-registration-button {
+	margin-left: auto;
+}
+.rtec-single-registration-content .rtec-form-button-wrapper .rtec-delete-registration-button.rtec-button {
+	border-color: #d63638;
+	color: #d63638;
+	background: #fff;
+}
+.rtec-single-registration-content .rtec-form-button-wrapper .rtec-delete-registration-button.rtec-button:hover {
+	background: #d63638;
+	color: #fff;
+	border-color: #d63638;
+}
+
+.rtec-single-registration-content .rtec-registration-group-table,
+.rtec-single-registration-content .rtec-related-registrations-table {
+	margin: 0;
+}
+.rtec-single-registration-content .rtec-no-related {
+	margin: 0;
+	color: #666;
+	font-style: italic;
+}
+
+.rtec-payment-info-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 15px;
+}
+.rtec-payment-info-item {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.rtec-payment-info-item label {
+	font-size: 12px;
+	font-weight: 500;
+	color: #646970;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+.rtec-payment-info-item .rtec-payment-status {
+	font-weight: 600;
+	padding: 4px 8px;
+	border-radius: 4px;
+}
+.rtec-no-payment-record {
+	text-align: center;
+	padding: 30px 20px;
+	color: #646970;
+}
+.rtec-no-payment-record p {
+	margin: 0 0 10px 0;
+	font-size: 16px;
+}
+
+.rtec-manage-tab-contact.rtec-single-registration-content {
+	padding: 20px 30px 30px;
+}
+.rtec-contact-email-form-wrap .rtec-dashboard-item-content {
+	padding-top: 0;
+}
+.rtec-contact-email-form-wrap .rtec-email-recpients-wrap {
+	min-height: 36px;
+}
+.rtec-email-creator-options-top-row {
+	display: flex;
+	flex-shrink: 0;
+	width: 100%;
+	gap: 20px;
+}
+.rtec-single-recipient .rtec-single-recipient-identity {
+	margin-right: 4px;
+}
+
+@media (max-width: 1150px) {
+	.rtec-single-registration-content.rtec-2-column-wrapper {
+		grid-template-columns: 1fr;
+	}
+}
+@media (max-width: 600px) {
+	.rtec-single-registration-manager .rtec-single-header {
+		padding: 16px 20px;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.rtec-single-registration-manager .rtec-single-event-meta {
+		padding: 12px 20px;
+	}
+	.rtec-single-registration-content.rtec-2-column-wrapper {
+		padding: 16px 20px 24px;
+	}
+	.rtec-single-registration-content .rtec-dashboard-item {
+		padding: 18px;
+	}
+	.rtec-event-actions-modal .rtec-single-header {
+		padding: 16px 20px;
+	}
+	.rtec-event-actions-modal .rtec-single-event-meta {
+		padding: 12px 20px;
+	}
+	.rtec-event-actions-body {
+		padding: 16px 20px 24px;
+	}
+	.rtec-event-actions-body .rtec-add-edit-wrap,
+	.rtec-event-actions-body .rtec-transfer-wrap,
+	.rtec-event-actions-body .rtec-import-wrap,
+	.rtec-event-actions-body .rtec-email-creator {
+		padding: 18px;
+	}
+}

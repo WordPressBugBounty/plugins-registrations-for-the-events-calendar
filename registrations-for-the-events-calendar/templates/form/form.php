@@ -8,25 +8,29 @@
  * @version 2.5 Registrations for the Events Calendar by Roundup WP
  *
  */
-// Don't load directly
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+$event_user = null;
 ?>
+<?php do_action( 'rtec_after_reveal_button', $event_meta, $event_user ); ?>
+
 <div class="rtec-form-wrapper rtec-toggle-on-click<?php echo esc_attr( $form_styles['form_class_att'] ); ?>" data-remaining="<?php echo (int) $max_guests; ?>" style="<?php echo esc_attr( $form_styles['form_style_att'] ); ?>">
 
 	<?php echo $attendance_message_html; ?>
-	<div class="rtec-field-group-menu"></div>
+	<div class="rtec-field-group-menu rtec-form-spacing-sides"></div>
 
-	<form method="post" action="" id="rtec-form" class="rtec-form">
+	<form method="post" action="<?php echo esc_url( get_the_permalink() ); ?>" id="rtec-form" class="rtec-form">
 
 		<input type="hidden" name="rtec_email_submission" value="1" />
 		<input type="hidden" name="rtec_event_id" value="<?php echo (int) $event_meta['post_id']; ?>" />
 		<?php echo $additional_hidden_fields_html; ?>
 
+		<?php do_action( 'rtec_before_field_groups', $event_meta['post_id'] ); ?>
+
 		<div class="rtec-field-group rtec-field-group-main">
-			<span class="rtec-fg-header"><span class="rtec-fg-identifier"></span></span>
-			<?php include RTEC_PLUGIN_DIR . 'templates/form/field-group.php'; ?>
+			<div class="rtec-fg-header rtec-form-spacing-sides"><span class="rtec-fg-identifier"></span></div>
+			<?php include rtec_plugin_path( 'templates/form/field-group.php' ); ?>
 		</div>
 
 		<div class="rtec-form-field rtec-user-comments" style="display: none;">
@@ -37,14 +41,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 		</div>
 
-		<div class="rtec-form-buttons">
+		<div class="rtec-form-buttons rtec-form-spacing-sides">
 			<input type="submit" class="rtec-submit-button<?php echo esc_attr( $form_styles['button_class_att'] ); ?><?php echo esc_attr( $submit_button_class ); ?>" name="rtec_submit" value="<?php echo esc_attr( $submit_button_text ); ?>" style="<?php echo esc_attr( $form_styles['button_style_att'] ); ?>"/>
 		</div>
 
 	</form>
-
-	<div class="rtec-spinner">
-		<?php echo $loading_gif_html; ?>
-	</div>
 
 </div>

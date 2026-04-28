@@ -6,15 +6,21 @@ Tags: events calendar, bookings, RSVP, events, event registration
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.13.10
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Collect and manage event registrations with a customizable form and email template. The best event registration plugin for The Events Calendar.
+Collect and manage event registrations with a customizable registration form and email templates. Built specifically for The Events Calendar.
 
 == Description ==
 
-Whether you're holding a meetup, class, workshop, tournament, or any other kind of event, you need a way to handle registration. Our plugin makes managing event registration easy and simple. Even nontechnical users can set up the plugin and start collecting registrations within minutes. Create a simple RSVP registration form or a more complex form with custom fields. All registrations are recorded in your database for easy event management. Customize confirmation and notification emails to keep your attendees, as well as your event managers, informed.
+A powerful event registration plugin built specifically for The Events Calendar. Start collecting registrations in minutes.
+
+Whether you're holding a meetup, class, workshop, tournament, or any other kind of event, you need a reliable way to handle event registration. Our plugin makes collecting and managing event registrations easy and simple. Even nontechnical users can set up the plugin and start collecting event registrations within minutes.
+
+Create a simple RSVP registration form or a more advanced event registration form with custom fields. All event registrations are stored in your WordPress database for easy event management.
+
+Customize confirmation and notification email templates to keep your attendees and event managers informed throughout the event registration process.
 
 = Parent Plugin =
 
@@ -26,7 +32,7 @@ As soon as you install and activate the plugin, you can begin collecting event r
 
 = Uses =
 
-The plugin can be used for more than event registration. Here are other things the plugin is currently being used for.
+The plugin can be used for more than event registration. Here are some common ways people are using it:
 
 * RSVP for meetings
 * Class registration or simple class management
@@ -39,26 +45,26 @@ The plugin can be used for more than event registration. Here are other things t
 
 = User-Friendly Features =
 
-* Reduce incomplete event registrations by limiting the entire process to a single page (AJAX form submit).
-* Keep your event page uncluttered (your event registration form is hidden initially and revealed by clicking a customizable "Register" button).
-* Follow-up with your attendees with a customizable confirmation email.
-* Save entries in a database table for easy event registration management.
-* Attendees can unregister (cancel registration) using a link sent in an email.
+* Reduce incomplete event registrations by keeping the entire process on a single page (AJAX form submission).
+* Keep your event page uncluttered (your registration form is hidden initially and revealed by clicking a customizable "Register" button).
+* Follow up with attendees using customizable confirmation emails.
+* Save registrations in the WordPress database for easy management.
+* Allow attendees to cancel their registration using a secure link sent via email.
 
 = Highly Customizable =
 
-* Add as many text fields as you'd like to the event registration form.
-* Add the event registration form to one of several parts of the page your event is displayed on.
-* Choose how the form displays. Reveal on click, pop-up modal window, or displayed fully.
-* Display the event registration form anywhere on your site with shortcodes or our event registration Gutenberg block.
-* Customize the labels, error messages, directions for your attendees, and which fields are required.
-* Customize both the email templates sent to your attendees and the notification email sent to the event manager.
+* Add as many fields as you'd like to your event registration form.
+* Choose where the registration form appears on your event page.
+* Control how the form displays: reveal on click, pop-up modal, or always visible.
+* Display the form anywhere on your site using shortcodes or the Gutenberg block.
+* Customize labels, error messages, instructions, and required fields.
+* Customize both attendee confirmation emails and organizer notification emails.
 * Limit the number of registrations per event.
-* Make event registration for logged-in users only.
-* Display a list of current registered attendees.
-* Specify a registration deadline (both date and time).
+* Restrict registration to logged-in users if needed.
+* Display a list of registered attendees.
+* Set a registration deadline (date and time).
 
-= Powerful Backend Features for Easy Event Management =
+= Powerful Admin Tools =
 
 * Registrations are saved in the WordPress database, where you can manually add, edit, and delete them.
 * Email addresses can be checked for duplicates (this prevents duplicate registrations).
@@ -78,10 +84,17 @@ The plugin can be used for more than event registration. Here are other things t
 
 = Benefits =
 
-* Simple workflow frees up your time.
-* Customizations allow you to add a personal touch.
-* Optional display of a registered attendee list builds community.
-* Straightforward event registration process provides a world-class user experience.
+* Save time with a simple, streamlined registration workflow.
+* Customize the experience to match your needs.
+* Build community by displaying registered attendees (optional).
+* Provide a fast, user-friendly registration experience that increases sign-ups.
+
+= New in 3.0 =
+
+* Cleaner, more modern interface
+* Improved registration forms
+* Revamped registration management experience
+* 100+ improvements across the plugin
 
 = Featured Reviews =
 
@@ -93,27 +106,29 @@ The plugin can be used for more than event registration. Here are other things t
 
 = Pro Version =
 
-Do you need even more customization and control? Check out [Registrations for the Events Calendar Pro](https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=readme&utm_medium=pro-list&utm_content=RTECPro). Pro features include:
+Need more customization and control? Check out [Registrations for the Events Calendar Pro](https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=readme&utm_medium=pro-list&utm_content=RTECPro). Pro features include:
 
-* Multiple registration forms specific to each event.
-* Drag and drop registration form builder.
-* Drop-down, number, checkbox, radio, date, file upload and paragraph fields.
-* Online payments for events using PayPal. (Stripe, iDeal, and WooCommerce extensions available)
+Pro features include:
+
+* Multiple registration forms per event.
+* Drag and drop event registration form builder.
+* Advanced field types: drop-down, number, checkbox, radio, date, file upload, and paragraph.
+* Accept online payments for event registrations using PayPal (Stripe, iDEAL, and WooCommerce extensions available).
 * Offline payment management.
-* Add multiple costs to events or add costs based on form field responses.
-* Guest registrations (register for more than one person at a time).
-* Waiting lists with automatic promotion when a spot opens.
+* Flexible pricing: add multiple costs to events or vary pricing based on form field responses.
+* Guest registrations (register multiple attendees at once).
+* Waiting lists with automatic promotion when spots open.
 * Multiple confirmation email templates.
-* Multiple registration categories and price levels.
-* Automatic/reminder email message sending.
-* Manual email sending from the WordPress dashboard.
-* Connect an event series to a single registration when using The Events Calendar Pro.
-* Convenient event check in system.
-* Customizable event reports downloadable as a .csv file.
-* Import registrations in bulk using a .csv file.
-* Registrants can edit their own registrations.
-* Easy event management for membership sites.
-* Logged-in users can view a list of events they registered for.
+* Registration types with multiple price levels and limits.
+* Scheduled email messages for reminders and follow-ups.
+* Send emails manually from the WordPress dashboard.
+* Connect event series to a single registration (with The Events Calendar Pro).
+* Event check-in and attendance tracking tools.
+* Customizable event registration reports downloadable as CSV.
+* Import event registrations in bulk using CSV.
+* Allow attendees to edit their own registrations.
+* Ideal for membership sites and recurring event registration workflows.
+* Logged-in users can view a list of their registered events.
 
 == Feedback or Support ==
 
@@ -135,11 +150,11 @@ Follow these steps for a manual installation:
 1. Install the plugin "The Events Calendar" by Modern Tribe from our welcome page (if not already installed).
 2. If you haven't created an event, do so by going to the WordPress dashboard and navigating to Events -> Add New.
 3. A registration form will now appear on your created event or any other published event.
-3. Add a registration form for a specific event to another page on your site using the shortcode [rtec-registration-form event=743] with the "event" setting being the post ID for that event.
-4. You can configure the form fields, messaging, registrations limits etc by navigating to Events -> Registrations and then selecting the "Form" tab.
-5. You can configure the email options on the "Email" tab.
-6. See a quick overview of your events and registrations on the "Registrations" tab.
-7. Add, edit, and remove registrations manually by navigating to the "Registrations" tab and clicking "Detailed View" for an event. You can also export or view submission details here.
+3. Add a registration form for a specific event to another page on your site using the shortcode [rtec-registration-form event=743] with the "event" setting being the post ID for that event. Blocks also available.
+4. You can configure the form fields, messaging, registrations limits etc by navigating to Registrations -> Settings.
+5. You can configure the email options on the "Email" tab of the settings page.
+6. See a quick overview of your events and registrations on the "Registrations" page.
+7. Add, edit, and remove registrations manually by navigating to the "Registrations" tab and clicking "+ Manage Registrations" for an event. You can also export or view submission details here.
 
 == Screenshots ==
 
@@ -158,51 +173,76 @@ Follow these steps for a manual installation:
 
 = Can I limit the number of registrations for an event? =
 
-Yes. You can set up the maximum number of registrations on the "Form" tab or set this for each event individually.
+Yes. You can set a maximum number of event registrations globally on the "Form" tab or configure limits for each event individually.
 
-= Can I add more fields to the form? =
+= Can I add more fields to the registration form? =
 
-Yes. There is a button to add custom text input fields on the "Form" tab.
+Yes. You can add custom fields to your event registration form from the "Form" tab.
 
-= I'm not receiving a notification email or attendees are not receiving a confirmation email  =
+= I'm not receiving notification emails or attendees are not receiving confirmation emails =
 
-Take a look at [our FAQ](https://roundupwp.com/faq/my-confirmationnotification-emails-are-missing/?utm_campaign=rtec-free&utm_source=readme&utm_medium=faq-emailsmissing&utm_content=OurFAQ) on troubleshooting this issue as well as instructions for installing an SMTP plugin.
+Take a look at [our FAQ](https://roundupwp.com/faq/my-confirmationnotification-emails-are-missing/?utm_campaign=rtec-free&utm_source=readme&utm_medium=faq-emailsmissing&utm_content=OurFAQ) for troubleshooting steps, including how to configure SMTP for reliable email delivery.
 
 = How do I disable registrations for a specific event? =
 
-By default, registrations are enabled for every event. You can disable registrations for a specific event by checking the appropriate box on the "Edit Event" page or on the "Registrations" tab "Overview" page. You can also disable registrations by default by checking the checkbox on the "Form" tab.
+Registrations are enabled by default for all events. You can disable event registrations on the "Edit Event" page or from the "Registrations" tab under "Overview". You can also disable registrations globally on the "Form" tab.
 
-= Can I set a deadline for when registrations are accepted? =
+= Can I set a deadline for event registrations? =
 
-You can configure an offset for how long registrations will be available relative to the event start time or set a specific deadline for each event.
+Yes. You can set a deadline relative to the event start time or define a specific registration deadline for each event.
 
-= Can I edit registrations and export them for an event for event management purposes? =
+= Can I edit registrations and export them? =
 
-Yes. Click on the button "Detailed View" for the event in which you'd like to edit or export event registrations for.
+Yes. Use the "Detailed View" for any event to manage event registrations, including editing and exporting them.
 
 = Can I display a list of event attendees on the front-end? =
 
-Yes. There is an option on the "Form" tab to display a list of event attendees above the registration form. A guest's first and last name will only appear after you have had a chance to review it in the backend of the site.
+Yes. You can display a list of registered attendees above the registration form. Attendee names will only appear after they have been reviewed in the admin.
 
-= Can I display the event registration form on another page or post? =
+= Can I display the registration form on another page or post? =
 
-Yes. You would need to use the post ID for that event in the shortcode. Example: [rtec-registration-form event=743]
+Yes. Use the event ID in the shortcode to display the registration form anywhere on your site.
 
-= The form is not hidden initially. Why is that? =
+Example: [rtec-registration-form event=743]
 
-It's likely that you have a javascript error somewhere on that page. Try disabling other plugins or switching themes to see if this corrects the issue.
+= The registration form is not hidden initially. Why is that? =
+
+This is usually caused by a JavaScript error on the page. Try disabling other plugins or switching themes to identify the issue.
 
 = Is this plugin compatible with WordPress multisite? =
 
-Yes. There is a custom database table added to each sub-site's database to separate registrations.
+Yes. Each site in a multisite network has its own database table for storing event registrations.
 
-= What do I do if I have a request or need help? =
+= Can attendees cancel their registration? =
 
-Go to the "Support" tab on the plugin's settings page and follow the link to our support page, setup instructions page, or feature request page.
+Yes. Attendees can cancel their registration using a secure link sent in their confirmation email.
+
+= Can I accept payments for event registrations? =
+
+Yes. The Pro version supports online payments, offline payments, and flexible pricing options.
+
+= What do I do if I need help or want to request a feature? =
+
+Go to the "Support" tab in the plugin settings and follow the links to support, setup guides, or feature requests.
 
 == Changelog ==
-= 2.13.10 =
-* Important: RTEC 3.0 is coming in April. Learn what's changing in the [RTEC 3.0 release guide](https://roundupwp.com/rtec-3-0-release/?utm_campaign=rtec-3-prelaunch&utm_source=rtec-plugin&utm_medium=readme&utm_content=RTEC3Overview).
+= 3.0 =
+Major release introducing a cleaner interface and many under-the-hood improvements.
+Read the full [release announcement and upgrade guide](https://roundupwp.com/rtec-3-0-release/?utm_campaign=rtec-free&utm_source=readme&utm_medium=changelog&utm_content=30Release)
+
+New
+* Redesigned admin interface and improved user experience
+* New registration management modal with tabbed interface
+* Blocks for all shortcode items and improvements to all existing blocks
+
+Improved
+* Registration form layout and styling improvements
+* Email template management improvements
+* Placeholder documentation and usability improvements
+* Database query optimizations
+* Admin scripts refactoring and JavaScript cleanup
+* Icons updated to inline SVG replacing Font Awesome
+* Settings reorganization for improved usability
 
 = 2.13.9 =
 * Fix: Made several improvements to the Google recaptcha code to make it more reliable.
@@ -454,7 +494,7 @@ Go to the "Support" tab on the plugin's settings page and follow the link to our
 * Fix: Changed name of spam honeypot field to avoid browsers automatically filling in a value.
 
 = 2.1 =
-* New: Generate a unique link for event attendees to "unregister" from an event by adding the template {unregister-link} in the confirmation email.
+* New: Generate a unique link for event attendees to "unregister" from an event by adding the template {cancel-link} in the confirmation email. ({unregister-link} is supported for backwards compatibility.)
 * New: Setting (and hook) for custom formatting of phone numbers. Change format of 10 digit numbers at the bottom of the "Form" tab. Read about further customization [here](https://roundupwp.com/faq/format-phone-numbers/).
 * New: Translations for front-end text added for Dutch (nl_NL) and Italian (it_IT).
 * New: Added columns to the rtec_registrations table in the database to record user id and create a unique key for attendees to unregister.

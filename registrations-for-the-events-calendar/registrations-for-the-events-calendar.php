@@ -2,7 +2,8 @@
 /*
 Plugin Name: Registrations for The Events Calendar
 Description: Collect and manage event registrations with a customizable form and email template. This plugin requires The Events Calendar by Modern Tribe to work.
-Version: 2.13.10
+Version: 3.0
+Requires PHP: 7.4
 Author: Roundup WP
 Author URI: roundupwp.com
 License: GPLv2 or later
@@ -37,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 // Plugin version.
 if ( ! defined( 'RTEC_VERSION' ) ) {
-	define( 'RTEC_VERSION', '2.13.10' );
+	define( 'RTEC_VERSION', '3.0' );
 }
 // Plugin Folder Path.
 if ( ! defined( 'RTEC_PLUGIN_DIR' ) ) {
@@ -49,7 +50,49 @@ if ( ! defined( 'RTEC_PLUGIN_URL' ) ) {
 }
 
 if ( ! defined( 'RTEC_TEC_VER_STRING' ) ) {
-	define( 'RTEC_TEC_VER_STRING', '.6.15.11' );
+	define( 'RTEC_TEC_VER_STRING', '.6.15.19' );
+}
+
+// Set to true by build script when minified frontend assets are produced; leave false in source.
+if ( ! defined( 'RTEC_USE_MINIFIED_ASSETS' ) ) {
+	define( 'RTEC_USE_MINIFIED_ASSETS', true );
+}
+
+/**
+ * Get plugin path for includes (no trailing slash).
+ *
+ * @param string $path Optional path relative to plugin root.
+ * @return string
+ */
+function rtec_plugin_path( $path = '' ) {
+	return RTEC_PLUGIN_DIR . ( $path ? ltrim( $path, '/' . DIRECTORY_SEPARATOR ) : '' );
+}
+
+/**
+ * Get plugin URL for assets (no trailing slash).
+ *
+ * @param string $path Optional path relative to plugin root.
+ * @return string
+ */
+function rtec_plugin_url( $path = '' ) {
+	return RTEC_PLUGIN_URL . ( $path ? ltrim( $path, '/' ) : '' );
+}
+
+/**
+ * Get URL for a frontend asset. When RTEC_USE_MINIFIED_ASSETS is true (set by build), returns .min path.
+ *
+ * @param string $path Relative path from plugin root, e.g. 'assets/frontend/js/rtec-scripts.js'.
+ * @return string Full URL for the asset (minified or unminified).
+ */
+function rtec_frontend_asset_url( $path ) {
+	if ( RTEC_USE_MINIFIED_ASSETS ) {
+		if ( substr( $path, -3 ) === '.js' && substr( $path, -7 ) !== '.min.js' ) {
+			$path = substr( $path, 0, -3 ) . '.min.js';
+		} elseif ( substr( $path, -4 ) === '.css' && substr( $path, -8 ) !== '.min.css' ) {
+			$path = substr( $path, 0, -4 ) . '.min.css';
+		}
+	}
+	return rtec_plugin_url( $path );
 }
 
 // Check for The Events Calendar to be active
@@ -175,10 +218,14 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 				define( 'RTEC_TRIBE_MENU_PAGE', 'edit.php?post_type=tribe_events' );
 			}
 			if ( ! defined( 'RTEC_ADMIN_URL' ) ) {
-				define( 'RTEC_ADMIN_URL', 'edit.php?post_type=tribe_events&page=registrations-for-the-events-calendar' );
+				define( 'RTEC_ADMIN_URL', 'admin.php?page=registrations-for-the-events-calendar' );
 			}
 			if ( ! defined( 'RTEC_MENU_SLUG' ) ) {
 				define( 'RTEC_MENU_SLUG', 'registrations-for-the-events-calendar' );
+			}
+			// User meta key for "last viewed registrations" (used for "new since last visit" count).
+			if ( ! defined( 'RTEC_LAST_VIEWED_REGISTRATIONS_META_KEY' ) ) {
+				define( 'RTEC_LAST_VIEWED_REGISTRATIONS_META_KEY', 'rtec_admin_last_viewed_registrations_at' );
 			}
 		}
 
@@ -192,18 +239,18 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 		private function includes() {
 			global $rtec_options;
 			$rtec_options = get_option( 'rtec_options', array() );
-			require_once RTEC_PLUGIN_DIR . 'inc/class-rtec-db.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/helper-functions.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/form/class-rtec-form.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/form/form-functions.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/class-rtec-submission.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/utils/class-rtec-templater.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/utils/class-rtec-settings.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/utils/class-rtec-defaults.php';
+			require_once rtec_plugin_path( 'includes/class-rtec-db.php' );
+			require_once rtec_plugin_path( 'includes/helper-functions.php' );
+			require_once rtec_plugin_path( 'includes/form/class-rtec-form.php' );
+			require_once rtec_plugin_path( 'includes/form/form-functions.php' );
+			require_once rtec_plugin_path( 'includes/class-rtec-submission.php' );
+			require_once rtec_plugin_path( 'includes/utils/class-rtec-templater.php' );
+			require_once rtec_plugin_path( 'includes/utils/class-rtec-settings.php' );
+			require_once rtec_plugin_path( 'includes/utils/class-rtec-defaults.php' );
 
-			require_once trailingslashit( RTEC_PLUGIN_DIR ) . 'inc/class-rtec-venue-query.php';
-			require_once trailingslashit( RTEC_PLUGIN_DIR ) . 'inc/blocks/class-rtec-blocks.php';
-			require_once trailingslashit( RTEC_PLUGIN_DIR ) . 'inc/class-rtec-wpml-lite.php';
+			require_once rtec_plugin_path( 'includes/class-rtec-venue-query.php' );
+			require_once rtec_plugin_path( 'includes/blocks/class-rtec-blocks.php' );
+			require_once rtec_plugin_path( 'includes/class-rtec-wpml-lite.php' );
 
 			$rtec_blocks = new RTEC_Blocks();
 
@@ -211,64 +258,108 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 				$rtec_blocks->load();
 			}
 
-			require_once RTEC_PLUGIN_DIR . 'inc/class-rtec-migration.php';
+			require_once rtec_plugin_path( 'includes/class-rtec-migration.php' );
 			$rtec_migration = new RTEC_Migration();
 			$rtec_migration->init();
 			if ( is_admin() ) {
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/class-rtec-db-admin.php';
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/admin-functions.php';
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/class-rtec-admin.php';
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/class-rtec-admin-registrations.php';
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/class-rtec-admin-event.php';
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/services/class-rtec-modal-service.php';
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-db-admin.php' );
+				require_once rtec_plugin_path( 'includes/admin/admin-functions.php' );
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-admin.php' );
+				require_once rtec_plugin_path( 'includes/utils/class-rtec-placeholders.php' );
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-admin-registrations.php' );
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-admin-event.php' );
+				require_once rtec_plugin_path( 'includes/utils/class-rtec-icon.php' );
+				require_once rtec_plugin_path( 'includes/admin/services/class-rtec-modal-service.php' );
 				$modal_service = new RTEC_Modal_Service();
 				$modal_service->init_hooks();
-				require_once RTEC_PLUGIN_DIR . 'inc/admin/services/class-rtec-notice-service.php';
+				require_once rtec_plugin_path( 'includes/admin/services/class-rtec-upsell-service.php' );
+				$upsell_service = new RTEC_Upsell_Service();
+				$upsell_service->init_hooks();
+				require_once rtec_plugin_path( 'includes/admin/services/class-rtec-notice-service.php' );
 				$notice_service = new RTEC_Notice_Service();
 				$notice_service->init_hooks();
+				require_once rtec_plugin_path( 'includes/admin/services/class-rtec-new-registration-alerts-service.php' );
+				RTEC_New_Registration_Alerts_Service::instance()->init_hooks();
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-manage-modal-context.php' );
+				require_once rtec_plugin_path( 'includes/admin/services/class-rtec-modal-content-service.php' );
+				$modal_content_service = new RTEC_Modal_Content_Service();
+				$modal_content_service->init_hooks();
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-whats-new-3-0.php' );
+				RTEC_Whats_New_3_0::init_hooks();
+				require_once rtec_plugin_path( 'includes/onboarding/class-rtec-onboarding.php' );
+				RTEC_Onboarding::instance()->init();
 			}
 
 			/*
 			 * Services
 			 */
-			require_once trailingslashit( RTEC_PLUGIN_DIR ) . 'inc/services/class-rtec-placeholder-service.php';
+			require_once rtec_plugin_path( 'includes/utils/class-rtec-icon.php' );
+			require_once rtec_plugin_path( 'includes/services/class-rtec-placeholder-service.php' );
 			$placeholder_service = new RTEC_Placeholder_Service();
 			$placeholder_service->init_hooks();
 
-			require_once RTEC_PLUGIN_DIR . 'inc/services/class-rtec-frontend-modal-service.php';
+			require_once rtec_plugin_path( 'includes/services/class-rtec-frontend-modal-service.php' );
 			$modal_service = new RTEC_Frontend_Modal_Service();
 			$modal_service->init_hooks();
 
-			require_once RTEC_PLUGIN_DIR . 'inc/services/class-rtec-footer-listener-service.php';
+			require_once rtec_plugin_path( 'includes/services/class-rtec-footer-listener-service.php' );
 			$footer_service = new RTEC_Footer_Listener_Service();
 			$footer_service->init_hooks();
 
-			require_once RTEC_PLUGIN_DIR . 'inc/services/class-rtec-wpml-service.php';
+			require_once rtec_plugin_path( 'includes/services/class-rtec-wpml-service.php' );
 			$wpml_service = new RTEC_WPML_Service();
 			$wpml_service->init_hooks();
 
-			require_once RTEC_PLUGIN_DIR . 'inc/class-rtec-event.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/eventgoer/class-rtec-base-event-goer.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/eventgoer/class-rtec-logged-in-event-goer.php';
-			require_once RTEC_PLUGIN_DIR . 'inc/eventgoer/class-rtec-visitor-event-goer.php';
+			require_once rtec_plugin_path( 'includes/class-rtec-event.php' );
+			require_once rtec_plugin_path( 'includes/eventgoer/class-rtec-base-event-goer.php' );
+			require_once rtec_plugin_path( 'includes/eventgoer/class-rtec-logged-in-event-goer.php' );
+			require_once rtec_plugin_path( 'includes/eventgoer/class-rtec-visitor-event-goer.php' );
 
 		}
 
 		public static function activation_scripts( $network_wide ) {
+			require_once rtec_plugin_path( 'includes/onboarding/class-rtec-onboarding.php' );
+
 			if ( is_multisite() && $network_wide && function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
 				// Get all blogs in the network and activate plugin on each one
 				$sites = get_sites();
 				foreach ( $sites as $site ) {
 					switch_to_blog( $site->blog_id );
+					// Detect whether a prior configuration already exists for this site.
+					$has_existing_settings = get_option( 'rtec_options', false ) !== false;
 					self::install();
+					if ( $has_existing_settings ) {
+						// Skip onboarding wizard + settings checklist on re-activation/upgrades.
+						RTEC_Onboarding::set_state_key( 'wizard_completed', true );
+						RTEC_Onboarding::set_state_key( 'checklist_initiated', false );
+						RTEC_Onboarding::set_state_key( 'checklist_dismissed', true );
+					} else {
+						RTEC_Onboarding::set_state_key( 'checklist_initiated', true );
+					}
 					restore_current_blog();
 				}
 			} else {
+				// Detect whether a prior configuration already exists.
+				$has_existing_settings = get_option( 'rtec_options', false ) !== false;
 				self::install();
+				if ( $has_existing_settings ) {
+					// Skip onboarding wizard + settings checklist on re-activation/upgrades.
+					RTEC_Onboarding::set_state_key( 'wizard_completed', true );
+					RTEC_Onboarding::set_state_key( 'checklist_initiated', false );
+					RTEC_Onboarding::set_state_key( 'checklist_dismissed', true );
+				} else {
+					RTEC_Onboarding::set_state_key( 'checklist_initiated', true );
+				}
 			}
-			
-			// Set transient for redirect
-			set_transient( 'rtec_activation_redirect', true, 30 );
+
+			// Clear any stale redirect transient; activation redirect is re-evaluated below.
+			delete_transient( 'rtec_activation_redirect' );
+
+			// Set transient for redirect only if onboarding has not been completed (first-time setup).
+			$onboarding_state = RTEC_Onboarding::get_state();
+			if ( empty( $onboarding_state['wizard_completed'] ) ) {
+				set_transient( 'rtec_activation_redirect', true, 30 );
+			}
 		}
 
 		/**
@@ -280,8 +371,8 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 		 */
 		public static function install() {
 			$rtec_options = get_option( 'rtec_options', false );
-			require_once plugin_dir_path( __FILE__ ) . 'inc/class-rtec-db.php';
-			require_once plugin_dir_path( __FILE__ ) . 'inc/admin/class-rtec-db-admin.php';
+			require_once rtec_plugin_path( 'includes/class-rtec-db.php' );
+			require_once rtec_plugin_path( 'includes/admin/class-rtec-db-admin.php' );
 
 			$db = new RTEC_Db_Admin();
 			$db->create_table();
@@ -306,11 +397,6 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 				update_option( 'rtec_options', $defaults );
 				// add cues to find the plugin for three days
 				set_transient( 'rtec_new_messages', 'yes', 60 * 60 * 24 * 3 );
-				set_transient( 'rtec_smtp_message', 'yes', 60 * 60 * 24 * 3 );
-
-				// Delay the RTEC 3.0 pre-release admin notice for one week
-				// on first-time installs so new users can focus on setup first.
-				set_transient( 'rtec_3_prerelease_delay_until', time() + WEEK_IN_SECONDS );
 
 			}
 
@@ -323,14 +409,14 @@ endif; // End if class_exists check.
 register_activation_hook( __FILE__, array( 'Registrations_For_The_Events_Calendar', 'activation_scripts' ) );
 
 function rtec_text_domain() {
-	load_plugin_textdomain( 'registrations-for-the-events-calendar', false, basename( __DIR__ ) . '/lang' );
+	load_plugin_textdomain( 'registrations-for-the-events-calendar', false, basename( __DIR__ ) . '/languages' );
 }
 add_action( 'init', 'rtec_text_domain' );
 
 function rtec_include_class() {
 	if ( function_exists( 'tribe_events' )
 		&& class_exists( 'TEC\Events\Custom_Tables\V1\WP_Query\Custom_Tables_Query' ) ) {
-		require_once RTEC_PLUGIN_DIR . 'inc/class-rtec-events-query.php';
+		require_once rtec_plugin_path( 'includes/class-rtec-events-query.php' );
 	}
 }
 add_action( 'init', 'rtec_include_class' );
@@ -356,18 +442,26 @@ function rtec_on_delete_blog( $tables ) {
 add_filter( 'wpmu_drop_tables', 'rtec_on_delete_blog' );
 
 function rtec_activation_redirect() {
-	// Check if we should redirect
-	if ( get_transient( 'rtec_activation_redirect' ) ) {
-		// Delete the transient
-		delete_transient( 'rtec_activation_redirect' );
-		
-		// Only redirect if we're on the main plugin page
-		if ( ! isset( $_GET['activate-multi'] ) && ! is_network_admin() ) {
-			// Safe redirect to the main plugin page
-			wp_safe_redirect( admin_url( 'admin.php?page=registrations-for-the-events-calendar' ) );
-			exit;
-		}
+	// Check if we should redirect after activation.
+	if ( ! get_transient( 'rtec_activation_redirect' ) ) {
+		return;
 	}
+	// Never redirect on bulk activate or in network admin.
+	if ( isset( $_GET['activate-multi'] ) || is_network_admin() ) {
+		delete_transient( 'rtec_activation_redirect' );
+		return;
+	}
+	delete_transient( 'rtec_activation_redirect' );
+
+	// If onboarding has not been completed, send user to the onboarding wizard.
+	$onboarding_state = RTEC_Onboarding::get_state();
+	if ( empty( $onboarding_state[ RTEC_Onboarding::KEY_WIZARD_COMPLETED ] ) ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=rtec-onboarding' ) );
+		exit;
+	}
+
+	wp_safe_redirect( admin_url( 'admin.php?page=registrations-for-the-events-calendar' ) );
+	exit;
 }
 add_action( 'admin_init', 'rtec_activation_redirect' );
 

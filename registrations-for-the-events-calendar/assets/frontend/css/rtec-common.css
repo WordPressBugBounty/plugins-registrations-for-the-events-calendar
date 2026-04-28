@@ -1,0 +1,140 @@
+/**
+ * RTEC common: processing state, loading spinner, and SVG icon utilities.
+ * Usable on front end and admin.
+ */
+
+/* -------------------------------------------------------------------------
+   SVG icon utilities (icon + text, icon in link, icon in button, alert icon)
+   Use these wrappers so inline SVGs size and align consistently (height: 1em).
+   ------------------------------------------------------------------------- */
+.rtec-icon-row {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+}
+.rtec-icon-text,
+.rtec-icon {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.rtec-icon-text {
+  gap: 5px;
+}
+.rtec-icon-text svg,
+.rtec-icon svg,
+.rtec-icon-link svg,
+.rtec-icon-button svg {
+  height: 1em;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.rtec-icon-link {
+  display: inline-flex;
+  padding: 6px 0;
+  align-items: center;
+  gap: 8px;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.rtec-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.rtec-alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+.rtec-standard-bump-out .rtec-alert-icon {
+  width: auto;
+  height: auto;
+  margin: 0
+}
+.rtec-alert-icon svg {
+  fill: currentColor;
+  max-width: 50px;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes rtecspin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Wrappers (relative so spinner can be positioned) */
+.rtec-processing-wrap {
+  position: relative;
+}
+.rtec-processing-wrap-flex {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Dimmed content when in processing state */
+.rtec-fade {
+  opacity: 0.6;
+}
+
+/* Overlay spinner: centered in the processing container */
+.rtec-is-processing .rtec-spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -15px 0 0 -15px;
+}
+
+/* Flex wrapper: spinner sits inline next to button */
+.rtec-processing-wrap-flex.rtec-is-processing .rtec-spinner-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+/* Spinner circle (overlay / button contexts) */
+.rtec-is-processing .rtec-spinner-circle {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #2271b1;
+  -webkit-animation: rtecspin 0.8s infinite linear;
+  animation: rtecspin 0.8s infinite linear;
+}
+
+/* Inline spinner: smaller, next to content (e.g. dynamic content) */
+.rtec-dynamic-content.rtec-is-processing:not(.rtec-single-event-cta) .rtec-spinner-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 0 0 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.rtec-dynamic-content.rtec-is-processing:not(.rtec-single-event-cta) .rtec-spinner-circle {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #2271b1;
+  -webkit-animation: rtecspin 0.8s infinite linear;
+  animation: rtecspin 0.8s infinite linear;
+  display: block;
+}

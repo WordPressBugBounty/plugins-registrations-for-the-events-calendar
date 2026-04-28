@@ -1,0 +1,18 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+?>
+
+<div class="rtec-overview-2-columns">
+	<div class="rtec-single-event<?php $event_obj->the_single_event_classes(); ?>">
+
+		<div class="rtec-event-meta">
+			<?php do_action( 'rtec_registrations_tab_event_meta', $event_obj ); ?>
+		</div>
+
+		<?php do_action( 'rtec_registrations_tab_hidden_event_options', $event_obj ); ?>
+		<?php include rtec_plugin_path( 'admin-templates/partials/registrations-reg-table.php' ); ?>
+
+	</div> <!-- rtec-single-event -->
+</div>

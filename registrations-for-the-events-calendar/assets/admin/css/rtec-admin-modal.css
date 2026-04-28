@@ -1,0 +1,522 @@
+.rtec-modal-backdrop {
+    display: none;
+}
+.rtec-modal {
+    position: relative;
+    max-width: 1180px;
+    width: calc(100% - 40px);
+    max-height: 90vh;
+    top: 5%;
+    margin: auto;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .7);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .7);
+    background: #fcfcfc;
+    overflow: auto;
+}
+.rtec-modal-inner-pad {
+    height: 100%;
+}
+.rtec-modal-close {
+    appearance: none;
+    border: none;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    opacity: .8;
+
+}
+.rtec-modal-close:hover {
+    opacity: 1;
+}
+.rtec-modal button:hover {
+    cursor: pointer;
+}
+.rtec-admin-wrap .rtec-modal-content .rtec-modal-alert {
+    max-width: 660px;
+    margin: 5px auto 15px !important;
+}
+.rtec-modal-close svg {
+    width: 24px;
+    fill:  #003544;
+}
+.rtec-modal .rtec-modal-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.rtec-modal-is-open .rtec-modal{
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 160000;
+}
+.rtec-modal-is-open .rtec-modal-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 360px;
+    background: rgba(0,0,0,.6);
+    z-index: 159900;
+}
+.rtec-modal .media-frame-title {
+    left: 0;
+}
+.rtec-modal-is-open .mce-container.mce-panel,
+.rtec-modal-is-open .mce-tooltip,
+.rtec-modal-is-open #wp-link-wrap{
+    z-index: 180000 !important;
+}
+.rtec-modal-columns-wrap {
+    display: flex;
+    height: 100%;
+}
+.rtec-modal-column {
+    display: flex;
+    width: 50%;
+}
+.rtec-modal-column-inner {
+    margin: auto;
+    padding: 32px 0;
+}
+.rtec-modal-opener {
+    position: relative;
+}
+/* Pro Features */
+
+.rtec-pro-feature-image-wrap {
+    max-width: 90%;
+    margin: auto;
+}
+.rtec-pro-feature-image-wrap img {
+    width: 100%;
+}
+
+
+.rtec-modal-header,
+.rtec-modal-copy,
+.rtec-other-pro{
+    font-size: 14px;
+    padding: 0 32px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.rtec-modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    color:     #003544;
+}
+.rtec-modal-copy {
+    font-size: 14px;
+    color: #004B60;
+}
+.rtec-other-pro {
+    padding: 0 32px;
+    color: #444;
+}
+.rtec-other-pro svg {
+    fill: #444;
+}
+.rtec-other-pro-inner {
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #efefef;
+}
+.rtec-modal .rtec-offer-cta {
+    margin: 20px 0;
+}
+.rtec-offer-cta:hover,
+.rtec-offer-cta:active{
+    color: #10752F;
+    background: #C2EFD0;
+}
+.rtec-offer-cta svg {
+    height: 18px;
+}
+.rtec-offer-cta-bold {
+    display: block;
+    font-weight: bold;
+}
+.rtec-offer-cta-subtext {
+    font-size: 12px;
+}
+.rtec-other-pro-heading {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.rtec-pro-features-list {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 6px;
+}
+
+.rtec-pro-features-list-tem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+.rtec-buynow-wrap {
+    display: flex;
+    padding: 32px 32px 0;
+
+}
+.rtec-buynow-wrap a {
+    position: relative;
+    color: #fff;
+    background-color: #3bac5d;
+    border-radius: 30px;
+    padding: 14px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    margin: auto;
+    display: inline-block;
+}
+
+.rtec-buynow-wrap a:hover,
+.rtec-buynow-wrap a:active {
+    background: #444;
+}
+
+
+@media all and (max-width: 850px) {
+    .rtec-modal-columns-wrap {
+        flex-direction: column;
+    }
+    .rtec-modal-column {
+        width: 100%;
+    }
+    .rtec-modal-column:first-child {
+        max-height: 40vh;
+        overflow: hidden;
+    }
+}
+
+/* ==========================================================================
+   Upsell Modal (AJAX-loaded) – layout, typography, responsive
+   ========================================================================== */
+
+/* Modal width override when upsell content is present */
+@media all and (min-width: 960px) {
+    .wp-admin .rtec-modal:has(.rtec-upsell-modal-heading),
+    .wp-admin .rtec-modal:has(.rtec-upsell-modal-content) {
+        max-width: 1000px;
+        width: 1000px;
+        margin-left: -500px;
+        left: 50%;
+        overflow: auto;
+    }
+}
+
+/* Header */
+.rtec-upsell-modal-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 30px;
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.rtec-upsell-logo {
+    height: 50px;
+    width: auto;
+}
+
+.rtec-upsell-heading-title {
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1;
+    color: #003544;
+}
+
+/* Body wrapper */
+.rtec-upsell-modal-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Layout and image column */
+.rtec-upsell-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+.rtec-upsell-image-column {
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.rtec-upsell-feature-image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Content column */
+.rtec-upsell-content-column {
+    min-width: 0;
+    border-left: 1px solid #DCDCDC;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.06);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtec-upsell-description p {
+    margin: 0 0 0.5em;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #004B60;
+}
+
+.rtec-upsell-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 15px;
+    margin-top: 20px;
+    line-height: 20px;
+}
+
+.rtec-upsell-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.rtec-upsell-feature-icon {
+    color: #3bac5d;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.rtec-upsell-feature-icon svg {
+    color: #3bac5d;
+}
+
+.rtec-upsell-feature-text {
+    flex: 1;
+}
+
+/* CTA button – match plugin primary button styling */
+.wp-core-ui .rtec-upsell-cta-button,
+.rtec-modal .rtec-upsell-cta-button {
+    width: 100%;
+    height: 56px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3bac5d;
+    border-radius: 30px;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 5px rgba(0, 0, 0, 0.05);
+}
+
+.wp-core-ui .rtec-upsell-cta-button:hover,
+.rtec-modal .rtec-upsell-cta-button:hover,
+.wp-core-ui .rtec-upsell-cta-button:active,
+.rtec-modal .rtec-upsell-cta-button:active {
+    background: #10752F;
+    color: #fff;
+}
+
+.rtec-upsell-cta-button .rtec-upsell-cta-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Footer */
+.rtec-upsell-footer {
+    grid-column: 1 / -1;
+    padding: 30px;
+    border-top: 1px solid #DCDCDC;
+    margin-top: 0;
+}
+
+.rtec-upsell-footer-columns {
+    display: flex;
+    gap: 40px;
+}
+
+.rtec-upsell-footer-column {
+    flex: 1;
+}
+
+.rtec-upsell-footer-title-column {
+    flex: 0 0 auto;
+    min-width: 120px;
+    display: none;
+}
+
+.rtec-modal .rtec-upsell-footer-title,
+.rtec-modal .rtec-upsell-footer-title-medium-screen {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 12px;
+    color: #003544;
+}
+
+.rtec-upsell-footer-features-column {
+    flex: 1;
+}
+
+.rtec-upsell-footer-features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.rtec-upsell-footer-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.rtec-upsell-footer-feature-icon {
+    color: #3bac5d;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.rtec-upsell-footer-feature-icon svg {
+    color: #3bac5d;
+}
+
+.rtec-upsell-footer-feature-text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #444;
+}
+
+/* Responsive: large (≥ 1000px) */
+@media screen and (min-width: 1000px) {
+    .rtec-modal .rtec-upsell-footer-title-medium-screen {
+        display: none;
+    }
+    .rtec-upsell-footer-title-column {
+        display: block;
+    }
+    .rtec-upsell-layout {
+        grid-template-columns: 60% 40%;
+    }
+    .rtec-upsell-feature-image {
+        max-width: 100%;
+        width: 100%;
+    }
+    .rtec-upsell-footer-columns {
+        gap: 30px;
+    }
+    .rtec-upsell-content-column {
+        padding: 30px 40px;
+    }
+    .rtec-upsell-description p {
+        font-size: 20px;
+    }
+    .rtec-upsell-feature-text {
+        font-size: 16px;
+    }
+    .wp-core-ui .rtec-upsell-cta-button,
+    .rtec-modal .rtec-upsell-cta-button {
+        font-size: 18px;
+        height: 66px;
+    }
+}
+
+/* Responsive: small (≤ 700px) */
+@media screen and (max-width: 700px) {
+    .rtec-upsell-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .rtec-upsell-feature-image {
+        max-width: 100%;
+        width: 100%;
+    }
+    .rtec-upsell-image-column {
+        max-height: 400px;
+        position: relative;
+    }
+    .rtec-upsell-image-column::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+        pointer-events: none;
+    }
+    .rtec-upsell-footer-title-medium-screen {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .rtec-upsell-footer-title-column {
+        display: none;
+    }
+    .rtec-upsell-footer-columns {
+        flex-direction: column;
+        gap: 0;
+    }
+    .rtec-upsell-content-column {
+        padding: 20px 24px;
+        border-left: none;
+        border-top: 1px solid #DCDCDC;
+    }
+    .rtec-upsell-description p {
+        font-size: 18px;
+    }
+    .rtec-upsell-feature-text {
+        font-size: 16px;
+    }
+    .wp-core-ui .rtec-upsell-cta-button,
+    .rtec-modal .rtec-upsell-cta-button {
+        font-size: 18px;
+        height: 66px;
+    }
+}
+
+/* Pro badge for trigger buttons */
+.rtec-upsell-pro-badge {
+    display: inline-block;
+    background-color: #00789A;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rtec-upsell-pro-badge:hover {
+    background-color: #005a73;
+    color: #fff;
+}
