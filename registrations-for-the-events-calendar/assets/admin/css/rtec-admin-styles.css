@@ -166,30 +166,27 @@ div.rtec-a-button {
 #rtec-back-overview:hover {
 	text-decoration: underline;
 }
-.rtec-event-actions,
-.rtec-outline {
-	border-top: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
+/* Event cards (overview grid + single): shell matches Pro */
+.rtec-single-event {
+	display: inline-block;
+	width: 100%;
+	border-radius: 5px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	overflow: hidden;
 }
 
-/* Event meta: venue/details row (Pro-style, no MVT) */
-.rtec-event-meta .rtec-venue-highlight,
-.rtec-event-meta .rtec-event-meta-row-wrap {
-	margin: 0;
-	padding: 5px 12px;
+.rtec-event-actions {
+	border-bottom: 1px solid #dcdcde;
 }
-.rtec-venue-highlight,
+
+/* Legacy list table cells (if used) */
 .widefat td.rtec-venue-highlight {
 	color: #333;
-	background-color: #ccc;
-	border-top: 1px solid #b0b0b0;
-	border-bottom: 1px solid #b0b0b0;
-}
-.rtec-overview-list .widefat td.rtec-venue-highlight {
 	background-color: #ebebeb;
-	border-top-color: #d5d5d5;
-	border-bottom-color: #d5d5d5;
+	border-top: 1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5;
 }
 /* List view: row actions under title (View | Edit | Manage registration), visible on hover */
 .rtec-overview-list .widefat .row-actions {
@@ -232,25 +229,43 @@ div.rtec-a-button {
 	align-items: center;
 	gap: 4px;
 }
-/* Cap icon size in venue-highlight row (event meta details) */
-.rtec-venue-highlight svg,
-.rtec-venue-highlight .rtec-attendance-meta-icon,
-.rtec-venue-highlight .rtec-icon svg {
+/* Event meta row icons */
+.rtec-event-meta-row-wrap svg,
+.rtec-event-meta-row-wrap .rtec-attendance-meta-icon,
+.rtec-event-meta-row-wrap .rtec-icon svg {
 	max-height: 14px;
 	width: auto;
 	vertical-align: middle;
 }
 
-.rtec-event-actions {
-	border-bottom: 1px solid #ccc;
+.rtec-attendance-meta-icon {
+	width: 12px;
+	height: 16px;
+	vertical-align: middle;
+	margin-right: 2px;
+	flex-shrink: 0;
 }
+
+.rtec-event-meta-location.rtec-icon {
+	display: inline-flex;
+	align-items: center;
+	font-size: 16px;
+}
+
+.rtec-event-meta-location.rtec-icon svg {
+	height: 1em;
+	width: auto;
+}
+
 .rtec-single-event .rtec-event-meta,
 .rtec-single-event .rtec-event-actions,
+.rtec-event-actions-top,
 .rtec-email-creator {
-	background: #e5e5e5;
+	background: transparent;
 }
+
 .rtec-single-event .rtec-mvt-list-item .rtec-event-actions {
-	background: #FFEECD;
+	background: transparent;
 }
 #rtec_csv_export_form {
 	display: inline-block;
@@ -262,10 +277,13 @@ div.rtec-a-button {
 .rtec-latest {
 	margin-top: 12px;
 }
-.rtec-single-event h3{
-	margin: .25em 60px .25em 0;
-	padding: .5em 10px 0;
+.rtec-single-event h3 {
+	margin: 0.25em 60px 0.25em 0;
+	padding: 0.5em 16px 0;
+	font-size: 1.5em;
+	line-height: 1.2;
 }
+
 .rtec-event-meta a,
 .rtec-mvt-list-item a {
 	text-decoration: none;
@@ -275,20 +293,20 @@ div.rtec-a-button {
 	color: #00a0d2;
 }
 .rtec-event-meta p,
-.rtec-mvt-list-item p {
+.rtec-mvt-list-item p,
+.rtec-event-meta-row-wrap {
 	margin: 0;
-	padding: .25em 10px;
+	padding: 5px 16px;
 }
 .rtec-single .rtec-event-meta .rtec-reg-info p {
 	padding-left: 0;
 }
+.rtec-event-meta-item-wrap {
+	position: relative;
+}
 .rtec-admin-wrap .rtec-input-notice {
 	background-color: #FFEECD;
 	border: 1px solid #D7B46F;
-}
-.rtec-single .rtec-border-sides {
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
 }
 
 /* Single view: filters and actions row */
@@ -298,8 +316,7 @@ div.rtec-a-button {
 	align-items: center;
 	justify-content: space-between;
 	gap: 12px;
-	background: #e5e5e5;
-	padding: 0.5em 10px;
+	padding: 0.5em 16px;
 }
 .rtec-filters-wrap {
 	display: flex;
@@ -378,6 +395,44 @@ div.rtec-a-button {
 	width: 100%;
 	max-width: 100%;
 }
+
+/* Events tab toolbar: filter row (Pro card-list alignment) */
+.rtec-registrations-filter-bar .rtec-filter-bar {
+	margin-bottom: 0;
+	align-items: center;
+}
+.rtec-registrations-filter-bar .rtec-toolbar-filters-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+}
+.rtec-registrations-filter-bar .rtec-toolbar-filters-form .view-switch {
+	margin-right: 4px;
+}
+.rtec-registrations-filter-bar .rtec-toolbar-filters-form select.registrations-filters,
+.rtec-registrations-filter-bar .rtec-toolbar-filters-form .rtec-date-picker {
+	margin: 0;
+}
+.rtec-registrations-filter-bar .rtec-toolbar-filters-form #rtec-filter-go {
+	margin-left: 4px;
+}
+
+.rtec-overview .rtec-single-event table.rtec-registrations-data {
+	border: none;
+	border-top: 1px solid #dcdcde;
+	border-radius: 0;
+	background: #fff;
+	width: 100%;
+}
+
+.rtec-overview-list table.rtec-registrations-data {
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+
 @media screen and (max-width: 480px) {
 	.rtec-items-grid {
 		grid-template-columns: 1fr;
@@ -442,7 +497,7 @@ div.rtec-a-button {
 	z-index: 1;
 	left: 12px;
 	top: 50%;
-	margin-top: -9px;
+	margin-top: -7px;
 	display: flex;
 	align-items: center;
 	pointer-events: none;
@@ -545,12 +600,15 @@ div.rtec-a-button {
 .rtec-reg-actions-wrap a:hover {
 	text-decoration: underline;
 }
-.manage-column.column-rtec #rtec-select-all-1 {
-	margin-top: 10px !important;
+/* Single-event registrations table: compact header checkbox column (match Pro; avoid WP th.check-column bulk) */
+.rtec-single .rtec-registrations-data thead .manage-column.column-rtec.check-column,
+.rtec-single .rtec-registrations-data tfoot .manage-column.column-rtec.check-column {
+	padding: 4px 2px 6px 4px;
 }
-
-.manage-column.column-rtec {
-	padding-bottom: 16px;
+.rtec-single .rtec-registrations-data thead .manage-column.column-rtec.check-column #rtec-select-all-1,
+.rtec-single .rtec-registrations-data tfoot .manage-column.column-rtec.check-column #rtec-select-all-1 {
+	margin: 0 7px 0;
+	vertical-align: middle;
 }
 /* Tooltips: icon hover shows message (use .rtec-status-tooltip so JS that hides .rtec-tooltip doesn't affect) */
 .rtec-identifier-column .rtec-tooltip-wrap,
@@ -698,31 +756,69 @@ Registrations Tab - Single (match Pro)
 .rtec-single tfoot th {
 	position: relative;
 }
-/* Nav: column section arrows (same values as Pro) */
+
+/* Single table: data column cells (padding + nav affordance) */
+.rtec-single .rtec-registrations-data .rtec-data-cell {
+	position: relative;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.rtec-single .rtec-registrations-data .rtec-data-cell.rtec-has-data-nav-right,
+.rtec-single .rtec-registrations-data .rtec-data-cell.rtec-has-data-nav-both {
+	padding-right: 24px;
+}
+.rtec-single .rtec-registrations-data .rtec-data-cell.rtec-has-data-nav-left,
+.rtec-single .rtec-registrations-data .rtec-data-cell.rtec-has-data-nav-both {
+	padding-left: 24px;
+}
+
+
+/* Column group chevrons (match Pro) */
 .rtec-data-nav-wrap {
 	position: absolute;
 	top: 50%;
-	width: 30px;
-	height: 30px;
-	margin-top: -15px;
-	opacity: 0.8;
+	transform: translateY(-50%);
+	opacity: 0.85;
 }
 .rtec-data-nav-wrap:hover {
 	opacity: 1;
 	cursor: pointer;
 }
 .rtec-data-nav-wrap.rtec-right {
-	right: -17px;
+	right: 0;
 }
 .rtec-data-nav-wrap.rtec-left {
-	left: -17px;
+	left: 0;
 }
 .rtec-data-nav {
-	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 36px;
+	padding: 0;
+	background: rgba(29, 110, 133, 0.06);
+	border: 1px solid rgba(29, 110, 133, 0.25);
+	box-sizing: border-box;
+	transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
 }
 .rtec-data-nav svg {
 	height: 20px;
-	color: #1D6E85;
+	color: #1d6e85;
+}
+.rtec-data-nav-wrap:hover .rtec-data-nav {
+	background: rgba(29, 110, 133, 0.12);
+	border-color: rgba(29, 110, 133, 0.4);
+	box-shadow: 0 1px 0 rgba(29, 110, 133, 0.12);
+}
+.rtec-data-nav-wrap:hover .rtec-data-nav svg {
+	color: #165868;
+}
+.rtec-data-nav-wrap:active .rtec-data-nav {
+	transform: translateY(0.5px);
+	background: rgba(29, 110, 133, 0.16);
+	border-color: rgba(29, 110, 133, 0.5);
+	box-shadow: none;
 }
 
 .rtec-single-event table td {
@@ -734,45 +830,82 @@ Registrations Tab - Single (match Pro)
 	margin: 0 0 10px 1em;
 	display: inline-block;
 }
+.rtec-wrapper .rtec-event-actions-top .button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    min-height: 26px;
+    line-height: 1.5;
+    height: 26px;
+}
+#ru-single-search {
+	min-height: 28px;
+    line-height: 1.5;
+    height: 28px;
+	padding-left: 30px;
+}
 .rtec-pro-action-button-wrap {
-	display: inline-block;
-	position: relative;
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px 8px;
 }
 .rtec-pro-pill {
-	background: #E6F5F9;
-	position: absolute;
-	z-index: 2;
-	padding: 2px 5px;
-	border: 1px solid #ABEAFC;
-	border-radius: 5px;
-	color: #00ABDB;
-	line-height: 1;
-	right: -15px;
-	top: -8px;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
-	gap: 3px;
-	opacity: .95;
-	font-size: 11px;
-	font-weight: bold;
-	box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 4px 5px rgba(0,0,0,.05);
+	background: #e6f5f9;
+	padding: 3px 8px;
+	border: 1px solid #abeafc;
+	border-radius: 5px;
+	color: #00abdb;
+	line-height: 1.2;
+	font-size: 12px;
+	font-weight: 700;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 5px rgba(0, 0, 0, 0.05);
+	flex-shrink: 0;
+	vertical-align: middle;
 }
-.rtec-pro-pill svg{
-	height: 9px;
-}
-.rtec-pro-pill svg {
-	fill: #00ABDB;
+
+/* Pro upsell: pill sits inline with nav tab / button label */
+.rtec-admin-wrap .nav-tab.rtec-pro-action-button-wrap,
+.rtec-admin-wrap .rtec-subtabs a.rtec-modal-opener {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
 }
 .rtec-event-actions .tablenav {
 	height: auto;
 }
+
+/* Single event: Pro upsell actions — badge inside button, right-aligned */
+.rtec-single .rtec-event-actions .tablenav .button.rtec-pro-action-button-with-pill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px 12px;
+	max-width: 100%;
+	box-sizing: border-box;
+	text-align: left;
+}
+.rtec-single .rtec-event-actions .tablenav .button.rtec-pro-action-button-with-pill .rtec-pro-action-button-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	line-height: 1.25;
+	flex: 0 1 auto;
+	min-width: 0;
+}
+.rtec-single .rtec-event-actions .tablenav .button.rtec-pro-action-button-with-pill .rtec-pro-action-button-label svg {
+	flex-shrink: 0;
+}
+.rtec-single .rtec-event-actions .tablenav .button.rtec-pro-action-button-with-pill .rtec-pro-pill {
+	flex-shrink: 0;
+}
 .rtec-wrapper .rtec-admin-secondary-button svg {
 	height: 13px;
 	margin-bottom: -2px;
-}
-.rtec-overview .rtec-admin-secondary-button{
-	float: right;
-	margin: .5em 1em .5em 1em;
 }
 .rtec-manage-match-actions {
 	position: relative;
@@ -885,7 +1018,7 @@ Registrations Tab - Single (match Pro)
 	.rtec-single thead th {
 		display: none;
 	}
-	.rtec-data-nav {
+	.rtec-single .rtec-data-nav {
 		display: none !important;
 	}
 	.rtec-reg-row {
@@ -1026,9 +1159,10 @@ Registrations Tab - Single (match Pro)
 	padding: 0 1em;
 	margin-bottom: 10px;
 }
-.rtec-admin-wrap .rtec-subtabs{
+.wrap.rtec-admin-wrap .rtec-subtabs,
+.rtec-admin-wrap .rtec-subtabs {
 	padding: 0;
-	margin-left: 1px;
+	margin-left: 0;
 	border-bottom: 0 !important;
 	background-color: #f1f1f1;
 }
@@ -1046,8 +1180,6 @@ Registrations Tab - Single (match Pro)
 }
 
 .rtec-subtabs .nav-tab:not(.nav-tab-active) {
-	outline: 1px solid #ccc;
-	margin-left: 5px;
 
 }
 
@@ -1063,9 +1195,6 @@ Registrations Tab - Single (match Pro)
 	min-height: auto;
 	line-height: 1;
 	padding: 4px 10px;
-}
-.wp-core-ui .rtec-field-type .rtec-pro-pill {
-	top: -11px;
 }
 .rtec-admin-wrap .rtec-box{
 	max-width: 600px;
@@ -1471,10 +1600,12 @@ Registrations Tab - Single (match Pro)
 	position: relative;
 	margin: 0;
 }
-.rtec-latest-filter-bar .rtec-search-box input[type="search"] {
+.rtec-latest-filter-bar .rtec-search-box input[type="search"],
+#rtec-event-search-input {
 	padding-left: 32px;
 	width: 200px;
 	max-width: 100%;
+	min-height: 40px;
 }
 .rtec-latest-filter-bar .rtec-search-box .rtec-toolbar-icon {
 	position: absolute;
@@ -1608,20 +1739,26 @@ span.rtec-is-user{
 /* Overview Actions */
 .rtec-overview .rtec-event-actions,
 .rtec-event-actions-top {
-    display: flex;
-    justify-content: right;
-    flex-wrap: wrap;
-    padding: 3px 0;
+	display: flex;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	padding: 3px 6px;
 }
 .rtec-event-actions {
 	text-align: left;
 }
 .rtec-overview .rtec-admin-secondary-button {
-    padding: 5px;
-    height: auto;
-    margin: 3px 10px 3px 0;
-    min-height: 1px;
-    line-height: 1;
+	padding: 5px;
+	height: auto;
+	margin: 3px 10px 3px 0;
+	min-height: 1px;
+	line-height: 1;
+	float: none;
+}
+.rtec-overview .rtec-admin-secondary-button .rtec-icon svg {
+	width: 16px;
+	height: 16px;
+	vertical-align: text-bottom;
 }
 .rtec-overview .rtec-admin-secondary-button .dashicons {
 	font-size: 16px;

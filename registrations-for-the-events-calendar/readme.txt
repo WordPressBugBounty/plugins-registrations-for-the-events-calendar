@@ -3,28 +3,32 @@
 Contributors: roundupwp
 Support Website: https://roundupwp.com/support
 Tags: events calendar, bookings, RSVP, events, event registration
-Requires at least: 5.6
+Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 3.0
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Collect and manage event registrations with a customizable registration form and email templates. Built specifically for The Events Calendar.
+Collect and manage event registrations with customizable forms, attendee management, and email templates. Start collecting registrations in minutes.
 
 == Description ==
 
-A powerful event registration plugin built specifically for The Events Calendar. Start collecting registrations in minutes.
-
 Whether you're holding a meetup, class, workshop, tournament, or any other kind of event, you need a reliable way to handle event registration. Our plugin makes collecting and managing event registrations easy and simple. Even nontechnical users can set up the plugin and start collecting event registrations within minutes.
+
+https://youtu.be/UkC8oIABYII
 
 Create a simple RSVP registration form or a more advanced event registration form with custom fields. All event registrations are stored in your WordPress database for easy event management.
 
 Customize confirmation and notification email templates to keep your attendees and event managers informed throughout the event registration process.
 
-= Parent Plugin =
+= Looking for an All-in-One Event Plugin? =
 
-In order for the Registrations for the Events Calendar to work properly, you need to install its parent plugin, [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/). (Both are free.)
+If you're starting a new event website and prefer an all-in-one solution, check out Event Genius which is a partner plugin. Event Genius includes built-in event management, calendars, registrations, recurring events, and attendee management in a single plugin.
+
+= Requires The Events Calendar =
+
+Registrations for The Events Calendar works alongside The Events Calendar plugin. If The Events Calendar is not installed, you can install it directly from the onboarding setup wizard.
 
 = Quick to Set Up and Easy to Get Started =
 
@@ -158,18 +162,23 @@ Follow these steps for a manual installation:
 
 == Screenshots ==
 
-1. View of the event registration form revealed on "click"
-2. Default position and look of the Register button in an event page
-3. The Registrations tab in at-a-glance view
-4. Detailed view of a single event's registrations. Buttons to delete, edit, add and export registrations
-5. View of the settings on the "Form" tab
-6. View of the settings on the "Email" tab
-7. Example confirmation email
-8. Example notification email
-9. Search through registrants
-10. Example .csv export file
+1. Collect registrations directly on your event page
+2. Create an event and start collecting registrations instantly
+3. Customize your registration form fields
+4. View and manage all registrations in one place
+5. Manage individual registrations and make changes
+6. Automatically send confirmation and notification emails
+7. Customize your confirmation and notification emails
+8. Seamlessly works with The Events Calendar
+9. (Pro Version) Accept payments with Stripe and PayPal
 
 == Frequently Asked Questions ==
+
+= Do I need The Events Calendar? =
+
+Yes. Registrations for The Events Calendar adds registration functionality to The Events Calendar plugin.
+
+If you prefer an all-in-one solution with built-in event management and registrations, see Event Genius which is a partner plugin.
 
 = Can I limit the number of registrations for an event? =
 
@@ -226,6 +235,9 @@ Yes. The Pro version supports online payments, offline payments, and flexible pr
 Go to the "Support" tab in the plugin settings and follow the links to support, setup guides, or feature requests.
 
 == Changelog ==
+= 3.1 =
+* New: Updated stylings in the admin area for WordPress 7.0.
+
 = 3.0 =
 Major release introducing a cleaner interface and many under-the-hood improvements.
 Read the full [release announcement and upgrade guide](https://roundupwp.com/rtec-3-0-release/?utm_campaign=rtec-free&utm_source=readme&utm_medium=changelog&utm_content=30Release)

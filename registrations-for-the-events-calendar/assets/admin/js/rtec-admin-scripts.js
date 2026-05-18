@@ -430,10 +430,11 @@ jQuery(document).ready(function($){
         // $rtecSingle.css('min-width', $('.rtec-single table th').length*125);
 
         // Column section navigation: show one group of form field columns at a time
-        $rtecSingle.on('click', '.rtec-data-nav-wrap', function() {
+        $rtecSingle.on('click', '.rtec-data-nav-wrap', function(e) {
+            e.preventDefault();
             var nextIndex = $(this).find('.rtec-data-nav').attr('data-next-index');
-            if (nextIndex !== undefined) {
-                $rtecSingle.find('[class*="rtec-data-group-"]').hide();
+            if (nextIndex !== undefined && nextIndex !== '') {
+                $rtecSingle.find('.rtec-data-cell').hide();
                 $rtecSingle.find('.rtec-data-group-' + nextIndex).show();
             }
         });

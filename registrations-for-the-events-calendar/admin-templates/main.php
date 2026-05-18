@@ -149,12 +149,10 @@ if ( ! $tec_data['is_active'] && $evge_admin_interstitial && current_user_can( '
 			<?php endif; ?>
 			</a>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=' . RTEC_MENU_SLUG . '&tab=latest' ) ); ?>" class="nav-tab rtec-pro-action-button-wrap rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'scheduled-messages', 'location' => 'registrations-nav' ) ) ); ?>">
-				<?php esc_html_e( 'Scheduled Messages', 'registrations-for-the-events-calendar' ); ?>
-				<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div>
+				<?php esc_html_e( 'Scheduled Messages', 'registrations-for-the-events-calendar' ); ?> <span class="rtec-pro-pill">Pro</span>
 			</a>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=' . RTEC_MENU_SLUG . '&tab=latest' ) ); ?>" class="nav-tab rtec-pro-action-button-wrap rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'reports', 'location' => 'registrations-nav' ) ) ); ?>">
-				<?php esc_html_e( 'Reports', 'registrations-for-the-events-calendar' ); ?>
-				<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div>
+				<?php esc_html_e( 'Reports', 'registrations-for-the-events-calendar' ); ?> <span class="rtec-pro-pill">Pro</span>
 			</a>
 		</h2>
 	<?php endif; ?>
@@ -175,7 +173,7 @@ if ( ! $tec_data['is_active'] && $evge_admin_interstitial && current_user_can( '
 				?>
 				<a href="<?php echo esc_url( $link ); ?>" class="nav-tab <?php echo ( $active_tab === $value ) ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $label ); ?></a>
 			<?php endforeach; ?>
-			<a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-settings&tab=email' ) ); ?>" class="nav-tab rtec-pro-action-button-wrap rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'payments', 'location' => 'settings-nav' ) ) ); ?>"><?php esc_html_e( 'Payments', 'registrations-for-the-events-calendar' ); ?><div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div></a>
+			<a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-settings&tab=email' ) ); ?>" class="nav-tab rtec-pro-action-button-wrap rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'payments', 'location' => 'settings-nav' ) ) ); ?>"><?php esc_html_e( 'Payments', 'registrations-for-the-events-calendar' ); ?> <span class="rtec-pro-pill">Pro</span></a>
 		</h2>
 	<?php endif; ?>
 

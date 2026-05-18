@@ -199,12 +199,16 @@ class RTEC_Blocks {
 			return;
 		}
 
+		rtec_register_frontend_styles();
+
 		wp_register_style(
 			'rtec-blocks-styles',
 			rtec_frontend_asset_url( 'assets/frontend/css/rtec-blocks.css' ),
-			array( 'wp-edit-blocks' ),
+			array( 'rtec_styles', 'wp-edit-blocks' ),
 			RTEC_VERSION
 		);
+
+		$block_styles = array( 'rtec_common', 'rtec_styles', 'rtec-blocks-styles' );
 
 		$attributes = array(
 			'shortcodeSettings' => array( 'type' => 'string' ),
@@ -223,17 +227,19 @@ class RTEC_Blocks {
 		register_block_type(
 			'rtec/rtec-form-block',
 			array(
-				'api_version'    => 3,
+				'api_version'     => 3,
 				'attributes'      => $attributes,
 				'render_callback' => array( $this, 'get_form_html' ),
 				'category'        => self::BLOCK_CATEGORY_SLUG,
+				'editor_style'    => $block_styles,
+				'style'           => array( 'rtec_common', 'rtec_styles' ),
 			)
 		);
 
 		register_block_type(
 			'rtec/rtec-attendee-list-block',
 			array(
-				'api_version'    => 3,
+				'api_version'     => 3,
 				'category'        => self::BLOCK_CATEGORY_SLUG,
 				'attributes'      => array(
 					'eventID'    => array(
@@ -243,6 +249,8 @@ class RTEC_Blocks {
 					'showheader' => array( 'type' => 'boolean', 'default' => false ),
 				),
 				'render_callback' => array( $this, 'render_attendee_list_block' ),
+				'editor_style'    => $block_styles,
+				'style'           => array( 'rtec_common', 'rtec_styles' ),
 			)
 		);
 	}
@@ -256,8 +264,7 @@ class RTEC_Blocks {
 		if ( ! function_exists( 'tribe_get_start_date' ) ) {
 			return;
 		}
-		rtec_scripts_and_styles( true );
-		wp_enqueue_style( 'rtec-blocks-styles' );
+		rtec_scripts_and_styles();
 		wp_enqueue_script(
 			'rtec-form-block',
 			rtec_frontend_asset_url( 'assets/frontend/js/rtec-blocks.js' ),
@@ -321,7 +328,8 @@ class RTEC_Blocks {
 			'attendeeList'             => esc_html__( 'Attendee List', 'registrations-for-the-events-calendar' ),
 			'attendeeListDesc'         => esc_html__( 'Display the list of attendees for an event.', 'registrations-for-the-events-calendar' ),
 			'showEventHeader'          => esc_html__( 'Show event header', 'registrations-for-the-events-calendar' ),
-			'eventAuto'                => esc_html__( 'Auto (next upcoming event)', 'registrations-for-the-events-calendar' ),
+			'eventAuto'                => esc_html__( 'Auto', 'registrations-for-the-events-calendar' ),
+			'eventAutoHelp'            => esc_html__( 'Choose Auto to show the current event on single event pages; otherwise it uses the next upcoming event.', 'registrations-for-the-events-calendar' ),
 			'searchEventsPlaceholder'  => esc_html__( 'Search events…', 'registrations-for-the-events-calendar' ),
 		);
 
@@ -399,8 +407,14 @@ class RTEC_Blocks {
 		$is_tribe_event      = isset( $attr['isTribeEvent'] ) ? $attr['isTribeEvent'] : false;
 		$event_id            = ! empty( $attr['eventID'] ) ? $attr['eventID'] : false;
 
+		// "auto": on single event pages, use current event; otherwise use next upcoming event.
 		if ( $event_id === 'auto' ) {
-			$event_id = $this->get_next_upcoming_event_id();
+			$post_type = class_exists( 'Tribe__Events__Main' ) ? Tribe__Events__Main::POSTTYPE : 'tribe_events';
+			if ( is_singular( $post_type ) ) {
+				$event_id = (int) get_the_ID();
+			} else {
+				$event_id = $this->get_next_upcoming_event_id();
+			}
 		}
 		if ( empty( $event_id ) ) {
 			global $post;
@@ -438,7 +452,7 @@ class RTEC_Blocks {
 	}
 
 	/**
-	 * Resolve event ID for block (auto, attribute, or current post).
+	 * Resolve event ID for blocks: attribute, "auto" (current event on single event pages, otherwise next upcoming), or current post when singular.
 	 *
 	 * @since 3.0
 	 *
@@ -448,7 +462,12 @@ class RTEC_Blocks {
 	 */
 	protected function resolve_event_id_for_block( $attr, $fallback = 0 ) {
 		$event_id_raw = isset( $attr['eventID'] ) ? $attr['eventID'] : '';
+		// "auto": on single event pages, use current event; otherwise use next upcoming event.
 		if ( $event_id_raw === 'auto' ) {
+			$post_type = class_exists( 'Tribe__Events__Main' ) ? Tribe__Events__Main::POSTTYPE : 'tribe_events';
+			if ( is_singular( $post_type ) ) {
+				return (int) get_the_ID();
+			}
 			return $this->get_next_upcoming_event_id();
 		}
 		$event_id = ! empty( $event_id_raw ) ? (int) $event_id_raw : 0;

@@ -38,6 +38,15 @@
 		}
 	}
 
+	// Step 1: Update install CTA text and uninstall notice when path selection changes.
+	$(document).on('change', 'input[name="rtec_path"]', function() {
+		var cta = $(this).data('cta');
+		if (cta) {
+			$('.rtec-onboarding-install-continue .rtec-button-text').text(cta);
+		}
+		$('.rtec-onboarding-step1-uninstall-notice').toggle( $(this).val() === 'event-genius' );
+	});
+
 	// Step 1: "Install and Continue" — install/activate selected plugin (TEC or Event Genius).
 	$(document).on('click', '.rtec-onboarding-install-continue', function() {
 		var path = $('input[name="rtec_path"]:checked').val();

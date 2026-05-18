@@ -79,46 +79,63 @@ $hide_onboarding_progress = ! empty( $hide_onboarding_progress );
 				</div>
 			<?php else : ?>
 				<?php
+				$evge_install_cta  = __( 'Install Event Genius and Continue', 'registrations-for-the-events-calendar' );
+				$tec_install_cta   = __( 'Install The Events Calendar and Continue', 'registrations-for-the-events-calendar' );
 				$event_genius_data = RTEC_Admin::get_plugin_data( 'event-genius' );
 				?>
 				<!-- Step 1: Welcome + Path when TEC not active -->
-				<h2 class="rtec-onboarding-step-title"><?php esc_html_e( 'How would you like to manage your events?', 'registrations-for-the-events-calendar' ); ?></h2>
-				<p class="rtec-onboarding-step-body"><?php esc_html_e( 'You can use Registrations with The Events Calendar to add sign-ups to your events.', 'registrations-for-the-events-calendar' ); ?></p>
-				<p class="rtec-onboarding-step-body"><?php esc_html_e( "Or, if you're starting from scratch, you can use Event Genius for built-in event management and registrations in one place.", 'registrations-for-the-events-calendar' ); ?></p>
-				<p class="rtec-onboarding-step-body"><?php esc_html_e( "Let's get you set up in under a minute.", 'registrations-for-the-events-calendar' ); ?></p>
+				<h2 class="rtec-onboarding-step-title"><?php esc_html_e( 'How would you like to manage events?', 'registrations-for-the-events-calendar' ); ?></h2>
+				<p class="rtec-onboarding-step-body"><?php esc_html_e( 'Choose the event setup that fits your site.', 'registrations-for-the-events-calendar' ); ?></p>
 
-				<div class="rtec-onboarding-section">
-					<h3 class="rtec-onboarding-section-title"><?php esc_html_e( 'Choose Your Path', 'registrations-for-the-events-calendar' ); ?></h3>
-					<div class="rtec-onboarding-options rtec-onboarding-path-options">
-						<label class="rtec-onboarding-option rtec-onboarding-path-option">
-							<input type="radio" name="rtec_path" value="tribe-tec" checked>
-							<span class="rtec-onboarding-path-listing">
-								<span class="rtec-addon-icon"><?php echo $tec_data['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-								<div class="rtec-tec-content">
-									<h4 class="rtec-addon-title"><?php echo esc_html( $tec_data['name'] ); ?></h4>
-									<div class="rtec-addon-description"><?php echo rtec_sanitize_outputted_html( $tec_data['compare_description'] ); ?></div>
-								</div>
+				<div class="rtec-onboarding-path-cards">
+					<label class="rtec-onboarding-path-card rtec-onboarding-path-card--recommended">
+						<span class="rtec-onboarding-path-card-badge"><?php esc_html_e( 'Recommended', 'registrations-for-the-events-calendar' ); ?></span>
+						<span class="rtec-onboarding-path-card-inner">
+							<input type="radio" name="rtec_path" value="event-genius" data-cta="<?php echo esc_attr( $evge_install_cta ); ?>" class="rtec-onboarding-path-card-input" checked>
+							<span class="rtec-onboarding-path-card-heading">
+								<span class="rtec-onboarding-path-card-thumb"><?php echo $event_genius_data['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+								<span class="rtec-onboarding-path-card-heading-text">
+									<span class="rtec-onboarding-path-card-title"><?php esc_html_e( 'Event Genius', 'registrations-for-the-events-calendar' ); ?></span>
+									<span class="rtec-onboarding-path-card-subtitle"><?php esc_html_e( 'All-in-one event management and registration.', 'registrations-for-the-events-calendar' ); ?></span>
+									<span class="rtec-onboarding-path-card-byline"><?php esc_html_e( 'From the creators of Registrations for The Events Calendar.', 'registrations-for-the-events-calendar' ); ?></span>
+								</span>
 							</span>
-						</label>
-						<label class="rtec-onboarding-option rtec-onboarding-path-option">
-							<input type="radio" name="rtec_path" value="event-genius">
-							<span class="rtec-onboarding-path-listing">
-								<span class="rtec-addon-icon"><?php echo $event_genius_data['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-								<div class="rtec-tec-content">
-									<h4 class="rtec-addon-title"><?php echo esc_html( $event_genius_data['name'] ); ?></h4>
-									<div class="rtec-addon-description"><?php echo rtec_sanitize_outputted_html( $event_genius_data['compare_description'] ); ?></div>
-								</div>
+							<ul class="rtec-onboarding-path-card-bullets">
+								<li><?php esc_html_e( 'One plugin setup', 'registrations-for-the-events-calendar' ); ?></li>
+								<li><?php esc_html_e( 'Built-in registrations', 'registrations-for-the-events-calendar' ); ?></li>
+								<li><?php esc_html_e( 'Recurring events included', 'registrations-for-the-events-calendar' ); ?></li>
+							</ul>
+							<span class="rtec-onboarding-path-card-footer"><?php esc_html_e( 'Best for most new event sites', 'registrations-for-the-events-calendar' ); ?></span>
+						</span>
+					</label>
+					<label class="rtec-onboarding-path-card">
+						<span class="rtec-onboarding-path-card-inner">
+							<input type="radio" name="rtec_path" value="tribe-tec" data-cta="<?php echo esc_attr( $tec_install_cta ); ?>" class="rtec-onboarding-path-card-input">
+							<span class="rtec-onboarding-path-card-heading">
+								<span class="rtec-onboarding-path-card-thumb"><?php echo $tec_data['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+								<span class="rtec-onboarding-path-card-heading-text">
+									<span class="rtec-onboarding-path-card-title"><?php esc_html_e( 'The Events Calendar + Registrations', 'registrations-for-the-events-calendar' ); ?></span>
+									<span class="rtec-onboarding-path-card-subtitle"><?php esc_html_e( 'Use The Events Calendar with this plugin.', 'registrations-for-the-events-calendar' ); ?></span>
+									<span class="rtec-onboarding-path-card-byline rtec-onboarding-path-card-byline--placeholder" aria-hidden="true"><?php esc_html_e( 'From the creators of Registrations for The Events Calendar.', 'registrations-for-the-events-calendar' ); ?></span>
+								</span>
 							</span>
-						</label>
-					</div>
+							<ul class="rtec-onboarding-path-card-bullets">
+								<li><?php esc_html_e( 'Separate event and registration plugins', 'registrations-for-the-events-calendar' ); ?></li>
+								<li><?php esc_html_e( 'Good for existing TEC users', 'registrations-for-the-events-calendar' ); ?></li>
+								<li><?php esc_html_e( 'Large add-on ecosystem', 'registrations-for-the-events-calendar' ); ?></li>
+							</ul>
+							<span class="rtec-onboarding-path-card-footer"><?php esc_html_e( 'Best if you already want The Events Calendar', 'registrations-for-the-events-calendar' ); ?></span>
+						</span>
+					</label>
 				</div>
 
 				<div class="rtec-onboarding-cta-footer rtec-onboarding-step1-cta">
 					<button type="button" class="button button-primary rtec-onboarding-install-continue rtec-onboarding-cta-with-chevron">
-						<span class="rtec-button-text"><?php esc_html_e( 'Install and Continue', 'registrations-for-the-events-calendar' ); ?></span>
+						<span class="rtec-button-text"><?php echo esc_html( $evge_install_cta ); ?></span>
 						<span class="rtec-button-carat" aria-hidden="true">&#8250;</span>
 					</button>
 				</div>
+				<p class="rtec-onboarding-step1-uninstall-notice"><?php esc_html_e( 'Registrations for The Events Calendar will be replaced by Event Genius.', 'registrations-for-the-events-calendar' ); ?></p>
 				<p class="rtec-onboarding-ajax-message rtec-onboarding-step1-message" aria-live="polite"></p>
 			<?php endif; ?>
 		<?php endif; ?>

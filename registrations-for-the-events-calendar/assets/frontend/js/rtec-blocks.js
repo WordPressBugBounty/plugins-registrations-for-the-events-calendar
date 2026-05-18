@@ -154,6 +154,7 @@
 							createElement(TextControl, { __next40pxDefaultSize: true, value: searchQuery, onChange: setSearchQuery, placeholder: rtec_block_editor.i18n.searchEventsPlaceholder }),
 							searchLoading ? createElement('p', { className: 'rtec-block-search-loading' }, '…') : null,
 							createElement(SelectControl, { label: rtec_block_editor.i18n.whichevent, value: eventID === undefined || eventID === 0 ? 'auto' : String(eventID), options: eventOptions, onChange: selectEvent }),
+							rtec_block_editor.i18n.eventAutoHelp ? createElement('p', { className: 'rtec-block-help' }, rtec_block_editor.i18n.eventAutoHelp) : null,
 							hasEvent ? createElement(ToggleControl, { label: rtec_block_editor.i18n.showEventHeader, checked: props.attributes.showheader === true, onChange: function (v) { setAttributes({ showheader: !!v }); } }) : null,
 							hasEvent ? createElement(ToggleControl, { label: rtec_block_editor.i18n.showAttendeeTools, checked: props.attributes.showtools === true, onChange: function (v) { setAttributes({ showtools: !!v }); } }) : null,
 							hasEvent ? createElement(ToggleControl, { label: rtec_block_editor.i18n.showAttendeeListAboveForm, checked: props.attributes.attendeelist === true, onChange: function (v) { setAttributes({ attendeelist: !!v }); } }) : null,
@@ -232,6 +233,7 @@
 						createElement(TextControl, { __next40pxDefaultSize: true, value: searchQueryAtt, onChange: setSearchQueryAtt, placeholder: rtec_block_editor.i18n.searchEventsPlaceholder }),
 						searchLoadingAtt ? createElement('p', { className: 'rtec-block-search-loading' }, '…') : null,
 						createElement(SelectControl, { label: rtec_block_editor.i18n.whichevent, value: eventID, options: eventOptions, onChange: onSelectEvent }),
+						rtec_block_editor.i18n.eventAutoHelp ? createElement('p', { className: 'rtec-block-help' }, rtec_block_editor.i18n.eventAutoHelp) : null,
 						createElement(ToggleControl, { label: rtec_block_editor.i18n.showEventHeader, checked: showheader, onChange: onToggleShowHeader })
 					)
 				)

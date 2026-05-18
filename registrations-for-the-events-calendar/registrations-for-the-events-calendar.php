@@ -2,7 +2,7 @@
 /*
 Plugin Name: Registrations for The Events Calendar
 Description: Collect and manage event registrations with a customizable form and email template. This plugin requires The Events Calendar by Modern Tribe to work.
-Version: 3.0
+Version: 3.1
 Requires PHP: 7.4
 Author: Roundup WP
 Author URI: roundupwp.com
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 // Plugin version.
 if ( ! defined( 'RTEC_VERSION' ) ) {
-	define( 'RTEC_VERSION', '3.0' );
+	define( 'RTEC_VERSION', '3.1' );
 }
 // Plugin Folder Path.
 if ( ! defined( 'RTEC_PLUGIN_DIR' ) ) {
@@ -265,6 +265,8 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 				require_once rtec_plugin_path( 'includes/admin/class-rtec-db-admin.php' );
 				require_once rtec_plugin_path( 'includes/admin/admin-functions.php' );
 				require_once rtec_plugin_path( 'includes/admin/class-rtec-admin.php' );
+				require_once rtec_plugin_path( 'includes/admin/class-rtec-evge-install-followup.php' );
+				RTEC_Evge_Install_Followup::init_hooks();
 				require_once rtec_plugin_path( 'includes/utils/class-rtec-placeholders.php' );
 				require_once rtec_plugin_path( 'includes/admin/class-rtec-admin-registrations.php' );
 				require_once rtec_plugin_path( 'includes/admin/class-rtec-admin-event.php' );

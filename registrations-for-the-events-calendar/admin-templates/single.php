@@ -128,22 +128,16 @@ if ( $single_search !== '' ) {
 
 	<div class="rtec-single-event" data-rtec-event-id="<?php echo esc_attr( $event_id ); ?>" data-rtec-mvt-id="" data-rtec-field-atts="<?php echo esc_attr( wp_json_encode( $fields_atts ) ); ?>">
 		<div class="rtec-event-meta">
+			<?php do_action( 'rtec_registrations_tab_event_meta', $event_obj ); ?>
 			<h2 class="nav-tab-wrapper rtec-subtabs">
 				<a href="#" class="nav-tab nav-tab-active"><?php esc_html_e( 'Submissions', 'registrations-for-the-events-calendar' ); ?></a>
-				<a href="#" class="nav-tab rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'payments', 'location' => 'single-event-nav' ) ) ); ?>"><?php esc_html_e( 'Payments', 'registrations-for-the-events-calendar' ); ?>
-					<div class="rtec-pro-pill">Pro <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg></div>
-				</a>
-				<a href="#" class="nav-tab rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'message-history', 'location' => 'single-event-nav' ) ) ); ?>"><?php esc_html_e( 'Message History', 'registrations-for-the-events-calendar' ); ?>
-					<div class="rtec-pro-pill">Pro <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg></div>
-				</a>
-				<a href="#" class="nav-tab rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'attendance', 'location' => 'single-event-nav' ) ) ); ?>"><?php esc_html_e( 'Attendance', 'registrations-for-the-events-calendar' ); ?>
-					<div class="rtec-pro-pill">Pro <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg></div>
-				</a>
+				<a href="#" class="nav-tab rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'payments', 'location' => 'single-event-nav' ) ) ); ?>"><?php esc_html_e( 'Payments', 'registrations-for-the-events-calendar' ); ?> <span class="rtec-pro-pill">Pro</span></a>
+				<a href="#" class="nav-tab rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'message-history', 'location' => 'single-event-nav' ) ) ); ?>"><?php esc_html_e( 'Message History', 'registrations-for-the-events-calendar' ); ?> <span class="rtec-pro-pill">Pro</span></a>
+				<a href="#" class="nav-tab rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'attendance', 'location' => 'single-event-nav' ) ) ); ?>"><?php esc_html_e( 'Attendance', 'registrations-for-the-events-calendar' ); ?> <span class="rtec-pro-pill">Pro</span></a>
 			</h2>
-			<?php do_action( 'rtec_registrations_tab_event_meta', $event_obj ); ?>
 		</div>
 
-		<div class="rtec-filters-actions-row rtec-reg-info rtec-border-sides">
+		<div class="rtec-filters-actions-row rtec-reg-info">
 			<div class="rtec-filters-wrap">
 				<div class="rtec-attendance-status-bar rtec-attendance-status-links">
 					<?php
@@ -198,44 +192,7 @@ if ( $single_search !== '' ) {
 		<div class="rtec-table-wrap">
 		<table class="widefat wp-list-table fixed striped posts rtec-registrations-data">
 		<thead>
-		<tr>
-			<th scope="col" class="manage-column column-rtec check-column">
-				<label class="screen-reader-text" for="rtec-select-all-1"><?php esc_html_e( 'Select All', 'registrations-for-the-events-calendar' ); ?></label>
-				<input type="checkbox" id="rtec-select-all-1">
-			</th>
-			<th scope="col" class="column-primary"><?php esc_html_e( 'Name', 'registrations-for-the-events-calendar' ); ?></th>
-			<th scope="col" class="rtec-reg-status-th rtec-data-cell rtec-data-group-1"><?php esc_html_e( 'Status', 'registrations-for-the-events-calendar' ); ?></th>
-			<?php
-			$name_columns   = array( 'first_name', 'last_name' );
-			$data_col_index = 0;
-			$num_data_cols  = 0;
-			foreach ( $event_obj->columns as $col_index => $column ) {
-				if ( in_array( $column, $name_columns, true ) ) {
-					continue;
-				}
-				$num_data_cols++;
-			}
-			foreach ( $event_obj->columns as $col_index => $column ) :
-				if ( in_array( $column, $name_columns, true ) ) {
-					continue;
-				}
-				$label = isset( $event_obj->labels[ $col_index ] ) ? $event_obj->labels[ $col_index ] : $column;
-				if ( $data_col_index % 4 === 0 ) {
-					$group     = (int) ( $data_col_index / 4 ) + 1;
-					$arrow_left = ( $data_col_index > 0 )
-						? '<div class="rtec-data-nav-wrap rtec-left"><div class="rtec-data-nav rtec-arrow-left" data-next-index="' . ( $group - 1 ) . '">' . RTEC_Icon::get( 'chevron-left' ) . '</div></div>'
-						: '';
-				} else {
-					$arrow_left = '';
-				}
-				$arrow_right = ( ( $data_col_index + 1 ) % 4 === 0 && ( $data_col_index + 1 ) < $num_data_cols )
-					? '<div class="rtec-data-nav-wrap rtec-right"><div class="rtec-data-nav rtec-arrow-right" data-next-index="' . ( $group + 1 ) . '">' . RTEC_Icon::get( 'chevron-right' ) . '</div></div>'
-					: '';
-				$data_col_index++;
-				?>
-				<th class="rtec-data-cell rtec-data-group-<?php echo (int) $group; ?>"><?php echo $arrow_left . esc_html( wp_unslash( $label ) ) . $arrow_right; ?></th>
-			<?php endforeach; ?>
-		</tr>
+		<?php include rtec_plugin_path( 'admin-templates/partials/registrations-single-thead.php' ); ?>
 		</thead>
 		<?php if ( ! empty( $event_obj->registrants_data ) ) : ?>
 			<tbody>
@@ -345,28 +302,7 @@ if ( $single_search !== '' ) {
 			</tbody>
 			<?php if ( count( $event_obj->registrants_data ) > 14 ) : ?>
 				<tfoot>
-				<tr>
-					<th scope="col" class="manage-column column-rtec check-column">
-						<label class="screen-reader-text" for="rtec-select-all-1"><?php esc_html_e( 'Select All', 'registrations-for-the-events-calendar' ); ?></label>
-						<input type="checkbox" id="rtec-select-all-1">
-					</th>
-					<th scope="col" class="column-primary"><?php esc_html_e( 'Name', 'registrations-for-the-events-calendar' ); ?></th>
-					<th scope="col" class="rtec-reg-status-th rtec-data-cell rtec-data-group-1"><?php esc_html_e( 'Status', 'registrations-for-the-events-calendar' ); ?></th>
-					<?php
-					$foot_col_index = 0;
-					foreach ( $event_obj->columns as $col_index => $column ) :
-						if ( in_array( $column, array( 'first_name', 'last_name' ), true ) ) {
-							continue;
-						}
-						$label = isset( $event_obj->labels[ $col_index ] ) ? $event_obj->labels[ $col_index ] : $column;
-						if ( $foot_col_index % 4 === 0 ) {
-							$foot_group = (int) ( $foot_col_index / 4 ) + 1;
-						}
-						$foot_col_index++;
-						?>
-						<th class="rtec-data-cell rtec-data-group-<?php echo (int) $foot_group; ?>"><?php echo esc_html( wp_unslash( $label ) ); ?></th>
-					<?php endforeach; ?>
-				</tr>
+				<?php include rtec_plugin_path( 'admin-templates/partials/registrations-single-thead.php' ); ?>
 				</tfoot>
 			<?php endif; ?>
 		<?php else : ?>
@@ -402,7 +338,7 @@ if ( $single_search !== '' ) {
 				<?php endforeach; ?>
 			</tr>
 			<tr>
-				<td colspan="<?php echo esc_attr( $single_view_col_count ); ?>" align="center"><?php esc_html_e( 'No Registrations Yet', 'registrations-for-the-events-calendar' ); ?></td>
+				<td colspan="4" align="center"><?php esc_html_e( 'No Registrations Yet', 'registrations-for-the-events-calendar' ); ?></td>
 			</tr>
 			</tbody>
 		<?php endif; // registrations not empty ?>
@@ -426,22 +362,10 @@ if ( $single_search !== '' ) {
 					<button type="submit" name="rtec_event_csv" class="button action rtec-admin-secondary-button rtec-icon-text"><?php echo RTEC_Icon::get( 'export' ); ?> <?php esc_html_e( 'Export (.csv)', 'registrations-for-the-events-calendar' ); ?></button>
 				</form>
 				<?php do_action( 'rtec_registrations_tab_event_actions', $event_id ); ?>
-				<div class="rtec-pro-action-button-wrap">
-					<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div>
-					<button type="button" class="button action rtec-action-confirm rtec-admin-secondary-button rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'confirm-selected', 'location' => 'single-event-actions' ) ) ); ?>"><?php echo RTEC_Icon::get( 'check' ); ?> <?php esc_html_e( 'Confirm Selected', 'registrations-for-the-events-calendar' ); ?></button>
-				</div>
-				<div class="rtec-pro-action-button-wrap">
-					<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div>
-					<button type="button" class="button action rtec-action-process-waiting rtec-admin-secondary-button rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'process-waiting-selected', 'location' => 'single-event-actions' ) ) ); ?>"><?php echo RTEC_Icon::get( 'clock' ); ?> <?php esc_html_e( 'Process Waiting List', 'registrations-for-the-events-calendar' ); ?></button>
-				</div>
-				<div class="rtec-pro-action-button-wrap">
-					<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div>
-					<button type="button" class="button action rtec-action-bulk-email rtec-admin-secondary-button rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'email-selected', 'location' => 'single-event-actions' ) ) ); ?>"><?php echo RTEC_Icon::get( 'email' ); ?> <?php esc_html_e( 'Email Selected', 'registrations-for-the-events-calendar' ); ?></button>
-				</div>
-				<div class="rtec-pro-action-button-wrap">
-					<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?></div>
-					<button type="button" class="button action rtec-action rtec-admin-secondary-button rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'transfer-selected', 'location' => 'single-event-actions' ) ) ); ?>"><?php echo RTEC_Icon::get( 'exchange' ); ?> <?php esc_html_e( 'Transfer', 'registrations-for-the-events-calendar' ); ?></button>
-				</div>
+				<button type="button" class="button action rtec-action-confirm rtec-admin-secondary-button rtec-modal-opener rtec-pro-action-button-with-pill" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'confirm-selected', 'location' => 'single-event-actions' ) ) ); ?>"><span class="rtec-pro-action-button-label rtec-icon-text"><?php echo RTEC_Icon::get( 'check' ); ?> <?php esc_html_e( 'Confirm Selected', 'registrations-for-the-events-calendar' ); ?></span><span class="rtec-pro-pill">Pro</span></button>
+				<button type="button" class="button action rtec-action-process-waiting rtec-admin-secondary-button rtec-modal-opener rtec-pro-action-button-with-pill" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'process-waiting-selected', 'location' => 'single-event-actions' ) ) ); ?>"><span class="rtec-pro-action-button-label rtec-icon-text"><?php echo RTEC_Icon::get( 'clock' ); ?> <?php esc_html_e( 'Process Waiting List', 'registrations-for-the-events-calendar' ); ?></span><span class="rtec-pro-pill">Pro</span></button>
+				<button type="button" class="button action rtec-action-bulk-email rtec-admin-secondary-button rtec-modal-opener rtec-pro-action-button-with-pill" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'email-selected', 'location' => 'single-event-actions' ) ) ); ?>"><span class="rtec-pro-action-button-label rtec-icon-text"><?php echo RTEC_Icon::get( 'email' ); ?> <?php esc_html_e( 'Email Selected', 'registrations-for-the-events-calendar' ); ?></span><span class="rtec-pro-pill">Pro</span></button>
+				<button type="button" class="button action rtec-action rtec-admin-secondary-button rtec-modal-opener rtec-pro-action-button-with-pill" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'transfer-selected', 'location' => 'single-event-actions' ) ) ); ?>"><span class="rtec-pro-action-button-label rtec-icon-text"><?php echo RTEC_Icon::get( 'exchange' ); ?> <?php esc_html_e( 'Transfer', 'registrations-for-the-events-calendar' ); ?></span><span class="rtec-pro-pill">Pro</span></button>
 			</div>
 		</div>
 		<?php endif; ?>

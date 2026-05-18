@@ -1743,9 +1743,8 @@ endforeach;
 				<div class="rtec-flex rtec-flex-gap-large">
 					<span><?php esc_html_e( 'Text Field', 'registrations-for-the-events-calendar' ); ?></span>
 					<div class="rtec-pro-action-button-wrap">
-						<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?>
-						</div>
 						<button type="button" class="button rtec-admin-secondary-button rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'form-fields', 'location' => 'form-settings' ) ) ); ?>"><?php esc_html_e( 'Change', 'registrations-for-the-events-calendar' ); ?></button>
+						<span class="rtec-pro-pill">Pro</span>
 					</div>
 				</div>
 			</div>
@@ -1804,9 +1803,8 @@ endforeach;
 				<div class="rtec-flex rtec-flex-gap-large">
 					<span><?php esc_html_e( 'Text Field', 'registrations-for-the-events-calendar' ); ?></span>
 					<div class="rtec-pro-action-button-wrap">
-						<div class="rtec-pro-pill">Pro <?php echo RTEC_Icon::get( 'pro' ); ?>
-						</div>
 						<button type="button" class="button rtec-admin-secondary-button rtec-modal-opener" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'form-fields', 'location' => 'form-settings' ) ) ); ?>"><?php esc_html_e( 'Change', 'registrations-for-the-events-calendar' ); ?></button>
+						<span class="rtec-pro-pill">Pro</span>
 					</div>
 				</div>
 			</div>
@@ -2431,7 +2429,8 @@ endforeach;
 			$checkbox_settings = array( 'disable_by_default', 'limit_registrations', 'check_for_duplicates' );
 		} elseif ( isset( $input['custom_field_names'] ) || isset( $input['form_width'] ) ) {
 			// Form tab: form fields, attendee data, users options, styles.
-			$checkbox_settings    = array( 'first_show', 'first_require', 'last_show', 'last_require', 'email_show', 'email_require', 'phone_show', 'phone_require', 'other_show', 'other_require', 'terms_conditions_require', 'recaptcha_require', 'show_registrants_data', 'only_logged_in', 'show_log_in_form', 'include_attendance_count_message', 'include_attendance_message', 'using_custom_template', 'preserve_db', 'preserve_registrations', 'preserve_settings', 'allow_users_reregister' );
+			// Do not list preserve_* here — those inputs only exist on the Advanced tab; resetting them would clear them on every Form save.
+			$checkbox_settings    = array( 'first_show', 'first_require', 'last_show', 'last_require', 'email_show', 'email_require', 'phone_show', 'phone_require', 'other_show', 'other_require', 'terms_conditions_require', 'recaptcha_require', 'show_registrants_data', 'only_logged_in', 'show_log_in_form', 'include_attendance_count_message', 'include_attendance_message', 'using_custom_template', 'allow_users_reregister' );
 			$array_settings       = array( 'attendance_count_message_location' );
 			$rich_editor_settings = array( 'please_log_in_message', 'attendance_count_message_template' );
 		} elseif ( isset( $input['register_text'] ) || isset( $input['enter_your_email_text'] ) ) {
@@ -2618,6 +2617,9 @@ endforeach;
 			if ( ! is_wp_error( $return ) && $return['success'] ) {
 				$updated_add_on = self::get_plugin_data( $plugin );
 				update_option( 'tribe_skip_welcome', true );
+				if ( 'event-genius' === $plugin ) {
+					RTEC_Evge_Install_Followup::flag_pending();
+				}
 				if ( 'plugin' === $type ) {
 					$return['messageHTML'] = '<div class="rtec-success-message">' . esc_html__( 'Plugin installed & activated. Refreshing page.', 'registrations-for-the-events-calendar' ) . '</div>';
 					wp_send_json_success( $return );

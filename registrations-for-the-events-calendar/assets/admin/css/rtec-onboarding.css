@@ -235,47 +235,184 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	margin-left: 28px;
 }
 
-/* Step 1 path options: radio + plugin listing (TEC / Event Genius) */
-.rtec-onboarding-path-options .rtec-onboarding-path-option {
-	display: flex;
-	align-items: flex-start;
-	gap: 12px;
-	padding: 16px;
+/* Step 1 path cards: side-by-side cards (Event Genius / The Events Calendar + Registrations) */
+
+/* Give this step extra room: widen the page wrap when path cards are present. */
+.rtec-onboarding-page:has(.rtec-onboarding-path-cards) .rtec-onboarding-outer,
+.rtec-onboarding-page:has(.rtec-onboarding-path-cards) .rtec-onboarding-wrap.rtec-welcome-screen {
+	max-width: 960px;
 }
 
-.rtec-onboarding-path-options .rtec-onboarding-path-option input {
-	flex-shrink: 0;
-	margin: 4px 0 0;
-}
-
-.rtec-onboarding-path-listing {
-	display: flex;
-	align-items: flex-start;
+.rtec-onboarding-path-cards {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: 16px;
-	flex: 1;
-	min-width: 0;
+	margin: 40px 0 20px;
+	align-items: stretch;
 }
 
-.rtec-onboarding-path-listing .rtec-addon-icon {
-	width: 64px;
-	min-width: 64px;
+.rtec-onboarding-path-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid #c3c4c7;
+	border-radius: 6px;
+	background: #fff;
+	cursor: pointer;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rtec-onboarding-path-card:hover {
+	border-color: #8c8f94;
+}
+
+.rtec-onboarding-path-card:has(input:checked) {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* The recommended card meets the badge with a square top edge. */
+.rtec-onboarding-path-card--recommended {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+/* "Recommended" tab: sits above the card's top border, attached to it. Only present on the EG card. */
+.rtec-onboarding-path-card-badge {
+	position: absolute;
+	bottom: 100%;
+	left: -2px;
+	right: -2px;
+	height: 26px;
+	padding: 5px 12px;
+	background: #2271b1;
+	color: #fff;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	border-radius: 6px 6px 0 0;
+	box-sizing: border-box;
+}
+
+/* When selected, the card adds a 1px box-shadow ring; widen the badge to match. */
+.rtec-onboarding-path-card:has(input:checked) .rtec-onboarding-path-card-badge {
+	left: -3px;
+	right: -3px;
+}
+
+.rtec-onboarding-path-card-inner {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+/* Visually hide the radio but keep it focusable and form-submittable */
+.rtec-onboarding-path-card-input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.rtec-onboarding-path-card:focus-within {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.4);
+}
+
+/* Heading: icon column + (title / subtitle) column */
+.rtec-onboarding-path-card-heading {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	margin-bottom: 14px;
+}
+
+.rtec-onboarding-path-card-thumb {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	float: none;
+	flex-shrink: 0;
+	width: 56px;
+	height: 56px;
 }
 
-.rtec-onboarding-path-listing .rtec-addon-icon img {
-	width: 100%;
+.rtec-onboarding-path-card-thumb img {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
 	height: auto;
 }
 
-.rtec-onboarding-path-listing .rtec-tec-content {
-	margin-left: 0;
+.rtec-onboarding-path-card-heading-text {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
 }
 
-.rtec-onboarding-path-listing .rtec-addon-title {
-	margin-top: 0;
+.rtec-onboarding-path-card-title {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1d2327;
+	line-height: 1.3;
+}
+
+.rtec-onboarding-path-card-subtitle {
+	display: block;
+	font-size: 14px;
+	color: #50575e;
+	line-height: 1.4;
+	margin-top: 2px;
+}
+
+.rtec-onboarding-path-card-byline {
+	display: block;
+	font-size: 12px;
+	color: #50575e;
+	font-style: italic;
+	line-height: 1.4;
+	margin-top: 6px;
+}
+
+.rtec-onboarding-path-card-byline--placeholder {
+	visibility: hidden;
+}
+
+.rtec-onboarding-path-card-bullets {
+	margin: 0 0 16px;
+	padding-left: 18px;
+	font-size: 14px;
+	color: #1d2327;
+	list-style: disc;
+}
+
+.rtec-onboarding-path-card-bullets li {
+	margin: 0 0 4px;
+}
+
+.rtec-onboarding-path-card-footer {
+	margin-top: auto;
+	padding-top: 12px;
+	font-size: 14px;
+	color: #50575e;
+	font-weight: 600;
+}
+
+@media (max-width: 600px) {
+	.rtec-onboarding-path-cards {
+		grid-template-columns: 1fr;
+	}
 }
 
 .rtec-onboarding-eg-icon.dashicons {
@@ -285,13 +422,20 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	color: #50575e;
 }
 
-.rtec-onboarding-step1-cta {
+.rtec-onboarding-cta-footer.rtec-onboarding-step1-cta {
 	margin-bottom: 8px;
+	text-align: left;
 }
 
 .rtec-onboarding-step1-message {
 	margin: 0;
 	min-height: 24px;
+}
+
+.rtec-welcome-text p.rtec-onboarding-step1-uninstall-notice {
+	margin: 8px 0 0;
+	font-size: 13px;
+	color: #646970;
 }
 
 /* Event Genius active: simple choice screen (no step dots) */

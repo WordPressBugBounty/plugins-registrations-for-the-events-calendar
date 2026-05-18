@@ -982,14 +982,28 @@ function rtec_custom_css() {
 add_action( 'wp_head', 'rtec_custom_css' );
 
 /**
+ * Register front-end styles (shared by wp_enqueue_scripts and blocks).
+ *
+ * @since 3.0
+ */
+function rtec_register_frontend_styles() {
+	if ( ! wp_style_is( 'rtec_common', 'registered' ) ) {
+		wp_register_style( 'rtec_common', rtec_frontend_asset_url( 'assets/frontend/css/rtec-common.css' ), array(), RTEC_VERSION );
+	}
+	if ( ! wp_style_is( 'rtec_styles', 'registered' ) ) {
+		wp_register_style( 'rtec_styles', rtec_frontend_asset_url( 'assets/frontend/css/rtec-styles.css' ), array( 'rtec_common' ), RTEC_VERSION );
+	}
+}
+
+/**
  * javascript and CSS files for the feed
  *
  * @since 1.0
  */
 function rtec_scripts_and_styles() {
-	wp_register_style( 'rtec_common', rtec_frontend_asset_url( 'assets/frontend/css/rtec-common.css' ), array(), RTEC_VERSION );
+	rtec_register_frontend_styles();
 	wp_enqueue_style( 'rtec_common' );
-	wp_enqueue_style( 'rtec_styles', rtec_frontend_asset_url( 'assets/frontend/css/rtec-styles.css' ), array( 'rtec_common' ), RTEC_VERSION );
+	wp_enqueue_style( 'rtec_styles' );
 
 	// Backwards compatibility: enqueue legacy front-end CSS when requested (e.g. after upgrade or customizations).
 	$enqueue_legacy_styles = apply_filters( 'rtec_enqueue_legacy_styles', false );

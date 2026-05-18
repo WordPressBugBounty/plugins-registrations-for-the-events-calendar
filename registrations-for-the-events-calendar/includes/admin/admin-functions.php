@@ -1444,22 +1444,13 @@ function rtec_db_update_check() {
 	}
 
 	// When updating from older installs (db version > 0 and < 1.6) into the 3.0
-	// release line, permanently dismiss the onboarding checklist and schedule
-	// the 3.0 "What's New" screen redirect. First‑time installs (db_ver === 0)
-	// keep the checklist enabled.
+	// release line, permanently dismiss the onboarding checklist. First-time
+	// installs (db_ver === 0) keep the checklist enabled.
 	if ( $db_ver > 0 && $db_ver < 1.6 && defined( 'RTEC_VERSION' ) && version_compare( RTEC_VERSION, '3.0.0', '>=' ) ) {
 		if ( class_exists( 'RTEC_Onboarding' ) ) {
 			$state = RTEC_Onboarding::get_state();
 			$state[ RTEC_Onboarding::KEY_CHECKLIST_DISMISSED ] = true;
 			update_option( RTEC_Onboarding::OPTION_NAME, $state );
-		}
-
-		if ( ! class_exists( 'RTEC_Whats_New_3_0' ) && function_exists( 'rtec_plugin_path' ) ) {
-			require_once rtec_plugin_path( 'includes/admin/class-rtec-whats-new-3-0.php' );
-		}
-		if ( class_exists( 'RTEC_Whats_New_3_0' ) ) {
-			update_option( RTEC_Whats_New_3_0::OPTION_VERSION_KEY, RTEC_VERSION, false );
-			set_transient( RTEC_Whats_New_3_0::TRANSIENT_REDIRECT, 'yes', MINUTE_IN_SECONDS * 30 );
 		}
 	}
 }
