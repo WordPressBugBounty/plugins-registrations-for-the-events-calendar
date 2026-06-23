@@ -1,0 +1,82 @@
+/* Migration wizard — styles not shared with onboarding */
+
+.rtec-migration-wizard-page .rtec-wizard-wrap.rtec-welcome-screen {
+	max-width: 560px;
+}
+
+.rtec-migration-wizard-scan-summary {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin: 16px 0 20px;
+	padding: 0;
+	list-style: none;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.rtec-migration-wizard-scan-summary-item {
+	padding: 10px 12px;
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #1d2327;
+	border-bottom: 1px solid #c3c4c7;
+	border-right: 1px solid #c3c4c7;
+}
+
+.rtec-migration-wizard-scan-summary-item:nth-child(2n) {
+	border-right: none;
+}
+
+.rtec-migration-wizard-scan-summary-item:nth-last-child(-n+2) {
+	border-bottom: none;
+}
+
+@media screen and (max-width: 480px) {
+	.rtec-migration-wizard-scan-summary {
+		grid-template-columns: 1fr;
+	}
+
+	.rtec-migration-wizard-scan-summary-item {
+		border-right: none;
+	}
+
+	.rtec-migration-wizard-scan-summary-item:nth-last-child(-n+2) {
+		border-bottom: 1px solid #c3c4c7;
+	}
+
+	.rtec-migration-wizard-scan-summary-item:last-child {
+		border-bottom: none;
+	}
+}
+
+.rtec-migration-wizard-reassurance {
+	margin: 0 0 24px;
+}
+
+.rtec-migration-wizard-reassurance-lead {
+	margin-bottom: 12px;
+}
+
+.rtec-migration-wizard-reassurance-list {
+	margin: 0 0 1em;
+	padding-left: 1.25em;
+	list-style: disc;
+	list-style-position: outside;
+}
+
+.rtec-migration-wizard-reassurance-list li {
+	margin-bottom: 6px;
+	color: #50575e;
+	line-height: 1.45;
+}
+
+.rtec-migration-wizard-reassurance-list li:last-child {
+	margin-bottom: 0;
+}
+
+.rtec-migration-wizard-install-start {
+	text-align: right;
+	margin-top: 24px;
+}

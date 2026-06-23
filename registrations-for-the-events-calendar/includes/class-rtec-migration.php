@@ -14,6 +14,11 @@ class RTEC_Migration {
 
 	const MAX_ATTEMPTS = 100;
 
+	const ADMIN_ACTION_NONCE = 'rtec_migration_admin_action';
+
+	/** TEC custom tables migration UI nonce (see TEC\Events\Custom_Tables\V1\Migration\Ajax::NONCE_ACTION). */
+	const TEC_MIGRATION_NONCE_ACTION = 'tec-ct1-upgrade';
+
 	public function __construct() {
 		$migration_status       = get_option(
 			'rtec_migration_status',
@@ -54,7 +59,6 @@ class RTEC_Migration {
 	 */
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'maybe_migrate' ) );
-		add_action( 'wp_footer', array( $this, 'maybe_migrate' ) );
 		add_action( 'rtec_admin_before_template_main', array( $this, 'migration_needed_alert' ) );
 		add_action( 'wp_ajax_tec_events_custom_tables_v1_migration_undo', array( $this, 'ajax_undo_migration' ), 0, 2 );
 	}
@@ -611,6 +615,7 @@ class RTEC_Migration {
 	}
 
 	public function ajax_undo_migration() {
+		check_ajax_referer( self::TEC_MIGRATION_NONCE_ACTION );
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}

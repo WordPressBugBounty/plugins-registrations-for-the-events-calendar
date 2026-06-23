@@ -173,6 +173,42 @@ class RTEC_Db_Admin extends RTEC_Db {
 	}
 
 	/**
+	 * Keep only registration IDs the current user is allowed to manage.
+	 *
+	 * @param int[] $record_ids Registration row IDs.
+	 * @return int[]
+	 */
+	public function filter_manageable_registration_ids( $record_ids ) {
+		global $wpdb;
+
+		$record_ids = array_values( array_filter( array_map( 'absint', (array) $record_ids ) ) );
+		if ( empty( $record_ids ) ) {
+			return array();
+		}
+
+		$table_name   = esc_sql( $this->table_name );
+		$placeholders = implode( ', ', array_fill( 0, count( $record_ids ), '%d' ) );
+		$sql          = $wpdb->prepare(
+			"SELECT id, event_id FROM $table_name WHERE id IN ( $placeholders )",
+			$record_ids
+		);
+		$rows = $wpdb->get_results( $sql, ARRAY_A );
+
+		if ( empty( $rows ) ) {
+			return array();
+		}
+
+		$allowed = array();
+		foreach ( $rows as $row ) {
+			if ( rtec_current_user_can_manage_event_registrations( (int) $row['event_id'] ) ) {
+				$allowed[] = (int) $row['id'];
+			}
+		}
+
+		return $allowed;
+	}
+
+	/**
 	 * Used to create the alert for new registrations
 	 *
 	 * @return false|int    false if no records, otherwise number of new registrations
@@ -315,9 +351,22 @@ class RTEC_Db_Admin extends RTEC_Db {
 		}
 
 		$where_clause = implode( ' OR ', $where_fragments );
-		$sql          = "SELECT * FROM $this->table_name WHERE $where_clause ORDER BY id DESC LIMIT 200";
-		$query        = $wpdb->prepare( $sql, $placeholders );
-		$matches      = $wpdb->get_results( $query, ARRAY_A );
+		$sql          = "SELECT * FROM $this->table_name WHERE $where_clause";
+		$query_args   = $placeholders;
+
+		$manageable_event_ids = rtec_get_manageable_event_ids_for_current_user();
+		if ( is_array( $manageable_event_ids ) ) {
+			if ( empty( $manageable_event_ids ) ) {
+				return array();
+			}
+			$event_placeholders = implode( ', ', array_fill( 0, count( $manageable_event_ids ), '%d' ) );
+			$sql               .= " AND event_id IN ( $event_placeholders )";
+			$query_args         = array_merge( $query_args, array_map( 'absint', $manageable_event_ids ) );
+		}
+
+		$sql     .= ' ORDER BY id DESC LIMIT 200';
+		$query    = $wpdb->prepare( $sql, $query_args );
+		$matches  = $wpdb->get_results( $query, ARRAY_A );
 
 		return $matches;
 	}

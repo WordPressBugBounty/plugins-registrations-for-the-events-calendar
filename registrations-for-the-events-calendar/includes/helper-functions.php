@@ -1087,6 +1087,63 @@ function rtec_get_capability() {
 }
 
 /**
+ * Whether the current user can manage registrations for any event.
+ *
+ * @return bool
+ */
+function rtec_user_can_manage_all_event_registrations() {
+	return current_user_can( 'edit_others_tribe_events' ) || current_user_can( 'edit_others_rtec_registrations' );
+}
+
+/**
+ * Whether the current user can view or manage registrations for a specific event.
+ *
+ * @param int $event_id Event post ID.
+ * @return bool
+ */
+function rtec_current_user_can_manage_event_registrations( $event_id ) {
+	$event_id = absint( $event_id );
+
+	if ( ! $event_id || ! current_user_can( 'edit_posts' ) ) {
+		return false;
+	}
+
+	if ( rtec_user_can_manage_all_event_registrations() ) {
+		return true;
+	}
+
+	return current_user_can( 'edit_post', $event_id );
+}
+
+/**
+ * Event IDs the current user may manage registrations for, or null if all events.
+ *
+ * @return int[]|null
+ */
+function rtec_get_manageable_event_ids_for_current_user() {
+	if ( rtec_user_can_manage_all_event_registrations() ) {
+		return null;
+	}
+
+	$user_id = get_current_user_id();
+	if ( ! $user_id ) {
+		return array();
+	}
+
+	$post_type = defined( 'RTEC_TRIBE_EVENTS_POST_TYPE' ) ? RTEC_TRIBE_EVENTS_POST_TYPE : 'tribe_events';
+
+	return get_posts(
+		array(
+			'author'         => $user_id,
+			'post_type'      => $post_type,
+			'posts_per_page' => -1,
+			'fields'         => 'ids',
+			'post_status'    => 'any',
+		)
+	);
+}
+
+/**
  * Most recent time any admin viewed the registrations list (from user meta).
  * Used by the frontend "Reviewed" attendee list to hide registrations newer than this.
  *

@@ -1,11 +1,6 @@
-/* Onboarding page: outer wrapper centers header + card */
-.rtec-onboarding-page .rtec-onboarding-outer {
-	max-width: 640px;
-	margin-left: auto;
-	margin-right: auto;
-}
+/* Onboarding wizard — styles not in rtec-wizard-common.css */
 
-/* Exit Setup: actual button fixed in top-right corner of the page */
+/* Exit Setup: fixed top-right */
 .rtec-onboarding-exit-setup {
 	position: fixed;
 	top: 20px;
@@ -14,120 +9,27 @@
 	text-decoration: none;
 }
 
-/* Admin bar: push button down when present */
 body.admin-bar .rtec-onboarding-exit-setup {
 	top: 46px;
 }
 
-/* Header above the card: logo + title, dots (no Exit inline) */
-.rtec-onboarding-header {
-	margin-bottom: 28px;
+/* Step 1: wider outer for path cards */
+.rtec-onboarding-page:has(.rtec-onboarding-path-cards) .rtec-wizard-outer,
+.rtec-onboarding-page:has(.rtec-onboarding-path-cards) .rtec-wizard-wrap.rtec-welcome-screen {
+	max-width: 960px;
 }
 
-.rtec-onboarding-header-main {
-	text-align: center;
-}
-
-.rtec-onboarding-header-brand {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 14px;
-	margin-bottom: 24px;
-}
-
-.rtec-onboarding-logo {
-	display: block;
-	height: 45px;
-	width: auto;
-}
-
-.rtec-onboarding-header-title {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 2px;
-}
-
-.rtec-onboarding-header-title-main {
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: #1d2327;
-	line-height: 1.2;
-}
-
-.rtec-onboarding-header-title-sub {
-	font-size: 0.875rem;
-	font-weight: 400;
-	color: #646970;
-	line-height: 1.2;
-}
-
-/* Progress dots: large, spaced, current step highlighted */
-.rtec-onboarding-dots {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 24px;
-	flex-wrap: wrap;
-}
-
-.rtec-onboarding-dot {
-	width: 14px;
-	height: 14px;
-	border-radius: 50%;
-	background: #c3c4c7;
-	border: 2px solid #c3c4c7;
-	transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.rtec-onboarding-dot-done {
-	background: #2271b1;
-	border-color: #2271b1;
-}
-
-.rtec-onboarding-dot-current {
-	background: #2271b1;
-	border-color: #2271b1;
-	transform: scale(1.25);
-	box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.3);
-}
-
-/* Wizard card (slightly wider than default welcome screen) */
-.rtec-onboarding-wrap.rtec-welcome-screen {
-	max-width: 640px;
-}
-
-.rtec-onboarding-wrap .rtec-onboarding-content {
-	background: transparent;
-	border: none;
-	box-shadow: none;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.rtec-onboarding-step-title {
-	margin: 0 0 14px;
-	font-size: 1.35rem;
-}
-
-.rtec-onboarding-step-body {
-	margin: 0 0 8px;
-	color: #50575e;
-	line-height: 1.5;
-}
-
-/* Step 2: centered intro; Activate and Continue below listing, right-justified */
+/* Step 2: centered intro */
 .rtec-onboarding-step-2-intro {
 	text-align: center;
 	margin-bottom: 20px;
 }
 
-.rtec-onboarding-step-2-intro .rtec-onboarding-step-title {
+.rtec-onboarding-step-2-intro .rtec-wizard-step-title {
 	margin-bottom: 12px;
 }
 
-.rtec-onboarding-step-2-intro .rtec-onboarding-step-body {
+.rtec-onboarding-step-2-intro .rtec-wizard-step-body {
 	margin-bottom: 0;
 }
 
@@ -148,7 +50,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	opacity: 0.9;
 }
 
-/* Step 4: Create Event and Continue — same pattern as Activate (right-justified, carat) */
 .rtec-onboarding-create-event-footer {
 	text-align: right;
 	margin-top: 28px;
@@ -165,24 +66,9 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	border-radius: 6px;
 }
 
-.rtec-onboarding-create-event-footer .rtec-button-carat {
-	font-size: 1.1em;
-	line-height: 1;
-	opacity: 0.9;
-}
-
-/* Step 3: Enable & Continue — right-justified with carat, same pattern */
 .rtec-onboarding-enable-footer {
 	text-align: right;
 	margin-top: 28px;
-}
-
-
-
-.rtec-onboarding-enable-footer .rtec-button-carat {
-	font-size: 1.1em;
-	line-height: 1;
-	opacity: 0.9;
 }
 
 .rtec-onboarding-section {
@@ -235,14 +121,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	margin-left: 28px;
 }
 
-/* Step 1 path cards: side-by-side cards (Event Genius / The Events Calendar + Registrations) */
-
-/* Give this step extra room: widen the page wrap when path cards are present. */
-.rtec-onboarding-page:has(.rtec-onboarding-path-cards) .rtec-onboarding-outer,
-.rtec-onboarding-page:has(.rtec-onboarding-path-cards) .rtec-onboarding-wrap.rtec-welcome-screen {
-	max-width: 960px;
-}
-
 .rtec-onboarding-path-cards {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -271,13 +149,11 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	box-shadow: 0 0 0 1px #2271b1;
 }
 
-/* The recommended card meets the badge with a square top edge. */
 .rtec-onboarding-path-card--recommended {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
 
-/* "Recommended" tab: sits above the card's top border, attached to it. Only present on the EG card. */
 .rtec-onboarding-path-card-badge {
 	position: absolute;
 	bottom: 100%;
@@ -297,7 +173,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	box-sizing: border-box;
 }
 
-/* When selected, the card adds a 1px box-shadow ring; widen the badge to match. */
 .rtec-onboarding-path-card:has(input:checked) .rtec-onboarding-path-card-badge {
 	left: -3px;
 	right: -3px;
@@ -313,7 +188,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	box-sizing: border-box;
 }
 
-/* Visually hide the radio but keep it focusable and form-submittable */
 .rtec-onboarding-path-card-input {
 	position: absolute;
 	width: 1px;
@@ -331,7 +205,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.4);
 }
 
-/* Heading: icon column + (title / subtitle) column */
 .rtec-onboarding-path-card-heading {
 	display: flex;
 	align-items: flex-start;
@@ -422,7 +295,7 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	color: #50575e;
 }
 
-.rtec-onboarding-cta-footer.rtec-onboarding-step1-cta {
+.rtec-wizard-cta-footer.rtec-onboarding-step1-cta {
 	margin-bottom: 8px;
 	text-align: left;
 }
@@ -438,7 +311,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	color: #646970;
 }
 
-/* Event Genius active: simple choice screen (no step dots) */
 .rtec-onboarding-page--evge-context .rtec-onboarding-evge-context-actions,
 .rtec-admin-wrap--evge-context .rtec-onboarding-evge-context-actions {
 	display: flex;
@@ -482,25 +354,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	font-size: 13px;
 }
 
-/* All onboarding CTAs: large, easy to find */
-.rtec-onboarding-actions {
-	margin-top: 32px;
-}
-
-.rtec-onboarding-actions .button,
-.rtec-onboarding-actions .rtec-button {
-	display: inline-block;
-	padding: 16px 36px;
-	font-size: 17px;
-	font-weight: 600;
-	line-height: 1.3;
-	min-height: 52px;
-	border-radius: 6px;
-	text-decoration: none;
-	transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-/* Step 2: TEC Install/Activate buttons (in addon box and footer) — same large CTA treatment */
 .rtec-onboarding-tec-welcome .rtec-addon-buttons .rtec-button,
 .rtec-onboarding-tec-activate-footer .rtec-button {
 	display: inline-flex;
@@ -520,67 +373,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	gap: 10px;
 }
 
-/* Processing state: wrap + spinner (aligned with frontend RtecCommon) */
-.rtec-processing-wrap-flex {
-	position: relative;
-	display: inline-flex;
-	gap: 10px;
-	align-items: center;
-}
-
-.rtec-processing-wrap-flex.rtec-is-processing .rtec-spinner-container {
-	position: relative;
-	top: 0;
-	left: 0;
-	margin: 0;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	flex-shrink: 0;
-	width: 24px;
-	height: 24px;
-}
-
-.rtec-onboarding-page .rtec-fade {
-	opacity: 0.6;
-}
-
-/* Spinner sits next to button on page background — use visible (blue) color, not white */
-.rtec-onboarding-page .rtec-processing-wrap-flex.rtec-is-processing .rtec-spinner-circle {
-	box-sizing: border-box;
-	width: 22px;
-	height: 22px;
-	border-radius: 100%;
-	border: 3px solid rgba(34, 113, 177, 0.2);
-	border-top-color: #2271b1;
-	animation: rtec-onboarding-spin 0.8s infinite linear;
-}
-
-.rtec-onboarding-page .rtec-is-processing .rtec-spinner-container {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-}
-
-@keyframes rtec-onboarding-spin {
-	100% { transform: rotate(360deg); }
-}
-
-.rtec-onboarding-ajax-message {
-	margin-top: 12px;
-	font-size: 13px;
-}
-
-.rtec-onboarding-ajax-message.rtec-error {
-	color: #b32d2e;
-}
-
-.rtec-onboarding-ajax-message.rtec-success {
-	color: #00a32a;
-	text-align: right;
-}
-
-/* Modal */
 .rtec-onboarding-modal {
 	position: fixed;
 	inset: 0;
@@ -642,7 +434,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	border-radius: 6px;
 }
 
-/* Step 4 form */
 .rtec-onboarding-form p {
 	margin-bottom: 16px;
 }
@@ -659,7 +450,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	color: #1d2327;
 }
 
-/* Larger inputs across the create-event form */
 .rtec-onboarding-form .rtec-onboarding-input {
 	padding: 12px 14px;
 	font-size: 16px;
@@ -709,169 +499,6 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	font-style: italic;
 }
 
-/* Success step */
-.rtec-onboarding-success-list {
-	margin: 16px 0 24px;
-	padding-left: 0;
-	list-style: none;
-}
-
-.rtec-onboarding-success-list li {
-	display: flex;
-	align-items: flex-start;
-	gap: 10px;
-	margin-bottom: 10px;
-}
-
-.rtec-onboarding-success-list-icon {
-	flex-shrink: 0;
-	width: 1.25em;
-	height: 1.25em;
-	color: #00a32a;
-	line-height: 1;
-}
-
-.rtec-onboarding-success-list-icon svg {
-	width: 100%;
-	height: 100%;
-	display: block;
-}
-
-.rtec-onboarding-success-primary {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
-	margin-top: 20px;
-	justify-content: flex-start;
-	text-align: left;
-}
-
-.rtec-onboarding-success-primary .rtec-onboarding-cta-with-chevron {
-	display: inline-flex !important;
-	align-items: center;
-	gap: 14px;
-}
-
-.rtec-onboarding-success-primary .button-hero {
-	padding: 16px 28px;
-	font-size: 16px;
-	font-weight: 600;
-	min-height: 48px;
-	border-radius: 6px;
-}
-
-.rtec-onboarding-success-cta-note {
-	margin: 12px 0 20px;
-	font-size: 14px;
-	color: #50575e;
-}
-
-.rtec-onboarding-success-other-heading {
-	font-size: 13px;
-	font-weight: 600;
-	color: #50575e;
-	margin: 24px 0 8px;
-	padding: 0;
-	line-height: 1.3;
-}
-
-.rtec-onboarding-success-secondary {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-	margin-top: 0;
-}
-
-.rtec-onboarding-success-secondary .rtec-onboarding-btn-small {
-	padding: 6px 14px;
-	font-size: 13px;
-	font-weight: 500;
-	min-height: auto;
-	border-radius: 4px;
-}
-
-.rtec-onboarding-btn-small {
-	padding: 8px 16px;
-	font-size: 13px;
-	font-weight: 500;
-	min-height: auto;
-	border-radius: 4px;
-}
-
-/* Shared: all CTA footers right-justified, primary color, chevron */
-.rtec-onboarding-cta-footer {
-	text-align: right;
-	margin-top: 28px;
-}
-
-.rtec-onboarding-cta-footer.rtec-onboarding-success-primary {
-	margin-top: 20px;
-	gap: 12px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	text-align: left;
-}
-
-.rtec-onboarding-cta-with-chevron {
-	display: inline-flex;
-	align-items: center;
-	gap: 14px;
-	padding: 16px 36px;
-	font-size: 17px;
-	font-weight: 600;
-	min-height: 52px;
-	border-radius: 6px;
-	text-decoration: none;
-}
-
-.rtec-onboarding-cta-with-chevron .rtec-button-carat {
-	font-size: 1.1em;
-	line-height: 1;
-	opacity: 0.9;
-}
-
-.rtec-onboarding-page .button-primary,
-.rtec-onboarding-page .rtec-onboarding-cta-with-chevron.button-primary,
-.rtec-onboarding-page .rtec-button.rtec-primary {
-	padding: 6px 28px;
-	font-weight: normal;
-	font-size: 16px;
-}
-/* Step 3B: Back + CTA in one row */
-.rtec-onboarding-step-3b-actions {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 28px;
-	gap: 16px;
-}
-
-.rtec-onboarding-back-btn.rtec-onboarding-cta-with-chevron {
-	text-decoration: none;
-	padding: 6px 36px;
-	font-size: 16px;
-	font-weight: normal;
-}
-
-.rtec-onboarding-back-btn .rtec-button-carat-left {
-	order: -1;
-}
-
-.rtec-onboarding-step-3b-actions .rtec-onboarding-enable-single-footer {
-	margin-top: 0;
-	text-align: right;
-}
-
-.rtec-onboarding-enable-single-footer {
-	text-align: right;
-	margin-top: 28px;
-}
-
-.rtec-onboarding-enable-single-footer .rtec-onboarding-cta-with-chevron {
-	min-height: 52px;
-}
-
 .rtec-onboarding-pro-cta {
 	margin-top: 32px;
 	padding-top: 24px;
@@ -893,12 +520,12 @@ body.admin-bar .rtec-onboarding-exit-setup {
 	min-width: 280px;
 }
 
-/* Step 2: both Install and Install & Activate visible side by side; hide Activate when not installed */
 .rtec-tec-install-both .rtec-addon-buttons {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 14px;
 }
+
 .rtec-tec-install-both .rtec-addon-activate {
 	display: none;
 }
@@ -906,4 +533,37 @@ body.admin-bar .rtec-onboarding-exit-setup {
 .rtec-onboarding-tec-welcome .rtec-add-on-status-message {
 	margin-top: 12px;
 	font-size: 14px;
+}
+
+.rtec-onboarding-step-3b-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 28px;
+	gap: 16px;
+}
+
+.rtec-onboarding-back-btn.rtec-wizard-cta-with-chevron {
+	text-decoration: none;
+	padding: 6px 36px;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.rtec-onboarding-back-btn .rtec-button-carat-left {
+	order: -1;
+}
+
+.rtec-onboarding-step-3b-actions .rtec-onboarding-enable-single-footer {
+	margin-top: 0;
+	text-align: right;
+}
+
+.rtec-onboarding-enable-single-footer {
+	text-align: right;
+	margin-top: 28px;
+}
+
+.rtec-onboarding-enable-single-footer .rtec-wizard-cta-with-chevron {
+	min-height: 52px;
 }

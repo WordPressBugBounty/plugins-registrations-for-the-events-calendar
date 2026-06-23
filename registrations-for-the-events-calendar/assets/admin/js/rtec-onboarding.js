@@ -5,36 +5,29 @@
 	var ajaxUrl = typeof rtecOnboarding !== 'undefined' ? rtecOnboarding.ajax_url : '';
 	var nonce   = typeof rtecOnboarding !== 'undefined' ? rtecOnboarding.nonce : '';
 	var strings = typeof rtecOnboarding !== 'undefined' ? rtecOnboarding.strings : {};
-
-	var SPINNER_HTML = '<div class="rtec-spinner-container"><div class="rtec-spinner-circle"></div></div>';
+	var wizard  = window.RtecWizard || {};
 
 	function startProcessing($btn) {
-		if (!$btn || !$btn.length) return;
-		$btn.attr('aria-busy', 'true');
-		$btn.wrap('<div class="rtec-processing-wrap-flex rtec-is-processing"></div>');
-		$btn.addClass('rtec-fade').prop('disabled', true);
-		$btn.before(SPINNER_HTML);
+		if (wizard.startProcessing) {
+			wizard.startProcessing($btn);
+		}
 	}
 
 	function stopProcessing($btn) {
-		if (!$btn || !$btn.length) return;
-		setTimeout(function() {
-			var $wrap = $btn.closest('.rtec-processing-wrap-flex');
-			if ($wrap.length) {
-				$wrap.find('.rtec-spinner-container').remove();
-				$btn.unwrap('.rtec-processing-wrap-flex');
-			}
-			$btn.removeClass('rtec-fade').prop('disabled', false).attr('aria-busy', 'false');
-		}, 100);
+		if (wizard.stopProcessing) {
+			wizard.stopProcessing($btn);
+		}
 	}
 
 	function setMessage($el, text, isError) {
-		$el.removeClass('rtec-success rtec-error').addClass(isError ? 'rtec-error' : 'rtec-success').text(text).show();
+		if (wizard.setMessage) {
+			wizard.setMessage($el, text, isError);
+		}
 	}
 
 	function goToStep(step) {
-		if (pageUrl) {
-			window.location.href = pageUrl + '&step=' + step;
+		if (wizard.goToStep) {
+			wizard.goToStep(pageUrl, step);
 		}
 	}
 
@@ -92,7 +85,7 @@
 		var $btn = $(this);
 		var activateAfter = $btn.data('activate-after') ? '1' : '0';
 		var $wrap = $('#rtec-admin-tec-welcome');
-		var $msg = $wrap.find('.rtec-onboarding-ajax-message');
+		var $msg = $wrap.find('.rtec-wizard-ajax-message');
 		startProcessing($btn);
 		setMessage($msg, strings.thanks_patience || strings.installing || 'Installing…', false);
 		$.post(ajaxUrl, {
@@ -123,7 +116,7 @@
 	$(document).on('click', '#rtec-admin-tec-welcome .rtec-addon-activate', function() {
 		var $btn = $(this);
 		var $wrap = $('#rtec-admin-tec-welcome');
-		var $msg = $wrap.find('.rtec-onboarding-ajax-message');
+		var $msg = $wrap.find('.rtec-wizard-ajax-message');
 		startProcessing($btn);
 		setMessage($msg, strings.activating || 'Activating…', false);
 		$.post(ajaxUrl, {
@@ -148,7 +141,7 @@
 	$(document).on('click', '.rtec-onboarding-enable-continue', function() {
 		var mode = $('input[name="rtec_enable_mode"]:checked').val();
 		var $footer = $(this).closest('.rtec-onboarding-enable-footer');
-		var $msg = $footer.next('.rtec-onboarding-ajax-message');
+		var $msg = $footer.next('.rtec-wizard-ajax-message');
 		if (mode === 'selected') {
 			$('#rtec-onboarding-step-3').hide();
 			$('#rtec-onboarding-step-3b').show();
@@ -180,7 +173,7 @@
 		if (!eventId) return;
 		var $btn = $(this);
 		var $actions = $(this).closest('.rtec-onboarding-step-3b-actions');
-		var $msg = $actions.next('.rtec-onboarding-ajax-message');
+		var $msg = $actions.next('.rtec-wizard-ajax-message');
 		startProcessing($btn);
 		setMessage($msg, strings.activating || 'Enabling…', false);
 		$.post(ajaxUrl, {
@@ -216,7 +209,7 @@
 		var timeFull   = time.length === 5 ? time + ':00' : time;
 		var endTimeFull = endTime.length === 5 ? endTime + ':00' : endTime;
 		var $btn = $(this);
-		var $msg = $('.rtec-onboarding-create-event-footer').next('.rtec-onboarding-ajax-message');
+		var $msg = $('.rtec-onboarding-create-event-footer').next('.rtec-wizard-ajax-message');
 		startProcessing($btn);
 		setMessage($msg, strings.creating || 'Creating event…', false);
 		$.post(ajaxUrl, {

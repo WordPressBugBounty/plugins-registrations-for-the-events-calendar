@@ -924,6 +924,10 @@ function rtec_dismiss_new_user_notice() {
 
 	check_ajax_referer( 'rtec-new-user-notice', 'nonce' );
 
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_send_json_error( array( 'message' => __( 'Permission denied.', 'registrations-for-the-events-calendar' ) ) );
+	}
+
 	$rtec_statuses = get_option( 'rtec_statuses', array() );
 
 	if ( ! is_array( $rtec_statuses ) ) {
@@ -1017,16 +1021,20 @@ function rtec_scripts_and_styles() {
 
 	$options              = get_option( 'rtec_options' );
 	$check_for_duplicates = isset( $options['check_for_duplicates'] ) ? $options['check_for_duplicates'] : false;
+	$rtec_localize        = array(
+		'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+		'checkForDuplicates' => $check_for_duplicates,
+		'translations'       => array(
+			'honeypotClear' => __( 'I am not a robot', 'registrations-for-the-events-calendar' ),
+		),
+	);
+	if ( is_user_logged_in() ) {
+		$rtec_localize['loggedInUnregisterNonce'] = wp_create_nonce( 'rtec_logged_in_unregister' );
+	}
 	wp_localize_script(
 		'rtec_scripts',
 		'rtec',
-		array(
-			'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
-			'checkForDuplicates' => $check_for_duplicates,
-			'translations'       => array(
-				'honeypotClear' => __( 'I am not a robot', 'registrations-for-the-events-calendar' ),
-			),
-		)
+		$rtec_localize
 	);
 }
 add_action( 'wp_enqueue_scripts', 'rtec_scripts_and_styles' );

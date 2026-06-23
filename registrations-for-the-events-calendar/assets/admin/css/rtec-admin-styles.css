@@ -92,6 +92,18 @@
 .rtec-notice.rtec-complex-notice h3{
 	margin-top: 0;
 }
+.rtec-notice.rtec-migration-dashboard-notice {
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #fff;
+}
+.rtec-migration-dashboard-notice .rtec-msg-wrap {
+	max-width: 640px;
+}
+.rtec-migration-dashboard-notice-ctas .button {
+	margin-right: 8px;
+	margin-bottom: 4px;
+}
 #rtec-admin-addons .rtec-notice {
 	margin-bottom: 10px;
 }

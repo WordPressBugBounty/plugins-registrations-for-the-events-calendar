@@ -36,6 +36,17 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar_Pro' ) ) {
 		delete_transient( 'rtec_new_registrations' );
 	}
 
+	// Migration state is operational plugin data, not preserved settings or registrations.
+	delete_option( 'rtec_migration_status' );
+	delete_option( 'rtec_migration_missed' );
+	delete_option( 'rtec_migration_date' );
+	delete_option( 'rtec_migration_wizard_state' );
+	$evge_migration_state = get_option( 'evge_migration_wizard_state', array() );
+	if ( is_array( $evge_migration_state ) && ! empty( $evge_migration_state['started_from_rtec'] ) ) {
+		delete_option( 'evge_migration_wizard_state' );
+	}
+	delete_metadata( 'user', 0, 'rtec_migration_wizard_dashboard_notice_dismissed', '', true );
+
 	// reset WP_Query
 	wp_reset_postdata();
 }

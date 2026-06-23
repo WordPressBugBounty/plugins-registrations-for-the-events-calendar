@@ -24,13 +24,14 @@ if ( ! $tec_data['is_active'] && $evge_admin_interstitial && current_user_can( '
 	<?php if ( ! $tec_data['is_active'] ) { ?>
 	<div id="rtec-admin-addons">
 			<?php if ( $evge_admin_interstitial && current_user_can( 'manage_options' ) ) : ?>
-				<div class="rtec-onboarding-outer">
+				<div class="rtec-wizard-outer">
 					<?php
-					$rtec_onboarding_show_dots = false;
-					require rtec_plugin_path( 'admin-templates/partials/onboarding-header.php' );
+					$rtec_wizard_show_title = true;
+					$rtec_wizard_show_dots  = false;
+					require rtec_plugin_path( 'admin-templates/partials/wizard-header.php' );
 					?>
-					<div class="rtec-onboarding-wrap rtec-welcome-screen" style="padding: 0; box-shadow: none;">
-						<div class="rtec-onboarding-content rtec-welcome-text">
+					<div class="rtec-wizard-wrap rtec-welcome-screen" style="padding: 0; box-shadow: none;">
+						<div class="rtec-wizard-content rtec-welcome-text">
 							<?php
 							$rtec_current_admin_url = admin_url( 'admin.php?page=' . ( isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : RTEC_MENU_SLUG ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 							if ( isset( $_GET['tab'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -110,6 +111,9 @@ if ( ! $tec_data['is_active'] && $evge_admin_interstitial && current_user_can( '
 	$current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore
 	$tab          = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : str_replace( 'rtec-', '', $current_page ); // phpcs:ignore
 	if ( $tab === 'migration' ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'registrations-for-the-events-calendar' ) );
+		}
 		require_once rtec_plugin_path( 'admin-templates/migration.php' );
 		echo '</div>';
 		return;
@@ -164,7 +168,9 @@ if ( ! $tec_data['is_active'] && $evge_admin_interstitial && current_user_can( '
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-settings&tab=form' ) ); ?>" class="nav-tab <?php echo ( $active_tab === 'form' || $active_tab === 'create' ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Form', 'registrations-for-the-events-calendar' ); ?></a>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-settings&tab=email' ) ); ?>" class="nav-tab <?php echo ( $active_tab === 'email' || $active_tab === 'message-create' ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Email', 'registrations-for-the-events-calendar' ); ?></a>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-settings&tab=text' ) ); ?>" class="nav-tab <?php echo ( $active_tab === 'text' ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Text & Translation', 'registrations-for-the-events-calendar' ); ?></a>
+			<?php if ( current_user_can( 'unfiltered_html' ) ) : ?>
 			<a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-settings&tab=advanced' ) ); ?>" class="nav-tab <?php echo ( $active_tab === 'advanced' ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Advanced', 'registrations-for-the-events-calendar' ); ?></a>
+			<?php endif; ?>
 			<?php foreach ( $additional_tabs as $additional_tab ) : ?>
 				<?php
 				$label = isset( $additional_tab['label'] ) ? $additional_tab['label'] : '';
@@ -195,6 +201,9 @@ if ( ! $tec_data['is_active'] && $evge_admin_interstitial && current_user_can( '
 		} elseif ( $active_tab === 'text' ) {
 			require_once rtec_plugin_path( 'admin-templates/text.php' );
 		} elseif ( $active_tab === 'advanced' ) {
+			if ( ! current_user_can( 'unfiltered_html' ) ) {
+				wp_die( esc_html__( 'You do not have permission to access this page.', 'registrations-for-the-events-calendar' ) );
+			}
 			require_once rtec_plugin_path( 'admin-templates/advanced.php' );
 		} elseif ( $active_tab === 'support' ) {
 			require_once rtec_plugin_path( 'admin-templates/support.php' );

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Registrations for The Events Calendar
 Description: Collect and manage event registrations with a customizable form and email template. This plugin requires The Events Calendar by Modern Tribe to work.
-Version: 3.1
+Version: 3.2
 Requires PHP: 7.4
 Author: Roundup WP
 Author URI: roundupwp.com
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 // Plugin version.
 if ( ! defined( 'RTEC_VERSION' ) ) {
-	define( 'RTEC_VERSION', '3.1' );
+	define( 'RTEC_VERSION', '3.2' );
 }
 // Plugin Folder Path.
 if ( ! defined( 'RTEC_PLUGIN_DIR' ) ) {
@@ -290,6 +290,11 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 				RTEC_Whats_New_3_0::init_hooks();
 				require_once rtec_plugin_path( 'includes/onboarding/class-rtec-onboarding.php' );
 				RTEC_Onboarding::instance()->init();
+				require_once rtec_plugin_path( 'includes/migration/class-rtec-migration-wizard-state.php' );
+				require_once rtec_plugin_path( 'includes/migration/class-rtec-migration-eligibility.php' );
+				require_once rtec_plugin_path( 'includes/migration/class-rtec-migration-tec-tenure.php' );
+				require_once rtec_plugin_path( 'includes/migration/class-rtec-migration-wizard.php' );
+				RTEC_Migration_Wizard::instance()->init();
 			}
 
 			/*
@@ -399,6 +404,15 @@ if ( ! class_exists( 'Registrations_For_The_Events_Calendar' ) ) :
 				update_option( 'rtec_options', $defaults );
 				// add cues to find the plugin for three days
 				set_transient( 'rtec_new_messages', 'yes', 60 * 60 * 24 * 3 );
+
+				$rtec_statuses = get_option( 'rtec_statuses', array() );
+				if ( ! is_array( $rtec_statuses ) ) {
+					$rtec_statuses = array();
+				}
+				if ( empty( $rtec_statuses['first_installed_at'] ) ) {
+					$rtec_statuses['first_installed_at'] = time();
+					update_option( 'rtec_statuses', $rtec_statuses, false );
+				}
 
 			}
 

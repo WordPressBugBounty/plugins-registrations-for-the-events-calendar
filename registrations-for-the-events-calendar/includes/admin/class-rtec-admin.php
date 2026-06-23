@@ -2686,11 +2686,30 @@ endforeach;
 			'msg'     => esc_html__( 'Could not install The Events Calendar. Please search for it on the plugins page.', 'registrations-for-the-events-calendar' ),
 		);
 		$plugin_data = self::get_plugin_data( $add_on );
+
+		$activate_only = ( 'event-genius' === $add_on || 'tribe-tec' === $add_on )
+			&& $activate_after
+			&& ! empty( $plugin_data['is_installed'] )
+			&& empty( $plugin_data['is_active'] );
+
+		if ( $activate_only ) {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
+				$return['msg'] = esc_html__( 'You do not have permission to activate plugins.', 'registrations-for-the-events-calendar' );
+				return $return;
+			}
+		} elseif ( ! current_user_can( 'install_plugins' ) ) {
+			$return['msg'] = esc_html__( 'You do not have permission to install plugins.', 'registrations-for-the-events-calendar' );
+			return $return;
+		} elseif ( $activate_after && ! current_user_can( 'activate_plugins' ) ) {
+			$return['msg'] = esc_html__( 'You do not have permission to activate plugins.', 'registrations-for-the-events-calendar' );
+			return $return;
+		}
+
 		// Set the current screen to avoid undefined notices.
 		set_current_screen( 'registrations-for-the-events-calendar' );
 
 		// Onboarding: plugin already present but inactive — activate only (skip download/install).
-		if ( ( 'event-genius' === $add_on || 'tribe-tec' === $add_on ) && $activate_after && ! empty( $plugin_data['is_installed'] ) && empty( $plugin_data['is_active'] ) ) {
+		if ( $activate_only ) {
 			if ( ! function_exists( 'activate_plugin' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}

@@ -233,6 +233,8 @@ class RTEC_Footer_Listener_Service {
 	}
 
 	public function unregister_by_event_id_for_logged_in_user() {
+		check_ajax_referer( 'rtec_logged_in_unregister', 'nonce' );
+
 		$event_id = isset( $_POST['event_id'] ) ? (int) $_POST['event_id'] : 0;
 
         if ( empty( $event_id ) ) {

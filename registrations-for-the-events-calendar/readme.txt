@@ -2,11 +2,11 @@
 
 Contributors: roundupwp
 Support Website: https://roundupwp.com/support
-Tags: events calendar, bookings, RSVP, events, event registration
+Tags: events calendar, event management, RSVP, events, event registration
 Requires at least: 6.5
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 3.1
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,10 @@ Yes. The Pro version supports online payments, offline payments, and flexible pr
 Go to the "Support" tab in the plugin settings and follow the links to support, setup guides, or feature requests.
 
 == Changelog ==
+= 3.2 = 
+* New: Added a guided migration tool to help eligible sites move events, registrations, venues, and organizers to Event Genius. Learn more about [migrating to Event Genius].(https://wpeventgenius.com/migrate-to-event-genius/?utm_campaign=rtec-free&utm_source=readme&utm_medium=changelog&utm_content=EGmigration)
+* Fix: Security hardening
+
 = 3.1 =
 * New: Updated stylings in the admin area for WordPress 7.0.
 

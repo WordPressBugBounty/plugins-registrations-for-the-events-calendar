@@ -1,0 +1,323 @@
+/* Shared wizard chrome: onboarding + migration wizards */
+
+.rtec-wizard-page .rtec-wizard-outer {
+	max-width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rtec-wizard-page .rtec-wizard-outer.rtec-wizard-outer--wide {
+	max-width: 960px;
+}
+
+.rtec-wizard-header {
+	margin-bottom: 28px;
+}
+
+.rtec-wizard-header-main {
+	text-align: center;
+}
+
+.rtec-wizard-header-brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	margin-bottom: 24px;
+}
+
+.rtec-wizard-logo {
+	display: block;
+	height: 45px;
+	width: auto;
+}
+
+.rtec-wizard-header-title {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+}
+
+.rtec-wizard-header-title-main {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #1d2327;
+	line-height: 1.2;
+}
+
+.rtec-wizard-header-title-sub {
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: #646970;
+	line-height: 1.2;
+}
+
+.rtec-wizard-dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+	flex-wrap: wrap;
+}
+
+.rtec-wizard-dot {
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: #c3c4c7;
+	border: 2px solid #c3c4c7;
+	transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.rtec-wizard-dot-done {
+	background: #2271b1;
+	border-color: #2271b1;
+}
+
+.rtec-wizard-dot-current {
+	background: #2271b1;
+	border-color: #2271b1;
+	transform: scale(1.25);
+	box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.3);
+}
+
+.rtec-wizard-page .rtec-wizard-wrap.rtec-welcome-screen {
+	padding: 40px;
+	max-width: 500px;
+	margin: 60px auto;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: #fff;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 5px rgba(0, 0, 0, 0.05);
+	color: #003544;
+}
+.rtec-wizard-page .rtec-wizard-wrap.rtec-welcome-screen.rtec-welcome-screen--onboarding {
+	max-width: 600px;
+}
+
+
+.rtec-wizard-page .rtec-wizard-wrap.rtec-welcome-screen.rtec-wizard-wrap--wide {
+	max-width: 960px;
+}
+
+.rtec-wizard-page .rtec-wizard-wrap .rtec-wizard-content {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.rtec-wizard-step-title {
+	margin: 0 0 14px;
+	font-size: 1.35rem;
+}
+
+.rtec-wizard-step-body {
+	margin: 0 0 8px;
+	color: #50575e;
+	line-height: 1.5;
+	font-size: 15px;
+}
+
+.rtec-wizard-actions {
+	margin-top: 32px;
+}
+
+.rtec-wizard-actions .button,
+.rtec-wizard-actions .rtec-button {
+	display: inline-block;
+	padding: 16px 36px;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 1.3;
+	min-height: 52px;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rtec-processing-wrap-flex {
+	position: relative;
+	display: inline-flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.rtec-processing-wrap-flex.rtec-is-processing .rtec-spinner-container {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 24px;
+	height: 24px;
+}
+
+.rtec-wizard-page .rtec-fade {
+	opacity: 0.6;
+}
+
+.rtec-wizard-page .rtec-processing-wrap-flex.rtec-is-processing .rtec-spinner-circle {
+	box-sizing: border-box;
+	width: 22px;
+	height: 22px;
+	border-radius: 100%;
+	border: 3px solid rgba(34, 113, 177, 0.2);
+	border-top-color: #2271b1;
+	animation: rtec-wizard-spin 0.8s infinite linear;
+}
+
+.rtec-wizard-page .rtec-is-processing .rtec-spinner-container {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@keyframes rtec-wizard-spin {
+	100% { transform: rotate(360deg); }
+}
+
+.rtec-wizard-ajax-message {
+	margin-top: 12px;
+	font-size: 13px;
+}
+
+.rtec-wizard-ajax-message.rtec-error {
+	color: #b32d2e;
+}
+
+.rtec-wizard-ajax-message.rtec-success {
+	color: #00a32a;
+	text-align: right;
+}
+
+.rtec-wizard-success-list {
+	margin: 16px 0 24px;
+	padding-left: 0;
+	list-style: none;
+}
+
+.rtec-wizard-success-list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+.rtec-wizard-success-list-icon {
+	flex-shrink: 0;
+	width: 1.25em;
+	height: 1.25em;
+	color: #00a32a;
+	line-height: 1;
+}
+
+.rtec-wizard-success-list-icon svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.rtec-wizard-cta-footer {
+	text-align: right;
+	margin-top: 28px;
+}
+
+.rtec-wizard-cta-footer.rtec-wizard-cta-footer--left {
+	text-align: left;
+}
+
+.rtec-wizard-cta-footer.rtec-wizard-success-primary {
+	margin-top: 20px;
+	gap: 12px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.rtec-wizard-cta-with-chevron {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	padding: 16px 36px;
+	font-size: 17px;
+	font-weight: 600;
+	min-height: 52px;
+	border-radius: 6px;
+	text-decoration: none;
+}
+
+.rtec-wizard-cta-with-chevron .rtec-button-carat {
+	font-size: 1.1em;
+	line-height: 1;
+	opacity: 0.9;
+}
+
+.rtec-wizard-page .button-primary,
+.rtec-wizard-page .rtec-wizard-cta-with-chevron.button-primary,
+.rtec-wizard-page .rtec-button.rtec-primary {
+	padding: 6px 28px;
+	font-weight: normal;
+	font-size: 16px;
+}
+
+.rtec-wizard-btn-small {
+	padding: 8px 16px;
+	font-size: 13px;
+	font-weight: 500;
+	min-height: auto;
+	border-radius: 4px;
+}
+
+.rtec-wizard-success-primary .rtec-wizard-cta-with-chevron {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 14px;
+}
+
+.rtec-wizard-success-cta-note {
+	margin: 12px 0 20px;
+	font-size: 14px;
+	color: #50575e;
+}
+
+.rtec-wizard-success-other-heading {
+	font-size: 13px;
+	font-weight: 600;
+	color: #50575e;
+	margin: 24px 0 8px;
+	padding: 0;
+	line-height: 1.3;
+}
+
+.rtec-wizard-success-secondary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 0;
+}
+
+.rtec-wizard-support-footer {
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid #dcdcde;
+	text-align: center;
+	font-size: 13px;
+	color: #646970;
+}
+
+.rtec-wizard-support-footer a {
+	color: #2271b1;
+	text-decoration: none;
+}
+
+.rtec-wizard-support-footer a:hover,
+.rtec-wizard-support-footer a:focus {
+	text-decoration: underline;
+}

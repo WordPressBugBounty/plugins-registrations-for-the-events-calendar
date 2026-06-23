@@ -559,15 +559,28 @@ class RTEC_Onboarding {
 		// Use same base styles as welcome screen (centered, addon boxes).
 		wp_enqueue_style( 'rtec_admin_styles', rtec_plugin_url( 'assets/admin/css/rtec-admin-styles.css' ), array(), RTEC_VERSION );
 		wp_enqueue_style(
-			'rtec-onboarding',
-			rtec_plugin_url( 'assets/admin/css/rtec-onboarding.css' ),
+			'rtec-wizard-common',
+			rtec_plugin_url( 'assets/admin/css/rtec-wizard-common.css' ),
 			array( 'rtec_admin_styles' ),
 			RTEC_VERSION
+		);
+		wp_enqueue_style(
+			'rtec-onboarding',
+			rtec_plugin_url( 'assets/admin/css/rtec-onboarding.css' ),
+			array( 'rtec-wizard-common' ),
+			RTEC_VERSION
+		);
+		wp_enqueue_script(
+			'rtec-wizard-common',
+			rtec_plugin_url( 'assets/admin/js/rtec-wizard-common.js' ),
+			array( 'jquery' ),
+			RTEC_VERSION,
+			true
 		);
 		wp_enqueue_script(
 			'rtec-onboarding',
 			rtec_plugin_url( 'assets/admin/js/rtec-onboarding.js' ),
-			array( 'jquery' ),
+			array( 'jquery', 'rtec-wizard-common' ),
 			RTEC_VERSION,
 			true
 		);

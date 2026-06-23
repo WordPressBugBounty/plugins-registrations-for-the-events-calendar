@@ -674,6 +674,10 @@ function rtec_records_edit() {
 
 	$entry_id = isset( $_POST['entry_id'] ) ? (int) $_POST['entry_id'] : false;
 
+	if ( ! rtec_current_user_can_manage_event_registrations( $event_id ) ) {
+		wp_send_json_error();
+	}
+
 	require_once rtec_plugin_path( 'includes/class-rtec-db.php' );
 	require_once rtec_plugin_path( 'includes/admin/class-rtec-db-admin.php' );
 	$db = new RTEC_Db_Admin();
@@ -689,7 +693,10 @@ function rtec_records_edit() {
 				}
 
 				if ( ! empty( $registrations_to_be_deleted ) ) {
-					$db->remove_records( $registrations_to_be_deleted );
+					$registrations_to_be_deleted = $db->filter_manageable_registration_ids( $registrations_to_be_deleted );
+					if ( ! empty( $registrations_to_be_deleted ) ) {
+						$db->remove_records( $registrations_to_be_deleted );
+					}
 				}
 
 				break;
@@ -783,10 +790,15 @@ function rtec_records_edit() {
 			$registrations_to_be_deleted = array();
 
 			foreach ( $matches as $registration ) {
+				if ( ! rtec_current_user_can_manage_event_registrations( $registration['event_id'] ) ) {
+					continue;
+				}
 				$registrations_to_be_deleted[] = absint( $registration['id'] );
 			}
 
-			$db->remove_records( $registrations_to_be_deleted );
+			if ( ! empty( $registrations_to_be_deleted ) ) {
+				$db->remove_records( $registrations_to_be_deleted );
+			}
 
 			break;
 		default:
@@ -826,13 +838,18 @@ function rtec_event_csv() {
 			die( 'You did not do this the right way!' );
 		}
 
+		$export_event_id = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0;
+		if ( ! $export_event_id || ! rtec_current_user_can_manage_event_registrations( $export_event_id ) ) {
+			wp_die( esc_html__( 'You do not have permission to export registrations for this event.', 'registrations-for-the-events-calendar' ) );
+		}
+
 		$rtec = RTEC();
 		$form = $rtec->form->instance();
 
 		$event_obj = new RTEC_Admin_Event();
-		$form->build_form( (int) $_GET['id'] );
+		$form->build_form( $export_event_id );
 
-		$event_obj->build_admin_event( (int) $_GET['id'], 'csv', '', $form );
+		$event_obj->build_admin_event( $export_event_id, 'csv', '', $form );
 		$event_meta  = $event_obj->event_meta;
 		$venue_title = $event_meta['venue_title'];
 
@@ -939,6 +956,9 @@ function rtec_my_events_csv() {
 	fputcsv( $output, array( '' ) );
 
 	foreach ( $events as $event ) {
+		if ( ! rtec_current_user_can_manage_event_registrations( $event->ID ) ) {
+			continue;
+		}
 		$event_meta = rtec_get_event_meta( $event->ID );
 		fputcsv( $output, array( get_the_title( $event->ID ) ) );
 		// Translators: %1$s is the start date, %2$s is the end date, %3$s is the venue title
@@ -1083,12 +1103,7 @@ function rtec_get_search_results() {
 				$event_meta = rtec_get_event_meta( $registration['event_id'] );
 				?>
 
-			<tr data-email="
-				<?php
-				if ( isset( $registration['email'] ) ) {
-					esc_attr_e( wp_unslash( $registration['email'] ) );}
-				?>
-			">
+			<tr data-email="<?php echo isset( $registration['email'] ) ? esc_attr( wp_unslash( $registration['email'] ) ) : ''; ?>">
 				<td class="rtec-first-data">
 					<?php
 					$is_new = class_exists( 'RTEC_New_Registration_Alerts_Service' ) && RTEC_New_Registration_Alerts_Service::instance()->is_registration_new( $registration );
@@ -1108,12 +1123,12 @@ function rtec_get_search_results() {
 									} elseif ( $column === 'email' ) {
 										echo '<a class="rtec-manage-match" href="javascript:void(0);">' . esc_html( wp_unslash( $registration[ $column ] ) ) . '</a>';
 										?>
-								<div class="rtec-manage-match-actions" data-entry-id="<?php esc_attr_e( $registration['id'] ); ?>" data-email="<?php esc_attr_e( wp_unslash( $registration[ $column ] ) ); ?>">
+								<div class="rtec-manage-match-actions" data-entry-id="<?php echo esc_attr( (string) $registration['id'] ); ?>" data-email="<?php echo esc_attr( wp_unslash( $registration[ $column ] ) ); ?>">
 									<button class="button action rtec-match-action" data-rtec-action="delete-single"><?php echo RTEC_Icon::get( 'minus' ); ?> <?php _e( 'Delete Single', 'registrations-for-the-events-calendar' ); ?></button>
 									<button class="button action rtec-match-action" data-rtec-action="delete-all"><?php echo RTEC_Icon::get( 'minus' ); ?> <?php _e( 'Delete All', 'registrations-for-the-events-calendar' ); ?></button>
 									<form method="post" id="rtec_csv_export_form" action="">
 										<?php wp_nonce_field( 'rtec_csv_export', 'rtec_csv_export_nonce' ); ?>
-										<input type="hidden" name="rtec_email" value="<?php esc_attr_e( wp_unslash( $registration[ $column ] ) ); ?>" />
+										<input type="hidden" name="rtec_email" value="<?php echo esc_attr( wp_unslash( $registration[ $column ] ) ); ?>" />
 										<button type="submit" name="rtec_my_events_csv" class="button action rtec-match-action"><?php echo RTEC_Icon::get( 'export' ); ?> <?php _e( 'Export (.csv)', 'registrations-for-the-events-calendar' ); ?></button>
 									</form>
 								</div>
@@ -1180,7 +1195,8 @@ function rtec_admin_scripts_and_styles() {
 	$is_rtec_admin_screen = ( defined( 'RTEC_MENU_SLUG' ) && $evge_screen_page === RTEC_MENU_SLUG )
 		|| ( strpos( $evge_screen_page, 'rtec' ) === 0 );
 	if ( ! class_exists( 'Tribe__Main' ) && class_exists( 'RTEC_Onboarding' ) && RTEC_Onboarding::is_evge_context_interstitial_active() && $is_rtec_admin_screen ) {
-		wp_enqueue_style( 'rtec-onboarding', rtec_plugin_url( 'assets/admin/css/rtec-onboarding.css' ), array( 'rtec_admin_styles' ), RTEC_VERSION );
+		wp_enqueue_style( 'rtec-wizard-common', rtec_plugin_url( 'assets/admin/css/rtec-wizard-common.css' ), array( 'rtec_admin_styles' ), RTEC_VERSION );
+		wp_enqueue_style( 'rtec-onboarding', rtec_plugin_url( 'assets/admin/css/rtec-onboarding.css' ), array( 'rtec-wizard-common' ), RTEC_VERSION );
 	}
 
 	if ( ! class_exists( 'Tribe__Main' ) ) {

@@ -286,6 +286,10 @@ jQuery(document).ready(function($) {
                             'action': 'rtec_unregister_by_event_id_for_logged_in_user'
                         };
 
+                    if ( rtec.loggedInUnregisterNonce ) {
+                        submittedData.nonce = rtec.loggedInUnregisterNonce;
+                    }
+
                     if (!$wrapEl.closest('.rtec-outer-wrap').length) {
                         $rtecWrap = $('.rtec').closest('div');
                     }

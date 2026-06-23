@@ -19,6 +19,11 @@ $query_offset = isset( $_GET['off'] ) ? max( (int) $_GET['off'], 0 ) : 0; // php
 $event_id            = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0; // phpcs:ignore
 $single_search       = isset( $_GET['search'] ) ? sanitize_text_field( wp_unslash( $_GET['search'] ) ) : ''; // phpcs:ignore
 $registration_status = isset( $_GET['registration_status'] ) ? sanitize_key( $_GET['registration_status'] ) : 'active'; // phpcs:ignore
+
+if ( ! $event_id || ! rtec_current_user_can_manage_event_registrations( $event_id ) ) {
+	wp_die( esc_html__( 'You do not have permission to view registrations for this event.', 'registrations-for-the-events-calendar' ) );
+}
+
 $settings            = array(
 	'v'     => $view_type,
 	'qtype' => $query_type,

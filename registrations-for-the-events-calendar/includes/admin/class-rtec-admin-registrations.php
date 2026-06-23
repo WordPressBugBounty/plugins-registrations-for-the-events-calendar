@@ -51,7 +51,7 @@ class RTEC_Admin_Registrations {
 			$db                             = new RTEC_Db_Admin();
 			$event_id_args['where']         = array(
 				array( 'email', sanitize_text_field( $_POST['rtec_email'] ), '=', 'string' ),
-				array( 'status', '"x"', '!=', 'string' ),
+				array( 'status', 'x', '!=', 'string' ),
 			);
 			$this->events_user_is_attending = $db->get_event_ids( $event_id_args, $arrange = 'DESC' );
 		} else {

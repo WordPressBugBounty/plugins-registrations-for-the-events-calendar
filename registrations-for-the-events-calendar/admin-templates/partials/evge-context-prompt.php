@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 ?>
 <div class="rtec-onboarding-evge-context">
-	<h2 class="rtec-onboarding-step-title"><?php esc_html_e( 'Event Genius is already active', 'registrations-for-the-events-calendar' ); ?></h2>
-	<p class="rtec-onboarding-step-body"><?php esc_html_e( 'Event Genius includes built-in event registration, so you may not need this plugin.', 'registrations-for-the-events-calendar' ); ?></p>
-	<div class="rtec-onboarding-cta-footer rtec-onboarding-evge-context-actions">
+	<h2 class="rtec-wizard-step-title"><?php esc_html_e( 'Event Genius is already active', 'registrations-for-the-events-calendar' ); ?></h2>
+	<p class="rtec-wizard-step-body"><?php esc_html_e( 'Event Genius includes built-in event registration, so you may not need this plugin.', 'registrations-for-the-events-calendar' ); ?></p>
+	<div class="rtec-wizard-cta-footer rtec-onboarding-evge-context-actions">
 		<p class="rtec-onboarding-evge-primary-wrap">
-			<a href="<?php echo esc_url( $evge_continue_url ); ?>" class="button button-primary rtec-onboarding-cta-with-chevron rtec-onboarding-evge-primary">
+			<a href="<?php echo esc_url( $evge_continue_url ); ?>" class="button button-primary rtec-wizard-cta-with-chevron rtec-onboarding-evge-primary">
 				<span class="rtec-button-text"><?php esc_html_e( 'Continue with Event Genius', 'registrations-for-the-events-calendar' ); ?></span>
 				<span class="rtec-button-carat" aria-hidden="true">&#8250;</span>
 			</a>

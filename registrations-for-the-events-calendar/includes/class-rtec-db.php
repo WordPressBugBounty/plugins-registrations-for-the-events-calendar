@@ -591,38 +591,97 @@ class RTEC_Db {
 	 * @since 1.6
 	 */
 	protected function build_escaped_where_clause( $where ) {
-		$i            = 1;
-		$size         = count( $where );
-		$where_clause = '';
-		if ( ! empty( $where ) ) {
-			foreach ( $where as $item ) {
-				if ( $item[0] === 'event_id' ) {
-					$item[1] = rtec_all_event_aliases( $item[1] );
-				}
+		global $wpdb;
 
-				if ( $item[2] === '=' ) {
-					if ( $item[3] === 'string' ) {
-						$where_clause .= esc_sql( $item[0] ) . ' ' . esc_sql( $item[2] ) . ' "' . esc_sql( $item[1] ) . '"';
-					} elseif ( is_array( $item[1] ) ) {
-							$where_clause .= sanitize_key( $item[0] ) . ' IN (' . $this->mysql_sanitize_integer_in_clause( $item[1] ) . ')';
-					} else {
-						$where_clause .= esc_sql( $item[0] ) . ' ' . esc_sql( $item[2] ) . ' ' . esc_sql( $item[1] );
-					}
-				} elseif ( $item[2] === '!=' ) {
+		if ( empty( $where ) || ! is_array( $where ) ) {
+			return '';
+		}
 
-					$where_clause .= esc_sql( $item[0] ) . ' NOT IN (' . $this->mysql_sanitize_integer_in_clause( $item[1] ) . ')';
-				} elseif ( $item[2] === '<=' ) {
-					$where_clause .= esc_sql( $item[0] ) . ' <= \'' . esc_sql( $item[1] ) . '\'';
-				}
+		$fragments = array();
+		$values    = array();
 
-				if ( $size > $i ) {
-					$where_clause .= ' AND ';
+		foreach ( $where as $item ) {
+			if ( ! is_array( $item ) || count( $item ) < 3 ) {
+				continue;
+			}
+
+			$column = $this->sanitize_where_column( $item[0] );
+			if ( '' === $column ) {
+				continue;
+			}
+
+			$operator = $item[2];
+			$value    = $item[1];
+			$type     = isset( $item[3] ) ? $item[3] : 'int';
+
+			if ( 'event_id' === $column ) {
+				$value = rtec_all_event_aliases( $value );
+			}
+
+			if ( '=' === $operator ) {
+				if ( 'string' === $type ) {
+					$fragments[] = "`{$column}` = %s";
+					$values[]    = $value;
+				} elseif ( is_array( $value ) ) {
+					$in_clause   = $this->mysql_sanitize_integer_in_clause( $value );
+					$fragments[] = "`{$column}` IN ({$in_clause})";
+				} else {
+					$fragments[] = "`{$column}` = %d";
+					$values[]    = (int) $value;
 				}
-				++$i;
+			} elseif ( '!=' === $operator ) {
+				if ( 'string' === $type && ! is_array( $value ) ) {
+					$fragments[] = "`{$column}` != %s";
+					$values[]    = $value;
+				} else {
+					$in_clause   = $this->mysql_sanitize_integer_in_clause( $value );
+					$fragments[] = "`{$column}` NOT IN ({$in_clause})";
+				}
+			} elseif ( '<=' === $operator ) {
+				$fragments[] = "`{$column}` <= %s";
+				$values[]    = $value;
 			}
 		}
 
-		return $where_clause;
+		if ( empty( $fragments ) ) {
+			return '';
+		}
+
+		$sql = implode( ' AND ', $fragments );
+		if ( ! empty( $values ) ) {
+			$sql = $wpdb->prepare( $sql, $values );
+		}
+
+		return $sql;
+	}
+
+	/**
+	 * Whitelist column names used in dynamic WHERE clauses.
+	 *
+	 * @param string $column Column name.
+	 * @return string Sanitized column name or empty string.
+	 */
+	private function sanitize_where_column( $column ) {
+		$allowed = array(
+			'id',
+			'event_id',
+			'user_id',
+			'registration_date',
+			'last_name',
+			'first_name',
+			'email',
+			'venue',
+			'phone',
+			'other',
+			'status',
+			'action_key',
+			'reminder',
+			'guests',
+		);
+
+		$column = sanitize_key( $column );
+
+		return in_array( $column, $allowed, true ) ? $column : '';
 	}
 
 	/**

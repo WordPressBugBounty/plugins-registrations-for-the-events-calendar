@@ -6,12 +6,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php if ( isset( $_GET['rtec_checklist_reset'] ) && $_GET['rtec_checklist_reset'] === '1' ) : ?>
 	<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Setup checklist has been reset. It will appear again at the top of the Settings and Registrations pages.', 'registrations-for-the-events-calendar' ); ?></p></div>
 <?php endif; ?>
+<?php if ( isset( $_GET['rtec_migration_interest_reset'] ) && $_GET['rtec_migration_interest_reset'] === '1' ) : ?>
+	<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Event Genius migration interest has been cleared. The migration submenu will no longer appear until you start the wizard again.', 'registrations-for-the-events-calendar' ); ?></p></div>
+<?php endif; ?>
 <h2><?php esc_html_e( 'Need Help?', 'registrations-for-the-events-calendar' ); ?></h2>
 <?php
 global $wpdb;
 $table_name = esc_sql( $wpdb->prefix . RTEC_TABLENAME );
 
 if ( isset( $_GET['rtec_troubleshoot'] ) ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_die( esc_html__( 'You do not have permission to perform this action.', 'registrations-for-the-events-calendar' ) );
+	}
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$troubleshoot_nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+	if ( ! wp_verify_nonce( $troubleshoot_nonce, 'rtec_troubleshoot' ) ) {
+		wp_die( esc_html__( 'Invalid security token.', 'registrations-for-the-events-calendar' ) );
+	}
+
 	$charset_collate = $wpdb->get_charset_collate();
 
 	if ( $wpdb->get_var( "show tables like '$table_name'" ) !== $table_name ) {
@@ -69,7 +81,7 @@ $reg_table_exists = ( $wpdb->get_var( "show tables like '$table_name'" ) === $ta
 if ( ! $reg_table_exists && ! isset( $_GET['rtec_troubleshoot'] ) ) {
 	?>
 	<div class="error notice">
-		<p>Registrations table does not exist. <a href="<?php echo esc_url( add_query_arg( 'rtec_troubleshoot', 'true', admin_url( 'admin.php?page=rtec-settings&tab=support' ) ) ); ?>">Click here</a> to attempt to create the table and record debugging info.</p>
+		<p>Registrations table does not exist. <a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'rtec_troubleshoot', 'true', admin_url( 'admin.php?page=rtec-settings&tab=support' ) ), 'rtec_troubleshoot' ) ); ?>">Click here</a> to attempt to create the table and record debugging info.</p>
 	</div>
 	<?php
 
@@ -102,6 +114,15 @@ $migration_status = get_option(
 	<span class="rtec-support-title"><?php echo RTEC_Icon::get( 'email' ); ?>&nbsp; <a href="https://wordpress.org/support/plugin/registrations-for-the-events-calendar/" target="_blank"><?php esc_html_e( 'Request Support', 'registrations-for-the-events-calendar' ); ?></a></span>
 	<br /><?php esc_html_e( 'Have a problem? Post in the WordPress.org support forum and someone from our team will reply you as soon as they are able.', 'registrations-for-the-events-calendar' ); ?>
 </p>
+
+<?php if ( class_exists( 'RTEC_Migration_Wizard' ) && RTEC_Migration_Wizard::current_user_can_access() && RTEC_Migration_Eligibility::is_eligible() ) : ?>
+<br />
+<h2><?php esc_html_e( 'Calendar Switching Options', 'registrations-for-the-events-calendar' ); ?></h2>
+<p>
+	<span class="rtec-support-title"><?php echo RTEC_Icon::get( 'exchange' ); ?>&nbsp; <a href="<?php echo esc_url( admin_url( 'admin.php?page=rtec-migration-wizard&step=1' ) ); ?>"><?php esc_html_e( 'Move to Event Genius', 'registrations-for-the-events-calendar' ); ?></a></span>
+	<br /><?php esc_html_e( 'Migrate your events and registrations to Event Genius. Your current calendar stays active while you review imported events.', 'registrations-for-the-events-calendar' ); ?>
+</p>
+<?php endif; ?>
 
 <br />
 <h2><?php esc_html_e( 'System Info', 'registrations-for-the-events-calendar' ); ?> </h2>
@@ -276,4 +297,7 @@ if ( get_transient( 'rtec_last_db_error' ) ) {
 <p style="margin-top: 24px;">
 	<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'rtec_reset_onboarding', '1', admin_url( 'admin.php?page=rtec-settings&tab=support' ) ), 'rtec_reset_onboarding' ) ); ?>" class="button button-secondary"><?php esc_html_e( 'Reset onboarding sequence', 'registrations-for-the-events-calendar' ); ?></a>
 	<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'rtec_reset_checklist', '1', admin_url( 'admin.php?page=rtec-settings&tab=support' ) ), 'rtec_reset_checklist' ) ); ?>" class="button button-secondary"><?php esc_html_e( 'Reset setup checklist', 'registrations-for-the-events-calendar' ); ?></a>
+	<?php if ( class_exists( 'RTEC_Migration_Wizard' ) && RTEC_Migration_Wizard::current_user_can_access() && RTEC_Migration_Wizard_State::has_started() ) : ?>
+		<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'rtec_reset_migration_interest', '1', admin_url( 'admin.php?page=rtec-settings&tab=support' ) ), RTEC_Migration_Wizard::RESET_INTEREST_NONCE_ACTION ) ); ?>" class="button button-secondary"><?php esc_html_e( 'Clear Event Genius migration interest', 'registrations-for-the-events-calendar' ); ?></a>
+	<?php endif; ?>
 </p>
