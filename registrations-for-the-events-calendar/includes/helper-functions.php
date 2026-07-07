@@ -1116,6 +1116,55 @@ function rtec_current_user_can_manage_event_registrations( $event_id ) {
 }
 
 /**
+ * Whether a registration row belongs to the given event (includes event aliases).
+ *
+ * @param int $entry_id Registration row ID.
+ * @param int $event_id Event post ID.
+ * @return bool
+ */
+function rtec_registration_entry_matches_event( $entry_id, $event_id ) {
+	global $wpdb;
+
+	$entry_id = absint( $entry_id );
+	$event_id = absint( $event_id );
+
+	if ( ! $entry_id || ! $event_id ) {
+		return false;
+	}
+
+	$table_name   = $wpdb->prefix . RTEC_TABLENAME;
+	$row_event_id = (int) $wpdb->get_var(
+		$wpdb->prepare(
+			"SELECT event_id FROM $table_name WHERE id = %d",
+			$entry_id
+		)
+	);
+
+	if ( ! $row_event_id ) {
+		return false;
+	}
+
+	$event_ids = array_map( 'absint', rtec_all_event_aliases( $event_id ) );
+
+	return in_array( $row_event_id, $event_ids, true );
+}
+
+/**
+ * Whether the current user may manage a specific registration entry for an event.
+ *
+ * @param int $entry_id Registration row ID.
+ * @param int $event_id Event post ID from the request.
+ * @return bool
+ */
+function rtec_user_can_manage_registration_entry( $entry_id, $event_id ) {
+	if ( ! rtec_current_user_can_manage_event_registrations( $event_id ) ) {
+		return false;
+	}
+
+	return rtec_registration_entry_matches_event( $entry_id, $event_id );
+}
+
+/**
  * Event IDs the current user may manage registrations for, or null if all events.
  *
  * @return int[]|null
@@ -1400,6 +1449,85 @@ function rtec_get_standard_form_fields() {
 	);
 
 	return $standard_fields;
+}
+
+/**
+ * Allowed standard registration field keys from admin edit/add requests.
+ *
+ * @return string[]
+ */
+function rtec_get_registration_standard_field_keys() {
+	return array(
+		'first_name',
+		'last_name',
+		'first',
+		'last',
+		'email',
+		'phone',
+		'venue',
+		'other',
+		'status',
+		'guests',
+	);
+}
+
+/**
+ * Parse and sanitize standard registration fields from an AJAX POST payload.
+ *
+ * @param string $standard_json JSON object of field key => value pairs.
+ * @return array
+ */
+function rtec_parse_registration_standard_post_data( $standard_json ) {
+	$standard = json_decode( wp_unslash( $standard_json ), true );
+	if ( ! is_array( $standard ) ) {
+		return array();
+	}
+
+	$allowed_keys = rtec_get_registration_standard_field_keys();
+	$data         = array();
+
+	foreach ( $standard as $key => $value ) {
+		if ( ! is_string( $key ) || ! in_array( $key, $allowed_keys, true ) ) {
+			continue;
+		}
+		$data[ $key ] = sanitize_text_field( $value );
+	}
+
+	return $data;
+}
+
+/**
+ * Parse and sanitize custom registration fields from an AJAX POST payload.
+ *
+ * Only keys defined on the event form (and not standard fields) are accepted.
+ *
+ * @param string $custom_json JSON object of field key => value pairs.
+ * @param array  $field_atts  Form field attributes from RTEC_Form::get_field_attributes().
+ * @return array
+ */
+function rtec_parse_registration_custom_post_data( $custom_json, $field_atts ) {
+	$custom = json_decode( wp_unslash( $custom_json ), true );
+	if ( ! is_array( $custom ) || ! is_array( $field_atts ) ) {
+		return array();
+	}
+
+	$standard_fields = array_merge(
+		rtec_get_standard_form_fields(),
+		array( 'guests', 'recaptcha' )
+	);
+
+	$data = array();
+	foreach ( $custom as $key => $value ) {
+		if ( ! is_string( $key ) || ! isset( $field_atts[ $key ] ) ) {
+			continue;
+		}
+		if ( in_array( $key, $standard_fields, true ) ) {
+			continue;
+		}
+		$data[ $key ] = sanitize_text_field( $value );
+	}
+
+	return $data;
 }
 
 function rtec_get_custom_name_label_pairs() {

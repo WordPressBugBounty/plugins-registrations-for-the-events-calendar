@@ -80,11 +80,12 @@ class RTEC_Modal_Content_Service {
 			return '<div class="rtec-content-modal-body"><p class="rtec-content-modal-error">' . esc_html__( 'Invalid event.', 'registrations-for-the-events-calendar' ) . '</p></div>';
 		}
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			$post = get_post( $event_id );
-			if ( ! $post || (int) $post->post_author !== (int) get_current_user_id() ) {
-				return '<div class="rtec-content-modal-body"><p class="rtec-content-modal-error">' . esc_html__( 'You do not have permission to manage this registration.', 'registrations-for-the-events-calendar' ) . '</p></div>';
-			}
+		if ( ! rtec_current_user_can_manage_event_registrations( $event_id ) ) {
+			return '<div class="rtec-content-modal-body"><p class="rtec-content-modal-error">' . esc_html__( 'You do not have permission to manage this registration.', 'registrations-for-the-events-calendar' ) . '</p></div>';
+		}
+
+		if ( $registration_id > 0 && ! rtec_registration_entry_matches_event( $registration_id, $event_id ) ) {
+			return '<div class="rtec-content-modal-body"><p class="rtec-content-modal-error">' . esc_html__( 'Registration not found for this event.', 'registrations-for-the-events-calendar' ) . '</p></div>';
 		}
 
 		$context = RTEC_Manage_Modal_Context::get_context( $event_id, $registration_id );

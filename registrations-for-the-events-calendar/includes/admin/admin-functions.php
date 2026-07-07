@@ -717,15 +717,11 @@ function rtec_records_edit() {
 
 			$data = array();
 
-			foreach ( $_POST as $key => $value ) {
-				if ( $key === 'custom' ) {
-					$data['custom'] = json_decode( wp_unslash( $_POST['custom'] ), true );
-				} elseif ( $key === 'standard' ) {
-					$standard = json_decode( wp_unslash( $_POST['standard'] ), true );
-					foreach ( $standard as $key_2 => $value_2 ) {
-						$data[ $key_2 ] = sanitize_text_field( $value_2 );
-					}
-				}
+			if ( isset( $_POST['custom'] ) ) {
+				$data['custom'] = rtec_parse_registration_custom_post_data( $_POST['custom'], $fields_atts );
+			}
+			if ( isset( $_POST['standard'] ) ) {
+				$data = array_merge( $data, rtec_parse_registration_standard_post_data( $_POST['standard'] ) );
 			}
 
 			$data['status']   = 'c';
@@ -743,6 +739,10 @@ function rtec_records_edit() {
 					die( 'You cannot add or edit this registration' );
 				}
 
+				if ( ! $entry_id || ! rtec_user_can_manage_registration_entry( $entry_id, $event_id ) ) {
+					wp_send_json_error();
+				}
+
 				$event_meta = rtec_get_event_meta( $event_id );
 				$venue      = isset( $_POST['venue'] ) ? (string) $_POST['venue'] : $event_meta['venue_id'];
 
@@ -755,15 +755,11 @@ function rtec_records_edit() {
 
 			$data = array();
 
-			foreach ( $_POST as $key => $value ) {
-				if ( $key === 'custom' ) {
-					$data['custom'] = json_decode( wp_unslash( $_POST['custom'] ), true );
-				} elseif ( $key === 'standard' ) {
-					$standard = json_decode( wp_unslash( $_POST['standard'] ), true );
-					foreach ( $standard as $key_2 => $value_2 ) {
-						$data[ $key_2 ] = sanitize_text_field( $value_2 );
-					}
-				}
+			if ( isset( $_POST['custom'] ) ) {
+				$data['custom'] = rtec_parse_registration_custom_post_data( $_POST['custom'], $fields_atts );
+			}
+			if ( isset( $_POST['standard'] ) ) {
+				$data = array_merge( $data, rtec_parse_registration_standard_post_data( $_POST['standard'] ) );
 			}
 
 			$data['event_id'] = $event_id;

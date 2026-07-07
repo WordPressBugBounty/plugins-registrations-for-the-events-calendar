@@ -65,48 +65,67 @@ class RTEC_Db_Admin extends RTEC_Db {
 	public function update_entry( $data, $entry_id = '', $field_atts = array() ) {
 		global $wpdb;
 
-		$set_string = '';
+		$entry_id = (int) $entry_id;
+		if ( empty( $entry_id ) ) {
+			return;
+		}
+
+		$allowed_columns = array(
+			'first_name' => '%s',
+			'last_name'  => '%s',
+			'email'      => '%s',
+			'venue'      => '%s',
+			'phone'      => '%s',
+			'other'      => '%s',
+			'status'     => '%s',
+			'guests'     => '%d',
+		);
+
+		$key_aliases = array(
+			'first' => 'first_name',
+			'last'  => 'last_name',
+		);
+
+		$update_data   = array();
+		$update_format = array();
 
 		foreach ( $data as $key => $value ) {
-
-			if ( $key !== 'event_id' && $key !== 'id' ) {
-
-				// Map form keys to DB column names (table has first_name, last_name).
-				$column = $key;
-				if ( $key === 'first' ) {
-					$column = 'first_name';
-				} elseif ( $key === 'last' ) {
-					$column = 'last_name';
-				}
-
-				if ( $key !== 'custom' ) {
-					$value_str = is_scalar( $value ) ? (string) $value : '';
-					$set_string .= esc_sql( $column ) . "='" . esc_sql( str_replace( "'", '`', $value_str ) ) . "', ";
-				} else {
-					$custom = $this->get_custom_data( $entry_id );
-
-					$custom = $this->update_custom_data_for_db( $custom, $data['custom'], $field_atts );
-
-					$set_string .= "custom='" . esc_sql( $custom ) . "', ";
-				}
+			if ( $key === 'event_id' || $key === 'id' || $key === 'custom' ) {
+				continue;
 			}
+
+			$column = isset( $key_aliases[ $key ] ) ? $key_aliases[ $key ] : $key;
+			if ( ! isset( $allowed_columns[ $column ] ) ) {
+				continue;
+			}
+
+			if ( '%d' === $allowed_columns[ $column ] ) {
+				$update_data[ $column ] = (int) $value;
+			} else {
+				$update_data[ $column ] = is_scalar( $value ) ? (string) $value : '';
+			}
+			$update_format[] = $allowed_columns[ $column ];
 		}
 
-		$set_string     = substr( $set_string, 0, -2 );
-		$esc_table_name = esc_sql( $this->table_name );
+		if ( isset( $data['custom'] ) && is_array( $data['custom'] ) ) {
+			$custom = $this->get_custom_data( $entry_id );
+			$custom = $this->update_custom_data_for_db( $custom, $data['custom'], $field_atts );
 
-		$int_entry_id = (int) $entry_id;
-
-		if ( ! empty( $entry_id ) ) {
-			$sql = "UPDATE $esc_table_name
-            SET $set_string
-            WHERE id=$int_entry_id";
-			$wpdb->query(
-				"UPDATE $esc_table_name
-            SET $set_string
-            WHERE id=$int_entry_id"
-			);
+			$update_data['custom'] = $custom;
+			$update_format[]       = '%s';
 		}
+
+		if ( empty( $update_data ) ) {
+			return;
+		}
+
+		$wpdb->update(
+			$this->table_name,
+			$update_data,
+			array( 'id' => $entry_id ),
+			$update_format,
+			array( '%d' )
+		);
 	}
 
 	public function get_custom_data( $id ) {
@@ -135,8 +154,11 @@ class RTEC_Db_Admin extends RTEC_Db {
 	 * @since 2.0
 	 */
 	public function update_custom_data_for_db( $db_custom, $new_custom, $field_atts ) {
-		if ( ! empty( $new_custom ) ) {
+		if ( ! empty( $new_custom ) && is_array( $new_custom ) ) {
 			foreach ( $new_custom as $key => $value ) {
+				if ( ! is_string( $key ) || ! isset( $field_atts[ $key ]['label'] ) ) {
+					continue;
+				}
 				$db_custom[ $key ] = array(
 					'value' => $value,
 					'label' => $field_atts[ $key ]['label'],

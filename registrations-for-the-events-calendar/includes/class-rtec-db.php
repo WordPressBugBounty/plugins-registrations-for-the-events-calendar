@@ -393,8 +393,8 @@ class RTEC_Db {
 		if ( ! empty( $event_id_where ) ) {
 			$where_clause = $where_clause !== '' ? $where_clause . ' AND ' . $event_id_where : $event_id_where;
 		}
-		$order_by     = isset( $data['order_by'] ) ? $data['order_by'] : 'last_name';
-		$type         = ARRAY_A;
+		$order_by = isset( $data['order_by'] ) ? $this->sanitize_order_by_column( $data['order_by'] ) : 'last_name';
+		$type     = ARRAY_A;
 
 		if ( ! isset( $data['join'] ) ) {
 			$sql = sprintf(
@@ -402,11 +402,11 @@ class RTEC_Db {
                 SELECT %s
                 FROM %s
 				WHERE $where_clause
-                ORDER BY %s DESC%s;
+                ORDER BY `%s` DESC%s;
                 ",
 				esc_sql( $fields ),
 				esc_sql( $this->table_name ),
-				esc_sql( $order_by ),
+				$order_by,
 				esc_sql( $limit_string )
 			);
 		} else {
@@ -419,11 +419,11 @@ class RTEC_Db {
                 SELECT %s
                 FROM %s
                 $join_type JOIN $join_table ON $join_on
-                ORDER BY %s DESC%s;
+                ORDER BY `%s` DESC%s;
                 ",
 				esc_sql( $fields ),
 				esc_sql( $this->table_name ),
-				esc_sql( $order_by ),
+				$order_by,
 				esc_sql( $limit_string )
 			);
 		}
@@ -551,34 +551,43 @@ class RTEC_Db {
 	public function get_custom_field_label_array( $custom_columns ) {
 		global $wpdb;
 
-		$table_name = esc_sql( $wpdb->prefix . RTEC_TABLENAME_FORM_FIELDS );
-		$size       = count( $custom_columns );
-		$i          = 1;
-
-		$return_results = array();
-		$in_clause      = '';
-
-		foreach ( $custom_columns as $column ) {
-			$return_results[ $column ] = array( 'label' => '' );
-			$in_clause                .= "'" . esc_sql( $column ) . "'";
-			if ( $i < $size ) {
-				$in_clause .= ',';
-			}
-			++$i;
+		if ( empty( $custom_columns ) || ! is_array( $custom_columns ) ) {
+			return false;
 		}
 
-		$results = $in_clause !== '' ? $wpdb->get_results( "SELECT label, field_name FROM $table_name WHERE field_name IN ( $in_clause );", ARRAY_A ) : '';
+		$table_name     = $wpdb->prefix . RTEC_TABLENAME_FORM_FIELDS;
+		$field_names    = array();
+		$return_results = array();
+
+		foreach ( $custom_columns as $column ) {
+			$field_name = sanitize_key( $column );
+			if ( '' === $field_name ) {
+				continue;
+			}
+			$field_names[]                 = $field_name;
+			$return_results[ $field_name ] = array( 'label' => '' );
+		}
+
+		if ( empty( $field_names ) ) {
+			return false;
+		}
+
+		$placeholders = implode( ', ', array_fill( 0, count( $field_names ), '%s' ) );
+		$sql          = $wpdb->prepare(
+			"SELECT label, field_name FROM $table_name WHERE field_name IN ( $placeholders )",
+			$field_names
+		);
+		$results      = $wpdb->get_results( $sql, ARRAY_A );
 
 		if ( isset( $results[0] ) ) {
-
 			foreach ( $results as $result ) {
 				$return_results[ $result['field_name'] ]['label'] = str_replace( '&#42;', '', $result['label'] );
 			}
 
 			return $return_results;
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	/**
@@ -682,6 +691,27 @@ class RTEC_Db {
 		$column = sanitize_key( $column );
 
 		return in_array( $column, $allowed, true ) ? $column : '';
+	}
+
+	/**
+	 * Whitelist column names used in dynamic ORDER BY clauses.
+	 *
+	 * @param string $column Column name.
+	 * @return string Sanitized column name.
+	 */
+	private function sanitize_order_by_column( $column ) {
+		$allowed = array(
+			'id',
+			'event_id',
+			'registration_date',
+			'last_name',
+			'first_name',
+			'email',
+		);
+
+		$column = sanitize_key( $column );
+
+		return in_array( $column, $allowed, true ) ? $column : 'last_name';
 	}
 
 	/**
