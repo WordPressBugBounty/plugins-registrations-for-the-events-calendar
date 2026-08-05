@@ -6,7 +6,7 @@ Tags: events calendar, event management, RSVP, events, event registration
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,7 +235,10 @@ Yes. The Pro version supports online payments, offline payments, and flexible pr
 Go to the "Support" tab in the plugin settings and follow the links to support, setup guides, or feature requests.
 
 == Changelog ==
-= 3.2.1 = 
+= 3.2.2 =
+* Tweak: Expanded Event Genius migration eligibility to include websites with large numbers of events and registrations as well as Event Tickets and The Events Calendar Pro recurring events.
+
+= 3.2.1 =
 * Fix: Improved reliability of adding and editing existing registrations.
 
 = 3.2 = 

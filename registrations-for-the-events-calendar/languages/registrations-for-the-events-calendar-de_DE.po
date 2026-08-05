@@ -123,8 +123,8 @@ msgstr "Sonstige:"
 #: dist/registrations-for-the-events-calendar/admin-templates/partials/registrations-hidden-event-options.php:143
 #: dist/registrations-for-the-events-calendar/admin-templates/registration-manage-modal/partials/user-info.php:28
 #: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:444
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1001
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1367
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:997
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1363
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:166
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:522
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:526
@@ -267,8 +267,8 @@ msgstr ""
 #: context/registrations-for-the-events-calendar-pro/inc/admin/class-rtec-admin.php:3898
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/my-registrations-main.php:11
 #: context/registrations-for-the-events-calendar-pro/inc/blocks/class-rtec-blocks.php:398
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:935
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:938
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:931
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:934
 #: includes/admin/admin-functions.php:931
 #: includes/admin/admin-functions.php:934
 msgid "My Events"
@@ -277,7 +277,7 @@ msgstr "Meine Veranstaltungen"
 #. Translators: %1$s is the start date, %2$s is the end date, %3$s is the venue title
 #: context/registrations-for-the-events-calendar-pro/inc/admin/admin-functions.php:3533
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/my-registrations.php:103
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:965
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:961
 #: includes/admin/admin-functions.php:961
 #, php-format
 msgid "%1$s to %2$s at %3$s"
@@ -295,8 +295,8 @@ msgstr "%1$s beim %2$s auf %3$s"
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/reports.php:106
 #: dist/registrations-for-the-events-calendar/admin-templates/latest.php:53
 #: dist/registrations-for-the-events-calendar/admin-templates/partials/registrations-reg-table.php:23
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:989
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1090
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:985
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1086
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin-event.php:149
 #: includes/admin/admin-functions.php:985
 #: includes/admin/admin-functions.php:1086
@@ -307,8 +307,8 @@ msgstr "Datum d. Registrierung"
 #: context/registrations-for-the-events-calendar-pro/inc/admin/admin-functions.php:3570
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:340
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:342
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:993
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1365
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:989
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1361
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:164
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:520
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:524
@@ -331,8 +331,8 @@ msgstr "Vorname"
 #: context/registrations-for-the-events-calendar-pro/inc/admin/admin-functions.php:3572
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:347
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:349
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:995
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1366
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:991
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1362
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:165
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:521
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:525
@@ -383,7 +383,7 @@ msgstr "Nachname"
 #: dist/registrations-for-the-events-calendar/admin-templates/partials/registrations-single-thead.php:17
 #: dist/registrations-for-the-events-calendar/admin-templates/registration-manage-modal/partials/submissions-panel.php:37
 #: dist/registrations-for-the-events-calendar/admin-templates/single.php:232
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:997
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:993
 #: includes/admin/admin-functions.php:993
 msgid "Status"
 msgstr "Status"
@@ -392,8 +392,8 @@ msgstr "Status"
 #: context/registrations-for-the-events-calendar-pro/inc/class-rtec-email.php:143
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:368
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:370
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1006
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1368
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1002
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1364
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:167
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:549
 #: dist/registrations-for-the-events-calendar/includes/form/class-rtec-form.php:268
@@ -422,8 +422,8 @@ msgstr "Telefon"
 #: context/registrations-for-the-events-calendar-pro/inc/form/class-rtec-form.php:363
 #: context/registrations-for-the-events-calendar-pro/inc/payment/class-rtec-payment.php:256
 #: context/registrations-for-the-events-calendar-pro/Roundupwp/Utils/Placeholders.php:69
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1011
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1369
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1007
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1365
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:1734
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:1740
 #: dist/registrations-for-the-events-calendar/includes/class-rtec-email.php:557
@@ -439,7 +439,7 @@ msgstr "Telefon"
 msgid "Other"
 msgstr "Andere"
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1068
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1064
 #: includes/admin/admin-functions.php:1064
 msgid "click to manage"
 msgstr ""
@@ -459,7 +459,7 @@ msgstr ""
 #: dist/registrations-for-the-events-calendar/admin-templates/latest.php:54
 #: dist/registrations-for-the-events-calendar/admin-templates/onboarding.php:244
 #: dist/registrations-for-the-events-calendar/admin-templates/registration-manage-modal/partials/related-registrations.php:25
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1094
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1090
 #: dist/registrations-for-the-events-calendar/includes/utils/class-rtec-placeholders.php:49
 #: includes/admin/admin-functions.php:1090
 #: includes/utils/class-rtec-placeholders.php:49
@@ -473,17 +473,17 @@ msgstr "Veranstaltung"
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/partials/event-id-changes-table.php:182
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/partials/registrations-list-view.php:11
 #: dist/registrations-for-the-events-calendar/admin-templates/partials/registrations-list-view.php:12
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1095
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1091
 #: includes/admin/admin-functions.php:1091
 msgid "Start Date"
 msgstr "Startdatum"
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1127
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1123
 #: includes/admin/admin-functions.php:1123
 msgid "Delete Single"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1128
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1124
 #: includes/admin/admin-functions.php:1124
 msgid "Delete All"
 msgstr ""
@@ -494,12 +494,12 @@ msgstr ""
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/my-registrations.php:180
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/single.php:273
 #: dist/registrations-for-the-events-calendar/admin-templates/single.php:367
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1132
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1128
 #: includes/admin/admin-functions.php:1128
 msgid "Export (.csv)"
 msgstr "Export (.csv)"
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1151
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1147
 #: includes/admin/admin-functions.php:1147
 msgid "No Registrations Found"
 msgstr ""
@@ -508,14 +508,14 @@ msgstr ""
 #: context/registrations-for-the-events-calendar-pro/inc/admin/class-rtec-add-ons.php:1398
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/partials/tec-installer.php:39
 #: dist/registrations-for-the-events-calendar/admin-templates/main.php:80
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1205
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1223
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1201
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1219
 #: includes/admin/admin-functions.php:1201
 #: includes/admin/admin-functions.php:1219
 msgid "Activate"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1206
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1202
 #: includes/admin/admin-functions.php:1202
 msgid "Activated"
 msgstr ""
@@ -525,38 +525,38 @@ msgstr ""
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/message-history.php:130
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/single.php:193
 #: dist/registrations-for-the-events-calendar/admin-templates/single.php:150
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1207
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1203
 #: includes/admin/admin-functions.php:1203
 msgid "Active"
 msgstr ""
 
 #: context/registrations-for-the-events-calendar-pro/inc/admin/class-rtec-add-ons.php:1406
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1208
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1204
 #: includes/admin/admin-functions.php:1204
 msgid "Deactivate"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1209
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1205
 #: includes/admin/admin-functions.php:1205
 msgid "Inactive"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1210
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1206
 #: includes/admin/admin-functions.php:1206
 msgid "Install Addon"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1211
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1207
 #: includes/admin/admin-functions.php:1207
 msgid "Could not install addon. Please download from roundupwp.com and install manually."
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1212
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1208
 #: includes/admin/admin-functions.php:1208
 msgid "Could not install a plugin. Please visit the Plugins page and search for The Events Calendar to install."
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1213
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1209
 #: includes/admin/admin-functions.php:1209
 msgid "Searching Addons"
 msgstr ""
@@ -566,7 +566,7 @@ msgstr ""
 #: context/registrations-for-the-events-calendar-pro/inc/scheduled-messages/class-rtec-scheduler.php:530
 #: context/registrations-for-the-events-calendar-pro/Roundupwp/Admin/Services/EmailTemplateModalService.php:345
 #: context/registrations-for-the-events-calendar-pro/Roundupwp/Utils/Defaults.php:73
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1215
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1211
 #: includes/admin/admin-functions.php:1211
 msgid "Cancel"
 msgstr ""
@@ -574,43 +574,43 @@ msgstr ""
 #: admin-templates/rtec-content-modal/shell.php:9
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/rtec-content-modal/shell.php:16
 #: dist/registrations-for-the-events-calendar/admin-templates/rtec-content-modal/shell.php:9
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1216
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1212
 #: includes/admin/admin-functions.php:1212
 msgid "Close"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1218
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1214
 #: includes/admin/admin-functions.php:1214
 msgid "Almost Done"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1219
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1215
 #: includes/admin/admin-functions.php:1215
 msgid "Oops!"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1220
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1216
 #: includes/admin/admin-functions.php:1216
 msgid "OK"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1221
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1217
 #: includes/admin/admin-functions.php:1217
 msgid "Install and Activate"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1222
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1218
 #: includes/admin/admin-functions.php:1218
 msgid "needs to be installed and activated to import its forms. Would you like us to install and activate it for you?"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1224
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1220
 #: includes/admin/admin-functions.php:1220
 msgid "Success! Reloading page."
 msgstr ""
 
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/partials/tec-installer.php:53
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1225
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1221
 #: dist/registrations-for-the-events-calendar/includes/migration/class-rtec-migration-wizard.php:365
 #: dist/registrations-for-the-events-calendar/includes/onboarding/class-rtec-onboarding.php:601
 #: includes/admin/admin-functions.php:1221
@@ -752,8 +752,8 @@ msgstr "Titel Teilnehmerliste"
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:429
 #: dist/registrations-for-the-events-calendar/includes/form/class-rtec-form.php:1474
 #: dist/registrations-for-the-events-calendar/includes/form/class-rtec-form.php:1475
-#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1593
-#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1594
+#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1721
+#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1722
 #: includes/admin/class-rtec-admin.php:429
 #: includes/form/class-rtec-form.php:1474
 #: includes/form/class-rtec-form.php:1475
@@ -1945,8 +1945,8 @@ msgstr "Nur noch ein Platz!"
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:2054
 #: dist/registrations-for-the-events-calendar/includes/form/class-rtec-form.php:853
 #: dist/registrations-for-the-events-calendar/includes/form/class-rtec-form.php:854
-#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1589
-#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1590
+#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1717
+#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1718
 #: includes/admin/class-rtec-admin.php:2054
 #: includes/form/class-rtec-form.php:853
 #: includes/form/class-rtec-form.php:854
@@ -2711,7 +2711,7 @@ msgid "Registrant"
 msgstr "Registrierung"
 
 #: context/registrations-for-the-events-calendar-pro/inc/helper-functions.php:3460
-#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1606
+#: dist/registrations-for-the-events-calendar/includes/helper-functions.php:1734
 #: includes/helper-functions.php:1734
 msgid "Please enter an Event ID to view the attendee list"
 msgstr "Bitte trage eine Veranstaltungs-ID ein um die Teilnehmerliste zu sehen"
@@ -3058,7 +3058,7 @@ msgstr ""
 #: admin-templates/partials/registrations-main-column.php:33
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/partials/registrations-main-column.php:30
 #: dist/registrations-for-the-events-calendar/admin-templates/partials/registrations-main-column.php:33
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1111
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1107
 #: includes/admin/admin-functions.php:1107
 msgid "New registration"
 msgstr ""
@@ -3369,7 +3369,7 @@ msgstr ""
 msgid "Heads up! Making changes to a recurring event may cause your registrations to go missing. Export registrations before making changes."
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1278
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1274
 #: includes/admin/admin-functions.php:1274
 msgid "Buy Pro"
 msgstr ""
@@ -3379,7 +3379,7 @@ msgstr ""
 #: context/registrations-for-the-events-calendar-pro/inc/admin/class-rtec-admin.php:360
 #: context/registrations-for-the-events-calendar-pro/inc/admin/class-rtec-admin.php:4529
 #: context/registrations-for-the-events-calendar-pro/inc/admin/templates/create.php:105
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1279
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1275
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:72
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:73
 #: dist/registrations-for-the-events-calendar/includes/admin/class-rtec-admin.php:2857
@@ -3390,7 +3390,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1347
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1343
 #: includes/admin/admin-functions.php:1343
 msgid "Setup Instructions"
 msgstr ""
@@ -3643,7 +3643,7 @@ msgid "Invalid event."
 msgstr ""
 
 #: context/registrations-for-the-events-calendar-pro/inc/admin/services/class-rtec-modal-content-service.php:88
-#: dist/registrations-for-the-events-calendar/includes/admin/services/class-rtec-modal-content-service.php:86
+#: dist/registrations-for-the-events-calendar/includes/admin/services/class-rtec-modal-content-service.php:84
 #: includes/admin/services/class-rtec-modal-content-service.php:84
 msgid "You do not have permission to manage this registration."
 msgstr ""
@@ -4305,7 +4305,7 @@ msgstr ""
 msgid "Choose which events should accept registrations."
 msgstr ""
 
-#: admin-templates/migration-wizard/step-compatibility.php:14
+#: admin-templates/migration-wizard/step-compatibility.php:37
 #: admin-templates/onboarding.php:164
 #: dist/registrations-for-the-events-calendar/admin-templates/migration-wizard/step-compatibility.php:14
 #: dist/registrations-for-the-events-calendar/admin-templates/onboarding.php:164
@@ -5517,12 +5517,12 @@ msgstr ""
 msgid "See whats new"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1244
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1240
 #: includes/admin/admin-functions.php:1240
 msgid "Show details"
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1245
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:1241
 #: includes/admin/admin-functions.php:1241
 msgid "Hide details"
 msgstr ""
@@ -12305,13 +12305,19 @@ msgstr ""
 msgid "Invalid security token."
 msgstr ""
 
-#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:843
+#: dist/registrations-for-the-events-calendar/includes/admin/admin-functions.php:839
 #: includes/admin/admin-functions.php:839
 msgid "You do not have permission to export registrations for this event."
 msgstr ""
 
+#: dist/registrations-for-the-events-calendar/includes/admin/services/class-rtec-modal-content-service.php:88
 #: includes/admin/services/class-rtec-modal-content-service.php:88
 msgid "Registration not found for this event."
+msgstr ""
+
+#. translators: %s: support URL
+#: admin-templates/migration-wizard/step-compatibility.php:16
+msgid "Event Tickets Plus is active. Event Tickets Plus data is not imported automatically. Contact support for migration help: %s"
 msgstr ""
 
 #: context/registrations-for-the-events-calendar-pro/inc/admin/class-rtec-admin.php:769

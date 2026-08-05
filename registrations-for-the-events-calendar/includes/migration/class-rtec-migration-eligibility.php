@@ -8,26 +8,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class RTEC_Migration_Eligibility {
 
-	const MAX_EVENTS = 500;
+	/**
+	 * @deprecated Counts no longer block eligibility. Soft warnings live in Event Genius preflight.
+	 */
+	const MAX_EVENTS = 10000;
 
-	const MAX_REGISTRATIONS = 3000;
+	/**
+	 * @deprecated Counts no longer block eligibility. Soft warnings live in Event Genius preflight.
+	 */
+	const MAX_REGISTRATIONS = 50000;
 
 	const STATUS_KEY_NO_MIGRATION_PROMPT = 'no_migration_prompt';
 
+	const SUPPORT_URL = 'https://wpeventgenius.com/support/';
+
 	/**
-	 * Liquid Web / The Events Calendar premium extension plugin files.
+	 * Plugins that hard-block the RTEC handoff wizard.
 	 *
-	 * Free core TEC is required and not listed here. Folder names include legacy variants.
+	 * TEC Pro and free Event Tickets are supported by Event Genius V2 and are not listed.
+	 * Event Tickets Plus is advisory only (see is_event_tickets_plus_active()).
 	 *
 	 * @var string[]
 	 */
 	private static $blocking_plugins = array(
-		// Events Calendar Pro.
-		'the-events-calendar-pro/the-events-calendar-pro.php',
-		'events-calendar-pro/events-calendar-pro.php',
-		// Event Tickets.
-		'event-tickets/event-tickets.php',
-		'event-tickets-plus/event-tickets-plus.php',
 		// Filter Bar.
 		'the-events-calendar-filterbar/the-events-calendar-filter-view.php',
 		// Community Events.
@@ -96,6 +99,31 @@ class RTEC_Migration_Eligibility {
 	}
 
 	/**
+	 * Event Tickets Plus is not auto-imported; wizard may continue with a support warning.
+	 *
+	 * @return bool
+	 */
+	public static function is_event_tickets_plus_active() {
+		return self::is_plugin_active( 'event-tickets-plus/event-tickets-plus.php' )
+			|| class_exists( 'Tribe__Tickets_Plus__Main' );
+	}
+
+	/**
+	 * Advisory reasons that do not block eligibility (shown in the wizard UI).
+	 *
+	 * @return string[]
+	 */
+	public static function get_advisory_reasons() {
+		$reasons = array();
+
+		if ( self::is_event_tickets_plus_active() ) {
+			$reasons[] = 'event_tickets_plus_detected';
+		}
+
+		return $reasons;
+	}
+
+	/**
 	 * Friendly scan counts for wizard UI.
 	 *
 	 * @return array<string, int>
@@ -146,16 +174,6 @@ class RTEC_Migration_Eligibility {
 			if ( self::is_plugin_active( $plugin_file ) ) {
 				$reasons[] = 'blocking_plugin:' . $plugin_file;
 			}
-		}
-
-		$counts = self::get_counts();
-
-		if ( $counts['events'] > self::MAX_EVENTS ) {
-			$reasons[] = 'events_over_limit';
-		}
-
-		if ( $counts['registrations'] > self::MAX_REGISTRATIONS ) {
-			$reasons[] = 'registrations_over_limit';
 		}
 
 		return $reasons;
