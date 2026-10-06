@@ -2,11 +2,11 @@
 
 Contributors: roundupwp
 Support Website: https://roundupwp.com/support
-Tags: events calendar, event management, RSVP, events, event registration
+Tags: attendee management, event management, RSVP, the events calendar, event registration
 Requires at least: 6.5
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.2.2
+Stable tag: 3.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,10 @@ Yes. The Pro version supports online payments, offline payments, and flexible pr
 Go to the "Support" tab in the plugin settings and follow the links to support, setup guides, or feature requests.
 
 == Changelog ==
+= 3.2.3 =
+* Tweak: CSV export now downloads more reliably instead of reloading the registrations page in some circumstances.
+* Fix: Cancel-by-email no longer reveals whether an address is registered, and cancel-link sends are rate limited.
+
 = 3.2.2 =
 * Tweak: Expanded Event Genius migration eligibility to include websites with large numbers of events and registrations as well as Event Tickets and The Events Calendar Pro recurring events.
 
@@ -242,7 +246,7 @@ Go to the "Support" tab in the plugin settings and follow the links to support, 
 * Fix: Improved reliability of adding and editing existing registrations.
 
 = 3.2 = 
-* New: Added a guided migration tool to help eligible sites move events, registrations, venues, and organizers to Event Genius. Learn more about [migrating to Event Genius].(https://wpeventgenius.com/migrate-to-event-genius/?utm_campaign=rtec-free&utm_source=readme&utm_medium=changelog&utm_content=EGmigration)
+* New: Added a guided migration tool to help eligible sites move events, registrations, venues, and organizers to Event Genius. Learn more about [migrating to Event Genius](https://wpeventgenius.com/migrate-to-event-genius/?utm_campaign=rtec-free&utm_source=readme&utm_medium=changelog&utm_content=EGmigration).
 * Fix: Security hardening
 
 = 3.1 =

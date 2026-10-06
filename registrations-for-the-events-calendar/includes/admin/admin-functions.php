@@ -808,6 +808,31 @@ function rtec_records_edit() {
 add_action( 'wp_ajax_rtec_records_edit', 'rtec_records_edit' );
 
 /**
+ * Send headers for a CSV file download.
+ *
+ * @since 3.2.3
+ * @param string $file_name Suggested filename, with or without .csv.
+ */
+function rtec_send_csv_download_headers( $file_name ) {
+	while ( ob_get_level() > 0 ) {
+		ob_end_clean();
+	}
+
+	$file_name = sanitize_file_name( $file_name );
+	if ( $file_name === '' ) {
+		$file_name = 'registrations.csv';
+	}
+	if ( substr( $file_name, -4 ) !== '.csv' ) {
+		$file_name .= '.csv';
+	}
+
+	nocache_headers();
+	header( 'Content-Type: text/csv; charset=UTF-8' );
+	header( 'Content-Disposition: attachment; filename="' . $file_name . '"' );
+	echo "\xEF\xBB\xBF"; // UTF-8 BOM
+}
+
+/**
  * Export registrations for a single event
  *
  * @since 2.0
@@ -817,7 +842,7 @@ function rtec_event_csv() {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			wp_die( 'You did not do this the right way!' );
 		}
-		$nonce = $_POST['rtec_csv_export_nonce'];
+		$nonce = isset( $_POST['rtec_csv_export_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['rtec_csv_export_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'rtec_csv_export' ) ) {
 			die( 'You did not do this the right way!' );
@@ -828,13 +853,18 @@ function rtec_event_csv() {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			wp_die( 'You did not do this the right way!' );
 		}
-		$nonce = $_POST['rtec_csv_export_nonce'];
+		$nonce = isset( $_POST['rtec_csv_export_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['rtec_csv_export_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, 'rtec_csv_export' ) ) {
 			die( 'You did not do this the right way!' );
 		}
 
-		$export_event_id = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0;
+		$export_event_id = 0;
+		if ( isset( $_POST['rtec_id'] ) ) {
+			$export_event_id = absint( wp_unslash( $_POST['rtec_id'] ) );
+		} elseif ( isset( $_GET['id'] ) ) {
+			$export_event_id = absint( wp_unslash( $_GET['id'] ) );
+		}
 		if ( ! $export_event_id || ! rtec_current_user_can_manage_event_registrations( $export_event_id ) ) {
 			wp_die( esc_html__( 'You do not have permission to export registrations for this event.', 'registrations-for-the-events-calendar' ) );
 		}
@@ -847,7 +877,8 @@ function rtec_event_csv() {
 
 		$event_obj->build_admin_event( $export_event_id, 'csv', '', $form );
 		$event_meta  = $event_obj->event_meta;
-		$venue_title = $event_meta['venue_title'];
+		$venue_title = isset( $event_meta['venue_title'] ) ? $event_meta['venue_title'] : '';
+		$labels      = is_array( $event_obj->labels ) ? $event_obj->labels : array();
 
 		$event_meta_string = array(
 			array( $event_meta['title'] ),
@@ -855,16 +886,12 @@ function rtec_event_csv() {
 			array( date_i18n( str_replace( ',', ' ', rtec_get_date_time_format() ), strtotime( $event_meta['start_date'] ) ) ),
 			array( date_i18n( str_replace( ',', ' ', rtec_get_date_time_format() ), strtotime( $event_meta['end_date'] ) ) ),
 			array( $venue_title ),
-			array_map( 'stripslashes', $event_obj->labels ),
+			array_map( 'stripslashes', $labels ),
 		);
 
-		$file_name = str_replace( ' ', '-', substr( $event_meta['title'], 0, 10 ) ) . '_' . str_replace( ' ', '-', substr( $event_meta['venue_title'], 0, 10 ) ) . '_' . date_i18n( 'm.d', strtotime( $event_meta['start_date'] ) );
+		$file_name = str_replace( ' ', '-', substr( $event_meta['title'], 0, 10 ) ) . '_' . str_replace( ' ', '-', substr( $venue_title, 0, 10 ) ) . '_' . date_i18n( 'm.d', strtotime( $event_meta['start_date'] ) );
 
-		// output headers so that the file is downloaded rather than displayed
-		header( 'Content-Encoding: UTF-8' );
-		header( 'Content-type: text/csv; charset=UTF-8' );
-		header( 'Content-Disposition: attachment; filename="' . str_replace( ',', '', $file_name ) . '.csv"' );
-		echo "\xEF\xBB\xBF"; // UTF-8 BOM
+		rtec_send_csv_download_headers( $file_name );
 
 		// create a file pointer connected to the output stream
 		$output = fopen( 'php://output', 'w' );
@@ -899,10 +926,10 @@ function rtec_event_csv() {
 
 		fclose( $output );
 
-		die();
+		exit;
 	}
 }
-add_action( 'admin_init', 'rtec_event_csv' );
+add_action( 'admin_init', 'rtec_event_csv', 1 );
 
 /**
  * Export registrations for a single event
@@ -934,14 +961,10 @@ function rtec_my_events_csv() {
 	$file_name = str_replace( ' ', '_', __( 'My Events', 'registrations-for-the-events-calendar' ) );
 
 	if ( isset( $_POST['rtec_email'] ) ) {
-		$file_name .= '_' . sanitize_text_field( $_POST['rtec_email'] );
+		$file_name .= '_' . sanitize_text_field( wp_unslash( $_POST['rtec_email'] ) );
 	}
 
-	// output headers so that the file is downloaded rather than displayed
-	header( 'Content-Encoding: UTF-8' );
-	header( 'Content-type: text/csv; charset=UTF-8' );
-	header( 'Content-Disposition: attachment; filename="' . str_replace( ',', '', $file_name ) . '.csv"' );
-	echo "\xEF\xBB\xBF"; // UTF-8 BOM
+	rtec_send_csv_download_headers( $file_name );
 
 	// create a file pointer connected to the output stream
 	$output = fopen( 'php://output', 'w' );
@@ -1026,7 +1049,7 @@ function rtec_my_events_csv() {
 
 	fclose( $output );
 
-	die();
+	exit;
 }
 
 /**
@@ -1122,10 +1145,11 @@ function rtec_get_search_results() {
 								<div class="rtec-manage-match-actions" data-entry-id="<?php echo esc_attr( (string) $registration['id'] ); ?>" data-email="<?php echo esc_attr( wp_unslash( $registration[ $column ] ) ); ?>">
 									<button class="button action rtec-match-action" data-rtec-action="delete-single"><?php echo RTEC_Icon::get( 'minus' ); ?> <?php _e( 'Delete Single', 'registrations-for-the-events-calendar' ); ?></button>
 									<button class="button action rtec-match-action" data-rtec-action="delete-all"><?php echo RTEC_Icon::get( 'minus' ); ?> <?php _e( 'Delete All', 'registrations-for-the-events-calendar' ); ?></button>
-									<form method="post" id="rtec_csv_export_form" action="">
+									<form method="post" class="rtec-csv-export-form" action="">
 										<?php wp_nonce_field( 'rtec_csv_export', 'rtec_csv_export_nonce' ); ?>
 										<input type="hidden" name="rtec_email" value="<?php echo esc_attr( wp_unslash( $registration[ $column ] ) ); ?>" />
-										<button type="submit" name="rtec_my_events_csv" class="button action rtec-match-action"><?php echo RTEC_Icon::get( 'export' ); ?> <?php _e( 'Export (.csv)', 'registrations-for-the-events-calendar' ); ?></button>
+										<input type="hidden" name="rtec_my_events_csv" value="1" />
+										<button type="submit" class="button action rtec-match-action"><?php echo RTEC_Icon::get( 'export' ); ?> <?php _e( 'Export (.csv)', 'registrations-for-the-events-calendar' ); ?></button>
 									</form>
 								</div>
 										<?php
@@ -1340,7 +1364,7 @@ function rtec_plugin_meta_links( $links, $file ) {
 	if ( $file == $plugin ) {
 		return array_merge(
 			$links,
-			array( '<a href="https://www.roundupwp.com/products/registrations-for-the-events-calendar/setup/?utm_campaign=rtec-free&utm_source=plugins-page&utm_medium=plugin-meta-links&utm_content=setup-instructions" target="_blank">' . __( 'Setup Instructions', 'registrations-for-the-events-calendar' ) . '</a>' )
+			array( '<a href="https://roundupwp.com/products/registrations-for-the-events-calendar/setup/?utm_campaign=rtec-free&utm_source=plugins-page&utm_medium=plugin-meta-links&utm_content=setup-instructions" target="_blank">' . __( 'Setup Instructions', 'registrations-for-the-events-calendar' ) . '</a>' )
 		);
 	}
 	return $links;

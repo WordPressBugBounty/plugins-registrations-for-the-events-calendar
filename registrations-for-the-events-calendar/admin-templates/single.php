@@ -361,10 +361,11 @@ if ( $single_search !== '' ) {
 				<?php endif; ?>
 				<button class="button action rtec-action rtec-admin-secondary-button rtec-icon-text" data-rtec-action="delete"><?php echo RTEC_Icon::get( 'minus' ); ?> <?php esc_html_e( 'Delete Selected', 'registrations-for-the-events-calendar' ); ?></button>
 
-				<form method="post" id="rtec_csv_export_form" action="">
+				<form method="post" class="rtec-csv-export-form" action="">
 					<?php wp_nonce_field( 'rtec_csv_export', 'rtec_csv_export_nonce' ); ?>
 					<input type="hidden" name="rtec_id" value="<?php echo esc_attr( $event_id ); ?>" />
-					<button type="submit" name="rtec_event_csv" class="button action rtec-admin-secondary-button rtec-icon-text"><?php echo RTEC_Icon::get( 'export' ); ?> <?php esc_html_e( 'Export (.csv)', 'registrations-for-the-events-calendar' ); ?></button>
+					<input type="hidden" name="rtec_event_csv" value="1" />
+					<button type="submit" class="button action rtec-admin-secondary-button rtec-icon-text"><?php echo RTEC_Icon::get( 'export' ); ?> <?php esc_html_e( 'Export (.csv)', 'registrations-for-the-events-calendar' ); ?></button>
 				</form>
 				<?php do_action( 'rtec_registrations_tab_event_actions', $event_id ); ?>
 				<button type="button" class="button action rtec-action-confirm rtec-admin-secondary-button rtec-modal-opener rtec-pro-action-button-with-pill" data-content="ajax" data-rtec-ajax="<?php echo esc_attr( wp_json_encode( array( 'action' => 'rtec_get_upsell_modal', 'type' => 'confirm-selected', 'location' => 'single-event-actions' ) ) ); ?>"><span class="rtec-pro-action-button-label rtec-icon-text"><?php echo RTEC_Icon::get( 'check' ); ?> <?php esc_html_e( 'Confirm Selected', 'registrations-for-the-events-calendar' ); ?></span><span class="rtec-pro-pill">Pro</span></button>

@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 $success_event_url = ( $step === 4 ) ? get_transient( 'rtec_onboarding_success_event_url' ) : '';
 $attendees_url     = admin_url( 'admin.php?page=' . RTEC_MENU_SLUG . '&tab=overview' );
 $pro_url           = 'https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=onboarding&utm_medium=success-step&utm_content=LearnAboutPro';
-$event_genius_url  = 'https://wordpress.org/plugins/event-genius/';
-$event_genius_more = 'https://roundupwp.com/products/event-genius/?utm_campaign=rtec-free&utm_source=onboarding&utm_medium=learn-more';
 
 // TEC display logic: get_plugin_data() is in includes/admin/class-rtec-admin.php ::get_plugin_data()
 $tec_data                 = RTEC_Admin::get_plugin_data( 'tribe-tec' );

@@ -220,6 +220,8 @@ jQuery(document).ready(function($) {
                             window.RtecCommon.startProcessing($form, 'area');
                         }
                         $form.find('input[type=submit]').prop('disabled', true).css('opacity', .1);
+                        $form.find('.rtec-error-message').remove();
+                        $form.find('input[name=rtec-visitor_email]').attr('aria-invalid','false');
 
                         var submittedData = {
                             'action': action,
@@ -244,13 +246,14 @@ jQuery(document).ready(function($) {
                                 if (data.trim().indexOf('{') > -1) {
                                     var response = JSON.parse(data.trim());
 
+                                    // Match, no-match, and rate-limited all return identical success HTML.
+                                    // Only invalid email format (etc.) uses response.error.
                                     if (typeof response.success !== 'undefined') {
                                         $form.replaceWith(response.success);
                                     } else if (typeof response.error !== 'undefined') {
                                         var $formField = $form.find('input[name=rtec-visitor_email]').closest('.rtec-input-wrapper');
-                                        if (!$formField.find('.rtec-error-message').length) {
-                                            $formField.append('<p class="rtec-error-message" role="alert">'+response.error+'</p>');
-                                        }
+                                        $formField.find('.rtec-error-message').remove();
+                                        $formField.append('<p class="rtec-error-message" role="alert">'+response.error+'</p>');
                                         $form.find('input[name=rtec-visitor_email]').attr('aria-invalid','true');
                                     }
                                 }

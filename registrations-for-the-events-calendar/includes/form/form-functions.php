@@ -499,93 +499,156 @@ function rtec_use_footer_to_add_form() {
 add_action( 'wp_footer', 'rtec_use_footer_to_add_form', 1 );
 
 /**
+ * Generic success copy for cancel-by-email requests (no registrant-specific data).
  *
- * @since 2.2
+ * @since 3.2.3
+ *
+ * @return string
  */
-function rtec_visitor_send_action_link() {
+function rtec_get_cancel_request_success_message() {
 	global $rtec_options;
 
-	$email_error_message = isset( $rtec_options['email_error_message'] ) ? esc_html( $rtec_options['email_error_message'] ) : __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' );
-	$email_error_message = rtec_get_text( $email_error_message, __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' ) );
+	$message = isset( $rtec_options['success_send_message'] ) ? $rtec_options['success_send_message'] : __( 'Check your email inbox for a cancel link.', 'registrations-for-the-events-calendar' );
+	$message = rtec_get_text( $message, __( 'Check your email inbox for a cancel link.', 'registrations-for-the-events-calendar' ) );
 
-	if ( ! is_email( $_POST['rtec-visitor_email'] ) ) {
+	// Strip {placeholder} tokens so customized messages cannot leak PII via the response.
+	$message = (string) preg_replace( '/\{[a-zA-Z0-9_.-]{2,}\}/u', '', (string) $message );
 
-		if ( method_exists( 'Tribe__Notices', 'set_notice' ) ) {
-			Tribe__Notices::set_notice( 'tool_status', $email_error_message );
-		}
-	} else {
-		$email    = sanitize_email( $_POST['rtec-visitor_email'] );
-		$event_id = (int) $_POST['event_id'];
-		$rtec     = RTEC();
-		$args     = array(
-			'fields' => array( 'event_id', 'action_key' ),
-			'where'  => array(
-				array( 'email', $email, '=', 'string' ),
-				array( 'event_id', $event_id, '=', 'int' ),
-			),
-		);
-		$matches  = $rtec->db_frontend->retrieve_entries( $args, false, 1 );
-
-		if ( isset( $matches[0]['action_key'] ) ) {
-
-			$unregister_link_text = isset( $rtec_options['unregister_link_text'] ) ? esc_html( $rtec_options['unregister_link_text'] ) : __( 'Cancel my registration', 'registrations-for-the-events-calendar' );
-			$unregister_link_text = rtec_get_text( $unregister_link_text, __( 'Cancel my registration', 'registrations-for-the-events-calendar' ) );
-
-			$message      = rtec_generate_unregister_link( (int) $event_id, $matches[0]['action_key'], $email, $unregister_link_text );
-			$header_image = isset( $rtec_options['html_email_header_img'] ) ? $rtec_options['html_email_header_img'] : false;
-
-			$args = array(
-				'template_type'         => 'confirmation',
-				'content_type'          => 'html',
-				'custom_template_pairs' => array(),
-				'recipients'            => $email,
-				'subject'               => array(
-					'text' => get_the_title( $event_id ),
-					'data' => array(),
-				),
-				'body'                  => array(
-					'message'      => $message,
-					'data'         => array(),
-					'header_image' => $header_image,
-				),
-			);
-			require_once rtec_plugin_path( 'includes/class-rtec-email.php' );
-			$unregister_email = new RTEC_Email();
-			$unregister_email->build_email( $args, true, $event_id );
-
-			$success = $unregister_email->send_email();
-
-			$email_success_message = isset( $rtec_options['success_send_message'] ) ? esc_html( $rtec_options['success_send_message'] ) : __( 'Check your email inbox for a cancel link.', 'registrations-for-the-events-calendar' );
-			$email_success_message = rtec_get_text( $email_success_message, __( 'Check your email inbox for a cancel link.', 'registrations-for-the-events-calendar' ) );
-
-			if ( $success && method_exists( 'Tribe__Notices', 'set_notice' ) ) {
-				Tribe__Notices::set_notice( 'tool_status', $email_success_message );
-			}
-		} elseif ( method_exists( 'Tribe__Notices', 'set_notice' ) ) {
-
-				Tribe__Notices::set_notice( 'tool_status', $email_error_message );
-		}
-	}
-
-	return '';
+	return esc_html( trim( $message ) );
 }
 
-function rtec_send_unregister_link() {
-	global $rtec_options;
-	$event_id = (int) $_POST['event_id'];
-	$email    = sanitize_email( $_POST['email'] );
+/**
+ * Success HTML for cancel-by-email AJAX (identical for match and no-match).
+ *
+ * @since 3.2.3
+ *
+ * @return string
+ */
+function rtec_build_cancel_request_success_html() {
+	return '<p class="rtec-success-message tribe-events-notices rtec-scrollto">' . rtec_get_cancel_request_success_message() . '</p>';
+}
 
-	$email_error_message = isset( $rtec_options['email_error_message'] ) ? esc_html( $rtec_options['email_error_message'] ) : __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' );
-	$email_error_message = rtec_get_text( $email_error_message, __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' ) );
-	if ( ! is_email( $email )
-		|| $event_id === 0 ) {
-		$return = array(
-			'error' => __( $email_error_message, 'registrations-for-the-events-calendar' ),
-		);
-
-		echo wp_json_encode( $return );
-		die();
+/**
+ * Hash client IP with site salt so raw IPs are not stored in transient keys.
+ *
+ * @since 3.2.3
+ *
+ * @return string
+ */
+function rtec_cancel_request_client_hash() {
+	$ip = '';
+	if ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
+		$ip = sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) );
 	}
+
+	return md5( $ip . wp_salt( 'nonce' ) );
+}
+
+/**
+ * @since 3.2.3
+ *
+ * @param int $event_id Event ID.
+ * @return string
+ */
+function rtec_cancel_submit_rate_limit_key( $event_id ) {
+	return 'rtec_cancel_sub_' . absint( $event_id ) . '_' . rtec_cancel_request_client_hash();
+}
+
+/**
+ * @since 3.2.3
+ *
+ * @param int    $event_id     Event ID.
+ * @param string $cancel_email Email address.
+ * @return string
+ */
+function rtec_cancel_email_send_rate_limit_key( $event_id, $cancel_email ) {
+	return 'rtec_cancel_mail_' . absint( $event_id ) . '_' . md5( strtolower( $cancel_email ) );
+}
+
+/**
+ * IP × event rate limit for cancel-by-email probing.
+ *
+ * @since 3.2.3
+ *
+ * @param int $event_id Event ID.
+ * @return bool
+ */
+function rtec_is_cancel_submit_rate_limited( $event_id ) {
+	$count = (int) get_transient( rtec_cancel_submit_rate_limit_key( $event_id ) );
+	$max   = (int) apply_filters( 'rtec_cancel_submit_rate_limit_max', 10, $event_id );
+
+	return $count >= max( 1, $max );
+}
+
+/**
+ * @since 3.2.3
+ *
+ * @param int $event_id Event ID.
+ */
+function rtec_record_cancel_submit_attempt( $event_id ) {
+	$key    = rtec_cancel_submit_rate_limit_key( $event_id );
+	$count  = (int) get_transient( $key );
+	$window = (int) apply_filters( 'rtec_cancel_submit_rate_limit_window', 2 * MINUTE_IN_SECONDS, $event_id );
+	set_transient( $key, $count + 1, max( MINUTE_IN_SECONDS, $window ) );
+}
+
+/**
+ * Per-address cancel-email send rate limit.
+ *
+ * @since 3.2.3
+ *
+ * @param int    $event_id     Event ID.
+ * @param string $cancel_email Email address.
+ * @return bool
+ */
+function rtec_is_cancel_email_send_rate_limited( $event_id, $cancel_email ) {
+	return (bool) get_transient( rtec_cancel_email_send_rate_limit_key( $event_id, $cancel_email ) );
+}
+
+/**
+ * @since 3.2.3
+ *
+ * @param int    $event_id     Event ID.
+ * @param string $cancel_email Email address.
+ */
+function rtec_record_cancel_email_send( $event_id, $cancel_email ) {
+	$window = (int) apply_filters(
+		'rtec_cancel_email_send_rate_limit_window',
+		2 * MINUTE_IN_SECONDS,
+		$event_id,
+		$cancel_email
+	);
+	set_transient(
+		rtec_cancel_email_send_rate_limit_key( $event_id, $cancel_email ),
+		1,
+		max( MINUTE_IN_SECONDS, $window )
+	);
+}
+
+/**
+ * Look up registrations for cancel-by-email and send a cancel link only on match.
+ * Always returns the same success-shaped outcome to the caller; rate limits apply.
+ *
+ * @since 3.2.3
+ *
+ * @param int    $event_id     Event ID.
+ * @param string $cancel_email Sanitized email address.
+ * @return bool True when the caller should present the generic success message.
+ */
+function rtec_process_cancel_submission_for_event( $event_id, $cancel_email ) {
+	$event_id     = absint( $event_id );
+	$cancel_email = sanitize_email( $cancel_email );
+
+	if ( ! $event_id || ! is_email( $cancel_email ) ) {
+		return false;
+	}
+
+	// Still treat as success when rate limited — do not tip off scanners.
+	if ( rtec_is_cancel_submit_rate_limited( $event_id ) ) {
+		return true;
+	}
+
+	rtec_record_cancel_submit_attempt( $event_id );
 
 	$rtec    = RTEC();
 	$args    = array(
@@ -602,81 +665,158 @@ function rtec_send_unregister_link() {
 			'action_key',
 		),
 		'where'  => array(
-			array( 'email', $email, '=', 'string' ),
+			array( 'email', $cancel_email, '=', 'string' ),
 			array( 'event_id', $event_id, '=', 'int' ),
 		),
 	);
 	$matches = $rtec->db_frontend->retrieve_entries( $args, false, 1 );
 
-	if ( isset( $matches[0]['action_key'] ) ) {
-		$registration = $matches[0];
-
-		$db   = $rtec->db_frontend->instance();
-		$form = new RTEC_Form();
-
-		$form->build_form( $registration['event_id'] );
-		$fields_atts = $form->get_field_attributes();
-		$event_meta  = $form->get_event_meta();
-
-		$custom_columns = $form->get_custom_column_keys();
-
-		if ( isset( $registration['custom'] ) ) {
-			$registration['first'] = isset( $registration['first_name'] ) ? $registration['first_name'] : '';
-			$registration['last']  = isset( $registration['last_name'] ) ? $registration['last_name'] : '';
-		}
-
-		$sanitized_data = array_merge( $event_meta, $registration );
-
-		$sanitized_data['date'] = $event_meta['start_date'];
-
-		$unregister_link_text = isset( $rtec_options['unregister_link_text'] ) ? esc_html( $rtec_options['unregister_link_text'] ) : __( 'Cancel my registration', 'registrations-for-the-events-calendar' );
-		$unregister_link_text = rtec_get_text( $unregister_link_text, __( 'Cancel my registration', 'registrations-for-the-events-calendar' ) );
-
-		$unregister_message_template = isset( $rtec_options['unregister_message'] ) ? $rtec_options['unregister_message'] : rtec_generate_unregister_link( (int) $event_id, $matches[0]['action_key'], $email, $unregister_link_text );
-		$header_image                = isset( $rtec_options['html_email_header_img'] ) ? $rtec_options['html_email_header_img'] : false;
-
-		$args = array(
-			'template_type'         => 'confirmation',
-			'content_type'          => 'html',
-			'custom_template_pairs' => array(),
-			'recipients'            => $email,
-			'subject'               => array(
-				'text' => get_the_title( $event_id ),
-				'data' => $sanitized_data,
-			),
-			'body'                  => array(
-				'message'      => $unregister_message_template,
-				'data'         => $sanitized_data,
-				'header_image' => $header_image,
-			),
-		);
-		require_once rtec_plugin_path( 'includes/class-rtec-email.php' );
-		$unregister_email = new RTEC_Email();
-		$unregister_email->build_email( $args, true, $event_id );
-
-		$success = $unregister_email->send_email();
-
-		$email_success_message = isset( $rtec_options['success_send_message'] ) ? esc_html( $rtec_options['success_send_message'] ) : __( 'Check your email inbox for a cancel link.', 'registrations-for-the-events-calendar' );
-		$email_success_message = rtec_get_text( $email_success_message, __( 'Check your email inbox for a cancel link.', 'registrations-for-the-events-calendar' ) );
-
-		$return = array(
-			'success' => '<p class="rtec-success-message tribe-events-notices rtec-scrollto">' . __( $email_success_message, 'registrations-for-the-events-calendar' ) . '</p>',
-		);
-
-		echo wp_json_encode( $return );
-		die();
-
-	} else {
-
-		$return = array(
-			'error' => __( $email_error_message, 'registrations-for-the-events-calendar' ),
-		);
-
-		echo wp_json_encode( $return );
-		die();
-
+	if ( ! empty( $matches[0]['action_key'] ) && ! rtec_is_cancel_email_send_rate_limited( $event_id, $cancel_email ) ) {
+		rtec_send_cancel_request_email( $event_id, $cancel_email, $matches[0] );
+		rtec_record_cancel_email_send( $event_id, $cancel_email );
 	}
 
+	return true;
+}
+
+/**
+ * Send the cancel-link email for a matched registration.
+ *
+ * @since 3.2.3
+ *
+ * @param int    $event_id     Event ID.
+ * @param string $cancel_email Email address.
+ * @param array  $registration Registration row.
+ * @return bool
+ */
+function rtec_send_cancel_request_email( $event_id, $cancel_email, $registration ) {
+	global $rtec_options;
+
+	$form = new RTEC_Form();
+	$form->build_form( $registration['event_id'] );
+	$event_meta = $form->get_event_meta();
+
+	if ( isset( $registration['custom'] ) ) {
+		$registration['first'] = isset( $registration['first_name'] ) ? $registration['first_name'] : '';
+		$registration['last']  = isset( $registration['last_name'] ) ? $registration['last_name'] : '';
+	}
+
+	$sanitized_data         = array_merge( $event_meta, $registration );
+	$sanitized_data['date'] = $event_meta['start_date'];
+
+	$unregister_link_text = isset( $rtec_options['unregister_link_text'] ) ? esc_html( $rtec_options['unregister_link_text'] ) : __( 'Cancel my registration', 'registrations-for-the-events-calendar' );
+	$unregister_link_text = rtec_get_text( $unregister_link_text, __( 'Cancel my registration', 'registrations-for-the-events-calendar' ) );
+
+	$unregister_message_template = isset( $rtec_options['unregister_message'] ) ? $rtec_options['unregister_message'] : rtec_generate_unregister_link( (int) $event_id, $registration['action_key'], $cancel_email, $unregister_link_text );
+	$header_image                = isset( $rtec_options['html_email_header_img'] ) ? $rtec_options['html_email_header_img'] : false;
+
+	$args = array(
+		'template_type'         => 'confirmation',
+		'content_type'          => 'html',
+		'custom_template_pairs' => array(),
+		'recipients'            => $cancel_email,
+		'subject'               => array(
+			'text' => get_the_title( $event_id ),
+			'data' => $sanitized_data,
+		),
+		'body'                  => array(
+			'message'      => $unregister_message_template,
+			'data'         => $sanitized_data,
+			'header_image' => $header_image,
+		),
+	);
+	require_once rtec_plugin_path( 'includes/class-rtec-email.php' );
+	$unregister_email = new RTEC_Email();
+	$unregister_email->build_email( $args, true, $event_id );
+
+	return (bool) $unregister_email->send_email();
+}
+
+/**
+ * Non-AJAX fallback for cancel-by-email (same anti-enumeration contract as AJAX).
+ *
+ * @since 2.2
+ */
+function rtec_visitor_send_action_link() {
+	global $rtec_options;
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Public endpoint; rate limits mitigate abuse.
+	if ( ! isset( $_POST['event_id'] ) || ! isset( $_POST['rtec-visitor_email'] ) ) {
+		return '';
+	}
+
+	$email_error_message = isset( $rtec_options['email_error_message'] ) ? esc_html( $rtec_options['email_error_message'] ) : __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' );
+	$email_error_message = rtec_get_text( $email_error_message, __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' ) );
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$cancel_email = sanitize_email( wp_unslash( $_POST['rtec-visitor_email'] ) );
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$event_id = absint( $_POST['event_id'] );
+
+	// Format validation only — does NOT reveal whether an address is registered.
+	if ( ! is_email( $cancel_email ) ) {
+		if ( method_exists( 'Tribe__Notices', 'set_notice' ) ) {
+			Tribe__Notices::set_notice( 'tool_status', $email_error_message );
+		}
+		return '';
+	}
+
+	if ( ! $event_id ) {
+		return '';
+	}
+
+	if ( rtec_process_cancel_submission_for_event( $event_id, $cancel_email ) && method_exists( 'Tribe__Notices', 'set_notice' ) ) {
+		Tribe__Notices::set_notice( 'tool_status', rtec_get_cancel_request_success_message() );
+	}
+
+	return '';
+}
+
+/**
+ * Public cancel-by-email AJAX handler (anti-enumeration + rate limits).
+ *
+ * Always returns the same success-shaped response whether or not the email is registered.
+ * Only a matching address receives email. IP and per-address sends are rate limited.
+ *
+ * @since 2.2
+ */
+function rtec_send_unregister_link() {
+	global $rtec_options;
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Public endpoint; rate limits mitigate abuse.
+	if ( ! isset( $_POST['event_id'] ) || ! isset( $_POST['email'] ) ) {
+		die();
+	}
+
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$event_id = absint( $_POST['event_id'] );
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$cancel_email = sanitize_email( wp_unslash( $_POST['email'] ) );
+
+	$email_error_message = isset( $rtec_options['email_error_message'] ) ? esc_html( $rtec_options['email_error_message'] ) : __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' );
+	$email_error_message = rtec_get_text( $email_error_message, __( 'Please enter the email you registered with.', 'registrations-for-the-events-calendar' ) );
+
+	// Format validation only — does NOT reveal whether an address is registered.
+	if ( ! is_email( $cancel_email ) ) {
+		echo wp_json_encode(
+			array(
+				'error' => $email_error_message,
+			)
+		);
+		die();
+	}
+
+	if ( ! $event_id ) {
+		die();
+	}
+
+	rtec_process_cancel_submission_for_event( $event_id, $cancel_email );
+
+	echo wp_json_encode(
+		array(
+			'success' => rtec_build_cancel_request_success_html(),
+		)
+	);
 	die();
 }
 add_action( 'wp_ajax_rtec_send_unregister_link', 'rtec_send_unregister_link' );

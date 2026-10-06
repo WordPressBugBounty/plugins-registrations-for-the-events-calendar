@@ -18,7 +18,15 @@ if ( ! empty( $primary_cta_external ) ) {
 	$primary_cta_attrs = ' target="_blank" rel="noopener noreferrer"';
 }
 $payments_url      = admin_url( 'admin.php?page=rtec-settings&tab=payments' );
-$pro_url           = 'https://roundupwp.com/products/registrations-for-the-events-calendar-pro/?utm_campaign=rtec-free&utm_source=whats-new-screen&utm_medium=upsell&utm_content=ExploreRTECPro';
+$pro_discount_url  = add_query_arg(
+	array(
+		'utm_campaign' => 'rtec-free',
+		'utm_source'   => 'welcome-30',
+		'utm_medium'   => '9-discount',
+		'utm_content'  => 'Get50%Off',
+	),
+	'https://roundupwp.com/products/registrations-for-the-events-calendar-pro/'
+);
 $hero_image_url    = rtec_plugin_url( 'assets/images/admin/RTEC-30-Hero.png' );
 ?>
 
@@ -234,7 +242,7 @@ $hero_image_url    = rtec_plugin_url( 'assets/images/admin/RTEC-30-Hero.png' );
 						<?php esc_html_e( 'Add payments, advanced reporting, registration types, and more.', 'registrations-for-the-events-calendar' ); ?>
 					</p>
 
-					<a class="rtec-offer-cta rtec-heavy-shadow" style="display: inline-flex" href="<?php echo esc_url( $pro_url ); ?>?utm_campaign=rtec-free&amp;utm_source=welcome-30&amp;utm_medium=9-discount&amp;utm_content=Get50%Off">
+					<a class="rtec-offer-cta rtec-heavy-shadow" style="display: inline-flex" href="<?php echo esc_url( $pro_discount_url ); ?>">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path></svg>					<div>
 						<span class="rtec-offer-cta-bold">Get 50% Off Pro</span>
 						<span class="rtec-offer-cta-subtext">automatically applied at checkout</span>

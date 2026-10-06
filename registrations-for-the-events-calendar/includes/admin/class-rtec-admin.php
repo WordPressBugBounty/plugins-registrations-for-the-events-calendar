@@ -666,7 +666,7 @@ class RTEC_Admin {
 				'name'        => 'email_error_message',
 				'title'       => '<label for="rtec_email_error_message">' . __( 'Email Error Text', 'registrations-for-the-events-calendar' ) . '</label>',
 				'example'     => '',
-				'description' => '',
+				'description' => __( 'Shown when the email address is not a valid format. Unknown emails still show the success message to avoid revealing who is registered.', 'registrations-for-the-events-calendar' ),
 				'callback'    => 'default_text',
 				'class'       => 'large-text',
 				'input_class' => 'regular-text',
@@ -2281,7 +2281,7 @@ endforeach;
 		// echo rtec_get_date_time_format();
 		?>
 		<input name="<?php echo $args['option'] . '[' . $args['name'] . ']'; ?>" id="rtec_<?php echo $args['name']; ?>" type="text" value="<?php echo esc_attr( $option_string ); ?>" size="10" placeholder="Eg. F jS, Y" />
-		<a href="https://www.roundupwp.com/products/registrations-for-the-events-calendar/docs/date-formatting-guide/" target="_blank"><?php esc_html_e( 'Examples', 'registrations-for-the-events-calendar' ); ?></a>
+		<a href="https://roundupwp.com/products/registrations-for-the-events-calendar/docs/date-formatting-guide/" target="_blank"><?php esc_html_e( 'Examples', 'registrations-for-the-events-calendar' ); ?></a>
 		<br><?php $this->the_description( $args['description'] ); ?>
 		<?php
 	}
